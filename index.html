@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidhyut Saathi – Solar Lights, LED Lamps, LED Bulbs & Electrical Products</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Vidhyut Saathi offers dependable solar lighting, energy-efficient LED lamps, LED bulbs, and precision digital clamp meters for homes, businesses, and channel partners across India.">
+  <meta name="keywords" content="Vidhyut Saathi, Solar Lights, LED Lamps, LED Bulbs, Clamp Meters, Solar Street Lights, Indian Electrical Products, Solar Products">
+  <meta name="author" content="Vidhyut Saathi">
+  <meta name="theme-color" content="#223A5F">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vidhyut Saathi – Solar & Electrical Solutions">
+  <meta property="og:description" content="Discover reliable solar lighting and electrical solutions from Vidhyut Saathi. Powering a brighter tomorrow.">
+  <meta property="og:image" content="/assets/images/brand/vidhyut-logo-official.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/brand/vidhyut-logo-official.png">
+  <link rel="apple-touch-icon" href="/assets/images/brand/vidhyut-logo-official.png">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vidhyut Saathi",
+    "url": "https://vidhyut-saathi.myshopify.com",
+    "logo": "/assets/images/brand/vidhyut-logo-official.png",
+    "description": "Indian brand offering solar lights, LED lamps, LED bulbs, and electrical testing clamp meters.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road",
+      "addressLocality": "Rohtak",
+      "postalCode": "124001",
+      "addressRegion": "Haryana",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-8199036060",
+      "contactType": "customer service",
+      "email": "info@vidhyutsaathi.com",
+      "areaServed": "IN"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ======================================================================
+       Header & Navigation
+       ====================================================================== -->
+  <header class="vs-header" id="mainHeader">
+    <div class="vs-container">
+      <div class="vs-header-inner">
+        <!-- Logo -->
+        <a href="#" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
+          <img
+            src="/assets/images/brand/vidhyut-logo-official.png"
+            alt="Vidhyut Saathi Logo"
+            class="vs-logo-img"
+            width="48"
+            height="48"
+          >
+          <div class="vs-logo-text-wrap">
+            <span class="vs-logo-brand">Vidhyut Saathi</span>
+            <span class="vs-logo-tagline">Solar & Electrical</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="vs-nav-desktop" aria-label="Main Navigation">
+          <ul class="vs-nav-list">
+            <li><a href="#" class="vs-nav-link is-active">Home</a></li>
+            <li><a href="#about" class="vs-nav-link">About Us</a></li>
+            <li><a href="#products" class="vs-nav-link">Products</a></li>
+            <li><a href="#contact" class="vs-nav-link">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Desktop CTA Action Buttons -->
+        <div class="vs-header-actions">
+          <a
+            href="#buy-now"
+            class="vs-btn vs-btn-accent"
+            data-route-placeholder="Buy Now"
+            id="headerBuyNowBtn"
+          >
+            Buy Now
+          </a>
+          <a
+            href="#distributorship"
+            class="vs-btn vs-btn-outline"
+            id="headerDistributorBtn"
+          >
+            Buy Distributorship
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button
+          type="button"
+          class="vs-nav-toggle"
+          id="vsNavToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="vsMobileDrawer"
+        >
+          <span class="vs-hamburger-bar"></span>
+          <span class="vs-hamburger-bar"></span>
+          <span class="vs-hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="vs-nav-backdrop" id="vsNavBackdrop"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+    <div class="vs-mobile-drawer-header">
+      <div class="vs-logo-link">
+        <img
+          src="/assets/images/brand/vidhyut-logo-official.png"
+          alt="Vidhyut Saathi Logo"
+          class="vs-logo-img"
+          width="40"
+          height="40"
+        >
+        <span class="vs-logo-brand">Vidhyut Saathi</span>
+      </div>
+      <button
+        type="button"
+        class="vs-mobile-close-btn"
+        id="vsMobileCloseBtn"
+        aria-label="Close menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="vs-mobile-nav-list">
+      <li>
+        <a href="#" class="vs-mobile-nav-link is-active">
+          <span>Home</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="#about" class="vs-mobile-nav-link">
+          <span>About Us</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="#products" class="vs-mobile-nav-link">
+          <span>Products</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="#contact" class="vs-mobile-nav-link">
+          <span>Contact Us</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+    </ul>
+
+    <div class="vs-mobile-actions">
+      <a
+        href="#buy-now"
+        class="vs-btn vs-btn-accent"
+        data-route-placeholder="Buy Now"
+        id="mobileBuyNowBtn"
+      >
+        Buy Now
+      </a>
+      <a
+        href="#distributorship"
+        class="vs-btn vs-btn-outline"
+        id="mobileDistributorBtn"
+      >
+        Buy Distributorship
+      </a>
+      <div class="vs-mobile-contact-snippet">
+        Direct Inquiries: <a href="tel:+918199036060">+91-8199036060</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ======================================================================
+         Hero Section: Four Shopify-Managed Banners
+         ====================================================================== -->
+    <section
+      class="vs-hero-section"
+      id="heroCarouselSection"
+      aria-roledescription="carousel"
+      aria-label="Vidhyut Saathi Featured Product Banners"
+    >
+      <div class="vs-carousel" id="vsHeroCarousel" tabindex="0">
+        <div class="vs-carousel-track">
+
+          <!-- Slide 1: Solar Lighting Solutions -->
+          <div
+            class="vs-carousel-slide is-active"
+            id="slide-1"
+            role="tabpanel"
+            aria-roledescription="slide"
+            aria-label="1 of 4"
+          >
+            <div class="vs-slide-media">
+              <picture class="vs-slide-picture">
+                <source
+                  media="(max-width: 768px)"
+                  srcset="/assets/images/banners/banner-solar-lights-mobile.jpg"
+                >
+                <img
+                  src="/assets/images/banners/banner-solar-lights.jpg"
+                  alt="Vidhyut Saathi modern solar street lights illuminating an urban roadway at dusk"
+                  class="vs-slide-img"
+                  fetchpriority="high"
+                  loading="eager"
+                  width="1920"
+                  height="1080"
+                >
+              </picture>
+              <div class="vs-slide-overlay"></div>
+            </div>
+            <div class="vs-slide-content-wrap">
+              <div class="vs-container">
+                <div class="vs-slide-content">
+                  <div class="vs-slide-badge">Clean Solar Energy</div>
+                  <h1 class="vs-slide-title">Solar Lighting Solutions</h1>
+                  <p class="vs-slide-subtitle">
+                    Harness clean energy with durable, high-efficiency solar street & outdoor lighting systems engineered for Indian conditions.
+                  </p>
+                  <div class="vs-slide-actions">
+                    <a href="#products-solar-lights" class="vs-btn vs-btn-accent">
+                      Explore Solar Lights
+                      <svg class="vs-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                    <a href="#contact" class="vs-btn vs-btn-outline-white">
+                      Contact Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Smart LED Luminaires & Lamps -->
+          <div
+            class="vs-carousel-slide"
+            id="slide-2"
+            role="tabpanel"
+            aria-roledescription="slide"
+            aria-label="2 of 4"
+            aria-hidden="true"
+          >
+            <div class="vs-slide-media">
+              <picture class="vs-slide-picture">
+                <source
+                  media="(max-width: 768px)"
+                  srcset="/assets/images/banners/banner-led-lamps-mobile.jpg"
+                >
+                <img
+                  src="/assets/images/banners/banner-led-lamps.jpg"
+                  alt="Modern architectural LED suspended luminaire lamps in a commercial corporate building"
+                  class="vs-slide-img"
+                  loading="lazy"
+                  width="1920"
+                  height="1080"
+                >
+              </picture>
+              <div class="vs-slide-overlay"></div>
+            </div>
+            <div class="vs-slide-content-wrap">
+              <div class="vs-container">
+                <div class="vs-slide-content">
+                  <div class="vs-slide-badge">Commercial & Retail</div>
+                  <h2 class="vs-slide-title">Smart LED Luminaires & Lamps</h2>
+                  <p class="vs-slide-subtitle">
+                    Engineered for optimal brightness, architectural elegance, and commercial reliability across offices, retail, and institutions.
+                  </p>
+                  <div class="vs-slide-actions">
+                    <a href="#products-led-lamps" class="vs-btn vs-btn-accent">
+                      Discover LED Lamps
+                      <svg class="vs-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                    <a href="#distributorship" class="vs-btn vs-btn-outline-white">
+                      Buy Distributorship
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: High-Efficiency LED Bulbs -->
+          <div
+            class="vs-carousel-slide"
+            id="slide-3"
+            role="tabpanel"
+            aria-roledescription="slide"
+            aria-label="3 of 4"
+            aria-hidden="true"
+          >
+            <div class="vs-slide-media">
+              <picture class="vs-slide-picture">
+                <source
+                  media="(max-width: 768px)"
+                  srcset="/assets/images/banners/banner-led-bulbs-mobile.jpg"
+                >
+                <img
+                  src="/assets/images/banners/banner-led-bulbs.jpg"
+                  alt="Premium glowing warm LED bulbs in contemporary lighting fixtures"
+                  class="vs-slide-img"
+                  loading="lazy"
+                  width="1920"
+                  height="1080"
+                >
+              </picture>
+              <div class="vs-slide-overlay"></div>
+            </div>
+            <div class="vs-slide-content-wrap">
+              <div class="vs-container">
+                <div class="vs-slide-content">
+                  <div class="vs-slide-badge">Maximum Energy Savings</div>
+                  <h2 class="vs-slide-title">High-Efficiency LED Bulbs</h2>
+                  <p class="vs-slide-subtitle">
+                    Superior luminous output with advanced thermal dissipation for long-lasting household and commercial electricity savings.
+                  </p>
+                  <div class="vs-slide-actions">
+                    <a href="#products-led-bulbs" class="vs-btn vs-btn-accent">
+                      View LED Bulbs
+                      <svg class="vs-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                    <a href="#buy-now" class="vs-btn vs-btn-outline-white" data-route-placeholder="Buy Now">
+                      Buy Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Precision Digital Clamp Meters -->
+          <div
+            class="vs-carousel-slide"
+            id="slide-4"
+            role="tabpanel"
+            aria-roledescription="slide"
+            aria-label="4 of 4"
+            aria-hidden="true"
+          >
+            <div class="vs-slide-media">
+              <picture class="vs-slide-picture">
+                <source
+                  media="(max-width: 768px)"
+                  srcset="/assets/images/banners/banner-clamp-meters-mobile.jpg"
+                >
+                <img
+                  src="/assets/images/banners/banner-clamp-meters.jpg"
+                  alt="Electrical technician using a digital clamp meter to test industrial distribution panels"
+                  class="vs-slide-img"
+                  loading="lazy"
+                  width="1920"
+                  height="1080"
+                >
+              </picture>
+              <div class="vs-slide-overlay"></div>
+            </div>
+            <div class="vs-slide-content-wrap">
+              <div class="vs-container">
+                <div class="vs-slide-content">
+                  <div class="vs-slide-badge">Industrial Testing</div>
+                  <h2 class="vs-slide-title">Precision Digital Clamp Meters</h2>
+                  <p class="vs-slide-subtitle">
+                    Accurate, dependable electrical testing and measurement instruments built for engineers, electricians, and maintenance professionals.
+                  </p>
+                  <div class="vs-slide-actions">
+                    <a href="#products-clamp-meters" class="vs-btn vs-btn-accent">
+                      Explore Clamp Meters
+                      <svg class="vs-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                    <a href="#distributorship" class="vs-btn vs-btn-outline-white">
+                      Partner With Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Navigation Arrows -->
+        <button
+          type="button"
+          class="vs-carousel-arrow vs-carousel-arrow-prev"
+          id="prevSlideBtn"
+          aria-label="Previous slide"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="vs-carousel-arrow vs-carousel-arrow-next"
+          id="nextSlideBtn"
+          aria-label="Next slide"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Pagination Dots -->
+        <div class="vs-carousel-dots" role="tablist" aria-label="Carousel slide controls">
+          <button type="button" class="vs-carousel-dot is-active" role="tab" aria-selected="true" aria-label="Slide 1: Solar Lighting Solutions"></button>
+          <button type="button" class="vs-carousel-dot" role="tab" aria-selected="false" aria-label="Slide 2: Smart LED Luminaires & Lamps"></button>
+          <button type="button" class="vs-carousel-dot" role="tab" aria-selected="false" aria-label="Slide 3: High-Efficiency LED Bulbs"></button>
+          <button type="button" class="vs-carousel-dot" role="tab" aria-selected="false" aria-label="Slide 4: Precision Digital Clamp Meters"></button>
+        </div>
+
+        <!-- Progress Bar Indicator -->
+        <div class="vs-carousel-progress">
+          <div class="vs-carousel-progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Featured Products Section: Explore Our Products
+         ====================================================================== -->
+    <section class="vs-products-section" id="products">
+      <div class="vs-container">
+        <header class="vs-section-header">
+          <div class="vs-section-badge">Our Product Lineup</div>
+          <h2 class="vs-section-title">Explore Our Products</h2>
+          <p class="vs-section-subtitle">
+            Discover reliable solar lighting and electrical solutions from Vidhyut Saathi.
+          </p>
+        </header>
+
+        <div class="vs-products-grid">
+          <!-- Card 1: Solar Lights -->
+          <article class="vs-product-card" id="products-solar-lights">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">Solar Solutions</span>
+              <img
+                src="/assets/images/products/solar-lights.jpg"
+                alt="Vidhyut Saathi all-in-one solar street light with integrated solar panel"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">Solar Lights</h3>
+              <p class="vs-product-desc">
+                All-in-one solar luminaires and street lighting with integrated PV panels, lithium storage, and dusk-to-dawn sensors for autonomous outdoor illumination.
+              </p>
+              <a
+                href="#products-solar-lights"
+                class="vs-product-btn"
+                data-route-placeholder="Solar Lights"
+              >
+                <span>View Product</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: LED Lamps -->
+          <article class="vs-product-card" id="products-led-lamps">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">Commercial & Indoor</span>
+              <img
+                src="/assets/images/products/led-lamps.jpg"
+                alt="Vidhyut Saathi modern architectural linear LED lamp"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">LED Lamps</h3>
+              <p class="vs-product-desc">
+                Modern architectural linear lamps, downlights, and suspended luminaires designed for glare-free, uniform light distribution across workspaces and living areas.
+              </p>
+              <a
+                href="#products-led-lamps"
+                class="vs-product-btn"
+                data-route-placeholder="LED Lamps"
+              >
+                <span>View Product</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: LED Bulbs -->
+          <article class="vs-product-card" id="products-led-bulbs">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">Energy Saving</span>
+              <img
+                src="/assets/images/products/led-bulbs.jpg"
+                alt="Vidhyut Saathi high-efficiency LED bulb with thermal aluminum heat sink"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">LED Bulbs</h3>
+              <p class="vs-product-desc">
+                High-efficacy, long-life LED bulbs engineered with robust thermal dissipation and high lumen output to ensure durable daily performance.
+              </p>
+              <a
+                href="#products-led-bulbs"
+                class="vs-product-btn"
+                data-route-placeholder="LED Bulbs"
+              >
+                <span>View Product</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4: Clamp Meters -->
+          <article class="vs-product-card" id="products-clamp-meters">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">Electrical Testing</span>
+              <img
+                src="/assets/images/products/clamp-meters.jpg"
+                alt="Vidhyut Saathi professional digital clamp meter electrical testing tool"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">Clamp Meters</h3>
+              <p class="vs-product-desc">
+                Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.
+              </p>
+              <a
+                href="#products-clamp-meters"
+                class="vs-product-btn"
+                data-route-placeholder="Clamp Meters"
+              >
+                <span>View Product</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Brand Introduction Section: Powering a Brighter Tomorrow
+         ====================================================================== -->
+    <section class="vs-about-section" id="about">
+      <div class="vs-container">
+        <div class="vs-about-grid">
+          <!-- Left Column Media -->
+          <div class="vs-about-media">
+            <div class="vs-about-image-card">
+              <img
+                src="/assets/images/brand/brand-intro.jpg"
+                alt="Vidhyut Saathi solar lighting and commercial electrical infrastructure project"
+                class="vs-about-img"
+                loading="lazy"
+                width="800"
+                height="600"
+              >
+            </div>
+            <div class="vs-about-floating-badge">
+              <div class="vs-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="vs-badge-text">
+                <b>Practical Reliability</b>
+                <span>Built for Indian Conditions</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column Content -->
+          <div class="vs-about-content">
+            <div class="vs-section-badge">Brand Introduction</div>
+            <h2 class="vs-about-title">Powering a Brighter Tomorrow</h2>
+            <p class="vs-about-lead">
+              Vidhyut Saathi is an Indian electrical and solar products brand committed to delivering dependable, energy-efficient solutions for residential, commercial, and industrial use.
+            </p>
+            <p class="vs-about-desc">
+              From standalone solar outdoor lighting that harnesses clean renewable energy, to high-efficiency LED luminaires and calibrated digital testing tools, we design our products around everyday practicality, durability, and consistent performance.
+            </p>
+
+            <div class="vs-about-pillars">
+              <div class="vs-pillar-item">
+                <span class="vs-pillar-dot"></span>
+                <span>Dependable Solar Lighting</span>
+              </div>
+              <div class="vs-pillar-item">
+                <span class="vs-pillar-dot"></span>
+                <span>High Lumen Efficiency</span>
+              </div>
+              <div class="vs-pillar-item">
+                <span class="vs-pillar-dot"></span>
+                <span>Calibrated Testing Equipment</span>
+              </div>
+              <div class="vs-pillar-item">
+                <span class="vs-pillar-dot"></span>
+                <span>Channel Partner Support</span>
+              </div>
+            </div>
+
+            <a
+              href="#about"
+              class="vs-btn vs-btn-primary"
+              data-route-placeholder="About Us"
+            >
+              <span>About Us</span>
+              <svg class="vs-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Why Choose Vidhyut Saathi?
+         ====================================================================== -->
+    <section class="vs-why-section" id="why-choose">
+      <div class="vs-container">
+        <header class="vs-section-header">
+          <div class="vs-section-badge">Core Advantages</div>
+          <h2 class="vs-section-title">Why Choose Vidhyut Saathi?</h2>
+          <p class="vs-section-subtitle">
+            Focused on providing practical solutions, transparent specifications, and long-term support.
+          </p>
+        </header>
+
+        <div class="vs-why-grid">
+          <!-- Card 1 -->
+          <div class="vs-why-card">
+            <div class="vs-why-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="vs-why-title">Product-Focused Solutions</h3>
+            <p class="vs-why-desc">
+              Engineered around everyday practical requirements, offering reliable electrical and solar gear that performs consistently in Indian conditions.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="vs-why-card">
+            <div class="vs-why-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </div>
+            <h3 class="vs-why-title">Solar Lighting Options</h3>
+            <p class="vs-why-desc">
+              Standalone outdoor solar lighting systems built to harvest maximum solar power with weather-resistant housings and intelligent power management.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="vs-why-card">
+            <div class="vs-why-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="vs-why-title">Electrical Product Range</h3>
+            <p class="vs-why-desc">
+              A diverse portfolio spanning architectural lamps, domestic LED bulbs, and industrial-grade digital clamp meters for multifaceted applications.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="vs-why-card">
+            <div class="vs-why-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="vs-why-title">Support for Business Partners</h3>
+            <p class="vs-why-desc">
+              Dedicated assistance, commercial guidance, and structured distributorship programs to help regional partners expand their reach and grow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Buy Distributorship Section
+         ====================================================================== -->
+    <section class="vs-distributor-section" id="distributorship">
+      <div class="vs-container">
+        <div class="vs-distributor-box">
+          <div class="vs-distributor-content">
+            <div class="vs-distributor-badge">Partner Opportunities</div>
+            <h2 class="vs-distributor-title">Grow Your Business with Vidhyut Saathi</h2>
+            <p class="vs-distributor-desc">
+              Explore business opportunities with our solar and electrical product range. We welcome distributors, dealers, and electrical contractors looking for a reliable product brand.
+            </p>
+            <div class="vs-distributor-points">
+              <div class="vs-distributor-point">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Direct Brand Engagement</span>
+              </div>
+              <div class="vs-distributor-point">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Growing Product Catalog</span>
+              </div>
+              <div class="vs-distributor-point">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Technical & Supply Support</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-distributor-actions">
+            <a
+              href="#distributorship"
+              class="vs-btn vs-btn-accent"
+              data-route-placeholder="Buy Distributorship Application"
+            >
+              Buy Distributorship
+            </a>
+            <a href="#contact" class="vs-btn vs-btn-outline-white">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Secondary Call to Action
+         ====================================================================== -->
+    <section class="vs-secondary-cta-section">
+      <div class="vs-container">
+        <div class="vs-secondary-cta-inner">
+          <h2 class="vs-secondary-cta-title">Looking for the Right Solar or Electrical Products?</h2>
+          <p class="vs-secondary-cta-desc">
+            Browse our complete line of solar lighting, energy-efficient fixtures, and measurement gear, or reach out to our product advisory team.
+          </p>
+          <div class="vs-secondary-cta-actions">
+            <a href="#products" class="vs-btn vs-btn-primary">
+              Explore Products
+            </a>
+            <a href="#contact" class="vs-btn vs-btn-outline">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       Corporate Footer
+       ====================================================================== -->
+  <footer class="vs-footer" id="contact">
+    <div class="vs-container">
+      <div class="vs-footer-grid">
+
+        <!-- Column 1: Brand -->
+        <div class="vs-footer-brand-col">
+          <a href="#" class="vs-footer-logo-link" aria-label="Vidhyut Saathi Home">
+            <img
+              src="/assets/images/brand/vidhyut-logo-official.png"
+              alt="Vidhyut Saathi Official Logo"
+              class="vs-footer-logo-img"
+              width="42"
+              height="42"
+            >
+            <div>
+              <div class="vs-footer-brand-name">Vidhyut Saathi</div>
+              <div class="vs-footer-brand-tagline">Solar & Electrical</div>
+            </div>
+          </a>
+          <p class="vs-footer-brand-desc">
+            Vidhyut Saathi is an Indian electrical and solar products brand committed to dependable solar lighting, energy-efficient luminaires, and precision measurement equipment.
+          </p>
+        </div>
+
+        <!-- Column 2: Navigation Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Navigation</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="#" class="vs-footer-link">Home</a></li>
+            <li><a href="#about" class="vs-footer-link">About Us</a></li>
+            <li><a href="#products" class="vs-footer-link">Products</a></li>
+            <li><a href="#contact" class="vs-footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Product Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Products</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="#products-solar-lights" class="vs-footer-link">Solar Lights</a></li>
+            <li><a href="#products-led-lamps" class="vs-footer-link">LED Lamps</a></li>
+            <li><a href="#products-led-bulbs" class="vs-footer-link">LED Bulbs</a></li>
+            <li><a href="#products-clamp-meters" class="vs-footer-link">Clamp Meters</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Business Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Business</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="#buy-now" class="vs-footer-link" data-route-placeholder="Buy Now">Buy Now</a></li>
+            <li><a href="#distributorship" class="vs-footer-link">Buy Distributorship</a></li>
+            <li><a href="#contact" class="vs-footer-link">Partner Inquiries</a></li>
+            <li><a href="#about" class="vs-footer-link">Company Overview</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact Information -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Contact Us</h3>
+          <div class="vs-footer-contact-list">
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India</span>
+            </div>
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@vidhyutsaathi.com">info@vidhyutsaathi.com</a>
+            </div>
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <div>
+                <a href="tel:+918199036060">+91-8199036060</a><br>
+                <a href="tel:+919053110707">+91-9053110707</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="vs-footer-bottom">
+        <p class="vs-footer-copy">
+          &copy; 2026 Vidhyut Saathi. All rights reserved.
+        </p>
+        <div class="vs-footer-bottom-links">
+          <a href="#about" class="vs-footer-bottom-link">Privacy Policy</a>
+          <a href="#about" class="vs-footer-bottom-link">Terms of Service</a>
+          <a href="#contact" class="vs-footer-bottom-link">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Script Bundle -->
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

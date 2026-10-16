@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Why Choose Vidhyut Saathi?
+   4 Compact Feature Cards with Clean Vector Icons & Consistent Spacing
+   ========================================================================== */
+
+.vs-why-section {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vs-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Feature Card */
+.vs-why-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: transparent;
+  transition: background-color var(--transition-normal);
+}
+
+.vs-why-card:hover {
+  transform: translateY(-4px);
+  background-color: var(--color-white);
+  border-color: rgba(34, 58, 95, 0.2);
+  box-shadow: var(--shadow-card);
+}
+
+.vs-why-card:hover::before {
+  background-color: var(--color-accent);
+}
+
+/* Icon Container */
+.vs-why-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(34, 58, 95, 0.1);
+  transition: all var(--transition-normal);
+}
+
+.vs-why-card:hover .vs-why-icon-wrap {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.vs-why-icon-wrap svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 2;
+}
+
+/* Title & Description */
+.vs-why-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-midnight);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.vs-why-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .vs-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .vs-why-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .vs-why-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .vs-why-card {
+    padding: 1.5rem 1.25rem;
+  }
+}

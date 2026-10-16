@@ -1,0 +1,280 @@
+{% comment %}
+  Vidhyut Saathi - Shopify Theme Section: Four-Banner Hero Carousel
+  File: sections/vidhyut-hero-carousel.liquid
+  Compatible with Shopify Dawn and Online Store 2.0 Themes.
+  Allows administrators to manage 4 banners directly via the Shopify Theme Editor.
+{% endcomment %}
+
+{{ 'vidhyut-hero-carousel.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="VidhyutHero-{{ section.id }}"
+  class="vs-hero-section"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="{{ section.settings.accessibility_label | default: 'Vidhyut Saathi Product Banners' }}"
+>
+  <div
+    class="vs-carousel"
+    id="vsHeroCarousel"
+    data-autoplay="{{ section.settings.autoplay }}"
+    data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
+  >
+    <div class="vs-carousel-track">
+      {% for block in section.blocks limit: 4 %}
+        <div
+          class="vs-carousel-slide{% if forloop.first %} is-active{% endif %}"
+          id="Slide-{{ section.id }}-{{ forloop.index }}"
+          role="tabpanel"
+          aria-roledescription="slide"
+          aria-label="{{ forloop.index }} of {{ section.blocks.size }}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="vs-slide-media">
+            <picture class="vs-slide-picture">
+              {% if block.settings.mobile_image != blank %}
+                <source
+                  media="(max-width: 768px)"
+                  srcset="{{ block.settings.mobile_image | image_url: width: 750 }} 750w, {{ block.settings.mobile_image | image_url: width: 900 }} 900w"
+                >
+              {% endif %}
+              
+              {% if block.settings.desktop_image != blank %}
+                <img
+                  src="{{ block.settings.desktop_image | image_url: width: 1920 }}"
+                  srcset="{{ block.settings.desktop_image | image_url: width: 1200 }} 1200w, {{ block.settings.desktop_image | image_url: width: 1920 }} 1920w"
+                  sizes="100vw"
+                  alt="{{ block.settings.alt_text | default: block.settings.heading | escape }}"
+                  class="vs-slide-img"
+                  loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                  {% if forloop.first %}fetchpriority="high"{% endif %}
+                  width="{{ block.settings.desktop_image.width }}"
+                  height="{{ block.settings.desktop_image.height }}"
+                >
+              {% else %}
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'vs-slide-img vs-placeholder' }}
+              {% endif %}
+            </picture>
+            <div class="vs-slide-overlay"></div>
+          </div>
+
+          <div class="vs-slide-content-wrap">
+            <div class="vs-container">
+              <div class="vs-slide-content">
+                {% if block.settings.badge != blank %}
+                  <div class="vs-slide-badge">{{ block.settings.badge }}</div>
+                {% endif %}
+
+                {% if block.settings.heading != blank %}
+                  <h2 class="vs-slide-title">{{ block.settings.heading }}</h2>
+                {% endif %}
+
+                {% if block.settings.subheading != blank %}
+                  <p class="vs-slide-subtitle">{{ block.settings.subheading }}</p>
+                {% endif %}
+
+                <div class="vs-slide-actions">
+                  {% if block.settings.primary_cta_label != blank %}
+                    <a
+                      href="{{ block.settings.primary_cta_link | default: '#products' }}"
+                      class="vs-btn vs-btn-accent"
+                    >
+                      {{ block.settings.primary_cta_label }}
+                    </a>
+                  {% endif %}
+
+                  {% if block.settings.secondary_cta_label != blank %}
+                    <a
+                      href="{{ block.settings.secondary_cta_link | default: '#contact' }}"
+                      class="vs-btn vs-btn-outline-white"
+                    >
+                      {{ block.settings.secondary_cta_label }}
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button
+      type="button"
+      class="vs-carousel-arrow vs-carousel-arrow-prev"
+      aria-label="Previous slide"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="vs-carousel-arrow vs-carousel-arrow-next"
+      aria-label="Next slide"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- Pagination Dots -->
+    <div class="vs-carousel-dots" role="tablist" aria-label="Carousel slide controls">
+      {% for block in section.blocks limit: 4 %}
+        <button
+          type="button"
+          class="vs-carousel-dot{% if forloop.first %} is-active{% endif %}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="Slide {{ forloop.index }}"
+        ></button>
+      {% endfor %}
+    </div>
+
+    <!-- Autoplay Progress Indicator -->
+    <div class="vs-carousel-progress">
+      <div class="vs-carousel-progress-bar"></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banners (4 Slides)",
+  "tag": "section",
+  "class": "section-vidhyut-hero",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "accessibility_label",
+      "label": "Accessibility Label",
+      "default": "Vidhyut Saathi Four Product Banners"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Auto-Sliding",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Slide Change Interval",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner_slide",
+      "name": "Banner Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop Banner Image (16:9 ratio recommended)"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Banner Image (3:4 portrait ratio recommended)"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Image Alt Text for Accessibility",
+          "default": "Vidhyut Saathi Product Banner"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "Clean Solar Energy"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Slide Heading",
+          "default": "Solar Lighting Solutions"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Slide Supporting Text",
+          "default": "Harness clean energy with durable, high-efficiency solar street & outdoor lighting systems."
+        },
+        {
+          "type": "text",
+          "id": "primary_cta_label",
+          "label": "Primary Button Label",
+          "default": "Explore Products"
+        },
+        {
+          "type": "url",
+          "id": "primary_cta_link",
+          "label": "Primary Button Link"
+        },
+        {
+          "type": "text",
+          "id": "secondary_cta_label",
+          "label": "Secondary Button Label",
+          "default": "Contact Us"
+        },
+        {
+          "type": "url",
+          "id": "secondary_cta_link",
+          "label": "Secondary Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut 4-Banner Hero Carousel",
+      "blocks": [
+        {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Clean Solar Energy",
+            "heading": "Solar Lighting Solutions",
+            "subheading": "Harness clean energy with durable, high-efficiency solar street & outdoor lighting systems.",
+            "primary_cta_label": "Explore Solar Lights"
+          }
+        },
+        {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Commercial & Retail",
+            "heading": "Smart LED Luminaires & Lamps",
+            "subheading": "Engineered for optimal brightness, architectural elegance, and commercial reliability.",
+            "primary_cta_label": "Discover LED Lamps"
+          }
+        },
+        {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Maximum Energy Savings",
+            "heading": "High-Efficiency LED Bulbs",
+            "subheading": "Superior luminous output with advanced thermal dissipation for household & commercial savings.",
+            "primary_cta_label": "View LED Bulbs"
+          }
+        },
+        {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Industrial Testing",
+            "heading": "Precision Digital Clamp Meters",
+            "subheading": "Accurate, dependable electrical testing and measurement tools for engineers and technicians.",
+            "primary_cta_label": "Explore Clamp Meters"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
