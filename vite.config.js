@@ -37,6 +37,8 @@ export default defineConfig({
         about: './about-us.html',
         contact: './contact-us.html',
         buyNow: './buy-now.html',
+        buyDistributorship: './buy-distributorship.html',
+        distributorship: './distributorship.html',
         solarLights: './collections/solar-lights.html',
         ledLamps: './collections/led-lamps.html',
         ledBulbs: './collections/led-bulbs.html',

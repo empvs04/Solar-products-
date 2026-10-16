@@ -95,7 +95,7 @@
             Buy Now
           </a>
           <a
-            href="#distributorship"
+            href="/buy-distributorship.html"
             class="vs-btn vs-btn-outline"
             id="headerDistributorBtn"
           >
@@ -185,7 +185,7 @@
         Buy Now
       </a>
       <a
-        href="#distributorship"
+        href="/buy-distributorship.html"
         class="vs-btn vs-btn-outline"
         id="mobileDistributorBtn"
       >
@@ -768,303 +768,44 @@
     </section>
 
     <!-- ======================================================================
-         Buy Distributorship Section & Registration Form
+         Buy Distributorship Section
          ====================================================================== -->
     <section class="vs-distributor-section" id="distributorship">
       <div class="vs-container">
-        <!-- Section Header -->
-        <div class="vs-distributor-header">
-          <div class="vs-distributor-badge">Partner Opportunities</div>
-          <h2 class="vs-distributor-title">Become a Vidhyut Saathi Distributor</h2>
-          <p class="vs-distributor-subtitle">
-            Interested in becoming a Vidhyut Saathi distributor? Fill out the form below with your contact and address details so our team can review your enquiry.
-          </p>
-        </div>
+        <div class="vs-distributor-box">
+          <div class="vs-distributor-content">
+            <div class="vs-distributor-badge">Partner Opportunities</div>
+            <h2 class="vs-distributor-title">Grow Your Business with Vidhyut Saathi</h2>
+            <p class="vs-distributor-desc">
+              Explore business opportunities with our solar and electrical product range. We welcome distributors, dealers, and electrical contractors looking for a reliable product brand.
+            </p>
+            <div class="vs-distributor-points">
+              <div class="vs-distributor-point">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Direct Brand Engagement</span>
+              </div>
+              <div class="vs-distributor-point">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Growing Product Catalog</span>
+              </div>
+              <div class="vs-distributor-point">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Technical & Supply Support</span>
+              </div>
+            </div>
+          </div>
 
-        <!-- Form Card Container -->
-        <div class="vs-distributor-form-wrapper">
-          <div class="vs-distributor-card">
-            <!-- Alert Notifications -->
-            <div
-              class="vs-form-alert vs-alert-success"
-              id="distributorAlertSuccess"
-              role="alert"
-              aria-live="polite"
-              aria-hidden="true"
+          <div class="vs-distributor-actions">
+            <a
+              href="/buy-distributorship.html"
+              class="vs-btn vs-btn-accent"
+              id="homeDistributorCtaBtn"
             >
-              <svg class="vs-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-              <div class="vs-alert-message">
-                Thank you for your interest in Vidhyut Saathi distributorship. Your enquiry has been submitted successfully.
-              </div>
-            </div>
-
-            <div
-              class="vs-form-alert vs-alert-error"
-              id="distributorAlertError"
-              role="alert"
-              aria-live="polite"
-              aria-hidden="true"
-            >
-              <svg class="vs-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
-              <div class="vs-alert-message">
-                Please correct the errors highlighted below and try again.
-              </div>
-            </div>
-
-            <!-- Distributor Form -->
-            <form id="vsDistributorForm" class="vs-distributor-form" novalidate>
-              <!-- Row 1: First Name & Last Name (Side by Side on Desktop) -->
-              <div class="vs-form-row vs-row-2col">
-                <div class="vs-form-group">
-                  <label for="distributorFirstName" class="vs-form-label">
-                    <span>First Name <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <input
-                    type="text"
-                    id="distributorFirstName"
-                    name="first_name"
-                    class="vs-form-input"
-                    placeholder="Enter first name"
-                    required
-                    autocomplete="given-name"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-
-                <div class="vs-form-group">
-                  <label for="distributorLastName" class="vs-form-label">
-                    <span>Last Name <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <input
-                    type="text"
-                    id="distributorLastName"
-                    name="last_name"
-                    class="vs-form-input"
-                    placeholder="Enter last name"
-                    required
-                    autocomplete="family-name"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-              </div>
-
-              <!-- Row 2: Mobile Number & Email ID (Side by Side on Desktop) -->
-              <div class="vs-form-row vs-row-2col">
-                <div class="vs-form-group">
-                  <label for="distributorMobile" class="vs-form-label">
-                    <span>Mobile Number <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="distributorMobile"
-                    name="mobile_number"
-                    class="vs-form-input"
-                    placeholder="+91 98765 43210"
-                    required
-                    autocomplete="tel"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-
-                <div class="vs-form-group">
-                  <label for="distributorEmail" class="vs-form-label">
-                    <span>Email ID <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <input
-                    type="email"
-                    id="distributorEmail"
-                    name="email"
-                    class="vs-form-input"
-                    placeholder="partner@example.com"
-                    required
-                    autocomplete="email"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-              </div>
-
-              <!-- Row 3: Address Line 1 (Full Width) -->
-              <div class="vs-form-row vs-row-full">
-                <div class="vs-form-group">
-                  <label for="distributorAddress1" class="vs-form-label">
-                    <span>Address Line 1 <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <input
-                    type="text"
-                    id="distributorAddress1"
-                    name="address_line_1"
-                    class="vs-form-input"
-                    placeholder="Shop/Office Number, Building Name, Street"
-                    required
-                    autocomplete="address-line1"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-              </div>
-
-              <!-- Row 4: Address Line 2 (Full Width, Optional) -->
-              <div class="vs-form-row vs-row-full">
-                <div class="vs-form-group">
-                  <label for="distributorAddress2" class="vs-form-label">
-                    <span>Address Line 2</span>
-                    <span class="vs-opt-text">(Optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="distributorAddress2"
-                    name="address_line_2"
-                    class="vs-form-input"
-                    placeholder="Area, Landmark, Suite or Floor"
-                    autocomplete="address-line2"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-              </div>
-
-              <!-- Row 5: City, State & PIN Code (Balanced 3-column Row on Desktop) -->
-              <div class="vs-form-row vs-row-3col">
-                <div class="vs-form-group">
-                  <label for="distributorCity" class="vs-form-label">
-                    <span>City <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <input
-                    type="text"
-                    id="distributorCity"
-                    name="city"
-                    class="vs-form-input"
-                    placeholder="Enter city"
-                    required
-                    autocomplete="address-level2"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-
-                <div class="vs-form-group">
-                  <label for="distributorState" class="vs-form-label">
-                    <span>State <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <select
-                    id="distributorState"
-                    name="state"
-                    class="vs-form-select"
-                    required
-                    autocomplete="address-level1"
-                  >
-                    <option value="" disabled selected>Select State / UT</option>
-                    <option value="Andhra Pradesh">Andhra Pradesh</option>
-                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                    <option value="Assam">Assam</option>
-                    <option value="Bihar">Bihar</option>
-                    <option value="Chhattisgarh">Chhattisgarh</option>
-                    <option value="Goa">Goa</option>
-                    <option value="Gujarat">Gujarat</option>
-                    <option value="Haryana">Haryana</option>
-                    <option value="Himachal Pradesh">Himachal Pradesh</option>
-                    <option value="Jharkhand">Jharkhand</option>
-                    <option value="Karnataka">Karnataka</option>
-                    <option value="Kerala">Kerala</option>
-                    <option value="Madhya Pradesh">Madhya Pradesh</option>
-                    <option value="Maharashtra">Maharashtra</option>
-                    <option value="Manipur">Manipur</option>
-                    <option value="Meghalaya">Meghalaya</option>
-                    <option value="Mizoram">Mizoram</option>
-                    <option value="Nagaland">Nagaland</option>
-                    <option value="Odisha">Odisha</option>
-                    <option value="Punjab">Punjab</option>
-                    <option value="Rajasthan">Rajasthan</option>
-                    <option value="Sikkim">Sikkim</option>
-                    <option value="Tamil Nadu">Tamil Nadu</option>
-                    <option value="Telangana">Telangana</option>
-                    <option value="Tripura">Tripura</option>
-                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                    <option value="Uttarakhand">Uttarakhand</option>
-                    <option value="West Bengal">West Bengal</option>
-                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                    <option value="Chandigarh">Chandigarh</option>
-                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-                    <option value="Delhi">Delhi (NCT)</option>
-                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                    <option value="Ladakh">Ladakh</option>
-                    <option value="Lakshadweep">Lakshadweep</option>
-                    <option value="Puducherry">Puducherry</option>
-                  </select>
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-
-                <div class="vs-form-group">
-                  <label for="distributorPincode" class="vs-form-label">
-                    <span>PIN Code <span class="vs-req-star" aria-hidden="true">*</span></span>
-                  </label>
-                  <input
-                    type="text"
-                    id="distributorPincode"
-                    name="pincode"
-                    class="vs-form-input"
-                    placeholder="6-digit PIN"
-                    maxlength="6"
-                    inputmode="numeric"
-                    required
-                    autocomplete="postal-code"
-                  >
-                  <div class="vs-field-error" role="alert"></div>
-                </div>
-              </div>
-
-              <!-- Submit Action -->
-              <div class="vs-distributor-submit-wrap">
-                <button
-                  type="submit"
-                  id="distributorSubmitBtn"
-                  class="vs-btn-distributor-submit"
-                >
-                  <span>Submit Distributorship Enquiry</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="vs-btn-icon" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </button>
-              </div>
-
-              <!-- Privacy Notice -->
-              <p class="vs-distributor-privacy">
-                Your information will be used to process your distributorship enquiry and contact you regarding your request. Learn more in our <a href="/about-us.html">Privacy Policy</a>.
-              </p>
-            </form>
-          </div>
-        </div>
-
-        <!-- Corporate Distributorship Highlights -->
-        <div class="vs-distributor-benefits">
-          <div class="vs-benefit-card">
-            <div class="vs-benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            <div>
-              <h3 class="vs-benefit-title">Direct Brand Engagement</h3>
-              <p class="vs-benefit-desc">Collaborate directly with Vidhyut Saathi team for authentic products, commercial terms, and prompt fulfillment.</p>
-            </div>
-          </div>
-          <div class="vs-benefit-card">
-            <div class="vs-benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            </div>
-            <div>
-              <h3 class="vs-benefit-title">Growing Product Catalog</h3>
-              <p class="vs-benefit-desc">Access our complete portfolio across solar lights, LED lamps, LED bulbs, and precision electrical test meters.</p>
-            </div>
-          </div>
-          <div class="vs-benefit-card">
-            <div class="vs-benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-            </div>
-            <div>
-              <h3 class="vs-benefit-title">Technical & Supply Support</h3>
-              <p class="vs-benefit-desc">Enjoy dependable supply logistics, comprehensive technical documentation, and dedicated channel assistance.</p>
-            </div>
+              Buy Distributorship
+            </a>
+            <a href="/contact-us.html" class="vs-btn vs-btn-outline-white">
+              Contact Us
+            </a>
           </div>
         </div>
       </div>
@@ -1148,7 +889,7 @@
           <h3 class="vs-footer-col-title">Business</h3>
           <ul class="vs-footer-links-list">
             <li><a href="/buy-now.html" class="vs-footer-link">Buy Now</a></li>
-            <li><a href="#distributorship" class="vs-footer-link">Buy Distributorship</a></li>
+            <li><a href="/buy-distributorship.html" class="vs-footer-link">Buy Distributorship</a></li>
             <li><a href="/contact-us.html" class="vs-footer-link">Partner Inquiries</a></li>
             <li><a href="/about-us.html" class="vs-footer-link">Company Overview</a></li>
           </ul>
