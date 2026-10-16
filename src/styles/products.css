@@ -102,7 +102,7 @@
   flex-grow: 1;
 }
 
-/* View Product Button */
+/* View Product / Category Action Buttons */
 .vs-product-btn {
   width: 100%;
   display: inline-flex;
@@ -136,6 +136,74 @@
 
 .vs-product-card:hover .vs-product-btn svg {
   transform: translateX(4px);
+}
+
+/* Card Action Button Group */
+.vs-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  align-items: center;
+  width: 100%;
+}
+
+.vs-btn-see-more {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.6875rem 0.875rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.vs-btn-see-more:hover {
+  background-color: var(--color-midnight);
+  border-color: var(--color-midnight);
+  color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(21, 30, 43, 0.15);
+}
+
+.vs-btn-see-more svg {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--transition-fast);
+}
+
+.vs-btn-see-more:hover svg {
+  transform: translateX(3px);
+}
+
+.vs-product-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6875rem 0.875rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: var(--color-bg-light);
+  border: 1px solid rgba(34, 58, 95, 0.2);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.vs-product-btn-secondary:hover {
+  background-color: #E86014;
+  color: var(--color-white);
+  border-color: #E86014;
+  box-shadow: 0 4px 12px rgba(232, 96, 20, 0.2);
 }
 
 /* Responsiveness */

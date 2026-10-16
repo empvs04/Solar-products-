@@ -5,8 +5,12 @@
       "type": "vidhyut-header",
       "settings": {}
     },
-    "products_grid": {
-      "type": "vidhyut-products",
+    "collection_gallery": {
+      "type": "vidhyut-collection-gallery",
+      "settings": {}
+    },
+    "distributorship": {
+      "type": "vidhyut-distributorship",
       "settings": {}
     },
     "footer": {
@@ -16,7 +20,8 @@
   },
   "order": [
     "header",
-    "products_grid",
+    "collection_gallery",
+    "distributorship",
     "footer"
   ]
 }

@@ -130,7 +130,8 @@ export class BuyNowController {
 
     // Update Category Tabs active state
     document.querySelectorAll('.vs-category-tab').forEach(tab => {
-      if (tab.getAttribute('data-product-id') === product.id) {
+      const tabCat = tab.getAttribute('data-product-id');
+      if (tabCat === product.id || tabCat === product.categoryId) {
         tab.classList.add('is-active');
       } else {
         tab.classList.remove('is-active');
@@ -279,7 +280,7 @@ export class BuyNowController {
     if (!grid) return;
 
     grid.innerHTML = '';
-    const recommendations = this.products.filter(p => p.id !== currentId);
+    const recommendations = this.products.filter(p => p.id !== currentId && p.categoryId).slice(0, 4);
 
     recommendations.forEach(rec => {
       const card = document.createElement('div');

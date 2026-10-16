@@ -12,6 +12,7 @@ import '../styles/distributorship.css';
 import '../styles/secondary-cta.css';
 import '../styles/about-page.css';
 import '../styles/contact-page.css';
+import '../styles/collection-gallery.css';
 import '../styles/footer.css';
 
 import { shopifyBannersConfig } from '../config/shopify-banners.config.js';

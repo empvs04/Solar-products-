@@ -28,13 +28,22 @@
             All-in-one solar luminaires and street lighting with integrated PV panels, lithium storage, and dusk-to-dawn sensors for autonomous outdoor illumination.
           </p>
           {%- capture default_solar_url -%}{{ routes.root_url | append: 'pages/buy-now?product=solar-lights' }}{%- endcapture -%}
-          <a
-            href="{{ section.settings.solar_link | default: default_solar_url }}"
-            class="vs-product-btn"
-          >
-            <span>Buy Now</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
+          {%- capture default_solar_collection -%}{{ routes.collections_url | append: '/solar-lights' }}{%- endcapture -%}
+          <div class="vs-card-actions">
+            <a
+              href="{{ section.settings.solar_collection | default: default_solar_collection }}"
+              class="vs-btn-see-more"
+            >
+              <span>See More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a
+              href="{{ section.settings.solar_link | default: default_solar_url }}"
+              class="vs-product-btn-secondary"
+            >
+              <span>Buy Now</span>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -57,13 +66,22 @@
             Modern architectural linear lamps, downlights, and suspended luminaires designed for glare-free, uniform light distribution across workspaces and living areas.
           </p>
           {%- capture default_lamp_url -%}{{ routes.root_url | append: 'pages/buy-now?product=led-lamps' }}{%- endcapture -%}
-          <a
-            href="{{ section.settings.lamp_link | default: default_lamp_url }}"
-            class="vs-product-btn"
-          >
-            <span>Buy Now</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
+          {%- capture default_lamp_collection -%}{{ routes.collections_url | append: '/led-lamps' }}{%- endcapture -%}
+          <div class="vs-card-actions">
+            <a
+              href="{{ section.settings.lamp_collection | default: default_lamp_collection }}"
+              class="vs-btn-see-more"
+            >
+              <span>See More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a
+              href="{{ section.settings.lamp_link | default: default_lamp_url }}"
+              class="vs-product-btn-secondary"
+            >
+              <span>Buy Now</span>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -86,13 +104,22 @@
             High-efficacy, long-life LED bulbs engineered with robust thermal dissipation and high lumen output to ensure durable daily performance.
           </p>
           {%- capture default_bulb_url -%}{{ routes.root_url | append: 'pages/buy-now?product=led-bulbs' }}{%- endcapture -%}
-          <a
-            href="{{ section.settings.bulb_link | default: default_bulb_url }}"
-            class="vs-product-btn"
-          >
-            <span>Buy Now</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
+          {%- capture default_bulb_collection -%}{{ routes.collections_url | append: '/led-bulbs' }}{%- endcapture -%}
+          <div class="vs-card-actions">
+            <a
+              href="{{ section.settings.bulb_collection | default: default_bulb_collection }}"
+              class="vs-btn-see-more"
+            >
+              <span>See More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a
+              href="{{ section.settings.bulb_link | default: default_bulb_url }}"
+              class="vs-product-btn-secondary"
+            >
+              <span>Buy Now</span>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -115,13 +142,22 @@
             Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.
           </p>
           {%- capture default_clamp_url -%}{{ routes.root_url | append: 'pages/buy-now?product=clamp-meters' }}{%- endcapture -%}
-          <a
-            href="{{ section.settings.clamp_link | default: default_clamp_url }}"
-            class="vs-product-btn"
-          >
-            <span>Buy Now</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
+          {%- capture default_clamp_collection -%}{{ routes.collections_url | append: '/clamp-meters' }}{%- endcapture -%}
+          <div class="vs-card-actions">
+            <a
+              href="{{ section.settings.clamp_collection | default: default_clamp_collection }}"
+              class="vs-btn-see-more"
+            >
+              <span>See More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a
+              href="{{ section.settings.clamp_link | default: default_clamp_url }}"
+              class="vs-product-btn-secondary"
+            >
+              <span>Buy Now</span>
+            </a>
+          </div>
         </div>
       </article>
     </div>
@@ -152,23 +188,43 @@
     },
     {
       "type": "url",
+      "id": "solar_collection",
+      "label": "Solar Lights Collection Link"
+    },
+    {
+      "type": "url",
       "id": "solar_link",
-      "label": "Solar Lights Link"
+      "label": "Solar Lights Buy Link"
+    },
+    {
+      "type": "url",
+      "id": "lamp_collection",
+      "label": "LED Lamps Collection Link"
     },
     {
       "type": "url",
       "id": "lamp_link",
-      "label": "LED Lamps Link"
+      "label": "LED Lamps Buy Link"
+    },
+    {
+      "type": "url",
+      "id": "bulb_collection",
+      "label": "LED Bulbs Collection Link"
     },
     {
       "type": "url",
       "id": "bulb_link",
-      "label": "LED Bulbs Link"
+      "label": "LED Bulbs Buy Link"
+    },
+    {
+      "type": "url",
+      "id": "clamp_collection",
+      "label": "Clamp Meters Collection Link"
     },
     {
       "type": "url",
       "id": "clamp_link",
-      "label": "Clamp Meters Link"
+      "label": "Clamp Meters Buy Link"
     }
   ],
   "presets": [
