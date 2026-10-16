@@ -1,13 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "Home page",
   "sections": {
     "header": {
       "type": "vidhyut-header",
       "settings": {
         "brand_name": "Vidhyut Saathi",
         "tagline": "Solar & Electrical",
+        "menu": "main-menu",
+        "about_link": "",
+        "contact_link": "",
         "buy_now_label": "Buy Now",
-        "distributor_label": "Buy Distributorship"
+        "buy_now_link": "",
+        "distributor_label": "Buy Distributorship",
+        "distributor_link": ""
       }
     },
     "hero_carousel": {
@@ -16,53 +29,53 @@
         "slide_1": {
           "type": "banner_slide",
           "settings": {
+            "alt_text": "Vidhyut Saathi solar street lights",
             "badge": "Clean Solar Energy",
             "heading": "Solar Lighting Solutions",
             "subheading": "Harness clean energy with durable, high-efficiency solar street & outdoor lighting systems.",
             "primary_cta_label": "Explore Solar Lights",
             "primary_cta_link": "#products",
             "secondary_cta_label": "Contact Us",
-            "secondary_cta_link": "#contact",
-            "alt_text": "Vidhyut Saathi solar street lights"
+            "secondary_cta_link": "#contact"
           }
         },
         "slide_2": {
           "type": "banner_slide",
           "settings": {
+            "alt_text": "Modern architectural LED suspended luminaire lamps",
             "badge": "Commercial & Retail",
             "heading": "Smart LED Luminaires & Lamps",
             "subheading": "Engineered for optimal brightness, architectural elegance, and commercial reliability.",
             "primary_cta_label": "Discover LED Lamps",
             "primary_cta_link": "#products",
             "secondary_cta_label": "Buy Distributorship",
-            "secondary_cta_link": "#distributorship",
-            "alt_text": "Modern architectural LED suspended luminaire lamps"
+            "secondary_cta_link": "#distributorship"
           }
         },
         "slide_3": {
           "type": "banner_slide",
           "settings": {
+            "alt_text": "Premium glowing warm LED bulbs",
             "badge": "Maximum Energy Savings",
             "heading": "High-Efficiency LED Bulbs",
             "subheading": "Superior luminous output with advanced thermal dissipation for household & commercial savings.",
             "primary_cta_label": "View LED Bulbs",
             "primary_cta_link": "#products",
             "secondary_cta_label": "Buy Now",
-            "secondary_cta_link": "#buy-now",
-            "alt_text": "Premium glowing warm LED bulbs"
+            "secondary_cta_link": "#buy-now"
           }
         },
         "slide_4": {
           "type": "banner_slide",
           "settings": {
+            "alt_text": "Electrical technician using a digital clamp meter",
             "badge": "Industrial Testing",
             "heading": "Precision Digital Clamp Meters",
             "subheading": "Accurate, dependable electrical testing and measurement tools for engineers and technicians.",
             "primary_cta_label": "Explore Clamp Meters",
             "primary_cta_link": "#products",
             "secondary_cta_label": "Partner With Us",
-            "secondary_cta_link": "#distributorship",
-            "alt_text": "Electrical technician using a digital clamp meter"
+            "secondary_cta_link": "#distributorship"
           }
         }
       },
@@ -73,6 +86,7 @@
         "slide_4"
       ],
       "settings": {
+        "accessibility_label": "Vidhyut Saathi Four Product Banners",
         "autoplay": true,
         "autoplay_interval": 5
       }
@@ -82,41 +96,75 @@
       "settings": {
         "badge": "Our Product Lineup",
         "title": "Explore Our Products",
-        "subtitle": "Discover reliable solar lighting and electrical solutions from Vidhyut Saathi."
+        "subtitle": "Discover reliable solar lighting and electrical solutions from Vidhyut Saathi.",
+        "solar_link": "",
+        "lamp_link": "",
+        "bulb_link": "",
+        "clamp_link": ""
       }
     },
     "about_intro": {
       "type": "vidhyut-about-intro",
       "settings": {
         "badge": "About Vidhyut Saathi",
-        "heading": "Powering a Brighter Tomorrow"
+        "heading": "Powering a Brighter Tomorrow",
+        "lead_text": "Vidhyut Saathi is an Indian electrical and solar products brand committed to delivering dependable, energy-efficient solutions for residential, commercial, and industrial use.",
+        "body_text": "From standalone solar outdoor lighting that harnesses clean renewable energy, to high-efficiency LED luminaires and calibrated digital testing tools, we design our products around everyday practicality, durability, and consistent performance.",
+        "button_label": "About Us",
+        "button_link": ""
       }
     },
     "why_choose": {
       "type": "vidhyut-why-choose",
       "settings": {
         "badge": "Core Advantages",
-        "heading": "Why Choose Vidhyut Saathi?"
+        "heading": "Why Choose Vidhyut Saathi?",
+        "subtitle": "Focused on providing practical solutions, transparent specifications, and long-term support.",
+        "title_1": "Product-Focused Solutions",
+        "desc_1": "Engineered around everyday practical requirements, offering reliable electrical and solar gear that performs consistently in Indian conditions.",
+        "title_2": "Solar Lighting Options",
+        "desc_2": "Standalone outdoor solar lighting systems built to harvest maximum solar power with weather-resistant housings and intelligent power management.",
+        "title_3": "Electrical Product Range",
+        "desc_3": "A diverse portfolio spanning architectural lamps, domestic LED bulbs, and industrial-grade digital clamp meters for multifaceted applications.",
+        "title_4": "Support for Business Partners",
+        "desc_4": "Dedicated assistance, commercial guidance, and structured distributorship programs to help regional partners expand their reach and grow."
       }
     },
     "distributorship": {
       "type": "vidhyut-distributorship",
       "settings": {
         "badge": "Partner Opportunities",
-        "heading": "Grow Your Business with Vidhyut Saathi"
+        "heading": "Grow Your Business with Vidhyut Saathi",
+        "description": "Explore business opportunities with our solar and electrical product range. We welcome distributors, dealers, and electrical contractors looking for a reliable product brand.",
+        "primary_cta_label": "Buy Distributorship",
+        "primary_cta_link": "",
+        "secondary_cta_label": "Contact Us",
+        "secondary_cta_link": ""
       }
     },
     "secondary_cta": {
       "type": "vidhyut-secondary-cta",
       "settings": {
-        "heading": "Looking for the Right Solar or Electrical Products?"
+        "heading": "Looking for the Right Energy Savings Products?",
+        "description": "Browse our complete line of solar lighting, energy-efficient fixtures, and measurement gear, or reach out to our product advisory team.",
+        "primary_cta_label": "Explore Products",
+        "primary_cta_link": "",
+        "secondary_cta_label": "Contact Us",
+        "secondary_cta_link": ""
       }
     },
     "footer": {
       "type": "vidhyut-footer",
       "settings": {
         "brand_name": "Vidhyut Saathi",
-        "tagline": "Solar & Electrical"
+        "tagline": "Solar & Electrical",
+        "description": "Vidhyut Saathi is an Indian electrical and solar products brand committed to dependable solar lighting, energy-efficient luminaires, and precision measurement equipment.",
+        "address": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India",
+        "email": "info@vidhyutsaathi.com",
+        "phone_1": "+91-8199036060",
+        "phone_2": "+91-9053110707",
+        "about_link": "",
+        "contact_link": ""
       }
     }
   },
