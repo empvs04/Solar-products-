@@ -102,9 +102,17 @@
                 {{ 'lifestyle-2' | placeholder_svg_tag: 'vs-slide-img vs-placeholder' }}
               {%- endif -%}
             </picture>
-            <div class="vs-slide-overlay"></div>
+            {%- assign has_content = false -%}
+            {%- if block.settings.badge != blank or block.settings.heading != blank or block.settings.subheading != blank or block.settings.primary_cta_label != blank or block.settings.secondary_cta_label != blank -%}
+              {%- assign has_content = true -%}
+            {%- endif -%}
+
+            {%- if has_content -%}
+              <div class="vs-slide-overlay"></div>
+            {%- endif -%}
           </div>
 
+          {%- if has_content -%}
           <div class="vs-slide-content-wrap">
             <div class="vs-container">
               <div class="vs-slide-content">
@@ -142,6 +150,7 @@
               </div>
             </div>
           </div>
+          {%- endif -%}
         </div>
       {% endfor %}
     </div>

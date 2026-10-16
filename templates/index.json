@@ -32,14 +32,14 @@
           "settings": {
             "desktop_image": "shopify://shop_images/Meco_Clamp_Meter_Launch_Banner.png",
             "mobile_image": "shopify://shop_images/MECO_Clamp_Meter_Launch_Poster.png",
-            "alt_text": "",
+            "alt_text": "Meco Clamp Meter Banner",
             "badge": "",
-            "heading": "Solar Lighting Solutions",
-            "subheading": "Harness clean energy with durable, high-efficiency solar street & outdoor lighting systems.",
-            "primary_cta_label": "Explore Solar Lights",
-            "primary_cta_link": "#products",
-            "secondary_cta_label": "Contact Us",
-            "secondary_cta_link": "#contact"
+            "heading": "",
+            "subheading": "",
+            "primary_cta_label": "",
+            "primary_cta_link": "",
+            "secondary_cta_label": "",
+            "secondary_cta_link": ""
           }
         },
         "slide_2": {
@@ -47,14 +47,14 @@
           "settings": {
             "desktop_image": "shopify://shop_images/Maxwell_Digital_Timer_Socket_Advertisement.png",
             "mobile_image": "shopify://shop_images/Maxwell_230V_Energy-Saving_Timer_Socket.png",
-            "alt_text": "Modern architectural LED suspended luminaire lamps",
-            "badge": "Commercial & Retail",
-            "heading": "Smart LED Luminaires & Lamps",
-            "subheading": "Engineered for optimal brightness, architectural elegance, and commercial reliability.",
-            "primary_cta_label": "Discover LED Lamps",
-            "primary_cta_link": "#products",
-            "secondary_cta_label": "Buy Distributorship",
-            "secondary_cta_link": "#distributorship"
+            "alt_text": "Maxwell Digital Timer Socket",
+            "badge": "",
+            "heading": "",
+            "subheading": "",
+            "primary_cta_label": "",
+            "primary_cta_link": "",
+            "secondary_cta_label": "",
+            "secondary_cta_link": ""
           }
         },
         "slide_3": {
@@ -62,14 +62,14 @@
           "settings": {
             "desktop_image": "shopify://shop_images/20W_Solar_LED_Lamp_Camping_Adventure.png",
             "mobile_image": "shopify://shop_images/Solar_Camping_LED_Lamp_Advertisement.png",
-            "alt_text": "Premium glowing warm LED bulbs",
-            "badge": "Maximum Energy Savings",
-            "heading": "High-Efficiency LED Bulbs",
-            "subheading": "Superior luminous output with advanced thermal dissipation for household & commercial savings.",
-            "primary_cta_label": "View LED Bulbs",
-            "primary_cta_link": "#products",
-            "secondary_cta_label": "Buy Now",
-            "secondary_cta_link": "#buy-now"
+            "alt_text": "20W Solar LED Lamp",
+            "badge": "",
+            "heading": "",
+            "subheading": "",
+            "primary_cta_label": "",
+            "primary_cta_link": "",
+            "secondary_cta_label": "",
+            "secondary_cta_link": ""
           }
         },
         "slide_4": {
@@ -77,14 +77,14 @@
           "settings": {
             "desktop_image": "shopify://shop_images/Hal_onix_Solaris_LED_Floodlight_Banner.png",
             "mobile_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer.png",
-            "alt_text": "Electrical technician using a digital clamp meter",
-            "badge": "Industrial Testing",
-            "heading": "Precision Digital Clamp Meters",
-            "subheading": "Accurate, dependable electrical testing and measurement tools for engineers and technicians.",
-            "primary_cta_label": "Explore Clamp Meters",
-            "primary_cta_link": "#products",
-            "secondary_cta_label": "Partner With Us",
-            "secondary_cta_link": "#distributorship"
+            "alt_text": "Halonix Solaris LED Floodlight",
+            "badge": "",
+            "heading": "",
+            "subheading": "",
+            "primary_cta_label": "",
+            "primary_cta_link": "",
+            "secondary_cta_label": "",
+            "secondary_cta_link": ""
           }
         }
       },
