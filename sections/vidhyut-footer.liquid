@@ -47,6 +47,20 @@
           {%- assign footer_about_url = routes.root_url | append: 'pages/about-us' -%}
         {%- endif -%}
 
+        {%- if pages['buy-distributorship'].url != blank -%}
+          {%- assign footer_distributor_url = pages['buy-distributorship'].url -%}
+        {%- elsif pages['distributorship'].url != blank -%}
+          {%- assign footer_distributor_url = pages['distributorship'].url -%}
+        {%- else -%}
+          {%- assign footer_distributor_url = routes.root_url | append: 'pages/buy-distributorship' -%}
+        {%- endif -%}
+
+        {%- if pages['buy-now'].url != blank -%}
+          {%- assign footer_buy_now_url = pages['buy-now'].url -%}
+        {%- else -%}
+          {%- assign footer_buy_now_url = routes.root_url | append: 'pages/buy-now' -%}
+        {%- endif -%}
+
         <ul class="vs-footer-links-list">
           <li><a href="{{ routes.root_url }}" class="vs-footer-link">Home</a></li>
           <li><a href="{{ footer_about_url }}" class="vs-footer-link">About Us</a></li>
@@ -70,8 +84,8 @@
       <div class="vs-footer-col">
         <h3 class="vs-footer-col-title">Business</h3>
         <ul class="vs-footer-links-list">
-          <li><a href="{{ routes.root_url }}#products" class="vs-footer-link">Buy Now</a></li>
-          <li><a href="{{ routes.root_url }}#distributorship" class="vs-footer-link">Buy Distributorship</a></li>
+          <li><a href="{{ footer_buy_now_url }}" class="vs-footer-link">Buy Now</a></li>
+          <li><a href="{{ footer_distributor_url }}" class="vs-footer-link">Buy Distributorship</a></li>
           <li><a href="{{ footer_contact_url }}" class="vs-footer-link">Partner Inquiries</a></li>
           <li><a href="{{ footer_about_url }}" class="vs-footer-link">Company Overview</a></li>
         </ul>

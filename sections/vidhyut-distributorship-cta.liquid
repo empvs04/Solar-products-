@@ -1,0 +1,118 @@
+<section class="vs-distributor-section" id="distributorship">
+  <div class="vs-container">
+    <div class="vs-distributor-box">
+      <div class="vs-distributor-content">
+        <div class="vs-distributor-badge">{{ section.settings.badge | default: 'Partner Opportunities' }}</div>
+        <h2 class="vs-distributor-title">{{ section.settings.heading | default: 'Grow Your Business with Vidhyut Saathi' }}</h2>
+        <p class="vs-distributor-desc">
+          {{ section.settings.description | default: 'Explore business opportunities with our solar and electrical product range. We welcome distributors, dealers, and electrical contractors looking for a reliable product brand.' }}
+        </p>
+        <div class="vs-distributor-points">
+          <div class="vs-distributor-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Direct Brand Engagement</span>
+          </div>
+          <div class="vs-distributor-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Growing Product Catalog</span>
+          </div>
+          <div class="vs-distributor-point">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Technical & Supply Support</span>
+          </div>
+        </div>
+      </div>
+
+      {%- liquid
+        if section.settings.primary_cta_link != blank
+          assign dist_link = section.settings.primary_cta_link
+        elsif pages['buy-distributorship'].url != blank
+          assign dist_link = pages['buy-distributorship'].url
+        elsif pages['distributorship'].url != blank
+          assign dist_link = pages['distributorship'].url
+        else
+          assign dist_link = routes.root_url | append: 'pages/buy-distributorship'
+        endif
+
+        if section.settings.secondary_cta_link != blank
+          assign contact_link = section.settings.secondary_cta_link
+        elsif pages['contact-us'].url != blank
+          assign contact_link = pages['contact-us'].url
+        elsif pages['contact'].url != blank
+          assign contact_link = pages['contact'].url
+        else
+          assign contact_link = routes.root_url | append: 'pages/contact-us'
+        endif
+      -%}
+
+      <div class="vs-distributor-actions">
+        <a
+          href="{{ dist_link }}"
+          class="vs-btn vs-btn-accent"
+          id="homeDistributorCtaBtn"
+        >
+          {{ section.settings.primary_cta_label | default: 'Buy Distributorship' }}
+        </a>
+        <a
+          href="{{ contact_link }}"
+          class="vs-btn vs-btn-outline-white"
+        >
+          {{ section.settings.secondary_cta_label | default: 'Contact Us' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Distributorship CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "Partner Opportunities"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Grow Your Business with Vidhyut Saathi"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Explore business opportunities with our solar and electrical product range. We welcome distributors, dealers, and electrical contractors looking for a reliable product brand."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_label",
+      "label": "Primary Button Label",
+      "default": "Buy Distributorship"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_label",
+      "label": "Secondary Button Label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Distributorship CTA"
+    }
+  ]
+}
+{% endschema %}

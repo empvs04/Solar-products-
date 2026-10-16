@@ -58,6 +58,24 @@
               assign contact_page_url = routes.root_url | append: 'pages/contact-us'
             endif
 
+            if section.settings.distributor_link != blank
+              assign distributor_page_url = section.settings.distributor_link
+            elsif pages['buy-distributorship'].url != blank
+              assign distributor_page_url = pages['buy-distributorship'].url
+            elsif pages['distributorship'].url != blank
+              assign distributor_page_url = pages['distributorship'].url
+            else
+              assign distributor_page_url = routes.root_url | append: 'pages/buy-distributorship'
+            endif
+
+            if section.settings.buy_now_link != blank
+              assign buy_now_page_url = section.settings.buy_now_link
+            elsif pages['buy-now'].url != blank
+              assign buy_now_page_url = pages['buy-now'].url
+            else
+              assign buy_now_page_url = routes.root_url | append: 'pages/buy-now'
+            endif
+
             assign menu_has_about = false
             if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0
               for l in linklists[section.settings.menu].links
@@ -147,15 +165,15 @@
       <!-- Desktop CTA Action Buttons -->
       <div class="vs-header-actions">
         <a
-          href="{{ section.settings.buy_now_link | default: '#products' }}"
-          class="vs-btn vs-btn-accent"
+          href="{{ buy_now_page_url }}"
+          class="vs-btn vs-btn-accent {% if page.handle == 'buy-now' or template.suffix == 'buy-now' %}is-active{% endif %}"
           id="headerBuyNowBtn"
         >
           {{ section.settings.buy_now_label | default: 'Buy Now' }}
         </a>
         <a
-          href="{{ section.settings.distributor_link | default: '#distributorship' }}"
-          class="vs-btn vs-btn-outline"
+          href="{{ distributor_page_url }}"
+          class="vs-btn vs-btn-outline {% if page.handle == 'buy-distributorship' or page.handle == 'distributorship' or template.suffix == 'buy-distributorship' %}is-active{% endif %}"
           id="headerDistributorBtn"
         >
           {{ section.settings.distributor_label | default: 'Buy Distributorship' }}
@@ -311,15 +329,15 @@
 
   <div class="vs-mobile-actions">
     <a
-      href="{{ section.settings.buy_now_link | default: '#products' }}"
-      class="vs-btn vs-btn-accent"
+      href="{{ buy_now_page_url }}"
+      class="vs-btn vs-btn-accent {% if page.handle == 'buy-now' or template.suffix == 'buy-now' %}is-active{% endif %}"
       id="mobileBuyNowBtn"
     >
       {{ section.settings.buy_now_label | default: 'Buy Now' }}
     </a>
     <a
-      href="{{ section.settings.distributor_link | default: '#distributorship' }}"
-      class="vs-btn vs-btn-outline"
+      href="{{ distributor_page_url }}"
+      class="vs-btn vs-btn-outline {% if page.handle == 'buy-distributorship' or page.handle == 'distributorship' or template.suffix == 'buy-distributorship' %}is-active{% endif %}"
       id="mobileDistributorBtn"
     >
       {{ section.settings.distributor_label | default: 'Buy Distributorship' }}

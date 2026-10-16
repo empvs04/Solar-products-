@@ -140,7 +140,7 @@
       }
     },
     "distributorship": {
-      "type": "vidhyut-distributorship",
+      "type": "vidhyut-distributorship-cta",
       "settings": {
         "badge": "Partner Opportunities",
         "heading": "Grow Your Business with Vidhyut Saathi",
