@@ -1,0 +1,170 @@
+/* ==========================================================================
+   Brand Introduction Section
+   Two-column Layout: "Powering a Brighter Tomorrow"
+   ========================================================================== */
+
+.vs-about-section {
+  padding: var(--space-4xl) 0;
+  background-color: var(--color-bg-subtle);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vs-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+/* Left Column: Media Presentation */
+.vs-about-media {
+  position: relative;
+}
+
+.vs-about-image-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+  aspect-ratio: 4 / 3;
+}
+
+.vs-about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.vs-about-image-card:hover .vs-about-img {
+  transform: scale(1.03);
+}
+
+/* Floating Quality Indicator Badge */
+.vs-about-floating-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px rgba(21, 30, 43, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  max-width: 260px;
+}
+
+.vs-badge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vs-badge-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.vs-badge-text b {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  color: var(--color-midnight);
+  line-height: 1.2;
+}
+
+.vs-badge-text span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Right Column: Content */
+.vs-about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vs-about-title {
+  margin-bottom: var(--space-md);
+}
+
+.vs-about-lead {
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.vs-about-desc {
+  font-size: 0.9375rem;
+  color: var(--color-text-main);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+/* Pillars List */
+.vs-about-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: var(--space-xl);
+}
+
+.vs-pillar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-midnight);
+}
+
+.vs-pillar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 960px) {
+  .vs-about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .vs-about-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .vs-about-floating-badge {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vs-about-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .vs-about-image-card {
+    aspect-ratio: 16 / 10;
+  }
+}

@@ -1,0 +1,157 @@
+<section class="vs-why-section" id="why-choose">
+  <div class="vs-container">
+    <header class="vs-section-header">
+      <div class="vs-section-badge">{{ section.settings.badge | default: 'Core Advantages' }}</div>
+      <h2 class="vs-section-title">{{ section.settings.heading | default: 'Why Choose Vidhyut Saathi?' }}</h2>
+      <p class="vs-section-subtitle">
+        {{ section.settings.subtitle | default: 'Focused on providing practical solutions, transparent specifications, and long-term support.' }}
+      </p>
+    </header>
+
+    <div class="vs-why-grid">
+      <!-- Card 1 -->
+      <div class="vs-why-card">
+        <div class="vs-why-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="vs-why-title">{{ section.settings.title_1 | default: 'Product-Focused Solutions' }}</h3>
+        <p class="vs-why-desc">
+          {{ section.settings.desc_1 | default: 'Engineered around everyday practical requirements, offering reliable electrical and solar gear that performs consistently in Indian conditions.' }}
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="vs-why-card">
+        <div class="vs-why-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </div>
+        <h3 class="vs-why-title">{{ section.settings.title_2 | default: 'Solar Lighting Options' }}</h3>
+        <p class="vs-why-desc">
+          {{ section.settings.desc_2 | default: 'Standalone outdoor solar lighting systems built to harvest maximum solar power with weather-resistant housings and intelligent power management.' }}
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="vs-why-card">
+        <div class="vs-why-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <h3 class="vs-why-title">{{ section.settings.title_3 | default: 'Electrical Product Range' }}</h3>
+        <p class="vs-why-desc">
+          {{ section.settings.desc_3 | default: 'A diverse portfolio spanning architectural lamps, domestic LED bulbs, and industrial-grade digital clamp meters for multifaceted applications.' }}
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="vs-why-card">
+        <div class="vs-why-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h3 class="vs-why-title">{{ section.settings.title_4 | default: 'Support for Business Partners' }}</h3>
+        <p class="vs-why-desc">
+          {{ section.settings.desc_4 | default: 'Dedicated assistance, commercial guidance, and structured distributorship programs to help regional partners expand their reach and grow.' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "Core Advantages"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose Vidhyut Saathi?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Focused on providing practical solutions, transparent specifications, and long-term support."
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Card 1 Title",
+      "default": "Product-Focused Solutions"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_1",
+      "label": "Card 1 Description",
+      "default": "Engineered around everyday practical requirements, offering reliable electrical and solar gear that performs consistently in Indian conditions."
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Card 2 Title",
+      "default": "Solar Lighting Options"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_2",
+      "label": "Card 2 Description",
+      "default": "Standalone outdoor solar lighting systems built to harvest maximum solar power with weather-resistant housings and intelligent power management."
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Card 3 Title",
+      "default": "Electrical Product Range"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_3",
+      "label": "Card 3 Description",
+      "default": "A diverse portfolio spanning architectural lamps, domestic LED bulbs, and industrial-grade digital clamp meters for multifaceted applications."
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Card 4 Title",
+      "default": "Support for Business Partners"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_4",
+      "label": "Card 4 Description",
+      "default": "Dedicated assistance, commercial guidance, and structured distributorship programs to help regional partners expand their reach and grow."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Why Choose"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,167 @@
+<footer class="vs-footer" id="contact">
+  <div class="vs-container">
+    <div class="vs-footer-grid">
+
+      <!-- Column 1: Brand -->
+      <div class="vs-footer-brand-col">
+        <a href="{{ routes.root_url }}" class="vs-footer-logo-link" aria-label="Vidhyut Saathi Home">
+          {% if section.settings.logo != blank %}
+            <img
+              src="{{ section.settings.logo | image_url: width: 120 }}"
+              alt="{{ shop.name | escape }}"
+              class="vs-footer-logo-img"
+              width="42"
+              height="42"
+            >
+          {% else %}
+            <img
+              src="{{ 'vidhyut-logo-official.png' | asset_url }}"
+              alt="Vidhyut Saathi Official Logo"
+              class="vs-footer-logo-img"
+              width="42"
+              height="42"
+            >
+          {% endif %}
+          <div>
+            <div class="vs-footer-brand-name">{{ section.settings.brand_name | default: 'Vidhyut Saathi' }}</div>
+            <div class="vs-footer-brand-tagline">{{ section.settings.tagline | default: 'Solar & Electrical' }}</div>
+          </div>
+        </a>
+        <p class="vs-footer-brand-desc">
+          {{ section.settings.description | default: 'Vidhyut Saathi is an Indian electrical and solar products brand committed to dependable solar lighting, energy-efficient luminaires, and precision measurement equipment.' }}
+        </p>
+      </div>
+
+      <!-- Column 2: Navigation Links -->
+      <div class="vs-footer-col">
+        <h3 class="vs-footer-col-title">Navigation</h3>
+        <ul class="vs-footer-links-list">
+          <li><a href="{{ routes.root_url }}" class="vs-footer-link">Home</a></li>
+          <li><a href="#about" class="vs-footer-link">About Us</a></li>
+          <li><a href="#products" class="vs-footer-link">Products</a></li>
+          <li><a href="#contact" class="vs-footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Product Links -->
+      <div class="vs-footer-col">
+        <h3 class="vs-footer-col-title">Products</h3>
+        <ul class="vs-footer-links-list">
+          <li><a href="#products-solar-lights" class="vs-footer-link">Solar Lights</a></li>
+          <li><a href="#products-led-lamps" class="vs-footer-link">LED Lamps</a></li>
+          <li><a href="#products-led-bulbs" class="vs-footer-link">LED Bulbs</a></li>
+          <li><a href="#products-clamp-meters" class="vs-footer-link">Clamp Meters</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Business Links -->
+      <div class="vs-footer-col">
+        <h3 class="vs-footer-col-title">Business</h3>
+        <ul class="vs-footer-links-list">
+          <li><a href="#buy-now" class="vs-footer-link">Buy Now</a></li>
+          <li><a href="#distributorship" class="vs-footer-link">Buy Distributorship</a></li>
+          <li><a href="#contact" class="vs-footer-link">Partner Inquiries</a></li>
+          <li><a href="#about" class="vs-footer-link">Company Overview</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 5: Contact Information -->
+      <div class="vs-footer-col">
+        <h3 class="vs-footer-col-title">Contact Us</h3>
+        <div class="vs-footer-contact-list">
+          <div class="vs-footer-contact-item">
+            <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>{{ section.settings.address | default: 'SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India' }}</span>
+          </div>
+          <div class="vs-footer-contact-item">
+            <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <a href="mailto:{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}">{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}</a>
+          </div>
+          <div class="vs-footer-contact-item">
+            <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <div>
+              <a href="tel:{{ section.settings.phone_1 | default: '+918199036060' }}">{{ section.settings.phone_1 | default: '+91-8199036060' }}</a><br>
+              <a href="tel:{{ section.settings.phone_2 | default: '+919053110707' }}">{{ section.settings.phone_2 | default: '+91-9053110707' }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="vs-footer-bottom">
+      <p class="vs-footer-copy">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name | default: 'Vidhyut Saathi' }}. All rights reserved.
+      </p>
+      <div class="vs-footer-bottom-links">
+        <a href="#about" class="vs-footer-bottom-link">Privacy Policy</a>
+        <a href="#about" class="vs-footer-bottom-link">Terms of Service</a>
+        <a href="#contact" class="vs-footer-bottom-link">Support</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Corporate Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "Vidhyut Saathi"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Solar & Electrical"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Brand Description",
+      "default": "Vidhyut Saathi is an Indian electrical and solar products brand committed to dependable solar lighting, energy-efficient luminaires, and precision measurement equipment."
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Headquarters Address",
+      "default": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Support Email",
+      "default": "info@vidhyutsaathi.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_1",
+      "label": "Primary Phone",
+      "default": "+91-8199036060"
+    },
+    {
+      "type": "text",
+      "id": "phone_2",
+      "label": "Secondary Phone",
+      "default": "+91-9053110707"
+    }
+  ]
+}
+{% endschema %}

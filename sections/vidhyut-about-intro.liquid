@@ -1,0 +1,133 @@
+<section class="vs-about-section" id="about">
+  <div class="vs-container">
+    <div class="vs-about-grid">
+      <!-- Left Column Media -->
+      <div class="vs-about-media">
+        <div class="vs-about-image-card">
+          {% if section.settings.image != blank %}
+            <img
+              src="{{ section.settings.image | image_url: width: 800 }}"
+              alt="{{ section.settings.image_alt | default: 'Vidhyut Saathi Project' }}"
+              class="vs-about-img"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+          {% else %}
+            <img
+              src="{{ 'brand-intro.jpg' | asset_url }}"
+              alt="Vidhyut Saathi solar lighting and commercial electrical infrastructure project"
+              class="vs-about-img"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+          {% endif %}
+        </div>
+        <div class="vs-about-floating-badge">
+          <div class="vs-badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div class="vs-badge-text">
+            <b>Practical Reliability</b>
+            <span>Built for Indian Conditions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column Content -->
+      <div class="vs-about-content">
+        <div class="vs-section-badge">{{ section.settings.badge | default: 'About Vidhyut Saathi' }}</div>
+        <h2 class="vs-about-title">{{ section.settings.heading | default: 'Powering a Brighter Tomorrow' }}</h2>
+        <p class="vs-about-lead">
+          {{ section.settings.lead_text | default: 'Vidhyut Saathi is an Indian electrical and solar products brand committed to delivering dependable, energy-efficient solutions for residential, commercial, and industrial use.' }}
+        </p>
+        <p class="vs-about-desc">
+          {{ section.settings.body_text | default: 'From standalone solar outdoor lighting that harnesses clean renewable energy, to high-efficiency LED luminaires and calibrated digital testing tools, we design our products around everyday practicality, durability, and consistent performance.' }}
+        </p>
+
+        <div class="vs-about-pillars">
+          <div class="vs-pillar-item">
+            <span class="vs-pillar-dot"></span>
+            <span>Dependable Solar Lighting</span>
+          </div>
+          <div class="vs-pillar-item">
+            <span class="vs-pillar-dot"></span>
+            <span>High Lumen Efficiency</span>
+          </div>
+          <div class="vs-pillar-item">
+            <span class="vs-pillar-dot"></span>
+            <span>Calibrated Testing Equipment</span>
+          </div>
+          <div class="vs-pillar-item">
+            <span class="vs-pillar-dot"></span>
+            <span>Channel Partner Support</span>
+          </div>
+        </div>
+
+        <a
+          href="{{ section.settings.button_link | default: '#about' }}"
+          class="vs-btn vs-btn-primary"
+        >
+          <span>{{ section.settings.button_label | default: 'About Us' }}</span>
+          <svg class="vs-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Introduction",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Section Badge",
+      "default": "About Vidhyut Saathi"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Powering a Brighter Tomorrow"
+    },
+    {
+      "type": "textarea",
+      "id": "lead_text",
+      "label": "Lead Paragraph",
+      "default": "Vidhyut Saathi is an Indian electrical and solar products brand committed to delivering dependable, energy-efficient solutions for residential, commercial, and industrial use."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body Description",
+      "default": "From standalone solar outdoor lighting that harnesses clean renewable energy, to high-efficiency LED luminaires and calibrated digital testing tools, we design our products around everyday practicality, durability, and consistent performance."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Brand Image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "About Us"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Brand Intro"
+    }
+  ]
+}
+{% endschema %}

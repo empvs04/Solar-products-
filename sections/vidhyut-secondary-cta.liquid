@@ -1,0 +1,65 @@
+<section class="vs-secondary-cta-section">
+  <div class="vs-container">
+    <div class="vs-secondary-cta-inner">
+      <h2 class="vs-secondary-cta-title">{{ section.settings.heading | default: 'Looking for the Right Solar or Electrical Products?' }}</h2>
+      <p class="vs-secondary-cta-desc">
+        {{ section.settings.description | default: 'Browse our complete line of solar lighting, energy-efficient fixtures, and measurement gear, or reach out to our product advisory team.' }}
+      </p>
+      <div class="vs-secondary-cta-actions">
+        <a href="{{ section.settings.primary_cta_link | default: '#products' }}" class="vs-btn vs-btn-primary">
+          {{ section.settings.primary_cta_label | default: 'Explore Products' }}
+        </a>
+        <a href="{{ section.settings.secondary_cta_link | default: '#contact' }}" class="vs-btn vs-btn-outline">
+          {{ section.settings.secondary_cta_label | default: 'Contact Us' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Secondary CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Looking for the Right Solar or Electrical Products?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Browse our complete line of solar lighting, energy-efficient fixtures, and measurement gear, or reach out to our product advisory team."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_label",
+      "label": "Primary Button Label",
+      "default": "Explore Products"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_label",
+      "label": "Secondary Button Label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Secondary CTA"
+    }
+  ]
+}
+{% endschema %}

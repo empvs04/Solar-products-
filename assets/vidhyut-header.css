@@ -1,0 +1,310 @@
+/* ==========================================================================
+   Header & Navigation Styles
+   Clean, Professional, Fixed/Sticky Corporate Header
+   ========================================================================== */
+
+.vs-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  transition: box-shadow var(--transition-normal), background-color var(--transition-normal);
+}
+
+.vs-header.is-scrolled {
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+.vs-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-lg);
+}
+
+/* Logo Treatment */
+.vs-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.vs-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.vs-logo-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.vs-logo-brand {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.vs-logo-tagline {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+/* Desktop Navigation */
+.vs-nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-left: auto;
+  margin-right: 1.5rem;
+}
+
+.vs-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.vs-nav-link {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-midnight);
+  padding: 0.5rem 0;
+  transition: color var(--transition-fast);
+}
+
+.vs-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width var(--transition-normal);
+  border-radius: var(--radius-pill);
+}
+
+.vs-nav-link:hover,
+.vs-nav-link.is-active {
+  color: var(--color-primary);
+}
+
+.vs-nav-link:hover::after,
+.vs-nav-link.is-active::after {
+  width: 100%;
+}
+
+/* Header Action Buttons (Desktop) */
+.vs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.vs-header-actions .vs-btn {
+  padding: 0.625rem 1.125rem;
+  font-size: 0.875rem;
+}
+
+/* Mobile Hamburger Toggle */
+.vs-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  z-index: 1010;
+  transition: background-color var(--transition-fast);
+}
+
+.vs-nav-toggle:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.vs-hamburger-bar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-midnight);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.vs-hamburger-bar + .vs-hamburger-bar {
+  margin-top: 5px;
+}
+
+/* Animated Hamburger to X */
+.vs-nav-toggle[aria-expanded="true"] .vs-hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.vs-nav-toggle[aria-expanded="true"] .vs-hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.vs-nav-toggle[aria-expanded="true"] .vs-hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Navigation Drawer & Backdrop */
+.vs-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.vs-nav-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.vs-mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(85vw, 360px);
+  height: 100vh;
+  background-color: var(--color-white);
+  box-shadow: -4px 0 24px rgba(15, 23, 42, 0.15);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow-y: auto;
+  transition: right var(--transition-smooth);
+}
+
+.vs-mobile-drawer.is-open {
+  right: 0;
+}
+
+.vs-mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.5rem;
+}
+
+.vs-mobile-close-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-light);
+  color: var(--color-midnight);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+}
+
+.vs-mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.vs-mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-midnight);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.vs-mobile-nav-link:hover,
+.vs-mobile-nav-link.is-active {
+  background-color: var(--color-bg-light);
+  color: var(--color-primary);
+}
+
+.vs-mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.vs-mobile-actions .vs-btn {
+  width: 100%;
+}
+
+.vs-mobile-contact-snippet {
+  margin-top: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.vs-mobile-contact-snippet a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Responsive Header Breakpoints */
+@media (max-width: 1024px) {
+  .vs-nav-desktop,
+  .vs-header-actions {
+    display: none;
+  }
+
+  .vs-nav-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-height: 70px;
+  }
+
+  .vs-logo-img {
+    height: 40px;
+  }
+
+  .vs-logo-brand {
+    font-size: 1.125rem;
+  }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Vidhyut Saathi",
+    "theme_version": "1.0.0",
+    "theme_author": "Vidhyut Saathi",
+    "theme_documentation_url": "https://github.com/empvs04/Solar-products-",
+    "theme_support_url": "mailto:info@vidhyutsaathi.com"
+  },
+  {
+    "name": "Brand Identity & Colors",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Store Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon Image (32x32px)"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color (Deep Navy)",
+        "default": "#223A5F"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color (Midnight Navy)",
+        "default": "#151E2B"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color (Solar Amber)",
+        "default": "#E86014"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_phone_primary",
+        "label": "Primary Phone",
+        "default": "+91-8199036060"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_secondary",
+        "label": "Secondary Phone",
+        "default": "+91-9053110707"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Support Email",
+        "default": "info@vidhyutsaathi.com"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_address",
+        "label": "Headquarters Address",
+        "default": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India"
+      }
+    ]
+  }
+]

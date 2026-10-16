@@ -1,0 +1,25 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "share": "Share",
+    "loading": "Loading..."
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "cart": "Cart",
+      "search": "Search",
+      "account": "Account"
+    },
+    "hero": {
+      "explore_products": "Explore Products",
+      "contact_us": "Contact Us"
+    },
+    "products": {
+      "view_product": "View Product"
+    },
+    "footer": {
+      "copyright": "All rights reserved."
+    }
+  }
+}

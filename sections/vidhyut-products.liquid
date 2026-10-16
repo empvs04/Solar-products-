@@ -1,0 +1,176 @@
+<section class="vs-products-section" id="products">
+  <div class="vs-container">
+    <header class="vs-section-header">
+      <div class="vs-section-badge">{{ section.settings.badge | default: 'Our Product Lineup' }}</div>
+      <h2 class="vs-section-title">{{ section.settings.title | default: 'Explore Our Products' }}</h2>
+      <p class="vs-section-subtitle">
+        {{ section.settings.subtitle | default: 'Discover reliable solar lighting and electrical solutions from Vidhyut Saathi.' }}
+      </p>
+    </header>
+
+    <div class="vs-products-grid">
+      <!-- Card 1: Solar Lights -->
+      <article class="vs-product-card" id="products-solar-lights">
+        <div class="vs-product-image-wrap">
+          <span class="vs-product-badge">Solar Solutions</span>
+          <img
+            src="{{ 'solar-lights.jpg' | asset_url }}"
+            alt="Vidhyut Saathi all-in-one solar street light with integrated solar panel"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
+        </div>
+        <div class="vs-product-body">
+          <h3 class="vs-product-title">Solar Lights</h3>
+          <p class="vs-product-desc">
+            All-in-one solar luminaires and street lighting with integrated PV panels, lithium storage, and dusk-to-dawn sensors for autonomous outdoor illumination.
+          </p>
+          <a
+            href="{{ section.settings.solar_link | default: '#products-solar-lights' }}"
+            class="vs-product-btn"
+          >
+            <span>View Product</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: LED Lamps -->
+      <article class="vs-product-card" id="products-led-lamps">
+        <div class="vs-product-image-wrap">
+          <span class="vs-product-badge">Commercial & Indoor</span>
+          <img
+            src="{{ 'led-lamps.jpg' | asset_url }}"
+            alt="Vidhyut Saathi modern architectural linear LED lamp"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
+        </div>
+        <div class="vs-product-body">
+          <h3 class="vs-product-title">LED Lamps</h3>
+          <p class="vs-product-desc">
+            Modern architectural linear lamps, downlights, and suspended luminaires designed for glare-free, uniform light distribution across workspaces and living areas.
+          </p>
+          <a
+            href="{{ section.settings.lamp_link | default: '#products-led-lamps' }}"
+            class="vs-product-btn"
+          >
+            <span>View Product</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: LED Bulbs -->
+      <article class="vs-product-card" id="products-led-bulbs">
+        <div class="vs-product-image-wrap">
+          <span class="vs-product-badge">Energy Saving</span>
+          <img
+            src="{{ 'led-bulbs.jpg' | asset_url }}"
+            alt="Vidhyut Saathi high-efficiency LED bulb with thermal aluminum heat sink"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
+        </div>
+        <div class="vs-product-body">
+          <h3 class="vs-product-title">LED Bulbs</h3>
+          <p class="vs-product-desc">
+            High-efficacy, long-life LED bulbs engineered with robust thermal dissipation and high lumen output to ensure durable daily performance.
+          </p>
+          <a
+            href="{{ section.settings.bulb_link | default: '#products-led-bulbs' }}"
+            class="vs-product-btn"
+          >
+            <span>View Product</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 4: Clamp Meters -->
+      <article class="vs-product-card" id="products-clamp-meters">
+        <div class="vs-product-image-wrap">
+          <span class="vs-product-badge">Electrical Testing</span>
+          <img
+            src="{{ 'clamp-meters.jpg' | asset_url }}"
+            alt="Vidhyut Saathi professional digital clamp meter electrical testing tool"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
+        </div>
+        <div class="vs-product-body">
+          <h3 class="vs-product-title">Clamp Meters</h3>
+          <p class="vs-product-desc">
+            Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.
+          </p>
+          <a
+            href="{{ section.settings.clamp_link | default: '#products-clamp-meters' }}"
+            class="vs-product-btn"
+          >
+            <span>View Product</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Section Badge",
+      "default": "Our Product Lineup"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Explore Our Products"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Discover reliable solar lighting and electrical solutions from Vidhyut Saathi."
+    },
+    {
+      "type": "url",
+      "id": "solar_link",
+      "label": "Solar Lights Link"
+    },
+    {
+      "type": "url",
+      "id": "lamp_link",
+      "label": "LED Lamps Link"
+    },
+    {
+      "type": "url",
+      "id": "bulb_link",
+      "label": "LED Bulbs Link"
+    },
+    {
+      "type": "url",
+      "id": "clamp_link",
+      "label": "Clamp Meters Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Featured Products"
+    }
+  ]
+}
+{% endschema %}

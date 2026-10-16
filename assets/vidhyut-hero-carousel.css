@@ -1,0 +1,323 @@
+/* ==========================================================================
+   Hero Section: Four Shopify-Managed Banners Carousel
+   Zero Layout Shift, Responsive Picture Tag, Smooth Professional Transition
+   ========================================================================== */
+
+.vs-hero-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-midnight);
+}
+
+/* Carousel Outer Container */
+.vs-carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 520px;
+  max-height: 760px;
+  overflow: hidden;
+}
+
+/* Slides Track */
+.vs-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Slide Item */
+.vs-carousel-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.75s ease;
+  z-index: 1;
+}
+
+.vs-carousel-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Image Wrapper with Picture tag */
+.vs-slide-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vs-slide-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.vs-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vs-carousel-slide.is-active .vs-slide-img {
+  transform: scale(1.03);
+}
+
+/* Overlay Scrim for Text Readability */
+.vs-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.88) 0%,
+    rgba(21, 30, 43, 0.72) 45%,
+    rgba(21, 30, 43, 0.3) 75%,
+    rgba(21, 30, 43, 0.15) 100%
+  );
+  z-index: 2;
+}
+
+/* Slide Content Container */
+.vs-slide-content-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.vs-slide-content {
+  max-width: 640px;
+  color: var(--color-white);
+  padding: var(--space-xl) 0;
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, opacity 0.6s ease 0.15s;
+}
+
+.vs-carousel-slide.is-active .vs-slide-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.vs-slide-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+  background-color: rgba(232, 96, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.vs-slide-title {
+  color: var(--color-white);
+  font-size: clamp(2rem, 3.5vw + 0.5rem, 3.125rem);
+  font-weight: 800;
+  line-height: 1.18;
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.vs-slide-subtitle {
+  color: #E2E8F0;
+  font-size: clamp(1rem, 1.2vw + 0.2rem, 1.1875rem);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  max-width: 560px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.vs-slide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Carousel Navigation Arrows */
+.vs-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(21, 30, 43, 0.65);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-normal);
+}
+
+.vs-carousel-arrow:hover {
+  background-color: var(--color-primary);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.vs-carousel-arrow svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.5;
+}
+
+.vs-carousel-arrow-prev {
+  left: 1.5rem;
+}
+
+.vs-carousel-arrow-next {
+  right: 1.5rem;
+}
+
+/* Pagination Dots */
+.vs-carousel-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  z-index: 10;
+  padding: 0.5rem 0.875rem;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+}
+
+.vs-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-normal);
+}
+
+.vs-carousel-dot:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.vs-carousel-dot.is-active {
+  width: 28px;
+  background-color: var(--color-accent);
+}
+
+/* Autoplay Progress Bar */
+.vs-carousel-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.15);
+  z-index: 10;
+}
+
+.vs-carousel-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-accent);
+  transition: width linear;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 900px) {
+  .vs-carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vs-carousel-arrow-prev {
+    left: 0.75rem;
+  }
+
+  .vs-carousel-arrow-next {
+    right: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .vs-carousel {
+    aspect-ratio: auto;
+    min-height: 580px;
+    height: 84vh;
+    max-height: 720px;
+  }
+
+  .vs-slide-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.45) 0%,
+      rgba(15, 23, 42, 0.75) 50%,
+      rgba(15, 23, 42, 0.94) 100%
+    );
+  }
+
+  .vs-slide-content-wrap {
+    align-items: flex-end;
+    padding-bottom: 4.5rem;
+  }
+
+  .vs-slide-content {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .vs-slide-subtitle {
+    margin-bottom: 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .vs-carousel-arrow {
+    display: none; /* Rely on touch swipe and dots on mobile */
+  }
+
+  .vs-carousel-dots {
+    bottom: 1.25rem;
+  }
+
+  .vs-slide-actions {
+    gap: 0.625rem;
+  }
+
+  .vs-slide-actions .vs-btn {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 130px;
+    padding: 0.6875rem 0.875rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .vs-slide-actions .vs-btn {
+    flex: 1 1 100%;
+  }
+}

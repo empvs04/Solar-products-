@@ -1,0 +1,196 @@
+<header class="vs-header" id="mainHeader">
+  <div class="vs-container">
+    <div class="vs-header-inner">
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
+        {% if section.settings.logo != blank %}
+          <img
+            src="{{ section.settings.logo | image_url: width: 120 }}"
+            alt="{{ shop.name | escape }}"
+            class="vs-logo-img"
+            width="48"
+            height="48"
+          >
+        {% else %}
+          <img
+            src="{{ 'vidhyut-logo-official.png' | asset_url }}"
+            alt="Vidhyut Saathi Logo"
+            class="vs-logo-img"
+            width="48"
+            height="48"
+          >
+        {% endif %}
+        <div class="vs-logo-text-wrap">
+          <span class="vs-logo-brand">{{ section.settings.brand_name | default: 'Vidhyut Saathi' }}</span>
+          <span class="vs-logo-tagline">{{ section.settings.tagline | default: 'Solar & Electrical' }}</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="vs-nav-desktop" aria-label="Main Navigation">
+        <ul class="vs-nav-list">
+          <li><a href="{{ routes.root_url }}" class="vs-nav-link is-active">Home</a></li>
+          <li><a href="#about" class="vs-nav-link">About Us</a></li>
+          <li><a href="#products" class="vs-nav-link">Products</a></li>
+          <li><a href="#contact" class="vs-nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop CTA Action Buttons -->
+      <div class="vs-header-actions">
+        <a
+          href="{{ section.settings.buy_now_link | default: '#products' }}"
+          class="vs-btn vs-btn-accent"
+          id="headerBuyNowBtn"
+        >
+          {{ section.settings.buy_now_label | default: 'Buy Now' }}
+        </a>
+        <a
+          href="{{ section.settings.distributor_link | default: '#distributorship' }}"
+          class="vs-btn vs-btn-outline"
+          id="headerDistributorBtn"
+        >
+          {{ section.settings.distributor_label | default: 'Buy Distributorship' }}
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button
+        type="button"
+        class="vs-nav-toggle"
+        id="vsNavToggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="vsMobileDrawer"
+      >
+        <span class="vs-hamburger-bar"></span>
+        <span class="vs-hamburger-bar"></span>
+        <span class="vs-hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Drawer Backdrop -->
+<div class="vs-nav-backdrop" id="vsNavBackdrop"></div>
+
+<!-- Mobile Navigation Drawer -->
+<div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+  <div class="vs-mobile-drawer-header">
+    <div class="vs-logo-link">
+      <img
+        src="{{ 'vidhyut-logo-official.png' | asset_url }}"
+        alt="Vidhyut Saathi Logo"
+        class="vs-logo-img"
+        width="40"
+        height="40"
+      >
+      <span class="vs-logo-brand">Vidhyut Saathi</span>
+    </div>
+    <button
+      type="button"
+      class="vs-mobile-close-btn"
+      id="vsMobileCloseBtn"
+      aria-label="Close menu"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <ul class="vs-mobile-nav-list">
+    <li>
+      <a href="{{ routes.root_url }}" class="vs-mobile-nav-link is-active">
+        <span>Home</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </li>
+    <li>
+      <a href="#about" class="vs-mobile-nav-link">
+        <span>About Us</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </li>
+    <li>
+      <a href="#products" class="vs-mobile-nav-link">
+        <span>Products</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="vs-mobile-nav-link">
+        <span>Contact Us</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    </li>
+  </ul>
+
+  <div class="vs-mobile-actions">
+    <a
+      href="{{ section.settings.buy_now_link | default: '#products' }}"
+      class="vs-btn vs-btn-accent"
+      id="mobileBuyNowBtn"
+    >
+      {{ section.settings.buy_now_label | default: 'Buy Now' }}
+    </a>
+    <a
+      href="{{ section.settings.distributor_link | default: '#distributorship' }}"
+      class="vs-btn vs-btn-outline"
+      id="mobileDistributorBtn"
+    >
+      {{ section.settings.distributor_label | default: 'Buy Distributorship' }}
+    </a>
+    <div class="vs-mobile-contact-snippet">
+      Direct Inquiries: <a href="tel:+918199036060">+91-8199036060</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header & Navigation",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Custom Brand Logo"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "Vidhyut Saathi"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Solar & Electrical"
+    },
+    {
+      "type": "text",
+      "id": "buy_now_label",
+      "label": "Buy Now Button Label",
+      "default": "Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "buy_now_link",
+      "label": "Buy Now Link"
+    },
+    {
+      "type": "text",
+      "id": "distributor_label",
+      "label": "Distributor Button Label",
+      "default": "Buy Distributorship"
+    },
+    {
+      "type": "url",
+      "id": "distributor_link",
+      "label": "Distributor Link"
+    }
+  ]
+}
+{% endschema %}

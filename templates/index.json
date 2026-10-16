@@ -1,0 +1,133 @@
+{
+  "name": "Home page",
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical",
+        "buy_now_label": "Buy Now",
+        "distributor_label": "Buy Distributorship"
+      }
+    },
+    "hero_carousel": {
+      "type": "vidhyut-hero-carousel",
+      "blocks": {
+        "slide_1": {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Clean Solar Energy",
+            "heading": "Solar Lighting Solutions",
+            "subheading": "Harness clean energy with durable, high-efficiency solar street & outdoor lighting systems.",
+            "primary_cta_label": "Explore Solar Lights",
+            "primary_cta_link": "#products",
+            "secondary_cta_label": "Contact Us",
+            "secondary_cta_link": "#contact",
+            "alt_text": "Vidhyut Saathi solar street lights"
+          }
+        },
+        "slide_2": {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Commercial & Retail",
+            "heading": "Smart LED Luminaires & Lamps",
+            "subheading": "Engineered for optimal brightness, architectural elegance, and commercial reliability.",
+            "primary_cta_label": "Discover LED Lamps",
+            "primary_cta_link": "#products",
+            "secondary_cta_label": "Buy Distributorship",
+            "secondary_cta_link": "#distributorship",
+            "alt_text": "Modern architectural LED suspended luminaire lamps"
+          }
+        },
+        "slide_3": {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Maximum Energy Savings",
+            "heading": "High-Efficiency LED Bulbs",
+            "subheading": "Superior luminous output with advanced thermal dissipation for household & commercial savings.",
+            "primary_cta_label": "View LED Bulbs",
+            "primary_cta_link": "#products",
+            "secondary_cta_label": "Buy Now",
+            "secondary_cta_link": "#buy-now",
+            "alt_text": "Premium glowing warm LED bulbs"
+          }
+        },
+        "slide_4": {
+          "type": "banner_slide",
+          "settings": {
+            "badge": "Industrial Testing",
+            "heading": "Precision Digital Clamp Meters",
+            "subheading": "Accurate, dependable electrical testing and measurement tools for engineers and technicians.",
+            "primary_cta_label": "Explore Clamp Meters",
+            "primary_cta_link": "#products",
+            "secondary_cta_label": "Partner With Us",
+            "secondary_cta_link": "#distributorship",
+            "alt_text": "Electrical technician using a digital clamp meter"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3",
+        "slide_4"
+      ],
+      "settings": {
+        "autoplay": true,
+        "autoplay_interval": 5
+      }
+    },
+    "products": {
+      "type": "vidhyut-products",
+      "settings": {
+        "badge": "Our Product Lineup",
+        "title": "Explore Our Products",
+        "subtitle": "Discover reliable solar lighting and electrical solutions from Vidhyut Saathi."
+      }
+    },
+    "about_intro": {
+      "type": "vidhyut-about-intro",
+      "settings": {
+        "badge": "About Vidhyut Saathi",
+        "heading": "Powering a Brighter Tomorrow"
+      }
+    },
+    "why_choose": {
+      "type": "vidhyut-why-choose",
+      "settings": {
+        "badge": "Core Advantages",
+        "heading": "Why Choose Vidhyut Saathi?"
+      }
+    },
+    "distributorship": {
+      "type": "vidhyut-distributorship",
+      "settings": {
+        "badge": "Partner Opportunities",
+        "heading": "Grow Your Business with Vidhyut Saathi"
+      }
+    },
+    "secondary_cta": {
+      "type": "vidhyut-secondary-cta",
+      "settings": {
+        "heading": "Looking for the Right Solar or Electrical Products?"
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical"
+      }
+    }
+  },
+  "order": [
+    "header",
+    "hero_carousel",
+    "products",
+    "about_intro",
+    "why_choose",
+    "distributorship",
+    "secondary_cta",
+    "footer"
+  ]
+}

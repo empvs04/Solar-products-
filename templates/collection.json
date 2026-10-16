@@ -1,0 +1,22 @@
+{
+  "name": "Collection",
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {}
+    },
+    "products_grid": {
+      "type": "vidhyut-products",
+      "settings": {}
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "products_grid",
+    "footer"
+  ]
+}

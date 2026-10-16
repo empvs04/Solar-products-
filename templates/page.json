@@ -1,0 +1,22 @@
+{
+  "name": "Page",
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {}
+    },
+    "main": {
+      "type": "vidhyut-about-intro",
+      "settings": {}
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "main",
+    "footer"
+  ]
+}

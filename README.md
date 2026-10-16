@@ -1,10 +1,33 @@
-# Vidhyut Saathi – Solar Products Website
+# Vidhyut Saathi – Solar Products Website & Shopify Theme
 
-A premium, modern, production-grade frontend website for **Vidhyut Saathi**, an Indian electrical and solar products brand offering:
+A premium, modern, production-grade **Shopify Theme & Frontend** for **Vidhyut Saathi**, an Indian electrical and solar products brand offering:
 - **Solar Lights** (All-in-one solar luminaires and street lighting)
 - **LED Lamps** (Architectural linear lamps, suspended fixtures, downlights)
 - **LED Bulbs** (High-efficiency, thermal dissipation residential and commercial bulbs)
 - **Clamp Meters** (Precision digital electrical testing and measurement instruments)
+
+---
+
+## 🛍️ Shopify GitHub Integration
+
+This repository follows the official **Shopify Theme Architecture (Online Store 2.0)**:
+```
+├── assets/          # Theme stylesheets, scripts, and product/banner images
+├── config/          # settings_schema.json & settings_data.json
+├── layout/          # theme.liquid
+├── locales/         # en.default.json
+├── sections/        # Liquid sections with Theme Editor schema & image_picker
+├── templates/       # index.json, page.json, product.json, collection.json, 404.json
+├── snippets/        # Liquid helper snippets
+└── src/             # Source files for standalone development
+```
+
+### How to connect with Shopify Store:
+1. Go to **Shopify Admin** > **Online Store** > **Themes**.
+2. Click **Add Theme** > **Connect from GitHub**.
+3. Select your repository: `empvs04/Solar-products-` and branch `main`.
+4. Shopify will automatically validate the theme structure and import it into your store without errors.
+5. Click **Customize** to manage the 4 Hero Banners and content directly through the Shopify Theme Editor!
 
 ---
 
@@ -19,72 +42,29 @@ A premium, modern, production-grade frontend website for **Vidhyut Saathi**, an 
 
 ---
 
-## 🚀 Features & Sections
+## 🚀 Sections Included
 
-1. **Header & Navigation:**
-   - Official Vidhyut Saathi brand logo
-   - Desktop navigation with clean active indicators: *Home*, *About Us*, *Products*, *Contact Us*
-   - Direct CTA buttons: *Buy Now*, *Buy Distributorship*
-   - Mobile responsive drawer with animated hamburger toggle, escape key handling, and background overlay lock.
-
-2. **Hero Section (Four Shopify-Managed Banners):**
-   - Full-width hero carousel with **exactly four configurable banner slides**
-   - Separate desktop (`16:9`) and mobile (`3:4` portrait) images to prevent distortion or text cropping
-   - Auto-slide with configurable interval (5.5s)
-   - Pause on hover and keyboard focus
-   - Mobile touch swipe support
-   - Accessible pagination dots, previous/next controls, and autoplay progress bar
-   - Eager priority loading on slide 1 to prevent layout shifts (CLS: 0)
-
-3. **Featured Products Section ("Explore Our Products"):**
-   - Four balanced cards: *Solar Lights*, *LED Lamps*, *LED Bulbs*, *Clamp Meters*
-   - Genuine high-definition product imagery
-   - Consistent card height and image aspect ratio
-   - Desktop 4-column, tablet 2-column, mobile 1-column responsive grid
-
-4. **Brand Introduction ("Powering a Brighter Tomorrow"):**
-   - Two-column balanced layout with genuine project photography
-   - Practical reliability floating badge
-   - Focus on product usability and Indian environmental conditions
-
-5. **Why Choose Vidhyut Saathi?:**
-   - 4 compact feature cards with vector icons:
-     - *Product-Focused Solutions*
-     - *Solar Lighting Options*
-     - *Electrical Product Range*
-     - *Support for Business Partners*
-
-6. **Buy Distributorship Section ("Grow Your Business with Vidhyut Saathi"):**
-   - High-impact corporate partner CTA box
-   - Key distributor highlights
-   - Action buttons: *Buy Distributorship*, *Contact Us*
-
-7. **Secondary Call to Action:**
-   - Encourages product exploration and inquiries
-
-8. **Corporate Footer:**
-   - Official headquarters address: *SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India*
-   - Verified contact email: *info@vidhyutsaathi.com*
-   - Verified contact numbers: *+91-8199036060* / *+91-9053110707*
-   - Structured links and copyright statement
+1. **Header & Navigation (`sections/vidhyut-header.liquid`):**
+   - Brand logo, desktop navigation, action buttons (`Buy Now`, `Buy Distributorship`), mobile hamburger drawer.
+2. **Hero Section (`sections/vidhyut-hero-carousel.liquid`):**
+   - 4 Shopify-managed banner slides with native `image_picker` settings for desktop and mobile images.
+   - Auto-slide with hover/focus pause, touch swipe gestures, and pagination dots.
+3. **Featured Products (`sections/vidhyut-products.liquid`):**
+   - 4 balanced product cards: *Solar Lights*, *LED Lamps*, *LED Bulbs*, *Clamp Meters*.
+4. **Brand Introduction (`sections/vidhyut-about-intro.liquid`):**
+   - 2-column layout ("Powering a Brighter Tomorrow") with genuine photography and quality pillars.
+5. **Why Choose Vidhyut Saathi? (`sections/vidhyut-why-choose.liquid`):**
+   - 4 compact benefit cards with vector icons.
+6. **Buy Distributorship (`sections/vidhyut-distributorship.liquid`):**
+   - High-impact corporate partner CTA box.
+7. **Secondary Call to Action (`sections/vidhyut-secondary-cta.liquid`):**
+   - Conversion section for product inquiries.
+8. **Corporate Footer (`sections/vidhyut-footer.liquid`):**
+   - Verified headquarters address (*SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana*), email (*info@vidhyutsaathi.com*), and phone numbers (*+91-8199036060*, *+91-9053110707*).
 
 ---
 
-## 🛍️ Shopify Banner Configuration
-
-### Standalone Frontend Architecture
-Configured via `src/config/shopify-banners.config.js`. Administrators can swap image paths for Shopify CDN URLs (e.g. `https://cdn.shopify.com/...`), customize slide headings, subheadings, CTA labels, and links.
-
-### Shopify Theme Integration (Liquid)
-A ready-to-use Shopify Liquid section is provided in:
-`shopify-sections/vidhyut-hero-carousel.liquid`
-- Copy this file into your Shopify theme's `sections/` folder
-- Add the section through the Shopify Theme Editor (Online Store > Themes > Customize)
-- Edit all 4 banners using native `image_picker` blocks without touching code
-
----
-
-## 🛠️ Development & Build
+## 🛠️ Local Development (Vite)
 
 ```bash
 # Install dependencies
@@ -95,7 +75,4 @@ npm run dev
 
 # Build production bundle
 npm run build
-
-# Preview production build locally
-npm run preview
 ```

@@ -1,0 +1,25 @@
+{
+  "name": "404 Not Found",
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {}
+    },
+    "cta": {
+      "type": "vidhyut-secondary-cta",
+      "settings": {
+        "heading": "Page Not Found",
+        "description": "The page you are looking for does not exist. Explore our solar and electrical product lines below."
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "cta",
+    "footer"
+  ]
+}
