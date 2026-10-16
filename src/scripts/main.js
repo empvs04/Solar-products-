@@ -19,6 +19,7 @@ import { shopifyBannersConfig } from '../config/shopify-banners.config.js';
 import { HeroCarousel } from './carousel.js';
 import { MobileNav } from './mobile-nav.js';
 import { ContactPageController } from './contact-form.js';
+import { DistributorshipFormController } from './distributorship-form.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Sticky Header Elevation
@@ -47,6 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Initialize Contact Page Controller
   if (document.getElementById('vsContactForm') || document.querySelector('.vs-contact-section')) {
     new ContactPageController();
+  }
+
+  // 5. Initialize Buy Distributorship Form Controller
+  if (document.getElementById('vsDistributorForm')) {
+    new DistributorshipFormController('vsDistributorForm');
   }
 
   // 5. Smooth Anchor Link Handler
