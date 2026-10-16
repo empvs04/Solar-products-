@@ -31,8 +31,9 @@
           "type": "banner_slide",
           "settings": {
             "desktop_image": "shopify://shop_images/Meco_Clamp_Meter_Launch_Banner.png",
-            "alt_text": "Vidhyut Saathi solar street lights",
-            "badge": "Clean Solar Energy",
+            "mobile_image": "shopify://shop_images/MECO_Clamp_Meter_Launch_Poster.png",
+            "alt_text": "",
+            "badge": "",
             "heading": "Solar Lighting Solutions",
             "subheading": "Harness clean energy with durable, high-efficiency solar street & outdoor lighting systems.",
             "primary_cta_label": "Explore Solar Lights",
@@ -44,6 +45,8 @@
         "slide_2": {
           "type": "banner_slide",
           "settings": {
+            "desktop_image": "shopify://shop_images/Maxwell_Digital_Timer_Socket_Advertisement.png",
+            "mobile_image": "shopify://shop_images/Maxwell_230V_Energy-Saving_Timer_Socket.png",
             "alt_text": "Modern architectural LED suspended luminaire lamps",
             "badge": "Commercial & Retail",
             "heading": "Smart LED Luminaires & Lamps",
@@ -57,6 +60,8 @@
         "slide_3": {
           "type": "banner_slide",
           "settings": {
+            "desktop_image": "shopify://shop_images/20W_Solar_LED_Lamp_Camping_Adventure.png",
+            "mobile_image": "shopify://shop_images/Solar_Camping_LED_Lamp_Advertisement.png",
             "alt_text": "Premium glowing warm LED bulbs",
             "badge": "Maximum Energy Savings",
             "heading": "High-Efficiency LED Bulbs",
@@ -70,6 +75,8 @@
         "slide_4": {
           "type": "banner_slide",
           "settings": {
+            "desktop_image": "shopify://shop_images/Hal_onix_Solaris_LED_Floodlight_Banner.png",
+            "mobile_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer.png",
             "alt_text": "Electrical technician using a digital clamp meter",
             "badge": "Industrial Testing",
             "heading": "Precision Digital Clamp Meters",
