@@ -16,6 +16,7 @@
         "tagline": "Solar & Electrical",
         "menu": "main-menu",
         "about_link": "",
+        "products_link": "",
         "contact_link": "",
         "buy_now_label": "Buy Now",
         "buy_now_link": "",
@@ -29,6 +30,7 @@
         "slide_1": {
           "type": "banner_slide",
           "settings": {
+            "desktop_image": "shopify://shop_images/Meco_Clamp_Meter_Launch_Banner.png",
             "alt_text": "Vidhyut Saathi solar street lights",
             "badge": "Clean Solar Energy",
             "heading": "Solar Lighting Solutions",
