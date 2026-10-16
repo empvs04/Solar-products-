@@ -5,8 +5,8 @@
       "type": "vidhyut-header",
       "settings": {}
     },
-    "main": {
-      "type": "vidhyut-about-intro",
+    "main_about": {
+      "type": "vidhyut-about-page",
       "settings": {}
     },
     "footer": {
@@ -16,7 +16,7 @@
   },
   "order": [
     "header",
-    "main",
+    "main_about",
     "footer"
   ]
 }

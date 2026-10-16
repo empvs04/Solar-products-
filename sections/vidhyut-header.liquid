@@ -30,8 +30,8 @@
       <nav class="vs-nav-desktop" aria-label="Main Navigation">
         <ul class="vs-nav-list">
           <li><a href="{{ routes.root_url }}" class="vs-nav-link is-active">Home</a></li>
-          <li><a href="#about" class="vs-nav-link">About Us</a></li>
-          <li><a href="#products" class="vs-nav-link">Products</a></li>
+          <li><a href="{{ routes.root_url }}pages/about-us" class="vs-nav-link">About Us</a></li>
+          <li><a href="{{ routes.root_url }}#products" class="vs-nav-link">Products</a></li>
           <li><a href="#contact" class="vs-nav-link">Contact Us</a></li>
         </ul>
       </nav>
@@ -108,7 +108,7 @@
       </a>
     </li>
     <li>
-      <a href="#about" class="vs-mobile-nav-link">
+      <a href="{{ routes.root_url }}pages/about-us" class="vs-mobile-nav-link">
         <span>About Us</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>

@@ -10,6 +10,7 @@ import '../styles/about-intro.css';
 import '../styles/why-choose.css';
 import '../styles/distributorship.css';
 import '../styles/secondary-cta.css';
+import '../styles/about-page.css';
 import '../styles/footer.css';
 
 import { shopifyBannersConfig } from '../config/shopify-banners.config.js';
