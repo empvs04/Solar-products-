@@ -1,6 +1,7 @@
 # Node & Vite
 node_modules/
 dist/
+scratch/
 .DS_Store
 Thumbs.db
 *.local

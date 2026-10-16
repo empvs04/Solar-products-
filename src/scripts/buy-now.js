@@ -6,6 +6,7 @@
 
 import { productsConfig } from '../config/products.config.js';
 import { MobileNav } from './mobile-nav.js';
+import { initSharedCart } from './cart.js';
 
 export class BuyNowController {
   constructor() {
@@ -13,34 +14,20 @@ export class BuyNowController {
     this.activeProductId = 'solar-lights';
     this.selectedVariant = null;
     this.quantity = 1;
-    this.cart = this.loadCart();
+    this.cartManager = window.vsCart || initSharedCart();
 
     this.init();
-  }
-
-  loadCart() {
-    try {
-      const data = localStorage.getItem('vs_cart');
-      return data ? JSON.parse(data) : [];
-    } catch {
-      return [];
-    }
-  }
-
-  saveCart() {
-    try {
-      localStorage.setItem('vs_cart', JSON.stringify(this.cart));
-      this.updateCartUI();
-    } catch (e) {
-      console.error('Error saving cart:', e);
-    }
   }
 
   init() {
     // 1. Initialize mobile drawer
     new MobileNav();
 
-    // 2. Determine initial product from URL search params
+    // 2. Synchronize shared cart UI and render dedicated review section
+    this.cartManager.updateBadges();
+    this.cartManager.renderCartPage();
+
+    // 3. Determine initial product from URL search params
     const params = new URLSearchParams(window.location.search);
     const paramProduct = params.get('product');
     const matched = this.products.find(p => p.id === paramProduct);
@@ -50,10 +37,10 @@ export class BuyNowController {
       this.activeProductId = this.products[0].id;
     }
 
-    // 3. Render current product
+    // 4. Render current product
     this.renderCurrentProduct(false);
 
-    // 4. Attach Category Tab Clicks
+    // 5. Attach Category Tab Clicks
     document.querySelectorAll('.vs-category-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         const productId = tab.getAttribute('data-product-id');
@@ -63,7 +50,7 @@ export class BuyNowController {
       });
     });
 
-    // 5. Quantity Buttons
+    // 6. Quantity Buttons
     const decBtn = document.getElementById('qtyDec');
     const incBtn = document.getElementById('qtyInc');
     const qtyInput = document.getElementById('qtyInput');
@@ -81,7 +68,7 @@ export class BuyNowController {
       });
     }
 
-    // 6. Add to Cart & Buy Now Action Buttons
+    // 7. Add to Cart & Buy Now Action Buttons
     const addToCartBtn = document.getElementById('addToCartBtn');
     const buyNowDirectBtn = document.getElementById('buyNowDirectBtn');
 
@@ -95,9 +82,6 @@ export class BuyNowController {
       });
     }
 
-    // 7. Cart Drawer Controls
-    this.initCartDrawer();
-
     // 8. Listen to browser popstate (back/forward)
     window.addEventListener('popstate', () => {
       const p = new URLSearchParams(window.location.search).get('product');
@@ -106,9 +90,6 @@ export class BuyNowController {
         this.renderCurrentProduct(false);
       }
     });
-
-    // Initial cart UI update
-    this.updateCartUI();
   }
 
   switchProduct(productId) {
@@ -313,212 +294,32 @@ export class BuyNowController {
     const product = this.products.find(p => p.id === this.activeProductId);
     if (!product || !this.selectedVariant) return;
 
-    const existingIndex = this.cart.findIndex(
-      item => item.productId === product.id && item.variantId === this.selectedVariant.id
-    );
-
-    if (existingIndex > -1) {
-      this.cart[existingIndex].quantity += this.quantity;
-    } else {
-      this.cart.push({
-        productId: product.id,
-        variantId: this.selectedVariant.id,
-        name: product.name,
-        variantName: this.selectedVariant.name,
-        price: this.selectedVariant.price,
-        quantity: this.quantity,
-        image: product.image
-      });
-    }
-
-    this.saveCart();
-    this.showToast(`Added ${this.quantity} × ${product.name} to cart.`);
-    this.openCart();
+    this.cartManager.addItem({
+      productId: product.id,
+      variantId: this.selectedVariant.id,
+      name: product.fullName || product.name,
+      variantName: this.selectedVariant.name,
+      price: this.selectedVariant.price,
+      quantity: this.quantity,
+      image: product.image
+    });
   }
 
   directBuyNow() {
     const product = this.products.find(p => p.id === this.activeProductId);
     if (!product || !this.selectedVariant) return;
 
-    // Add item to cart first
-    this.addToCart();
-
-    // Prepare direct order inquiry message via WhatsApp / Email
-    const totalAmount = this.selectedVariant.price * this.quantity;
-    const msg = `Hello Vidhyut Saathi, I want to purchase:\n\nProduct: ${product.fullName || product.name}\nModel: ${this.selectedVariant.name}\nQuantity: ${this.quantity}\nTotal Amount: ₹${totalAmount.toLocaleString('en-IN')} (incl. GST)\n\nPlease share delivery details and dispatch timeline.`;
-
-    const encodedMsg = encodeURIComponent(msg);
-    const whatsappUrl = `https://wa.me/918199036060?text=${encodedMsg}`;
-
-    // Open checkout dispatch modal / options
-    window.open(whatsappUrl, '_blank');
-  }
-
-  initCartDrawer() {
-    const drawer = document.getElementById('cartDrawer');
-    const backdrop = document.getElementById('cartDrawerBackdrop');
-    const closeBtn = document.getElementById('cartDrawerClose');
-    const openBtn = document.getElementById('floatingCartBtn');
-    const checkoutBtn = document.getElementById('cartCheckoutBtn');
-
-    if (openBtn) {
-      openBtn.addEventListener('click', () => this.openCart());
-    }
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => this.closeCart());
-    }
-    if (backdrop) {
-      backdrop.addEventListener('click', () => this.closeCart());
-    }
-
-    if (checkoutBtn) {
-      checkoutBtn.addEventListener('click', () => {
-        if (this.cart.length === 0) return;
-        let cartSummary = 'Vidhyut Saathi Order Inquiry:\n\n';
-        let grandTotal = 0;
-        this.cart.forEach((item, idx) => {
-          const itemTotal = item.price * item.quantity;
-          grandTotal += itemTotal;
-          cartSummary += `${idx + 1}. ${item.name} (${item.variantName}) - Qty: ${item.quantity} - ₹${itemTotal.toLocaleString('en-IN')}\n`;
-        });
-        cartSummary += `\nTotal: ₹${grandTotal.toLocaleString('en-IN')} (incl. GST)`;
-
-        const whatsappUrl = `https://wa.me/918199036060?text=${encodeURIComponent(cartSummary)}`;
-        window.open(whatsappUrl, '_blank');
-      });
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
-        this.closeCart();
-      }
-    });
-  }
-
-  openCart() {
-    const drawer = document.getElementById('cartDrawer');
-    const backdrop = document.getElementById('cartDrawerBackdrop');
-    if (drawer && backdrop) {
-      drawer.classList.add('is-open');
-      backdrop.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      this.renderCartItems();
-    }
-  }
-
-  closeCart() {
-    const drawer = document.getElementById('cartDrawer');
-    const backdrop = document.getElementById('cartDrawerBackdrop');
-    if (drawer && backdrop) {
-      drawer.classList.remove('is-open');
-      backdrop.classList.remove('is-open');
-      document.body.style.overflow = '';
-    }
-  }
-
-  updateCartUI() {
-    const totalCount = this.cart.reduce((sum, item) => sum + item.quantity, 0);
-    const badgeCount = document.getElementById('cartBadgeCount');
-    const floatBadge = document.getElementById('floatingCartBadge');
-
-    if (badgeCount) badgeCount.textContent = totalCount;
-    if (floatBadge) floatBadge.textContent = totalCount;
-
-    this.renderCartItems();
-  }
-
-  renderCartItems() {
-    const itemsWrap = document.getElementById('cartItemsWrap');
-    const cartTotalEl = document.getElementById('cartTotalVal');
-    if (!itemsWrap) return;
-
-    if (this.cart.length === 0) {
-      itemsWrap.innerHTML = `
-        <div class="vs-cart-empty">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-          <p>Your shopping cart is currently empty.</p>
-        </div>
-      `;
-      if (cartTotalEl) cartTotalEl.textContent = '₹0';
-      return;
-    }
-
-    let grandTotal = 0;
-    itemsWrap.innerHTML = '';
-
-    this.cart.forEach((item, index) => {
-      const itemTotal = item.price * item.quantity;
-      grandTotal += itemTotal;
-
-      const itemEl = document.createElement('div');
-      itemEl.className = 'vs-cart-item';
-      itemEl.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" class="vs-cart-item-img">
-        <div class="vs-cart-item-info">
-          <div class="vs-cart-item-name">${item.name}</div>
-          <div class="vs-cart-item-variant">${item.variantName} × ${item.quantity}</div>
-          <div class="vs-cart-item-bottom">
-            <span class="vs-cart-item-price">₹${itemTotal.toLocaleString('en-IN')}</span>
-            <button type="button" class="vs-cart-item-remove" data-remove-index="${index}">Remove</button>
-          </div>
-        </div>
-      `;
-
-      itemEl.querySelector('.vs-cart-item-remove').addEventListener('click', () => {
-        this.cart.splice(index, 1);
-        this.saveCart();
-      });
-
-      itemsWrap.appendChild(itemEl);
+    this.cartManager.addItem({
+      productId: product.id,
+      variantId: this.selectedVariant.id,
+      name: product.fullName || product.name,
+      variantName: this.selectedVariant.name,
+      price: this.selectedVariant.price,
+      quantity: this.quantity,
+      image: product.image
     });
 
-    if (cartTotalEl) {
-      cartTotalEl.textContent = `₹${grandTotal.toLocaleString('en-IN')}`;
-    }
-  }
-
-  showToast(message) {
-    let toast = document.getElementById('vsToast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'vsToast';
-      toast.style.cssText = `
-        position: fixed;
-        bottom: 24px;
-        left: 24px;
-        background-color: #151E2B;
-        color: #FFFFFF;
-        padding: 14px 22px;
-        border-radius: 8px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-        border: 1px solid rgba(255,255,255,0.15);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        opacity: 0;
-        transform: translateY(12px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-      `;
-      document.body.appendChild(toast);
-    }
-
-    toast.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E86014" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-      <span>${message}</span>
-    `;
-
-    toast.style.opacity = '1';
-    toast.style.transform = 'translateY(0)';
-
-    clearTimeout(window.toastTimeout);
-    window.toastTimeout = setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(12px)';
-    }, 3500);
+    this.cartManager.proceedToCheckout();
   }
 }
 

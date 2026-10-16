@@ -13,6 +13,7 @@ import '../styles/secondary-cta.css';
 import '../styles/about-page.css';
 import '../styles/contact-page.css';
 import '../styles/collection-gallery.css';
+import '../styles/cart.css';
 import '../styles/footer.css';
 
 import { shopifyBannersConfig } from '../config/shopify-banners.config.js';
@@ -20,6 +21,7 @@ import { HeroCarousel } from './carousel.js';
 import { MobileNav } from './mobile-nav.js';
 import { ContactPageController } from './contact-form.js';
 import { DistributorshipFormController } from './distributorship-form.js';
+import { initSharedCart } from './cart.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Sticky Header Elevation
@@ -54,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('vsDistributorForm')) {
     new DistributorshipFormController('vsDistributorForm');
   }
+
+  // 6. Initialize Universal Shared Shopping Cart & Drawer
+  window.vsCart = initSharedCart();
 
   // 5. Smooth Anchor Link Handler
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

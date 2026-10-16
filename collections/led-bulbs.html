@@ -31,7 +31,11 @@
         </ul>
       </nav>
       <div class="vs-header-actions">
-        <a href="/buy-now.html?product=led-bulbs" class="vs-btn vs-btn-accent" id="headerBuyNowBtn">Buy Now</a>
+        <a href="/buy-now.html" class="vs-btn vs-btn-accent vs-btn-buynow" id="headerBuyNowBtn">
+          <svg class="vs-cart-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span>Buy Now</span>
+          <span class="vs-navbar-cart-count" id="navbarCartBadge">0</span>
+        </a>
         <a href="/buy-distributorship.html" class="vs-btn vs-btn-outline" id="headerDistributorBtn">Buy Distributorship</a>
         <button type="button" class="vs-menu-toggle" id="mobileMenuToggle" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
           <span class="vs-hamburger-bar"></span>
@@ -58,7 +62,11 @@
       <li><a href="/contact-us.html" class="vs-drawer-link">Contact</a></li>
     </ul>
     <div class="vs-drawer-actions">
-      <a href="/buy-now.html?product=led-bulbs" class="vs-btn vs-btn-accent">Buy Now</a>
+      <a href="/buy-now.html" class="vs-btn vs-btn-accent vs-btn-buynow" id="mobileBuyNowBtn">
+        <svg class="vs-cart-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span>Buy Now</span>
+        <span class="vs-navbar-cart-count" id="mobileNavbarCartBadge">0</span>
+      </a>
       <a href="/buy-distributorship.html" class="vs-btn vs-btn-outline">Buy Distributorship</a>
     </div>
   </aside>
@@ -99,7 +107,7 @@
 
         <div class="vs-gallery-grid">
           <!-- Product 1: High-Efficiency LED Household Bulbs -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="high-efficiency-led-bulb" data-product-name="High-Efficiency LED Household Bulbs (Multipack)">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">B22 Household Standard</span>
               <img src="/assets/images/products/led-bulbs.jpg" alt="High-Efficiency LED Household Bulbs" class="vs-gallery-img" loading="lazy">
@@ -109,19 +117,32 @@
               <p class="vs-gallery-desc">
                 Heavy-gauge aluminum heat-sink LED bulbs with wide-spread frosted diffusers and surge-protected drivers for everyday reliability.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="lb-9w-4p" data-price="449" selected>9W Cool Day (B22 Base) — Pack of 4 — ₹449</option>
+                  <option value="lb-12w-4p" data-price="599">12W Bright White (B22 Base) — Pack of 4 — ₹599</option>
+                  <option value="lb-18w-2p" data-price="499">18W High-Lumen Master — Pack of 2 — ₹499</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹449</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Pack of 4 (9W/12W)</span>
               </div>
-              <a href="/buy-now.html?product=high-efficiency-led-bulb" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="high-efficiency-led-bulb" data-product-name="High-Efficiency LED Household Bulbs (Multipack)" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=high-efficiency-led-bulb" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Product 2: Solar Hanging Filament Camping LED Bulb -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-hanging-filament-bulb" data-product-name="Solar Hanging Filament Camping LED Bulb">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Portable Solar Clip</span>
               <img src="/assets/images/products/led-bulb-1.jpg" alt="Solar Hanging Filament Camping LED Bulb" class="vs-gallery-img" loading="lazy">
@@ -131,19 +152,31 @@
               <p class="vs-gallery-desc">
                 Portable hanging bulb with vintage amber filament, integrated mini solar cell, top carabiner clip, and USB rechargeable battery.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="sh-1b" data-price="699" selected>Single Hanging Bulb with Clip — ₹699</option>
+                  <option value="sh-2b" data-price="1299">Twin Adventure Pack — ₹1,299</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹699</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Carabiner Included</span>
               </div>
-              <a href="/buy-now.html?product=solar-hanging-filament-bulb" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-hanging-filament-bulb" data-product-name="Solar Hanging Filament Camping LED Bulb" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=solar-hanging-filament-bulb" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Product 3: 12V DC Emergency Hanging Bulb with Battery Clips -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="dc-12v-battery-clip-bulb" data-product-name="12V DC Emergency Hanging Bulb with Battery Clips">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Direct 12V Battery</span>
               <img src="/assets/images/products/led-bulb-2.jpg" alt="12V DC Emergency Hanging Bulb with Battery Clips" class="vs-gallery-img" loading="lazy">
@@ -153,19 +186,32 @@
               <p class="vs-gallery-desc">
                 Heavy-duty 12-Volt DC LED bulb with pre-wired insulated cable and alligator clamps for direct connection to solar battery banks.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="dc-7w" data-price="349" selected>7W 12V DC Bulb with Clips — ₹349</option>
+                  <option value="dc-12w" data-price="449">12W 12V DC High-Output Bulb — ₹449</option>
+                  <option value="dc-3pk" data-price="999">3-Piece Multi-Room 12V DC Bundle — ₹999</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹349</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 7W - 12W DC</span>
               </div>
-              <a href="/buy-now.html?product=dc-12v-battery-clip-bulb" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="dc-12v-battery-clip-bulb" data-product-name="12V DC Emergency Hanging Bulb with Battery Clips" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=dc-12v-battery-clip-bulb" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Product 4: Solar Crystal Bubble Globe Festoon String Bulbs -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-crystal-globe-string-bulbs" data-product-name="Solar Crystal Bubble Globe Festoon String Bulbs">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Outdoor Festoon Chain</span>
               <img src="/assets/images/products/led-bulb-4.jpg" alt="Solar Crystal Bubble Globe Festoon String Bulbs" class="vs-gallery-img" loading="lazy">
@@ -175,14 +221,26 @@
               <p class="vs-gallery-desc">
                 Decorative outdoor crystal bubble globe string lights with high-efficiency ground-spike solar panel and 8 lighting modes.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="fest-5m" data-price="899" selected>20-Bulb 5-Metre String (Warm Glow) — ₹899</option>
+                  <option value="fest-10m" data-price="1499">50-Bulb 10-Metre Deluxe String — ₹1,499</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹899</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 5M / 10M String</span>
               </div>
-              <a href="/buy-now.html?product=solar-crystal-globe-string-bulbs" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-crystal-globe-string-bulbs" data-product-name="Solar Crystal Bubble Globe Festoon String Bulbs" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=solar-crystal-globe-string-bulbs" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
         </div>
@@ -261,6 +319,44 @@
       </div>
     </div>
   </footer>
+
+  <!-- ======================================================================
+       Shopping Cart Slide-Over Drawer
+       ====================================================================== -->
+  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="vs-cart-header">
+      <div class="vs-cart-title-wrap">
+        <h3 class="vs-cart-title">Your Cart</h3>
+        <span class="vs-cart-badge-count" id="cartBadgeCount">0</span>
+      </div>
+      <button type="button" class="vs-cart-close" id="cartDrawerClose" aria-label="Close cart drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="vs-cart-items-wrap" id="cartItemsWrap">
+      <!-- Items dynamically populated via VidhyutCart -->
+    </div>
+
+    <div class="vs-cart-footer">
+      <div class="vs-cart-total-row">
+        <span class="vs-cart-total-label">Subtotal (incl. GST):</span>
+        <span class="vs-cart-total-val" id="cartTotalVal">₹0</span>
+      </div>
+      <button type="button" class="vs-cart-checkout-btn" id="cartCheckoutBtn">
+        <span>Proceed to Checkout</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Floating Cart Quick Toggle Button -->
+  <button type="button" class="vs-floating-cart-btn" id="floatingCartBtn" aria-label="Open cart">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+    <span>Cart</span>
+    <span class="vs-floating-cart-badge" id="floatingCartBadge">0</span>
+  </button>
 
   <script type="module" src="/src/scripts/main.js"></script>
 </body>

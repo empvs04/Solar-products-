@@ -31,7 +31,11 @@
         </ul>
       </nav>
       <div class="vs-header-actions">
-        <a href="/buy-now.html?product=clamp-meters" class="vs-btn vs-btn-accent" id="headerBuyNowBtn">Buy Now</a>
+        <a href="/buy-now.html" class="vs-btn vs-btn-accent vs-btn-buynow" id="headerBuyNowBtn">
+          <svg class="vs-cart-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span>Buy Now</span>
+          <span class="vs-navbar-cart-count" id="navbarCartBadge">0</span>
+        </a>
         <a href="/buy-distributorship.html" class="vs-btn vs-btn-outline" id="headerDistributorBtn">Buy Distributorship</a>
         <button type="button" class="vs-menu-toggle" id="mobileMenuToggle" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
           <span class="vs-hamburger-bar"></span>
@@ -58,7 +62,11 @@
       <li><a href="/contact-us.html" class="vs-drawer-link">Contact</a></li>
     </ul>
     <div class="vs-drawer-actions">
-      <a href="/buy-now.html?product=clamp-meters" class="vs-btn vs-btn-accent">Buy Now</a>
+      <a href="/buy-now.html" class="vs-btn vs-btn-accent vs-btn-buynow" id="mobileBuyNowBtn">
+        <svg class="vs-cart-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span>Buy Now</span>
+        <span class="vs-navbar-cart-count" id="mobileNavbarCartBadge">0</span>
+      </a>
       <a href="/buy-distributorship.html" class="vs-btn vs-btn-outline">Buy Distributorship</a>
     </div>
   </aside>
@@ -99,7 +107,7 @@
 
         <div class="vs-gallery-grid">
           <!-- Product 1: MECO 27-AUTO Digital Clamp Meter -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="meco-27-auto-clamp-meter" data-product-name="MECO 27-AUTO Digital Clamp Meter (400A AC)">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">400A AC Auto-Ranging</span>
               <img src="/assets/images/products/clamp-meter-1.jpg" alt="MECO 27-AUTO Digital Clamp Meter" class="vs-gallery-img" loading="lazy">
@@ -109,19 +117,31 @@
               <p class="vs-gallery-desc">
                 Compact auto-ranging digital clamp meter with non-contact voltage (NCV) detection, data hold, audible continuity, and CAT III 600V safety.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="meco-std" data-price="1599" selected>Standard Kit with Test Leads — ₹1,599</option>
+                  <option value="meco-cal" data-price="2099">Calibration Certified Pro Kit — ₹2,099</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,599</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Leads Included</span>
               </div>
-              <a href="/buy-now.html?product=meco-27-auto-clamp-meter" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="meco-27-auto-clamp-meter" data-product-name="MECO 27-AUTO Digital Clamp Meter (400A AC)" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=meco-27-auto-clamp-meter" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Product 2: Themisto TH-M88 True RMS Digital Clamp Multimeter -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="themisto-th-m88-clamp-meter" data-product-name="Themisto TH-M88 True RMS Clamp Multimeter">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">True RMS with Case</span>
               <img src="/assets/images/products/clamp-meter-2.jpg" alt="Themisto TH-M88 True RMS Digital Clamp Multimeter" class="vs-gallery-img" loading="lazy">
@@ -131,19 +151,30 @@
               <p class="vs-gallery-desc">
                 4000-count True RMS digital clamp multimeter complete with thermocouple temperature probe, zipper carry pouch, and heavy-duty leads.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="them-kit" data-price="1899" selected>Complete Kit with Pouch & Thermocouple — ₹1,899</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,899</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Zipper Pouch Kit</span>
               </div>
-              <a href="/buy-now.html?product=themisto-th-m88-clamp-meter" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="themisto-th-m88-clamp-meter" data-product-name="Themisto TH-M88 True RMS Clamp Multimeter" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=themisto-th-m88-clamp-meter" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Product 3: DT-87 Handheld Pocket Digital Clamp Meter -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="dt87-pocket-clamp-meter" data-product-name="DT-87 Handheld Pocket Digital Clamp Meter">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Compact Handheld</span>
               <img src="/assets/images/products/clamp-meter-3.jpg" alt="DT-87 Handheld Pocket Digital Clamp Meter" class="vs-gallery-img" loading="lazy">
@@ -153,19 +184,30 @@
               <p class="vs-gallery-desc">
                 Lightweight ergonomic pocket clamp meter for quick AC current measurements, continuity tests, and domestic electrical maintenance.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="dt87-std" data-price="999" selected>Handheld Tester with Test Leads — ₹999</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹999</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Compact Pocket Size</span>
               </div>
-              <a href="/buy-now.html?product=dt87-pocket-clamp-meter" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="dt87-pocket-clamp-meter" data-product-name="DT-87 Handheld Pocket Digital Clamp Meter" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=dt87-pocket-clamp-meter" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Product 4: SIGMA SG 997 True RMS Auto-Ranging Clamp Multimeter -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="sigma-sg-997-clamp-meter" data-product-name="SIGMA SG 997 True RMS Clamp Multimeter">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Dual Display True RMS</span>
               <img src="/assets/images/products/clamp-meter-4.jpg" alt="SIGMA SG 997 True RMS Auto-Ranging Clamp Multimeter" class="vs-gallery-img" loading="lazy">
@@ -175,14 +217,26 @@
               <p class="vs-gallery-desc">
                 Industrial auto-ranging clamp meter with large backlit digital display, temperature measurement, NCV detector, and MAX 600V rating.
               </p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="sg997-pro" data-price="2499" selected>SG-997 Pro True RMS Multimeter — ₹2,499</option>
+                  <option value="sg997-dlx" data-price="2999">Deluxe Kit with Calibration Certificate — ₹2,999</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹2,499</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 600V MAX</span>
               </div>
-              <a href="/buy-now.html?product=sigma-sg-997-clamp-meter" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="sigma-sg-997-clamp-meter" data-product-name="SIGMA SG 997 True RMS Clamp Multimeter" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="/buy-now.html?product=sigma-sg-997-clamp-meter" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
         </div>
@@ -261,6 +315,44 @@
       </div>
     </div>
   </footer>
+
+  <!-- ======================================================================
+       Shopping Cart Slide-Over Drawer
+       ====================================================================== -->
+  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="vs-cart-header">
+      <div class="vs-cart-title-wrap">
+        <h3 class="vs-cart-title">Your Cart</h3>
+        <span class="vs-cart-badge-count" id="cartBadgeCount">0</span>
+      </div>
+      <button type="button" class="vs-cart-close" id="cartDrawerClose" aria-label="Close cart drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="vs-cart-items-wrap" id="cartItemsWrap">
+      <!-- Items dynamically populated via VidhyutCart -->
+    </div>
+
+    <div class="vs-cart-footer">
+      <div class="vs-cart-total-row">
+        <span class="vs-cart-total-label">Subtotal (incl. GST):</span>
+        <span class="vs-cart-total-val" id="cartTotalVal">₹0</span>
+      </div>
+      <button type="button" class="vs-cart-checkout-btn" id="cartCheckoutBtn">
+        <span>Proceed to Checkout</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Floating Cart Quick Toggle Button -->
+  <button type="button" class="vs-floating-cart-btn" id="floatingCartBtn" aria-label="Open cart">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+    <span>Cart</span>
+    <span class="vs-floating-cart-badge" id="floatingCartBadge">0</span>
+  </button>
 
   <script type="module" src="/src/scripts/main.js"></script>
 </body>

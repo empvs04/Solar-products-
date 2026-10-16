@@ -811,6 +811,19 @@
         var p = getActiveProduct();
         if (!p || !selectedVariant) return;
 
+        if (window.vsCart) {
+          window.vsCart.addItem({
+            productId: p.id,
+            variantId: selectedVariant.id,
+            name: p.fullName || p.name,
+            variantName: selectedVariant.name,
+            price: selectedVariant.price,
+            quantity: quantity,
+            image: (dir + p.image)
+          });
+          return;
+        }
+
         var existing = -1;
         for (var i = 0; i < cart.length; i++) {
           if (cart[i].productId === p.id && cart[i].variantId === selectedVariant.id) {
@@ -845,6 +858,20 @@
         e.preventDefault();
         var p = getActiveProduct();
         if (!p || !selectedVariant) return;
+
+        if (window.vsCart) {
+          window.vsCart.addItem({
+            productId: p.id,
+            variantId: selectedVariant.id,
+            name: p.fullName || p.name,
+            variantName: selectedVariant.name,
+            price: selectedVariant.price,
+            quantity: quantity,
+            image: (dir + p.image)
+          });
+          window.vsCart.proceedToCheckout();
+          return;
+        }
 
         var total = selectedVariant.price * quantity;
         var text = 'Hello Vidhyut Saathi, I want to purchase:\n\nProduct: ' + p.fullName + '\nModel: ' + selectedVariant.name + '\nQuantity: ' + quantity + '\nTotal Amount: ₹' + total.toLocaleString('en-IN') + ' (incl. GST)\n\nPlease share delivery details.';
@@ -884,6 +911,10 @@
 
     renderProduct(false);
     updateCartCount();
+    if (window.vsCart) {
+      window.vsCart.renderCartPage();
+      window.vsCart.updateBadges();
+    }
   }
 
   if (document.readyState === 'loading') {

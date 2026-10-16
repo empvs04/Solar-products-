@@ -80,7 +80,7 @@
       <div class="vs-gallery-grid">
         {%- if current_handle == 'solar-lights' -%}
           <!-- Solar Lights 1 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-street-light" data-product-name="All-in-One Solar Street Light">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Commercial Grade</span>
               <img src="{{ 'solar-lights.jpg' | asset_url }}" alt="All-in-One Solar Street Light" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -88,19 +88,32 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">All-in-One Solar Street Light</h2>
               <p class="vs-gallery-desc">Integrated solar luminaire with monocrystalline PV panel, LiFePO4 battery storage, and dusk-to-dawn radar sensor.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="sl-30w" data-price="3999" selected>30W Standard Street Light — ₹3,999</option>
+                  <option value="sl-15w" data-price="2499">15W Compact Luminaire — ₹2,499</option>
+                  <option value="sl-60w" data-price="6499">60W Heavy-Duty Luminaire — ₹6,499</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
-                <span class="vs-gallery-price">₹2,499</span>
+                <span class="vs-gallery-price">₹3,999</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 15W - 60W</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-street-light' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-street-light" data-product-name="All-in-One Solar Street Light" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-street-light' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Solar Lights 2 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-step-deck-lights" data-product-name="Solar Step & Deck Pathway Lights (Pack of 4)">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Pack of 4</span>
               <img src="{{ 'solar-lights-1.jpg' | asset_url }}" alt="Solar Step & Deck Pathway Lights" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -108,19 +121,31 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Solar Step & Deck Pathway Lights (Pack of 4)</h2>
               <p class="vs-gallery-desc">Weatherproof compact solar luminaires designed for staircases, perimeter fences, outdoor decks, and garden borders.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="step-4pk" data-price="1199" selected>4-Piece Pack (Warm Amber Glow) — ₹1,199</option>
+                  <option value="step-8pk" data-price="2199">8-Piece Deluxe Pack — ₹2,199</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,199</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 4-Piece Set</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-step-deck-lights' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-step-deck-lights" data-product-name="Solar Step & Deck Pathway Lights (Pack of 4)" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-step-deck-lights' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Solar Lights 3 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-motion-security-light" data-product-name="Solar Motion Sensor Security Wall Light">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Remote Controlled</span>
               <img src="{{ 'solar-led-lamps-2.jpg' | asset_url }}" alt="Solar Motion Sensor Security Wall Light" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -128,19 +153,31 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Solar Motion Sensor Security Wall Light</h2>
               <p class="vs-gallery-desc">Multi-segment wide-angle LED outdoor luminaire with sensitive PIR human motion sensor and infrared remote.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="mot-std" data-price="1599" selected>Standard Motion Sensor Light — ₹1,599</option>
+                  <option value="mot-remote" data-price="1899">Deluxe Dual-Sensor with Remote — ₹1,899</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,599</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; IR Remote</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-motion-security-light' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-motion-security-light" data-product-name="Solar Motion Sensor Security Wall Light" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-motion-security-light' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Solar Lights 4 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-vintage-wall-lantern" data-product-name="Vintage Solar Wall Lantern Sconce">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Architectural Decor</span>
               <img src="{{ 'solar-led-lamps-3.jpg' | asset_url }}" alt="Vintage Solar Wall Lantern Sconce" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -148,20 +185,32 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Vintage Solar Wall Lantern Sconce</h2>
               <p class="vs-gallery-desc">Classic outdoor carriage wall sconce featuring ambient LED filament lighting, top solar panel, and dusk-to-dawn optical switch.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="vnt-1x" data-price="1399" selected>Single Lantern Sconce — ₹1,399</option>
+                  <option value="vnt-2x" data-price="2599">Set of 2 Gate Pillar Sconces — ₹2,599</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,399</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; IP65 Rated</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-vintage-wall-lantern' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-vintage-wall-lantern" data-product-name="Vintage Solar Wall Lantern Sconce" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-vintage-wall-lantern' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
         {%- elsif current_handle == 'led-lamps' -%}
           <!-- LED Lamps 1 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="led-linear-architectural" data-product-name="Architectural Linear Suspended LED Luminaire">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Architectural Grade</span>
               <img src="{{ 'led-lamps.jpg' | asset_url }}" alt="Architectural Linear Suspended LED Luminaire" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -169,19 +218,32 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Architectural Linear Suspended LED Luminaire</h2>
               <p class="vs-gallery-desc">Anodized aluminum suspended luminaire and downlight providing glare-free, uniform light distribution for modern offices and homes.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="ll-20w" data-price="1299" selected>20W Linear Luminaire — ₹1,299</option>
+                  <option value="ll-36w" data-price="1899">36W Downlight Panel — ₹1,899</option>
+                  <option value="ll-48w" data-price="2499">48W Commercial Suspended — ₹2,499</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,299</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 20W - 48W</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=led-linear-architectural' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="led-linear-architectural" data-product-name="Architectural Linear Suspended LED Luminaire" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=led-linear-architectural' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- LED Lamps 2 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="portable-solar-flood-lamp" data-product-name="IP66 Heavy-Duty Rechargeable Flood Work Lamp">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Dual Solar & USB</span>
               <img src="{{ 'solar-led-lamps-1.jpg' | asset_url }}" alt="IP66 Heavy-Duty Rechargeable Flood Work Lamp" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -189,19 +251,31 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">IP66 Heavy-Duty Rechargeable Flood Work Lamp</h2>
               <p class="vs-gallery-desc">Multi-cell portable work floodlight with solar charging panel, phone power bank USB output, 180° kickstand, and IP66 casing.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="work-50w" data-price="1899" selected>50W High-Intensity Portable — ₹1,899</option>
+                  <option value="work-100w" data-price="2799">100W Dual-Battery Workmaster — ₹2,799</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,899</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 50W / 100W</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=portable-solar-flood-lamp' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="portable-solar-flood-lamp" data-product-name="IP66 Heavy-Duty Rechargeable Flood Work Lamp" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=portable-solar-flood-lamp' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- LED Lamps 3 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="rechargeable-emergency-lamp-tower" data-product-name="360° Multi-Tube Emergency Rechargeable Light Tower">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Omni-Directional</span>
               <img src="{{ 'solar-led-lamps-4.jpg' | asset_url }}" alt="360 Multi-Tube Emergency Light Tower" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -209,19 +283,31 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">360° Multi-Tube Emergency Light Tower</h2>
               <p class="vs-gallery-desc">Four-sided 360-degree high-lumen rechargeable emergency light lantern with dual AC mains and solar charging ports.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="tower-std" data-price="1499" selected>Standard 360° Light Tower — ₹1,499</option>
+                  <option value="tower-pro" data-price="1999">Pro High-Capacity Li-Ion — ₹1,999</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,499</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Dual AC/Solar</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=rechargeable-emergency-lamp-tower' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="rechargeable-emergency-lamp-tower" data-product-name="360° Multi-Tube Emergency Rechargeable Light Tower" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=rechargeable-emergency-lamp-tower' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- LED Lamps 4 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-architectural-wall-lamp" data-product-name="Solar Architectural Wall Luminaire Lamp">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Accent Luminaire</span>
               <img src="{{ 'solar-led-lamps-3.jpg' | asset_url }}" alt="Solar Architectural Wall Luminaire Lamp" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -229,20 +315,32 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Solar Architectural Wall Luminaire Lamp</h2>
               <p class="vs-gallery-desc">Modern architectural outdoor wall lamp with integrated solar array, clear diffusion chamber, and zero wiring installation.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="wal-1x" data-price="1399" selected>Single Luminaire Unit — ₹1,399</option>
+                  <option value="wal-2x" data-price="2599">Twin Architectural Pack — ₹2,599</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,399</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Auto Dusk-Dawn</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-architectural-wall-lamp' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-architectural-wall-lamp" data-product-name="Solar Architectural Wall Luminaire Lamp" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-architectural-wall-lamp' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
         {%- elsif current_handle == 'led-bulbs' -%}
           <!-- LED Bulbs 1 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="high-efficiency-led-bulb" data-product-name="High-Efficiency LED Household Bulbs (Multipack)">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">B22 Household Standard</span>
               <img src="{{ 'led-bulbs.jpg' | asset_url }}" alt="High-Efficiency LED Household Bulbs" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -250,19 +348,32 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">High-Efficiency LED Household Bulbs (Multipack)</h2>
               <p class="vs-gallery-desc">Heavy-gauge aluminum heat-sink LED bulbs with wide-spread frosted diffusers and surge-protected drivers for everyday reliability.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="lb-9w-4p" data-price="449" selected>9W Cool Day (B22 Base) — Pack of 4 — ₹449</option>
+                  <option value="lb-12w-4p" data-price="599">12W Bright White (B22 Base) — Pack of 4 — ₹599</option>
+                  <option value="lb-18w-2p" data-price="499">18W High-Lumen Master — Pack of 2 — ₹499</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹449</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Pack of 4 (9W/12W)</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=high-efficiency-led-bulb' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="high-efficiency-led-bulb" data-product-name="High-Efficiency LED Household Bulbs (Multipack)" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=high-efficiency-led-bulb' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- LED Bulbs 2 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-hanging-filament-bulb" data-product-name="Solar Hanging Filament Camping LED Bulb">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Portable Solar Clip</span>
               <img src="{{ 'led-bulb-1.jpg' | asset_url }}" alt="Solar Hanging Filament Camping LED Bulb" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -270,19 +381,31 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Solar Hanging Filament Camping LED Bulb</h2>
               <p class="vs-gallery-desc">Portable hanging bulb with vintage amber filament, integrated mini solar cell, top carabiner clip, and USB rechargeable battery.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="sh-1b" data-price="699" selected>Single Hanging Bulb with Clip — ₹699</option>
+                  <option value="sh-2b" data-price="1299">Twin Adventure Pack — ₹1,299</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹699</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Carabiner Included</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-hanging-filament-bulb' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-hanging-filament-bulb" data-product-name="Solar Hanging Filament Camping LED Bulb" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-hanging-filament-bulb' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- LED Bulbs 3 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="dc-12v-battery-clip-bulb" data-product-name="12V DC Emergency Hanging Bulb with Battery Clips">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Direct 12V Battery</span>
               <img src="{{ 'led-bulb-2.jpg' | asset_url }}" alt="12V DC Emergency Hanging Bulb with Battery Clips" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -290,19 +413,32 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">12V DC Emergency Hanging Bulb with Battery Clips</h2>
               <p class="vs-gallery-desc">Heavy-duty 12-Volt DC LED bulb with pre-wired insulated cable and alligator clamps for direct connection to solar battery banks.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="dc-7w" data-price="349" selected>7W 12V DC Bulb with Clips — ₹349</option>
+                  <option value="dc-12w" data-price="449">12W 12V DC High-Output Bulb — ₹449</option>
+                  <option value="dc-3pk" data-price="999">3-Piece Multi-Room 12V DC Bundle — ₹999</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹349</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 7W - 12W DC</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=dc-12v-battery-clip-bulb' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="dc-12v-battery-clip-bulb" data-product-name="12V DC Emergency Hanging Bulb with Battery Clips" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=dc-12v-battery-clip-bulb' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- LED Bulbs 4 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="solar-crystal-globe-string-bulbs" data-product-name="Solar Crystal Bubble Globe Festoon String Bulbs">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Outdoor Festoon Chain</span>
               <img src="{{ 'led-bulb-4.jpg' | asset_url }}" alt="Solar Crystal Bubble Globe Festoon String Bulbs" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -310,20 +446,32 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Solar Crystal Bubble Globe Festoon String Bulbs</h2>
               <p class="vs-gallery-desc">Decorative outdoor crystal bubble globe string lights with high-efficiency ground-spike solar panel and 8 lighting modes.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="fest-5m" data-price="899" selected>20-Bulb 5-Metre String (Warm Glow) — ₹899</option>
+                  <option value="fest-10m" data-price="1499">50-Bulb 10-Metre Deluxe String — ₹1,499</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹899</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 5M / 10M String</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-crystal-globe-string-bulbs' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="solar-crystal-globe-string-bulbs" data-product-name="Solar Crystal Bubble Globe Festoon String Bulbs" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-crystal-globe-string-bulbs' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
         {%- elsif current_handle == 'clamp-meters' -%}
           <!-- Clamp Meters 1 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="meco-27-auto-clamp-meter" data-product-name="MECO 27-AUTO Digital Clamp Meter (400A AC)">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">400A AC Auto-Ranging</span>
               <img src="{{ 'clamp-meter-1.jpg' | asset_url }}" alt="MECO 27-AUTO Digital Clamp Meter" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -331,19 +479,31 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">MECO 27-AUTO Digital Clamp Meter (400A AC)</h2>
               <p class="vs-gallery-desc">Compact auto-ranging digital clamp meter with non-contact voltage (NCV) detection, data hold, audible continuity, and CAT III 600V safety.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="meco-std" data-price="1599" selected>Standard Kit with Test Leads — ₹1,599</option>
+                  <option value="meco-cal" data-price="2099">Calibration Certified Pro Kit — ₹2,099</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,599</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Leads Included</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=meco-27-auto-clamp-meter' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="meco-27-auto-clamp-meter" data-product-name="MECO 27-AUTO Digital Clamp Meter (400A AC)" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=meco-27-auto-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Clamp Meters 2 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="themisto-th-m88-clamp-meter" data-product-name="Themisto TH-M88 True RMS Clamp Multimeter">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">True RMS with Case</span>
               <img src="{{ 'clamp-meter-2.jpg' | asset_url }}" alt="Themisto TH-M88 True RMS Digital Clamp Multimeter" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -351,19 +511,30 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">Themisto TH-M88 True RMS Clamp Multimeter</h2>
               <p class="vs-gallery-desc">4000-count True RMS digital clamp multimeter complete with thermocouple temperature probe, zipper carry pouch, and heavy-duty leads.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="them-kit" data-price="1899" selected>Complete Kit with Pouch & Thermocouple — ₹1,899</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹1,899</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Zipper Pouch Kit</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=themisto-th-m88-clamp-meter' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="themisto-th-m88-clamp-meter" data-product-name="Themisto TH-M88 True RMS Clamp Multimeter" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=themisto-th-m88-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Clamp Meters 3 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="dt87-pocket-clamp-meter" data-product-name="DT-87 Handheld Pocket Digital Clamp Meter">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Compact Handheld</span>
               <img src="{{ 'clamp-meter-3.jpg' | asset_url }}" alt="DT-87 Handheld Pocket Digital Clamp Meter" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -371,19 +542,30 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">DT-87 Handheld Pocket Digital Clamp Meter</h2>
               <p class="vs-gallery-desc">Lightweight ergonomic pocket clamp meter for quick AC current measurements, continuity tests, and domestic electrical maintenance.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="dt87-std" data-price="999" selected>Handheld Tester with Test Leads — ₹999</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹999</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; Compact Pocket Size</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=dt87-pocket-clamp-meter' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="dt87-pocket-clamp-meter" data-product-name="DT-87 Handheld Pocket Digital Clamp Meter" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=dt87-pocket-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <!-- Clamp Meters 4 -->
-          <article class="vs-gallery-card">
+          <article class="vs-gallery-card" data-product-id="sigma-sg-997-clamp-meter" data-product-name="SIGMA SG 997 True RMS Clamp Multimeter">
             <div class="vs-gallery-img-wrap">
               <span class="vs-gallery-card-badge">Dual Display True RMS</span>
               <img src="{{ 'clamp-meter-4.jpg' | asset_url }}" alt="SIGMA SG 997 True RMS Auto-Ranging Clamp Multimeter" class="vs-gallery-img" loading="lazy" width="600" height="600">
@@ -391,14 +573,26 @@
             <div class="vs-gallery-body">
               <h2 class="vs-gallery-title">SIGMA SG 997 True RMS Clamp Multimeter</h2>
               <p class="vs-gallery-desc">Industrial auto-ranging clamp meter with large backlit digital display, temperature measurement, NCV detector, and MAX 600V rating.</p>
+              <div class="vs-card-variant-row">
+                <select class="vs-card-variant-select" data-variant-select aria-label="Select variant">
+                  <option value="sg997-pro" data-price="2499" selected>SG-997 Pro True RMS Multimeter — ₹2,499</option>
+                  <option value="sg997-dlx" data-price="2999">Deluxe Kit with Calibration Certificate — ₹2,999</option>
+                </select>
+              </div>
               <div class="vs-gallery-price-row">
                 <span class="vs-gallery-price">₹2,499</span>
                 <span class="vs-gallery-gst">Incl. GST &bull; 600V MAX</span>
               </div>
-              <a href="{{ routes.root_url | append: 'pages/buy-now?product=sigma-sg-997-clamp-meter' }}" class="vs-gallery-buynow-btn">
-                <span>Buy Now</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </a>
+              <div class="vs-gallery-actions">
+                <button type="button" class="vs-gallery-addcart-btn" data-add-to-cart data-product-id="sigma-sg-997-clamp-meter" data-product-name="SIGMA SG 997 True RMS Clamp Multimeter" aria-label="Add to cart">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a href="{{ routes.root_url | append: 'pages/buy-now?product=sigma-sg-997-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                  <span>Buy Now</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
             </div>
           </article>
         {%- endif -%}
