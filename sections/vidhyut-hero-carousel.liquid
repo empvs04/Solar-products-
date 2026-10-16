@@ -26,6 +26,8 @@
           assign desktop_img = block.settings.desktop_image | default: block.settings.image
           assign mobile_img = block.settings.mobile_image | default: block.settings.image_mobile
 
+          assign slide_alt = block.settings.alt_text | default: block.settings.heading | default: 'Vidhyut Saathi Product Banner' | escape
+
           # Brand fallback asset images per slide index when no custom upload is provided
           case forloop.index
             when 1
@@ -83,13 +85,13 @@
                     fetchpriority: 'high',
                     sizes: '100vw',
                     widths: '600, 900, 1200, 1600, 1920, 2160',
-                    alt: block.settings.alt_text | default: block.settings.heading | escape,
+                    alt: slide_alt,
                     class: 'vs-slide-img'
                 }}
               {%- elsif default_desktop_asset != blank -%}
                 <img
                   src="{{ default_desktop_asset }}"
-                  alt="{{ block.settings.alt_text | default: block.settings.heading | escape }}"
+                  alt="{{ slide_alt }}"
                   class="vs-slide-img"
                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
                   {% if forloop.first %}fetchpriority="high"{% endif %}
