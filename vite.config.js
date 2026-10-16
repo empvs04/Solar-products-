@@ -16,7 +16,8 @@ export default defineConfig({
       input: {
         main: './index.html',
         about: './about-us.html',
-        contact: './contact-us.html'
+        contact: './contact-us.html',
+        buyNow: './buy-now.html'
       }
     }
   }

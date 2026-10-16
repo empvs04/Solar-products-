@@ -16,7 +16,8 @@
       "contact_us": "Contact Us"
     },
     "products": {
-      "view_product": "View Product"
+      "buy_now": "Buy Now",
+      "view_product": "Buy Now"
     },
     "footer": {
       "copyright": "All rights reserved."

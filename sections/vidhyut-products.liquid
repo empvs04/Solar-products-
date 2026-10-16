@@ -27,11 +27,12 @@
           <p class="vs-product-desc">
             All-in-one solar luminaires and street lighting with integrated PV panels, lithium storage, and dusk-to-dawn sensors for autonomous outdoor illumination.
           </p>
+          {%- capture default_solar_url -%}{{ routes.root_url | append: 'pages/buy-now?product=solar-lights' }}{%- endcapture -%}
           <a
-            href="{{ section.settings.solar_link | default: '#products-solar-lights' }}"
+            href="{{ section.settings.solar_link | default: default_solar_url }}"
             class="vs-product-btn"
           >
-            <span>View Product</span>
+            <span>Buy Now</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
         </div>
@@ -55,11 +56,12 @@
           <p class="vs-product-desc">
             Modern architectural linear lamps, downlights, and suspended luminaires designed for glare-free, uniform light distribution across workspaces and living areas.
           </p>
+          {%- capture default_lamp_url -%}{{ routes.root_url | append: 'pages/buy-now?product=led-lamps' }}{%- endcapture -%}
           <a
-            href="{{ section.settings.lamp_link | default: '#products-led-lamps' }}"
+            href="{{ section.settings.lamp_link | default: default_lamp_url }}"
             class="vs-product-btn"
           >
-            <span>View Product</span>
+            <span>Buy Now</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
         </div>
@@ -83,11 +85,12 @@
           <p class="vs-product-desc">
             High-efficacy, long-life LED bulbs engineered with robust thermal dissipation and high lumen output to ensure durable daily performance.
           </p>
+          {%- capture default_bulb_url -%}{{ routes.root_url | append: 'pages/buy-now?product=led-bulbs' }}{%- endcapture -%}
           <a
-            href="{{ section.settings.bulb_link | default: '#products-led-bulbs' }}"
+            href="{{ section.settings.bulb_link | default: default_bulb_url }}"
             class="vs-product-btn"
           >
-            <span>View Product</span>
+            <span>Buy Now</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
         </div>
@@ -111,11 +114,12 @@
           <p class="vs-product-desc">
             Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.
           </p>
+          {%- capture default_clamp_url -%}{{ routes.root_url | append: 'pages/buy-now?product=clamp-meters' }}{%- endcapture -%}
           <a
-            href="{{ section.settings.clamp_link | default: '#products-clamp-meters' }}"
+            href="{{ section.settings.clamp_link | default: default_clamp_url }}"
             class="vs-product-btn"
           >
-            <span>View Product</span>
+            <span>Buy Now</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
         </div>

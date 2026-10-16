@@ -1,0 +1,268 @@
+{{ 'vidhyut-buy-now.css' | asset_url | stylesheet_tag }}
+
+<main class="vs-buynow-page" id="buyNowSection">
+  <!-- Intro Banner -->
+  <section class="vs-buynow-intro">
+    <div class="vs-container">
+      <div class="vs-buynow-intro-inner">
+        <div class="vs-buynow-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span>{{ section.settings.badge | default: 'Direct Brand Store' }}</span>
+        </div>
+        <h1 class="vs-buynow-title">{{ section.settings.heading | default: 'Buy Now' }}</h1>
+        <p class="vs-buynow-subtitle">
+          {{ section.settings.subheading | default: 'Explore our solar and electrical products and select the solution that best suits your needs.' }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="vs-container">
+    <!-- Category Quick Switcher Tabs -->
+    <section class="vs-buynow-selector-wrap" aria-label="Product Category Selector">
+      <div class="vs-category-tabs">
+        <div class="vs-category-tab is-active" data-product-id="solar-lights">
+          <img src="{{ 'solar-lights.jpg' | asset_url }}" alt="Solar Lights" class="vs-cat-thumb" width="44" height="44" loading="lazy">
+          <div class="vs-cat-info">
+            <span class="vs-cat-name">Solar Lights</span>
+            <span class="vs-cat-badge">Solar Solutions</span>
+          </div>
+        </div>
+        <div class="vs-category-tab" data-product-id="led-lamps">
+          <img src="{{ 'led-lamps.jpg' | asset_url }}" alt="LED Lamps" class="vs-cat-thumb" width="44" height="44" loading="lazy">
+          <div class="vs-cat-info">
+            <span class="vs-cat-name">LED Lamps</span>
+            <span class="vs-cat-badge">Commercial & Indoor</span>
+          </div>
+        </div>
+        <div class="vs-category-tab" data-product-id="led-bulbs">
+          <img src="{{ 'led-bulbs.jpg' | asset_url }}" alt="LED Bulbs" class="vs-cat-thumb" width="44" height="44" loading="lazy">
+          <div class="vs-cat-info">
+            <span class="vs-cat-name">LED Bulbs</span>
+            <span class="vs-cat-badge">Energy Saving</span>
+          </div>
+        </div>
+        <div class="vs-category-tab" data-product-id="clamp-meters">
+          <img src="{{ 'clamp-meters.jpg' | asset_url }}" alt="Clamp Meters" class="vs-cat-thumb" width="44" height="44" loading="lazy">
+          <div class="vs-cat-info">
+            <span class="vs-cat-name">Clamp Meters</span>
+            <span class="vs-cat-badge">Electrical Testing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Selected Product Showcase -->
+    <section class="vs-product-showcase" id="productShowcase" aria-labelledby="productName">
+      <div class="vs-showcase-grid">
+        
+        <!-- Media Column -->
+        <div class="vs-showcase-media">
+          <div class="vs-main-img-card">
+            <span class="vs-media-badge" id="mediaCategoryBadge">Solar Solutions</span>
+            <img
+              src="{{ 'solar-lights.jpg' | asset_url }}"
+              alt="Selected Product"
+              id="mainProductImg"
+              class="vs-main-product-img"
+              width="600"
+              height="600"
+            >
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="vs-trust-grid">
+            <div class="vs-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>100% Genuine Quality</span>
+            </div>
+            <div class="vs-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span>Fast All-India Dispatch</span>
+            </div>
+            <div class="vs-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              <span>GST Tax Invoice Included</span>
+            </div>
+            <div class="vs-trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Direct Technical Support</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Purchasing Details Column -->
+        <div class="vs-showcase-details">
+          <div class="vs-details-meta">
+            <span class="vs-meta-category" id="productMetaCategory">Solar Solutions</span>
+            <span class="vs-stock-badge">
+              <span class="vs-stock-dot"></span>
+              <span id="productStockBadge">In Stock - Dispatch within 24h</span>
+            </span>
+          </div>
+
+          <h2 class="vs-product-name" id="productName">Solar Lights</h2>
+
+          <!-- Price Area -->
+          <div class="vs-price-box">
+            <span class="vs-price-current" id="priceCurrent">₹2,499</span>
+            <span class="vs-price-original" id="priceOriginal">₹3,200</span>
+            <span class="vs-price-discount" id="priceDiscount">22% OFF</span>
+            <div class="vs-price-note">
+              ✓ Inclusive of GST &bull; Free standard shipping across India
+            </div>
+          </div>
+
+          <p class="vs-details-desc" id="productDesc">
+            All-in-one solar luminaires and street lighting with integrated PV panels, lithium storage, and dusk-to-dawn sensors for autonomous outdoor illumination.
+          </p>
+
+          <!-- Variants Selection -->
+          <div class="vs-option-group">
+            <div class="vs-option-header">
+              <span class="vs-option-title">Select Model / Wattage:</span>
+              <span class="vs-option-selected-label" id="selectedVariantLabel">30W Standard Street Light</span>
+            </div>
+            <div class="vs-variant-cards" id="variantCardsWrap">
+              <!-- Dynamically populated via vidhyut-buy-now.js -->
+            </div>
+          </div>
+
+          <!-- Quantity & Subtotal Row -->
+          <div class="vs-qty-subtotal-row">
+            <div class="vs-qty-wrap">
+              <span class="vs-qty-label">Quantity:</span>
+              <div class="vs-qty-picker">
+                <button type="button" class="vs-qty-btn" id="qtyDec" aria-label="Decrease quantity">&minus;</button>
+                <input type="number" id="qtyInput" class="vs-qty-input" value="1" min="1" max="99" aria-label="Product quantity">
+                <button type="button" class="vs-qty-btn" id="qtyInc" aria-label="Increase quantity">&plus;</button>
+              </div>
+            </div>
+            <div class="vs-subtotal-display">
+              <div class="vs-subtotal-label">Estimated Subtotal:</div>
+              <div class="vs-subtotal-val" id="subtotalVal">₹2,499</div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="vs-action-buttons">
+            <button type="button" class="vs-btn-cart" id="addToCartBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <span>Add to Cart</span>
+            </button>
+            <button type="button" class="vs-btn-checkout" id="buyNowDirectBtn">
+              <span>Proceed to Order</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <!-- Direct Sales / Commercial Inquiry Snippet -->
+          <div class="vs-direct-inquiry">
+            <span>Looking for bulk commercial orders or dealership pricing?</span>
+            <a href="tel:{{ section.settings.contact_phone | default: '+918199036060' }}" class="vs-inquiry-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Call Sales Desk: {{ section.settings.contact_phone | default: '+91-8199036060' }}</span>
+            </a>
+          </div>
+
+          <!-- Product Specifications Table -->
+          <div class="vs-specs-section">
+            <h3 class="vs-specs-heading">Technical Specifications</h3>
+            <table class="vs-specs-table">
+              <tbody id="specsTableBody">
+                <!-- Dynamically populated via vidhyut-buy-now.js -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore More Products Recommendations -->
+    <section class="vs-recommendations" aria-labelledby="recHeading">
+      <div class="vs-rec-header">
+        <span class="vs-rec-badge">Complete Catalogue</span>
+        <h2 class="vs-rec-title" id="recHeading">Explore More Products</h2>
+      </div>
+      <div class="vs-rec-grid" id="recGrid">
+        <!-- Dynamically populated via vidhyut-buy-now.js -->
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Shopping Cart Slide-Over Drawer -->
+<div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop"></div>
+<aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+  <div class="vs-cart-header">
+    <div class="vs-cart-title-wrap">
+      <h3 class="vs-cart-title">Your Cart</h3>
+      <span class="vs-cart-badge-count" id="cartBadgeCount">0</span>
+    </div>
+    <button type="button" class="vs-cart-close" id="cartDrawerClose" aria-label="Close cart drawer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+
+  <div class="vs-cart-items-wrap" id="cartItemsWrap">
+    <!-- Items dynamically populated via vidhyut-buy-now.js -->
+  </div>
+
+  <div class="vs-cart-footer">
+    <div class="vs-cart-total-row">
+      <span class="vs-cart-total-label">Subtotal (incl. GST):</span>
+      <span class="vs-cart-total-val" id="cartTotalVal">₹0</span>
+    </div>
+    <button type="button" class="vs-cart-checkout-btn" id="cartCheckoutBtn">
+      <span>Proceed to Checkout</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+</aside>
+
+<!-- Floating Cart Quick Toggle Button -->
+<button type="button" class="vs-floating-cart-btn" id="floatingCartBtn" aria-label="Open cart">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+  <span>Cart</span>
+  <span class="vs-floating-cart-badge" id="floatingCartBadge">0</span>
+</button>
+
+<script src="{{ 'vidhyut-buy-now.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Buy Now Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Header Badge",
+      "default": "Direct Brand Store"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Buy Now"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Explore our solar and electrical products and select the solution that best suits your needs."
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Sales Contact Phone",
+      "default": "+91-8199036060"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Buy Now Showcase"
+    }
+  ]
+}
+{% endschema %}
