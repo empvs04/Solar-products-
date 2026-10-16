@@ -29,34 +29,117 @@
       <!-- Desktop Navigation -->
       <nav class="vs-nav-desktop" aria-label="Main Navigation">
         <ul class="vs-nav-list">
-          {%- if section.settings.contact_link != blank -%}
-            {%- assign contact_page_url = section.settings.contact_link -%}
-          {%- else -%}
-            {%- assign contact_page_url = routes.root_url | append: 'pages/contact-us' -%}
-          {%- endif -%}
+          {%- liquid
+            if section.settings.about_link != blank
+              assign about_page_url = section.settings.about_link
+            elsif pages['about-us'].url != blank
+              assign about_page_url = pages['about-us'].url
+            elsif pages['about'].url != blank
+              assign about_page_url = pages['about'].url
+            else
+              assign about_page_url = routes.root_url | append: 'pages/about-us'
+            endif
 
-          {%- if section.settings.about_link != blank -%}
-            {%- assign about_page_url = section.settings.about_link -%}
-          {%- else -%}
-            {%- assign about_page_url = routes.root_url | append: 'pages/about-us' -%}
-          {%- endif -%}
+            if section.settings.products_link != blank
+              assign products_page_url = section.settings.products_link
+            elsif routes.all_products_collection_url != blank and collections['all'].products_count > 0
+              assign products_page_url = routes.all_products_collection_url
+            else
+              assign products_page_url = routes.root_url | append: '#products'
+            endif
+
+            if section.settings.contact_link != blank
+              assign contact_page_url = section.settings.contact_link
+            elsif pages['contact-us'].url != blank
+              assign contact_page_url = pages['contact-us'].url
+            elsif pages['contact'].url != blank
+              assign contact_page_url = pages['contact'].url
+            else
+              assign contact_page_url = routes.root_url | append: 'pages/contact-us'
+            endif
+
+            assign menu_has_about = false
+            if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0
+              for l in linklists[section.settings.menu].links
+                assign l_clean = l.title | downcase | strip
+                if l_clean contains 'about'
+                  assign menu_has_about = true
+                endif
+              endfor
+            endif
+          -%}
 
           {%- if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0 -%}
             {%- for link in linklists[section.settings.menu].links -%}
-              <li>
-                <a
-                  href="{{ link.url }}"
-                  class="vs-nav-link {% if link.active or link.child_active %}is-active{% endif %}"
-                >
-                  {{ link.title }}
-                </a>
-              </li>
+              {%- assign link_title_clean = link.title | strip -%}
+              {%- assign link_title_downcase = link_title_clean | downcase -%}
+
+              {%- if link_title_downcase == 'home' -%}
+                <li>
+                  <a
+                    href="{{ link.url }}"
+                    class="vs-nav-link {% if link.active or template.name == 'index' %}is-active{% endif %}"
+                  >
+                    Home
+                  </a>
+                </li>
+                {%- unless menu_has_about -%}
+                  <li>
+                    <a
+                      href="{{ about_page_url }}"
+                      class="vs-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}"
+                    >
+                      About Us
+                    </a>
+                  </li>
+                {%- endunless -%}
+
+              {%- elsif link_title_downcase == 'about' or link_title_downcase == 'about us' -%}
+                <li>
+                  <a
+                    href="{{ link.url | default: about_page_url }}"
+                    class="vs-nav-link {% if link.active or page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}"
+                  >
+                    About Us
+                  </a>
+                </li>
+
+              {%- elsif link_title_downcase == 'catalog' or link_title_downcase == 'catalogue' or link_title_downcase == 'products' or link.url == '/collections/all' -%}
+                <li>
+                  <a
+                    href="{{ link.url | default: products_page_url }}"
+                    class="vs-nav-link {% if link.active or template.name == 'collection' %}is-active{% endif %}"
+                  >
+                    Products
+                  </a>
+                </li>
+
+              {%- elsif link_title_downcase == 'contact us' or link_title_downcase == 'contact' -%}
+                <li>
+                  <a
+                    href="{{ link.url | default: contact_page_url }}"
+                    class="vs-nav-link {% if link.active or page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}"
+                  >
+                    Contact
+                  </a>
+                </li>
+
+              {%- else -%}
+                <li>
+                  <a
+                    href="{{ link.url }}"
+                    class="vs-nav-link {% if link.active or link.child_active %}is-active{% endif %}"
+                  >
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endif -%}
             {%- endfor -%}
           {%- else -%}
             <li><a href="{{ routes.root_url }}" class="vs-nav-link {% if template.name == 'index' %}is-active{% endif %}">Home</a></li>
             <li><a href="{{ about_page_url }}" class="vs-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">About Us</a></li>
-            <li><a href="{{ routes.root_url }}#products" class="vs-nav-link">Products</a></li>
-            <li><a href="{{ contact_page_url }}" class="vs-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">Contact Us</a></li>
+            <li><a href="{{ products_page_url }}" class="vs-nav-link">Products</a></li>
+            <li><a href="{{ contact_page_url }}" class="vs-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">Contact</a></li>
           {%- endif -%}
         </ul>
       </nav>
@@ -128,15 +211,75 @@
   <ul class="vs-mobile-nav-list">
     {%- if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0 -%}
       {%- for link in linklists[section.settings.menu].links -%}
-        <li>
-          <a
-            href="{{ link.url }}"
-            class="vs-mobile-nav-link {% if link.active or link.child_active %}is-active{% endif %}"
-          >
-            <span>{{ link.title }}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </li>
+        {%- assign link_title_clean = link.title | strip -%}
+        {%- assign link_title_downcase = link_title_clean | downcase -%}
+
+        {%- if link_title_downcase == 'home' -%}
+          <li>
+            <a
+              href="{{ link.url }}"
+              class="vs-mobile-nav-link {% if link.active or template.name == 'index' %}is-active{% endif %}"
+            >
+              <span>Home</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+          {%- unless menu_has_about -%}
+            <li>
+              <a
+                href="{{ about_page_url }}"
+                class="vs-mobile-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}"
+              >
+                <span>About Us</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </li>
+          {%- endunless -%}
+
+        {%- elsif link_title_downcase == 'about' or link_title_downcase == 'about us' -%}
+          <li>
+            <a
+              href="{{ link.url | default: about_page_url }}"
+              class="vs-mobile-nav-link {% if link.active or page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}"
+            >
+              <span>About Us</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+
+        {%- elsif link_title_downcase == 'catalog' or link_title_downcase == 'catalogue' or link_title_downcase == 'products' or link.url == '/collections/all' -%}
+          <li>
+            <a
+              href="{{ link.url | default: products_page_url }}"
+              class="vs-mobile-nav-link {% if link.active or template.name == 'collection' %}is-active{% endif %}"
+            >
+              <span>Products</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+
+        {%- elsif link_title_downcase == 'contact us' or link_title_downcase == 'contact' -%}
+          <li>
+            <a
+              href="{{ link.url | default: contact_page_url }}"
+              class="vs-mobile-nav-link {% if link.active or page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}"
+            >
+              <span>Contact</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+
+        {%- else -%}
+          <li>
+            <a
+              href="{{ link.url }}"
+              class="vs-mobile-nav-link {% if link.active or link.child_active %}is-active{% endif %}"
+            >
+              <span>{{ link.title }}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </li>
+        {%- endif -%}
       {%- endfor -%}
     {%- else -%}
       <li>
@@ -152,14 +295,14 @@
         </a>
       </li>
       <li>
-        <a href="{{ routes.root_url }}#products" class="vs-mobile-nav-link">
+        <a href="{{ products_page_url }}" class="vs-mobile-nav-link">
           <span>Products</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </li>
       <li>
         <a href="{{ contact_page_url }}" class="vs-mobile-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">
-          <span>Contact Us</span>
+          <span>Contact</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </li>
@@ -218,6 +361,11 @@
       "type": "url",
       "id": "about_link",
       "label": "About Us Page Link"
+    },
+    {
+      "type": "url",
+      "id": "products_link",
+      "label": "Products Page Link"
     },
     {
       "type": "url",

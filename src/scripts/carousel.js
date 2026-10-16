@@ -122,6 +122,27 @@ export class HeroCarousel {
         this.startAutoplay();
       }
     });
+
+    // Shopify Theme Editor Integration
+    document.addEventListener('shopify:block:select', (e) => {
+      const blockEl = e.target;
+      if (!blockEl) return;
+      const slideEl = blockEl.classList?.contains('vs-carousel-slide')
+        ? blockEl
+        : blockEl.closest?.('.vs-carousel-slide');
+
+      if (slideEl) {
+        const slideIndex = parseInt(slideEl.getAttribute('data-slide-index'), 10);
+        if (!isNaN(slideIndex)) {
+          this.pause();
+          this.goTo(slideIndex);
+        }
+      }
+    });
+
+    document.addEventListener('shopify:block:deselect', () => {
+      this.resume();
+    });
   }
 
   handleTouchStart(e) {
