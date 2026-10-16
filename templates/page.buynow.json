@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical"
+      }
+    },
+    "main_buynow": {
+      "type": "vidhyut-buy-now",
+      "settings": {
+        "badge": "Direct Brand Store",
+        "heading": "Buy Now",
+        "subheading": "Explore our solar and electrical products and select the solution that best suits your needs."
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "main_buynow",
+    "footer"
+  ]
+}
