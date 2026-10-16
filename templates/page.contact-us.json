@@ -1,0 +1,28 @@
+{
+  "name": "Contact Us",
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical"
+      }
+    },
+    "main_contact": {
+      "type": "vidhyut-contact-page",
+      "settings": {
+        "page_title": "Contact Us",
+        "page_subtitle": "We're here to help you find the right solar and electrical products for your needs. Get in touch with our team for product enquiries, business opportunities, bulk orders, and general assistance."
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "main_contact",
+    "footer"
+  ]
+}

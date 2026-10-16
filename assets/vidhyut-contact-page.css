@@ -1,0 +1,909 @@
+/* ==========================================================================
+   Vidhyut Saathi - Dedicated Contact Us Page Styles (Shopify Theme Asset)
+   Corporate, Trustworthy, Modern Indian Solar & Electrical Brand
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Compact Hero & Breadcrumb Banner
+   -------------------------------------------------------------------------- */
+.vs-contact-hero {
+  background: linear-gradient(135deg, var(--color-midnight) 0%, var(--color-primary) 100%);
+  color: var(--color-white);
+  padding: 3.25rem 0 2.75rem 0;
+  border-bottom: 1px solid var(--color-border-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-contact-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 96, 20, 0.12) 0%, rgba(21, 30, 43, 0) 70%);
+  pointer-events: none;
+}
+
+.vs-contact-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.vs-contact-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+
+.vs-contact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(232, 96, 20, 0.15);
+  border: 1px solid rgba(232, 96, 20, 0.35);
+  color: #FFA26B;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+.vs-contact-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+.vs-contact-title {
+  color: var(--color-white);
+  font-size: clamp(2rem, 3.5vw + 0.5rem, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.vs-contact-hero-desc {
+  font-size: clamp(1rem, 1.2vw + 0.2rem, 1.125rem);
+  color: #E2E8F0;
+  line-height: 1.65;
+  margin-bottom: 0;
+  max-width: 720px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Contact Section (Two-Column Layout)
+   -------------------------------------------------------------------------- */
+.vs-contact-section {
+  padding: 4rem 0;
+  background-color: var(--color-bg-light);
+  position: relative;
+}
+
+.vs-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   3. Left Column: Contact Information Cards
+   -------------------------------------------------------------------------- */
+.vs-contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.vs-info-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 1.75rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  position: relative;
+}
+
+.vs-info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: #CBD5E1;
+}
+
+/* Prominent Call Us Card Styling */
+.vs-info-card--call {
+  border-left: 4px solid var(--color-accent);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+}
+
+.vs-info-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.vs-info-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: rgba(34, 58, 95, 0.08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.vs-info-card--call .vs-info-icon-box {
+  background-color: rgba(232, 96, 20, 0.1);
+  color: var(--color-accent);
+}
+
+.vs-info-card:hover .vs-info-icon-box {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.vs-info-card--call:hover .vs-info-icon-box {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.vs-info-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin-bottom: 0.2rem;
+  line-height: 1.25;
+}
+
+.vs-info-card-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Phone Numbers Grid */
+.vs-phones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.vs-phone-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radius-md);
+  background-color: #F8FAFC;
+  border: 1px solid var(--color-border);
+  color: var(--color-midnight);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.03em;
+  transition: all var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.vs-phone-btn:hover,
+.vs-phone-btn:focus-visible {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(34, 58, 95, 0.2);
+}
+
+.vs-phone-btn:hover .vs-phone-btn-action,
+.vs-phone-btn:focus-visible .vs-phone-btn-action {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.vs-phone-number-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.vs-phone-btn-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.vs-phone-btn:hover .vs-phone-btn-icon {
+  color: #FFA26B;
+}
+
+.vs-phone-btn-action {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: #E2E8F0;
+  color: var(--color-text-main);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+/* Email & Address Details */
+.vs-info-card-text {
+  font-size: 0.9375rem;
+  color: var(--color-text-main);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.vs-info-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 0.5rem 0.85rem;
+  background-color: #F1F5F9;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.vs-info-email-link:hover,
+.vs-info-email-link:focus-visible {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.vs-info-address-text {
+  font-size: 0.9375rem;
+  color: var(--color-text-main);
+  line-height: 1.6;
+  margin-bottom: 0.85rem;
+}
+
+.vs-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.vs-map-link:hover,
+.vs-map-link:focus-visible {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+/* Business Enquiries Card */
+.vs-business-card {
+  background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+  border: 1px solid #BFDBFE;
+}
+
+.vs-business-badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.vs-mini-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--color-white);
+  border: 1px solid #DBEAFE;
+  color: var(--color-primary);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+}
+
+/* --------------------------------------------------------------------------
+   4. Right Column: Main Contact Form Card
+   -------------------------------------------------------------------------- */
+.vs-form-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  padding: 2.5rem;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+  position: relative;
+}
+
+.vs-form-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+}
+
+.vs-form-heading {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text-heading);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.vs-form-subtext {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.vs-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.vs-form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.vs-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.vs-form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-heading);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.vs-form-required {
+  color: #DC2626;
+  font-weight: 700;
+}
+
+.vs-form-optional {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-left: 0.25rem;
+}
+
+.vs-form-input,
+.vs-form-select,
+.vs-form-textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text-main);
+  background-color: #FAFCFE;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1rem;
+  transition: all var(--transition-fast);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.vs-form-input:focus,
+.vs-form-select:focus,
+.vs-form-textarea:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(34, 58, 95, 0.12);
+}
+
+.vs-form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.vs-form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.vs-form-input::placeholder,
+.vs-form-textarea::placeholder {
+  color: #94A3B8;
+  font-size: 0.875rem;
+}
+
+/* Validation Feedback States */
+.vs-form-input.is-invalid,
+.vs-form-select.is-invalid,
+.vs-form-textarea.is-invalid {
+  border-color: #DC2626 !important;
+  background-color: #FEF2F2;
+}
+
+.vs-form-input.is-valid,
+.vs-form-select.is-valid,
+.vs-form-textarea.is-valid {
+  border-color: #16A34A;
+}
+
+.vs-field-error {
+  font-size: 0.8125rem;
+  color: #DC2626;
+  font-weight: 500;
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.vs-form-group.has-error .vs-field-error {
+  display: flex;
+}
+
+/* Submit Button & Actions */
+.vs-form-submit-wrap {
+  margin-top: 0.75rem;
+}
+
+.vs-form-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.75rem;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(232, 96, 20, 0.25);
+}
+
+.vs-form-submit-btn:hover,
+.vs-form-submit-btn:focus-visible {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 96, 20, 0.35);
+}
+
+.vs-form-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.vs-btn-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--color-white);
+  border-radius: 50%;
+  animation: vsSpin 0.7s linear infinite;
+}
+
+@keyframes vsSpin {
+  to { transform: rotate(360deg); }
+}
+
+.vs-form-submit-btn.is-loading .vs-btn-spinner {
+  display: inline-block;
+}
+
+.vs-form-submit-btn.is-loading .vs-btn-icon {
+  display: none;
+}
+
+/* Alerts and Form Notification Banners */
+.vs-form-alert {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  display: none;
+  margin-bottom: 1.5rem;
+}
+
+.vs-form-alert.is-visible {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.vs-form-alert--success {
+  background-color: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  color: #166534;
+}
+
+.vs-form-alert--error {
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #991B1B;
+}
+
+.vs-form-alert--info {
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: #1E40AF;
+}
+
+.vs-form-alert-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Secondary Business & Distributorship CTA Section
+   -------------------------------------------------------------------------- */
+.vs-contact-cta-section {
+  padding: 4.5rem 0;
+  background: linear-gradient(135deg, var(--color-midnight) 0%, var(--color-primary) 100%);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-contact-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 50%, rgba(232, 96, 20, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.vs-contact-cta-card {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.vs-contact-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFA26B;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.25rem;
+}
+
+.vs-contact-cta-heading {
+  font-size: clamp(1.85rem, 3.2vw + 0.3rem, 2.75rem);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.vs-contact-cta-text {
+  font-size: clamp(1rem, 1.2vw + 0.1rem, 1.15rem);
+  color: #E2E8F0;
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 0 auto 2.25rem auto;
+}
+
+.vs-contact-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.vs-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.85rem;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(232, 96, 20, 0.3);
+}
+
+.vs-cta-btn-primary:hover,
+.vs-cta-btn-primary:focus-visible {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 96, 20, 0.4);
+}
+
+.vs-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.85rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(8px);
+}
+
+.vs-cta-btn-secondary:hover,
+.vs-cta-btn-secondary:focus-visible {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   6. Compact FAQ Section (Accordion)
+   -------------------------------------------------------------------------- */
+.vs-contact-faq-section {
+  padding: 4.5rem 0;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+}
+
+.vs-faq-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem auto;
+}
+
+.vs-faq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.75rem;
+}
+
+.vs-faq-title {
+  font-size: clamp(1.75rem, 2.5vw + 0.5rem, 2.25rem);
+  font-weight: 800;
+  color: var(--color-text-heading);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.vs-faq-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.vs-faq-accordion {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vs-faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: #FAFCFE;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
+}
+
+.vs-faq-item.is-open {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  background-color: var(--color-white);
+}
+
+.vs-faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  color: var(--color-text-heading);
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: color var(--transition-fast);
+}
+
+.vs-faq-question:hover,
+.vs-faq-question:focus-visible {
+  color: var(--color-primary);
+}
+
+.vs-faq-toggle-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #EFF6FF;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.vs-faq-item.is-open .vs-faq-toggle-icon {
+  transform: rotate(180deg);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.vs-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vs-faq-item.is-open .vs-faq-answer {
+  max-height: 250px;
+}
+
+.vs-faq-answer-inner {
+  padding: 0 1.5rem 1.35rem 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-main);
+  line-height: 1.65;
+  border-top: 1px dashed rgba(226, 232, 240, 0.8);
+  padding-top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Responsiveness & Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .vs-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .vs-form-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .vs-contact-hero {
+    padding: 2.5rem 0 2rem 0;
+  }
+
+  .vs-contact-section {
+    padding: 2.75rem 0;
+  }
+
+  .vs-form-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .vs-form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .vs-info-card {
+    padding: 1.35rem;
+  }
+
+  .vs-phone-btn {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .vs-contact-cta-section {
+    padding: 3.25rem 0;
+  }
+
+  .vs-contact-cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .vs-cta-btn-primary,
+  .vs-cta-btn-secondary {
+    width: 100%;
+  }
+
+  .vs-faq-question {
+    padding: 1rem 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .vs-faq-answer-inner {
+    padding: 0 1.15rem 1.15rem 1.15rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .vs-phone-btn {
+    font-size: 0.9375rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .vs-phone-btn-action {
+    display: none; /* Keep number full width on very narrow 320px screens */
+  }
+
+  .vs-form-card {
+    padding: 1.25rem 1rem;
+  }
+}

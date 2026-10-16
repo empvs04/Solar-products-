@@ -29,10 +29,10 @@
       <!-- Desktop Navigation -->
       <nav class="vs-nav-desktop" aria-label="Main Navigation">
         <ul class="vs-nav-list">
-          <li><a href="{{ routes.root_url }}" class="vs-nav-link is-active">Home</a></li>
-          <li><a href="{{ routes.root_url }}pages/about-us" class="vs-nav-link">About Us</a></li>
+          <li><a href="{{ routes.root_url }}" class="vs-nav-link {% if template.name == 'index' %}is-active{% endif %}">Home</a></li>
+          <li><a href="{{ routes.root_url }}pages/about-us" class="vs-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">About Us</a></li>
           <li><a href="{{ routes.root_url }}#products" class="vs-nav-link">Products</a></li>
-          <li><a href="#contact" class="vs-nav-link">Contact Us</a></li>
+          <li><a href="{{ routes.root_url }}pages/contact-us" class="vs-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">Contact Us</a></li>
         </ul>
       </nav>
 
@@ -102,25 +102,25 @@
 
   <ul class="vs-mobile-nav-list">
     <li>
-      <a href="{{ routes.root_url }}" class="vs-mobile-nav-link is-active">
+      <a href="{{ routes.root_url }}" class="vs-mobile-nav-link {% if template.name == 'index' %}is-active{% endif %}">
         <span>Home</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
     </li>
     <li>
-      <a href="{{ routes.root_url }}pages/about-us" class="vs-mobile-nav-link">
+      <a href="{{ routes.root_url }}pages/about-us" class="vs-mobile-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">
         <span>About Us</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
     </li>
     <li>
-      <a href="#products" class="vs-mobile-nav-link">
+      <a href="{{ routes.root_url }}#products" class="vs-mobile-nav-link">
         <span>Products</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
     </li>
     <li>
-      <a href="#contact" class="vs-mobile-nav-link">
+      <a href="{{ routes.root_url }}pages/contact-us" class="vs-mobile-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">
         <span>Contact Us</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>

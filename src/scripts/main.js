@@ -11,11 +11,13 @@ import '../styles/why-choose.css';
 import '../styles/distributorship.css';
 import '../styles/secondary-cta.css';
 import '../styles/about-page.css';
+import '../styles/contact-page.css';
 import '../styles/footer.css';
 
 import { shopifyBannersConfig } from '../config/shopify-banners.config.js';
 import { HeroCarousel } from './carousel.js';
 import { MobileNav } from './mobile-nav.js';
+import { ContactPageController } from './contact-form.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Sticky Header Elevation
@@ -41,7 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     new HeroCarousel(carouselEl, shopifyBannersConfig);
   }
 
-  // 4. Smooth Anchor Link Handler
+  // 4. Initialize Contact Page Controller
+  if (document.getElementById('vsContactForm') || document.querySelector('.vs-contact-section')) {
+    new ContactPageController();
+  }
+
+  // 5. Smooth Anchor Link Handler
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');

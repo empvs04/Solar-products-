@@ -1,0 +1,602 @@
+{% comment %}
+  Vidhyut Saathi - Contact Us Page Section
+  Includes Hero, Verified Contact Details (both official phone numbers: 90531 10707 and 81990 36060),
+  Shopify Native Contact Form with Client-Side Validation, Business CTA, and FAQ Accordion.
+{% endcomment %}
+
+<!-- Contact Us Hero Banner -->
+<section class="vs-contact-hero" aria-label="Contact Us Banner">
+  <div class="vs-container">
+    <div class="vs-contact-hero-content">
+      <nav class="vs-breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span class="vs-breadcrumb-sep">/</span>
+        <span aria-current="page">Contact Us</span>
+      </nav>
+
+      <div class="vs-contact-badge">
+        <span class="vs-contact-badge-dot"></span>
+        <span>{{ section.settings.badge_text | default: 'Vidhyut Saathi Support & Business Desk' }}</span>
+      </div>
+
+      <h1 class="vs-contact-title">
+        {{ section.settings.page_title | default: 'Contact Us' }}
+      </h1>
+
+      <p class="vs-contact-hero-desc">
+        {{ section.settings.page_subtitle | default: "We're here to help you find the right solar and electrical products for your needs. Get in touch with our team for product enquiries, business opportunities, bulk orders, and general assistance." }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Contact Section: Contact Info & Form -->
+<section class="vs-contact-section" id="contactSection">
+  <div class="vs-container">
+    <div class="vs-contact-grid">
+
+      <!-- Left Column: Verified Contact Information Cards -->
+      <div class="vs-contact-info-col">
+
+        <!-- Card 1: Official Call Us (High Priority - Both Official Numbers) -->
+        <div class="vs-info-card vs-info-card--call">
+          <div class="vs-info-card-header">
+            <div class="vs-info-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="vs-info-card-title">Call Us</h2>
+              <p class="vs-info-card-subtitle">Direct telephonic support for sales & product queries</p>
+            </div>
+          </div>
+
+          <div class="vs-phones-container">
+            <!-- Official Number 1: 90531 10707 -->
+            <a
+              href="tel:+919053110707"
+              class="vs-phone-btn"
+              id="callBtn1"
+              aria-label="Call Vidhyut Saathi at 90531 10707"
+            >
+              <div class="vs-phone-number-wrap">
+                <svg class="vs-phone-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>90531 10707</span>
+              </div>
+              <span class="vs-phone-btn-action">Call Now</span>
+            </a>
+
+            <!-- Official Number 2: 81990 36060 -->
+            <a
+              href="tel:+918199036060"
+              class="vs-phone-btn"
+              id="callBtn2"
+              aria-label="Call Vidhyut Saathi at 81990 36060"
+            >
+              <div class="vs-phone-number-wrap">
+                <svg class="vs-phone-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>81990 36060</span>
+              </div>
+              <span class="vs-phone-btn-action">Call Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Email Us -->
+        <div class="vs-info-card">
+          <div class="vs-info-card-header">
+            <div class="vs-info-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h2 class="vs-info-card-title">Email Us</h2>
+              <p class="vs-info-card-subtitle">For brochures, formal quotations & general queries</p>
+            </div>
+          </div>
+          <p class="vs-info-card-text">
+            Send your enquiries directly to our official corporate mailbox:
+          </p>
+          <a href="mailto:{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}" class="vs-info-email-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}</span>
+          </a>
+        </div>
+
+        <!-- Card 3: Office Address -->
+        <div class="vs-info-card">
+          <div class="vs-info-card-header">
+            <div class="vs-info-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div>
+              <h2 class="vs-info-card-title">Office Address</h2>
+              <p class="vs-info-card-subtitle">Vidhyut Saathi Corporate Office</p>
+            </div>
+          </div>
+          <p class="vs-info-address-text">
+            {{ section.settings.address | default: 'SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India' }}
+          </p>
+          <a
+            href="https://maps.google.com/?q=SCO-77A,+3rd+Floor,+Ashoka+Complex,+Delhi+Road,+Rohtak+-+124001,+Haryana,+India"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="vs-map-link"
+          >
+            <span>View on Google Maps</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Card 4: Business Enquiries -->
+        <div class="vs-info-card vs-business-card">
+          <div class="vs-info-card-header">
+            <div class="vs-info-icon-box" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="vs-info-card-title">Business Enquiries</h2>
+              <p class="vs-info-card-subtitle">Bulk procurement & distributorship network</p>
+            </div>
+          </div>
+          <p class="vs-info-card-text">
+            We actively support commercial dealers, electrical retailers, government contractors, and solar installation partners across India with customized solutions and direct supply.
+          </p>
+          <div class="vs-business-badge-list">
+            <span class="vs-mini-badge">Bulk Orders</span>
+            <span class="vs-mini-badge">Dealership / Distributorship</span>
+            <span class="vs-mini-badge">Solar Lighting Projects</span>
+            <span class="vs-mini-badge">Electrical Tools</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Main Contact Form -->
+      <div class="vs-form-card">
+        <div class="vs-form-header">
+          <h2 class="vs-form-heading">Send Us a Message</h2>
+          <p class="vs-form-subtext">
+            Have a question about our products or business opportunities? Share your details and our team can assist you.
+          </p>
+        </div>
+
+        <!-- Shopify Native Form Wrapper -->
+        {% form 'contact', id: 'vsContactForm', class: 'vs-contact-form', data-shopify-form: 'true' %}
+
+          <!-- Success Alert Notification -->
+          {% if form.posted_successfully? %}
+            <div class="vs-form-alert vs-form-alert--success is-visible" role="status">
+              <svg class="vs-form-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <div>
+                <strong>Thank you!</strong> Your message has been sent successfully. Our team will review your enquiry and get back to you shortly.
+              </div>
+            </div>
+          {% endif %}
+
+          <!-- Error Alert Notification -->
+          {% if form.errors %}
+            <div class="vs-form-alert vs-form-alert--error is-visible" role="alert">
+              <svg class="vs-form-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <div>
+                <strong>Please check the errors below:</strong>
+                {{ form.errors | default_errors }}
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="vs-form-alert vs-form-alert--success" id="contactAlertSuccess" role="status">
+            <svg class="vs-form-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <div>
+              <strong>Thank you!</strong> Your message has been received. Our team will review your enquiry and get back to you shortly.
+            </div>
+          </div>
+
+          <div class="vs-form-alert vs-form-alert--error" id="contactAlertError" role="alert">
+            <svg class="vs-form-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div id="contactAlertErrorText">
+              Please review the required fields below and try again.
+            </div>
+          </div>
+
+          <!-- Row 1: Full Name & Email Address -->
+          <div class="vs-form-row-2col">
+            <!-- Full Name (Required) -->
+            <div class="vs-form-group">
+              <label for="contactName" class="vs-form-label">
+                <span>Full Name</span>
+                <span class="vs-form-required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="contactName"
+                name="contact[name]"
+                class="vs-form-input"
+                placeholder="Enter your full name"
+                required
+                autocomplete="name"
+                value="{% if form.name %}{{ form.name }}{% endif %}"
+              >
+              <div class="vs-field-error" id="nameError">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <span class="vs-field-error-text">Please enter your full name.</span>
+              </div>
+            </div>
+
+            <!-- Email Address (Required) -->
+            <div class="vs-form-group">
+              <label for="contactEmail" class="vs-form-label">
+                <span>Email Address</span>
+                <span class="vs-form-required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="contactEmail"
+                name="contact[email]"
+                class="vs-form-input"
+                placeholder="name@example.com"
+                required
+                autocomplete="email"
+                value="{% if form.email %}{{ form.email }}{% endif %}"
+              >
+              <div class="vs-field-error" id="emailError">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <span class="vs-field-error-text">Please enter a valid email address.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Phone Number (Optional) & Enquiry Type (Required) -->
+          <div class="vs-form-row-2col">
+            <!-- Phone Number (Optional) -->
+            <div class="vs-form-group">
+              <label for="contactPhone" class="vs-form-label">
+                <span>Phone Number</span>
+                <span class="vs-form-optional">(Optional)</span>
+              </label>
+              <input
+                type="tel"
+                id="contactPhone"
+                name="contact[phone]"
+                class="vs-form-input"
+                placeholder="10-digit mobile number"
+                autocomplete="tel"
+                value="{% if form.phone %}{{ form.phone }}{% endif %}"
+              >
+              <div class="vs-field-error" id="phoneError">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <span class="vs-field-error-text">Please enter a valid phone number.</span>
+              </div>
+            </div>
+
+            <!-- Enquiry Type (Required) -->
+            <div class="vs-form-group">
+              <label for="contactEnquiryType" class="vs-form-label">
+                <span>Enquiry Type</span>
+                <span class="vs-form-required" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="contactEnquiryType"
+                name="contact[enquiry_type]"
+                class="vs-form-select"
+                required
+              >
+                <option value="" disabled selected>-- Select Enquiry Type --</option>
+                <option value="Product Enquiry">Product Enquiry</option>
+                <option value="Solar Lighting">Solar Lighting</option>
+                <option value="LED Lights & Bulbs">LED Lights &amp; Bulbs</option>
+                <option value="Clamp Meters & Electrical Tools">Clamp Meters &amp; Electrical Tools</option>
+                <option value="Bulk Order">Bulk Order</option>
+                <option value="Distributorship Enquiry">Distributorship Enquiry</option>
+                <option value="General Enquiry">General Enquiry</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="vs-field-error" id="enquiryTypeError">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <span class="vs-field-error-text">Please select an enquiry category.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Company / Business Name (Optional) -->
+          <div class="vs-form-group">
+            <label for="contactCompany" class="vs-form-label">
+              <span>Company / Business Name</span>
+              <span class="vs-form-optional">(Optional)</span>
+            </label>
+            <input
+              type="text"
+              id="contactCompany"
+              name="contact[company]"
+              class="vs-form-input"
+              placeholder="Your company, agency, or retail store name"
+              autocomplete="organization"
+            >
+          </div>
+
+          <!-- Row 4: Subject (Required) -->
+          <div class="vs-form-group">
+            <label for="contactSubject" class="vs-form-label">
+              <span>Subject</span>
+              <span class="vs-form-required" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="contactSubject"
+              name="contact[subject]"
+              class="vs-form-input"
+              placeholder="Brief summary of your enquiry"
+              required
+            >
+            <div class="vs-field-error" id="subjectError">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span class="vs-field-error-text">Please enter an enquiry subject.</span>
+            </div>
+          </div>
+
+          <!-- Row 5: Message (Required) -->
+          <div class="vs-form-group">
+            <label for="contactMessage" class="vs-form-label">
+              <span>Message</span>
+              <span class="vs-form-required" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="contactMessage"
+              name="contact[body]"
+              class="vs-form-textarea"
+              rows="5"
+              placeholder="Please describe your requirements, questions, estimated order quantities, or business background..."
+              required
+            >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            <div class="vs-field-error" id="messageError">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span class="vs-field-error-text">Please provide your message details.</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="vs-form-submit-wrap">
+            <button
+              type="submit"
+              class="vs-form-submit-btn"
+              id="contactSubmitBtn"
+            >
+              <span class="vs-btn-spinner" aria-hidden="true"></span>
+              <svg class="vs-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span>Send Message</span>
+            </button>
+          </div>
+
+        {% endform %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Secondary Business & Distributorship CTA Section -->
+<section class="vs-contact-cta-section" id="businessCtaSection" aria-label="Business Opportunities">
+  <div class="vs-container">
+    <div class="vs-contact-cta-card">
+      <div class="vs-contact-cta-badge">
+        <span>Channel &amp; Distribution Partnerships</span>
+      </div>
+
+      <h2 class="vs-contact-cta-heading">
+        Looking for Business or Distributorship Opportunities?
+      </h2>
+
+      <p class="vs-contact-cta-text">
+        Contact Vidhyut Saathi to discuss product enquiries, bulk purchasing requirements, and potential business opportunities.
+      </p>
+
+      <div class="vs-contact-cta-actions">
+        <a
+          href="{{ routes.root_url }}#distributorship"
+          class="vs-cta-btn-primary"
+          id="contactDistributorBtn"
+        >
+          <span>Buy Distributorship</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a
+          href="{{ routes.root_url }}#products"
+          class="vs-cta-btn-secondary"
+          id="contactProductsBtn"
+        >
+          <span>Explore Products</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Compact FAQ Section (Accordion) -->
+<section class="vs-contact-faq-section" id="faqSection" aria-label="Frequently Asked Questions">
+  <div class="vs-container">
+    <div class="vs-faq-header">
+      <div class="vs-faq-badge">
+        <span>Help &amp; Information</span>
+      </div>
+      <h2 class="vs-faq-title">Frequently Asked Questions</h2>
+      <p class="vs-faq-subtitle">
+        Quick answers to common questions about product enquiries, bulk purchasing, and distributorship.
+      </p>
+    </div>
+
+    <div class="vs-faq-accordion" id="faqAccordion">
+
+      <!-- FAQ Item 1 -->
+      <div class="vs-faq-item is-open">
+        <button
+          type="button"
+          class="vs-faq-question"
+          aria-expanded="true"
+          aria-controls="faqAnswer1"
+          id="faqQuestion1"
+        >
+          <span>How can I enquire about a product?</span>
+          <span class="vs-faq-toggle-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </button>
+        <div class="vs-faq-answer" id="faqAnswer1" role="region" aria-labelledby="faqQuestion1">
+          <div class="vs-faq-answer-inner">
+            You can submit your enquiry using the contact form on this page by selecting the relevant product category, or call our customer support lines directly at <strong>90531 10707</strong> and <strong>81990 36060</strong>. Our team will provide detailed product specifications, availability, and pricing.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="vs-faq-item">
+        <button
+          type="button"
+          class="vs-faq-question"
+          aria-expanded="false"
+          aria-controls="faqAnswer2"
+          id="faqQuestion2"
+        >
+          <span>How can I enquire about bulk orders?</span>
+          <span class="vs-faq-toggle-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </button>
+        <div class="vs-faq-answer" id="faqAnswer2" role="region" aria-labelledby="faqQuestion2">
+          <div class="vs-faq-answer-inner">
+            For bulk commercial, industrial, or project orders, select "Bulk Order" in the enquiry form above and mention your required quantity and location in the message. You may also contact our team directly at <strong>info@vidhyutsaathi.com</strong> or call our official phone lines.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="vs-faq-item">
+        <button
+          type="button"
+          class="vs-faq-question"
+          aria-expanded="false"
+          aria-controls="faqAnswer3"
+          id="faqQuestion3"
+        >
+          <span>How can I contact Vidhyut Saathi regarding distributorship?</span>
+          <span class="vs-faq-toggle-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </button>
+        <div class="vs-faq-answer" id="faqAnswer3" role="region" aria-labelledby="faqQuestion3">
+          <div class="vs-faq-answer-inner">
+            We actively welcome channel partners, regional distributors, and dealers across India. Select "Distributorship Enquiry" in the contact form, provide your company details and operational region, or click "Buy Distributorship" to review our partner program.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="vs-faq-item">
+        <button
+          type="button"
+          class="vs-faq-question"
+          aria-expanded="false"
+          aria-controls="faqAnswer4"
+          id="faqQuestion4"
+        >
+          <span>What information should I include in my enquiry?</span>
+          <span class="vs-faq-toggle-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </button>
+        <div class="vs-faq-answer" id="faqAnswer4" role="region" aria-labelledby="faqQuestion4">
+          <div class="vs-faq-answer-inner">
+            To help us assist you quickly, please include your name, contact phone number, location or city, the specific product category or model you are interested in, and an estimated quantity if you are enquiring about business or bulk procurement.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Us Page",
+  "tag": "section",
+  "class": "section-vidhyut-contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Heading",
+      "default": "Contact Us"
+    },
+    {
+      "type": "textarea",
+      "id": "page_subtitle",
+      "label": "Supporting Text",
+      "default": "We're here to help you find the right solar and electrical products for your needs. Get in touch with our team for product enquiries, business opportunities, bulk orders, and general assistance."
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Vidhyut Saathi Support & Business Desk"
+    },
+    {
+      "type": "text",
+      "id": "phone_1",
+      "label": "Official Phone 1",
+      "default": "90531 10707"
+    },
+    {
+      "type": "text",
+      "id": "phone_2",
+      "label": "Official Phone 2",
+      "default": "81990 36060"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Official Email",
+      "default": "info@vidhyutsaathi.com"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Office Address",
+      "default": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Us Page"
+    }
+  ]
+}
+{% endschema %}
