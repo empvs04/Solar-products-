@@ -29,10 +29,35 @@
       <!-- Desktop Navigation -->
       <nav class="vs-nav-desktop" aria-label="Main Navigation">
         <ul class="vs-nav-list">
-          <li><a href="{{ routes.root_url }}" class="vs-nav-link {% if template.name == 'index' %}is-active{% endif %}">Home</a></li>
-          <li><a href="{{ routes.root_url }}pages/about-us" class="vs-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">About Us</a></li>
-          <li><a href="{{ routes.root_url }}#products" class="vs-nav-link">Products</a></li>
-          <li><a href="{{ routes.root_url }}pages/contact-us" class="vs-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">Contact Us</a></li>
+          {%- if section.settings.contact_link != blank -%}
+            {%- assign contact_page_url = section.settings.contact_link -%}
+          {%- else -%}
+            {%- assign contact_page_url = routes.root_url | append: 'pages/contact-us' -%}
+          {%- endif -%}
+
+          {%- if section.settings.about_link != blank -%}
+            {%- assign about_page_url = section.settings.about_link -%}
+          {%- else -%}
+            {%- assign about_page_url = routes.root_url | append: 'pages/about-us' -%}
+          {%- endif -%}
+
+          {%- if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0 -%}
+            {%- for link in linklists[section.settings.menu].links -%}
+              <li>
+                <a
+                  href="{{ link.url }}"
+                  class="vs-nav-link {% if link.active or link.child_active %}is-active{% endif %}"
+                >
+                  {{ link.title }}
+                </a>
+              </li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a href="{{ routes.root_url }}" class="vs-nav-link {% if template.name == 'index' %}is-active{% endif %}">Home</a></li>
+            <li><a href="{{ about_page_url }}" class="vs-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">About Us</a></li>
+            <li><a href="{{ routes.root_url }}#products" class="vs-nav-link">Products</a></li>
+            <li><a href="{{ contact_page_url }}" class="vs-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">Contact Us</a></li>
+          {%- endif -%}
         </ul>
       </nav>
 
@@ -101,30 +126,44 @@
   </div>
 
   <ul class="vs-mobile-nav-list">
-    <li>
-      <a href="{{ routes.root_url }}" class="vs-mobile-nav-link {% if template.name == 'index' %}is-active{% endif %}">
-        <span>Home</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
-    </li>
-    <li>
-      <a href="{{ routes.root_url }}pages/about-us" class="vs-mobile-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">
-        <span>About Us</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
-    </li>
-    <li>
-      <a href="{{ routes.root_url }}#products" class="vs-mobile-nav-link">
-        <span>Products</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
-    </li>
-    <li>
-      <a href="{{ routes.root_url }}pages/contact-us" class="vs-mobile-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">
-        <span>Contact Us</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
-    </li>
+    {%- if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0 -%}
+      {%- for link in linklists[section.settings.menu].links -%}
+        <li>
+          <a
+            href="{{ link.url }}"
+            class="vs-mobile-nav-link {% if link.active or link.child_active %}is-active{% endif %}"
+          >
+            <span>{{ link.title }}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </li>
+      {%- endfor -%}
+    {%- else -%}
+      <li>
+        <a href="{{ routes.root_url }}" class="vs-mobile-nav-link {% if template.name == 'index' %}is-active{% endif %}">
+          <span>Home</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="{{ about_page_url }}" class="vs-mobile-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">
+          <span>About Us</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="{{ routes.root_url }}#products" class="vs-mobile-nav-link">
+          <span>Products</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="{{ contact_page_url }}" class="vs-mobile-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">
+          <span>Contact Us</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+    {%- endif -%}
   </ul>
 
   <div class="vs-mobile-actions">
@@ -168,6 +207,22 @@
       "id": "tagline",
       "label": "Tagline",
       "default": "Solar & Electrical"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "url",
+      "id": "about_link",
+      "label": "About Us Page Link"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact Us Page Link"
     },
     {
       "type": "text",

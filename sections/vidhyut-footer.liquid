@@ -35,11 +35,23 @@
       <!-- Column 2: Navigation Links -->
       <div class="vs-footer-col">
         <h3 class="vs-footer-col-title">Navigation</h3>
+        {%- if section.settings.contact_link != blank -%}
+          {%- assign footer_contact_url = section.settings.contact_link -%}
+        {%- else -%}
+          {%- assign footer_contact_url = routes.root_url | append: 'pages/contact-us' -%}
+        {%- endif -%}
+
+        {%- if section.settings.about_link != blank -%}
+          {%- assign footer_about_url = section.settings.about_link -%}
+        {%- else -%}
+          {%- assign footer_about_url = routes.root_url | append: 'pages/about-us' -%}
+        {%- endif -%}
+
         <ul class="vs-footer-links-list">
           <li><a href="{{ routes.root_url }}" class="vs-footer-link">Home</a></li>
-          <li><a href="{{ routes.root_url }}pages/about-us" class="vs-footer-link">About Us</a></li>
+          <li><a href="{{ footer_about_url }}" class="vs-footer-link">About Us</a></li>
           <li><a href="{{ routes.root_url }}#products" class="vs-footer-link">Products</a></li>
-          <li><a href="{{ routes.root_url }}pages/contact-us" class="vs-footer-link">Contact Us</a></li>
+          <li><a href="{{ footer_contact_url }}" class="vs-footer-link">Contact Us</a></li>
         </ul>
       </div>
 
@@ -60,8 +72,8 @@
         <ul class="vs-footer-links-list">
           <li><a href="{{ routes.root_url }}#products" class="vs-footer-link">Buy Now</a></li>
           <li><a href="{{ routes.root_url }}#distributorship" class="vs-footer-link">Buy Distributorship</a></li>
-          <li><a href="{{ routes.root_url }}pages/contact-us" class="vs-footer-link">Partner Inquiries</a></li>
-          <li><a href="{{ routes.root_url }}pages/about-us" class="vs-footer-link">Company Overview</a></li>
+          <li><a href="{{ footer_contact_url }}" class="vs-footer-link">Partner Inquiries</a></li>
+          <li><a href="{{ footer_about_url }}" class="vs-footer-link">Company Overview</a></li>
         </ul>
       </div>
 
@@ -161,6 +173,16 @@
       "id": "phone_2",
       "label": "Secondary Phone",
       "default": "+91-9053110707"
+    },
+    {
+      "type": "url",
+      "id": "about_link",
+      "label": "About Us Page Link"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact Us Page Link"
     }
   ]
 }
