@@ -5,45 +5,149 @@
  * Persists in localStorage ('vs_cart') and synchronizes across tabs & navigation.
  */
 
-export function resolveItemImage(item) {
-  if (item && item.image && typeof item.image === 'string' && item.image.trim() !== '' && item.image !== 'undefined' && item.image !== 'null') {
-    const img = item.image.trim();
-    if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:') || img.startsWith('/')) {
-      return img;
+export function getAssetUrl(filename) {
+  if (!filename) filename = 'solar-lights.jpg';
+  if (typeof window !== 'undefined' && window.VidhyutThemeAssets && window.VidhyutThemeAssets[filename]) {
+    return window.VidhyutThemeAssets[filename];
+  }
+  if (typeof window !== 'undefined' && (window.Shopify || (window.location && window.location.hostname && window.location.hostname.includes('myshopify.com')))) {
+    const domAsset = document.querySelector('img[src*="/cdn/shop/t/"][src*="/assets/"]');
+    if (domAsset && domAsset.src) {
+      const prefix = domAsset.src.substring(0, domAsset.src.indexOf('/assets/') + 8);
+      return prefix + filename;
     }
-    return `/assets/images/products/${img}`;
+  }
+  return `/assets/images/products/${filename}`;
+}
+
+export function getProductsPageUrl() {
+  if (typeof window !== 'undefined' && (window.Shopify || (window.location && window.location.hostname && window.location.hostname.includes('myshopify.com')))) {
+    return '/pages/products';
+  }
+  return '/products.html';
+}
+
+if (typeof window !== 'undefined') {
+  window.vidhyutAssetUrl = getAssetUrl;
+  window.vidhyutProductsUrl = getProductsPageUrl;
+  window.vidhyutAssetFallback = function(imgEl, filename) {
+    if (!imgEl || imgEl._hasFallenBack) return;
+    imgEl._hasFallenBack = true;
+    const target = getAssetUrl(filename || 'solar-lights.jpg');
+    if (imgEl.src !== target) {
+      imgEl.src = target;
+    }
+  };
+}
+
+export function resolveItemImage(item) {
+  let raw = '';
+  if (item && item.image && typeof item.image === 'string' && item.image.trim() !== '' && item.image !== 'undefined' && item.image !== 'null') {
+    raw = item.image.trim();
   }
 
+  if (raw) {
+    const isLocalPath = (raw.startsWith('/assets/images/products/') || raw.startsWith('/assets/'));
+    if (!isLocalPath && (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('//') || raw.startsWith('data:'))) {
+      return raw;
+    }
+  }
+
+  // Extract filename from raw path
+  let filename = '';
+  if (raw) {
+    const clean = raw.split('?')[0].split('#')[0];
+    const lastSlash = clean.lastIndexOf('/');
+    filename = lastSlash > -1 ? clean.substring(lastSlash + 1) : clean;
+  }
+
+  // Known asset alias map
+  const aliasMap = {
+    'solar-vintage-wall-lantern.jpg': 'solar-led-lamps-3.jpg',
+    'solar-flood-lights.jpg': 'solar-led-lamps-1.jpg',
+    'wires-cables.jpg': 'led-lamps.jpg'
+  };
+  if (aliasMap[filename]) {
+    filename = aliasMap[filename];
+  }
+
+  const knownImages = [
+    'solar-lights.jpg', 'solar-lights-1.jpg',
+    'solar-led-lamps-1.jpg', 'solar-led-lamps-2.jpg', 'solar-led-lamps-3.jpg', 'solar-led-lamps-4.jpg',
+    'led-lamps.jpg',
+    'led-bulbs.jpg', 'led-bulb-1.jpg', 'led-bulb-2.jpg', 'led-bulb-3.jpg', 'led-bulb-4.jpg',
+    'clamp-meters.jpg', 'clamp-meter-1.jpg', 'clamp-meter-2.jpg', 'clamp-meter-3.jpg', 'clamp-meter-4.jpg'
+  ];
+
+  if (filename && knownImages.includes(filename)) {
+    return getAssetUrl(filename);
+  }
+
+  // Infer from product metadata if filename was missing or unknown
   const pid = (item?.productId || '').toLowerCase();
   const vid = (item?.variantId || '').toLowerCase();
   const name = (item?.name || '').toLowerCase();
 
-  if (pid.includes('led-lamps') || pid.includes('led-linear') || vid.startsWith('ll-') || name.includes('led lamp') || name.includes('linear') || name.includes('suspended')) {
-    return '/assets/images/products/led-lamps.jpg';
+  // Solar items
+  if (pid.includes('solar-step') || vid.startsWith('step-') || name.includes('step') || name.includes('deck')) {
+    return getAssetUrl('solar-lights-1.jpg');
+  }
+  if (pid.includes('motion') || vid.startsWith('sec-') || name.includes('motion') || name.includes('security')) {
+    return getAssetUrl('solar-led-lamps-2.jpg');
   }
   if (pid.includes('vintage') || pid.includes('lantern') || vid.startsWith('sconce-') || name.includes('lantern') || name.includes('sconce')) {
-    return '/assets/images/products/solar-vintage-wall-lantern.jpg';
+    return getAssetUrl('solar-led-lamps-3.jpg');
   }
-  if (pid.includes('portable') || pid.includes('work-lamp') || vid.startsWith('work-') || name.includes('work lamp') || name.includes('portable')) {
-    return '/assets/images/products/solar-led-lamps-1.jpg';
+  if (pid.includes('work') || vid.startsWith('work-') || name.includes('work lamp') || name.includes('portable')) {
+    return getAssetUrl('solar-led-lamps-1.jpg');
   }
-  if (pid.includes('flood') || vid.startsWith('fl-') || name.includes('flood')) {
-    return '/assets/images/products/solar-flood-lights.jpg';
+  if (pid.includes('tower') || vid.startsWith('tower-') || name.includes('tower')) {
+    return getAssetUrl('solar-led-lamps-4.jpg');
   }
-  if (pid.includes('bulb') || vid.startsWith('lb-') || name.includes('bulb')) {
-    return '/assets/images/products/led-bulbs.jpg';
-  }
-  if (pid.includes('clamp') || vid.startsWith('cm-') || name.includes('clamp') || name.includes('meter')) {
-    return '/assets/images/products/clamp-meters.jpg';
-  }
-  if (pid.includes('wire') || pid.includes('cable') || vid.startsWith('wc-') || name.includes('wire') || name.includes('cable')) {
-    return '/assets/images/products/wires-cables.jpg';
+  if (pid.includes('wal-') || vid.startsWith('wal-') || name.includes('architectural wall')) {
+    return getAssetUrl('solar-led-lamps-3.jpg');
   }
   if (pid.includes('solar') || vid.startsWith('sl-') || name.includes('solar')) {
-    return '/assets/images/products/solar-lights.jpg';
+    return getAssetUrl('solar-lights.jpg');
   }
 
-  return '/assets/images/products/led-lamps.jpg';
+  // Bulbs
+  if (pid.includes('camping') || vid.startsWith('sh-') || name.includes('camping') || name.includes('filament')) {
+    return getAssetUrl('led-bulb-1.jpg');
+  }
+  if (pid.includes('battery-clip') || vid.startsWith('dc-') || name.includes('12v') || name.includes('battery clip')) {
+    return getAssetUrl('led-bulb-2.jpg');
+  }
+  if (pid.includes('crystal') || pid.includes('festoon') || vid.startsWith('fest-') || name.includes('festoon') || name.includes('bubble globe')) {
+    return getAssetUrl('led-bulb-4.jpg');
+  }
+  if (pid.includes('bulb') || vid.startsWith('lb-') || name.includes('bulb')) {
+    return getAssetUrl('led-bulbs.jpg');
+  }
+
+  // Clamp meters
+  if (pid.includes('meco') || vid.startsWith('meco-') || name.includes('meco')) {
+    return getAssetUrl('clamp-meter-1.jpg');
+  }
+  if (pid.includes('themisto') || vid.startsWith('them-') || name.includes('themisto')) {
+    return getAssetUrl('clamp-meter-2.jpg');
+  }
+  if (pid.includes('dt87') || vid.startsWith('dt87-') || name.includes('dt87')) {
+    return getAssetUrl('clamp-meter-3.jpg');
+  }
+  if (pid.includes('sg997') || vid.startsWith('sg997-') || name.includes('sg997') || name.includes('sigma')) {
+    return getAssetUrl('clamp-meter-4.jpg');
+  }
+  if (pid.includes('clamp') || vid.startsWith('cm-') || name.includes('clamp') || name.includes('meter')) {
+    return getAssetUrl('clamp-meters.jpg');
+  }
+
+  // LED Lamps
+  if (pid.includes('led-lamps') || pid.includes('led-linear') || vid.startsWith('ll-') || name.includes('led lamp') || name.includes('linear') || name.includes('suspended')) {
+    return getAssetUrl('led-lamps.jpg');
+  }
+
+  return getAssetUrl('solar-lights.jpg');
 }
 
 export class VidhyutCart {
@@ -289,6 +393,14 @@ export class VidhyutCart {
     const checkoutBtn = document.getElementById('cartCheckoutBtn');
     const continueBtn = document.getElementById('cartContinueBtn');
 
+    // Force hidden state on initialization to prevent any FOUC flash
+    if (drawer && !drawer.classList.contains('is-open')) {
+      drawer.style.display = 'none';
+    }
+    if (backdrop && !backdrop.classList.contains('is-open')) {
+      backdrop.style.display = 'none';
+    }
+
     if (floatingBtn) {
       floatingBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -327,6 +439,10 @@ export class VidhyutCart {
     if (!drawer) return;
 
     this.renderDrawer();
+    drawer.style.display = 'flex';
+    if (backdrop) backdrop.style.display = 'block';
+    // Force browser reflow so transition runs cleanly
+    void drawer.offsetHeight;
     drawer.classList.add('is-open');
     if (backdrop) backdrop.classList.add('is-open');
     document.body.classList.add('vs-drawer-locked');
@@ -342,6 +458,14 @@ export class VidhyutCart {
     if (backdrop) backdrop.classList.remove('is-open');
     document.body.classList.remove('vs-drawer-locked');
     this.isDrawerOpen = false;
+
+    // Remove from layout after slide animation finishes
+    setTimeout(() => {
+      if (!this.isDrawerOpen) {
+        drawer.style.display = 'none';
+        if (backdrop) backdrop.style.display = 'none';
+      }
+    }, 380);
   }
 
   renderDrawer() {
@@ -369,7 +493,7 @@ export class VidhyutCart {
           </div>
           <h4 class="vs-cart-empty-title">Your Cart is Empty</h4>
           <p class="vs-cart-empty-text">Browse our solar and electrical product lines and add items to your cart.</p>
-          <a href="/index.html#products" class="vs-btn vs-btn-accent vs-btn-sm" onclick="window.vsCart?.closeDrawer()">
+          <a href="${getProductsPageUrl()}" class="vs-btn vs-btn-accent vs-btn-sm" onclick="window.vsCart?.closeDrawer()">
             Explore Products
           </a>
         </div>
@@ -382,7 +506,7 @@ export class VidhyutCart {
 
     container.innerHTML = this.cart.map(item => `
       <div class="vs-cart-item" data-variant-id="${item.variantId}">
-        <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-item-img" width="64" height="64" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/products/led-lamps.jpg';">
+        <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-item-img" width="64" height="64" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');">
         <div class="vs-cart-item-info">
           <div class="vs-cart-item-top">
             <h4 class="vs-cart-item-title">${item.name}</h4>
@@ -451,7 +575,7 @@ export class VidhyutCart {
               You haven't added any items to your shopping cart yet. Browse our solar lighting and electrical product range below to get started.
             </p>
             <div class="vs-empty-actions">
-              <a href="/index.html#products" class="vs-btn vs-btn-accent">
+              <a href="${getProductsPageUrl()}" class="vs-btn vs-btn-accent">
                 Explore Products
               </a>
             </div>
@@ -476,7 +600,7 @@ export class VidhyutCart {
             ${this.cart.map(item => `
               <div class="vs-cart-table-row" data-variant-id="${item.variantId}">
                 <div class="vs-cart-cell-prod">
-                  <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/products/led-lamps.jpg';">
+                  <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');">
                   <div class="vs-cart-row-details">
                     <h3 class="vs-cart-row-title">${item.name}</h3>
                     <div class="vs-cart-row-variant">${item.variantName}</div>
@@ -507,7 +631,7 @@ export class VidhyutCart {
           </div>
 
           <div class="vs-cart-table-footer">
-            <a href="/index.html#products" class="vs-continue-shopping-link">
+            <a href="${getProductsPageUrl()}" class="vs-continue-shopping-link">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
               <span>Continue Shopping</span>
             </a>

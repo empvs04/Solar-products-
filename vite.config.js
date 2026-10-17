@@ -36,6 +36,7 @@ export default defineConfig({
         main: './index.html',
         about: './about-us.html',
         contact: './contact-us.html',
+        products: './products.html',
         buyNow: './buy-now.html',
         buyDistributorship: './buy-distributorship.html',
         distributorship: './distributorship.html',

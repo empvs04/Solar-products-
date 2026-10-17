@@ -222,13 +222,23 @@
   -webkit-backdrop-filter: blur(4px);
   z-index: 998;
   opacity: 0;
+  display: none;
   pointer-events: none;
   transition: opacity var(--transition-normal);
 }
 
-.vs-nav-backdrop.is-open {
+.vs-nav-backdrop.is-open,
+.vs-mobile-drawer-backdrop.is-open {
+  display: block !important;
   opacity: 1;
   pointer-events: auto;
+}
+
+.vs-nav-backdrop:not(.is-open),
+.vs-mobile-drawer-backdrop:not(.is-open) {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .vs-mobile-drawer {
@@ -240,15 +250,28 @@
   background-color: var(--color-white);
   box-shadow: -4px 0 24px rgba(15, 23, 42, 0.15);
   z-index: 999;
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 1.5rem;
   overflow-y: auto;
-  transition: right var(--transition-smooth);
+  visibility: hidden;
+  pointer-events: none;
+  transition: right var(--transition-smooth), visibility var(--transition-smooth);
 }
 
 .vs-mobile-drawer.is-open {
-  right: 0;
+  display: flex !important;
+  right: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.vs-mobile-drawer:not(.is-open) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .vs-mobile-drawer-header {

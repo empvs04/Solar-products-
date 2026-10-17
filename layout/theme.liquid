@@ -46,6 +46,64 @@
     {{ 'vidhyut-cart.css' | asset_url | stylesheet_tag }}
     {{ 'vidhyut-footer.css' | asset_url | stylesheet_tag }}
 
+    <!-- Anti-FOUC Drawer Isolation (prevents flash of drawer on page navigation) -->
+    <style>
+      .vs-cart-drawer:not(.is-open),
+      .vs-mobile-drawer:not(.is-open),
+      .vs-cart-drawer-backdrop:not(.is-open),
+      .vs-nav-backdrop:not(.is-open),
+      .vs-mobile-drawer-backdrop:not(.is-open) {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        opacity: 0 !important;
+        transform: translateX(100%) !important;
+      }
+      .vs-mobile-drawer:not(.is-open) {
+        transform: translateX(-100%) !important;
+      }
+      .vs-cart-drawer.is-open,
+      .vs-mobile-drawer.is-open {
+        display: flex !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+      }
+      .vs-cart-drawer-backdrop.is-open,
+      .vs-nav-backdrop.is-open,
+      .vs-mobile-drawer-backdrop.is-open {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+      }
+    </style>
+
+    <!-- Product Asset CDN Map for Cart & Dynamic Components -->
+    <script>
+      window.VidhyutThemeAssets = {
+        'solar-lights.jpg': {{ 'solar-lights.jpg' | asset_url | json }},
+        'solar-lights-1.jpg': {{ 'solar-lights-1.jpg' | asset_url | json }},
+        'solar-led-lamps-1.jpg': {{ 'solar-led-lamps-1.jpg' | asset_url | json }},
+        'solar-led-lamps-2.jpg': {{ 'solar-led-lamps-2.jpg' | asset_url | json }},
+        'solar-led-lamps-3.jpg': {{ 'solar-led-lamps-3.jpg' | asset_url | json }},
+        'solar-led-lamps-4.jpg': {{ 'solar-led-lamps-4.jpg' | asset_url | json }},
+        'led-lamps.jpg': {{ 'led-lamps.jpg' | asset_url | json }},
+        'led-bulbs.jpg': {{ 'led-bulbs.jpg' | asset_url | json }},
+        'led-bulb-1.jpg': {{ 'led-bulb-1.jpg' | asset_url | json }},
+        'led-bulb-2.jpg': {{ 'led-bulb-2.jpg' | asset_url | json }},
+        'led-bulb-3.jpg': {{ 'led-bulb-3.jpg' | asset_url | json }},
+        'led-bulb-4.jpg': {{ 'led-bulb-4.jpg' | asset_url | json }},
+        'clamp-meters.jpg': {{ 'clamp-meters.jpg' | asset_url | json }},
+        'clamp-meter-1.jpg': {{ 'clamp-meter-1.jpg' | asset_url | json }},
+        'clamp-meter-2.jpg': {{ 'clamp-meter-2.jpg' | asset_url | json }},
+        'clamp-meter-3.jpg': {{ 'clamp-meter-3.jpg' | asset_url | json }},
+        'clamp-meter-4.jpg': {{ 'clamp-meter-4.jpg' | asset_url | json }},
+        'vidhyut-logo-official.png': {{ 'vidhyut-logo-official.png' | asset_url | json }}
+      };
+    </script>
+
     <!-- Scripts -->
     <script src="{{ 'vidhyut-carousel.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vidhyut-mobile-nav.js' | asset_url }}" defer="defer"></script>

@@ -4,6 +4,7 @@
  * dynamic pricing, quantity calculation, cart persistence, and recommendations.
  */
 
+import '../styles/bundle.css';
 import { productsConfig } from '../config/products.config.js';
 import { MobileNav } from './mobile-nav.js';
 import { initSharedCart } from './cart.js';
@@ -268,7 +269,7 @@ export class BuyNowController {
       card.className = 'vs-rec-card';
       card.innerHTML = `
         <div class="vs-rec-img-wrap">
-          <img src="${rec.image}" alt="${rec.altText || rec.name}" class="vs-rec-img" loading="lazy">
+          <img src="${rec.image}" alt="${rec.altText || rec.name}" class="vs-rec-img" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');">
           <span class="vs-rec-badge-pill">${rec.badge || rec.category}</span>
         </div>
         <div class="vs-rec-body">

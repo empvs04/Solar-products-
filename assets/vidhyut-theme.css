@@ -334,3 +334,41 @@ p {
   }
 }
 
+/* Anti-FOUC Drawer Isolation (prevents flash on page navigation) */
+.vs-cart-drawer:not(.is-open),
+.vs-mobile-drawer:not(.is-open),
+.vs-cart-drawer:not(.is-open),
+.vs-mobile-drawer:not(.is-open),
+.vs-cart-drawer-backdrop:not(.is-open),
+.vs-nav-backdrop:not(.is-open),
+.vs-mobile-drawer-backdrop:not(.is-open) {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transform: translateX(100%) !important;
+}
+
+.vs-mobile-drawer:not(.is-open) {
+  transform: translateX(-100%) !important;
+}
+
+.vs-cart-drawer.is-open,
+.vs-mobile-drawer.is-open {
+  display: flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.vs-cart-drawer-backdrop.is-open,
+.vs-nav-backdrop.is-open,
+.vs-mobile-drawer-backdrop.is-open {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
+

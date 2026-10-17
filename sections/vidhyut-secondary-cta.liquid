@@ -5,11 +5,30 @@
       <p class="vs-secondary-cta-desc">
         {{ section.settings.description | default: 'Browse our complete line of solar lighting, energy-efficient fixtures, and measurement gear, or reach out to our product advisory team.' }}
       </p>
+      {%- liquid
+        assign base_root = routes.root_url
+        if base_root == '/'
+          assign base_root = ''
+        endif
+        if pages['products'].url != blank
+          assign cta_products_url = pages['products'].url
+        elsif pages['our-products'].url != blank
+          assign cta_products_url = pages['our-products'].url
+        else
+          assign cta_products_url = base_root | append: '/pages/products'
+        endif
+
+        if pages['contact-us'].url != blank
+          assign cta_contact_url = pages['contact-us'].url
+        else
+          assign cta_contact_url = base_root | append: '/pages/contact-us'
+        endif
+      -%}
       <div class="vs-secondary-cta-actions">
-        <a href="{{ section.settings.primary_cta_link | default: '#products' }}" class="vs-btn vs-btn-primary">
+        <a href="{{ section.settings.primary_cta_link | default: cta_products_url }}" class="vs-btn vs-btn-primary">
           {{ section.settings.primary_cta_label | default: 'Explore Products' }}
         </a>
-        <a href="{{ section.settings.secondary_cta_link | default: '#contact' }}" class="vs-btn vs-btn-outline">
+        <a href="{{ section.settings.secondary_cta_link | default: cta_contact_url }}" class="vs-btn vs-btn-outline">
           {{ section.settings.secondary_cta_label | default: 'Contact Us' }}
         </a>
       </div>

@@ -534,10 +534,13 @@
       var mainImg = document.getElementById('mainProductImg');
       var mediaBadge = document.getElementById('mediaCategoryBadge');
       if (mainImg) {
-        // Find existing image or asset url
-        var currentSrc = mainImg.src;
-        var dir = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
-        mainImg.src = dir + product.image;
+        if (window.vidhyutAssetUrl) {
+          mainImg.src = window.vidhyutAssetUrl(product.image);
+        } else {
+          var currentSrc = mainImg.src;
+          var dir = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
+          mainImg.src = dir + product.image;
+        }
         mainImg.alt = product.fullName;
       }
       if (mediaBadge) mediaBadge.textContent = product.badge || product.category;
@@ -661,11 +664,12 @@
       productsData.forEach(function(p) {
         if (p.id === currentId) return;
 
+        var recImg = window.vidhyutAssetUrl ? window.vidhyutAssetUrl(p.image) : (dir + p.image);
         var card = document.createElement('div');
         card.className = 'vs-rec-card';
         card.innerHTML = [
           '<div class="vs-rec-img-wrap">',
-            '<img src="' + (dir + p.image) + '" alt="' + p.name + '" class="vs-rec-img" loading="lazy">',
+            '<img src="' + recImg + '" alt="' + p.name + '" class="vs-rec-img" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, \'' + (p.image || 'solar-lights.jpg') + '\');">',
             '<span class="vs-rec-badge-pill">' + (p.badge || p.category) + '</span>',
           '</div>',
           '<div class="vs-rec-body">',
@@ -805,14 +809,15 @@
     }
 
     function getProductImageSrc(p) {
-      if (!p) return '/assets/images/products/led-lamps.jpg';
-      if (p.image) {
-        if (p.image.indexOf('/') === 0 || p.image.indexOf('http://') === 0 || p.image.indexOf('https://') === 0) {
-          return p.image;
-        }
-        return '/assets/images/products/' + p.image;
+      if (!p) return window.vidhyutAssetUrl ? window.vidhyutAssetUrl('solar-lights.jpg') : '/assets/images/products/solar-lights.jpg';
+      var filename = p.image || 'solar-lights.jpg';
+      if (filename.indexOf('/') > -1) {
+        filename = filename.substring(filename.lastIndexOf('/') + 1);
       }
-      return '/assets/images/products/led-lamps.jpg';
+      if (window.vidhyutAssetUrl) {
+        return window.vidhyutAssetUrl(filename);
+      }
+      return '/assets/images/products/' + filename;
     }
 
     // Add to Cart Click

@@ -13,8 +13,8 @@
       "type": "vidhyut-header",
       "settings": {}
     },
-    "main_about": {
-      "type": "vidhyut-about-page",
+    "main_products": {
+      "type": "vidhyut-products",
       "settings": {}
     },
     "footer": {
@@ -24,7 +24,7 @@
   },
   "order": [
     "header",
-    "main_about",
+    "main_products",
     "footer"
   ]
 }

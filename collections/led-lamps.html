@@ -12,6 +12,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Anti-FOUC Drawer Isolation (prevents flash of drawer on page navigation) -->
+  <style>
+    .vs-cart-drawer:not(.is-open),
+    .vs-mobile-drawer:not(.is-open),
+    .vs-cart-drawer-backdrop:not(.is-open),
+    .vs-nav-backdrop:not(.is-open),
+    .vs-mobile-drawer-backdrop:not(.is-open) {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+    }
+    .vs-cart-drawer.is-open,
+    .vs-mobile-drawer.is-open {
+      display: flex !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+    .vs-cart-drawer-backdrop.is-open,
+    .vs-nav-backdrop.is-open,
+    .vs-mobile-drawer-backdrop.is-open {
+      display: block !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/src/styles/bundle.css">
   <link rel="icon" type="image/png" href="/assets/images/brand/vidhyut-logo-official.png">
 </head>
 <body class="vs-theme-body">
@@ -26,7 +55,7 @@
         <ul class="vs-nav-list">
           <li class="vs-nav-item"><a href="/index.html" class="vs-nav-link">Home</a></li>
           <li class="vs-nav-item"><a href="/about-us.html" class="vs-nav-link">About Us</a></li>
-          <li class="vs-nav-item"><a href="/index.html#products" class="vs-nav-link is-active">Products</a></li>
+          <li class="vs-nav-item"><a href="/products.html" class="vs-nav-link is-active">Products</a></li>
           <li class="vs-nav-item"><a href="/contact-us.html" class="vs-nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -47,8 +76,8 @@
   </header>
 
   <!-- Mobile Drawer -->
-  <div class="vs-mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
-  <aside class="vs-mobile-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation Drawer">
+  <div class="vs-mobile-drawer-backdrop" id="mobileDrawerBackdrop" style="display: none; visibility: hidden;"></div>
+  <aside class="vs-mobile-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation Drawer" style="display: none; visibility: hidden;">
     <div class="vs-drawer-header">
       <img src="/assets/images/brand/vidhyut-logo-official.png" alt="Vidhyut Saathi" class="vs-drawer-logo" width="140" height="38">
       <button type="button" class="vs-drawer-close" id="mobileDrawerClose" aria-label="Close mobile navigation">
@@ -58,7 +87,7 @@
     <ul class="vs-drawer-menu">
       <li><a href="/index.html" class="vs-drawer-link">Home</a></li>
       <li><a href="/about-us.html" class="vs-drawer-link">About Us</a></li>
-      <li><a href="/index.html#products" class="vs-drawer-link is-active">Products</a></li>
+      <li><a href="/products.html" class="vs-drawer-link is-active">Products</a></li>
       <li><a href="/contact-us.html" class="vs-drawer-link">Contact</a></li>
     </ul>
     <div class="vs-drawer-actions">
@@ -67,7 +96,7 @@
         <span>Buy Now</span>
         <span class="vs-navbar-cart-count" id="mobileNavbarCartBadge">0</span>
       </a>
-      <a href="/buy-distributorship.html" class="vs-btn vs-btn-outline">Buy Distributorship</a>
+      <a href="/buy-distributorship.html" class="vs-btn vs-btn-outline" id="mobileDistributorBtn">Buy Distributorship</a>
     </div>
   </aside>
 
@@ -79,11 +108,11 @@
           <nav class="vs-breadcrumbs" aria-label="Breadcrumb Navigation">
             <a href="/index.html">Home</a>
             <span class="vs-breadcrumbs-sep">/</span>
-            <a href="/index.html#products">Products</a>
+            <a href="/products.html">Products</a>
             <span class="vs-breadcrumbs-sep">/</span>
             <span class="vs-breadcrumbs-current">LED Lamps</span>
           </nav>
-          <a href="/index.html#products" class="vs-back-link">
+          <a href="/products.html" class="vs-back-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
             <span>Back to Products</span>
           </a>
@@ -243,34 +272,6 @@
             </div>
           </article>
         </div>
-
-        <!-- Other Categories Switcher -->
-        <section class="vs-other-categories-section">
-          <h2 class="vs-other-title">Explore Other Categories</h2>
-          <div class="vs-other-grid">
-            <a href="/collections/solar-lights" class="vs-other-card">
-              <img src="/assets/images/products/solar-lights.jpg" alt="Solar Lights" class="vs-other-thumb">
-              <div class="vs-other-info">
-                <span class="vs-other-name">Solar Lights</span>
-                <span class="vs-other-action">View 4 Products &rarr;</span>
-              </div>
-            </a>
-            <a href="/collections/led-bulbs" class="vs-other-card">
-              <img src="/assets/images/products/led-bulbs.jpg" alt="LED Bulbs" class="vs-other-thumb">
-              <div class="vs-other-info">
-                <span class="vs-other-name">LED Bulbs</span>
-                <span class="vs-other-action">View 4 Products &rarr;</span>
-              </div>
-            </a>
-            <a href="/collections/clamp-meters" class="vs-other-card">
-              <img src="/assets/images/products/clamp-meters.jpg" alt="Clamp Meters" class="vs-other-thumb">
-              <div class="vs-other-info">
-                <span class="vs-other-name">Clamp Meters</span>
-                <span class="vs-other-action">View 4 Products &rarr;</span>
-              </div>
-            </a>
-          </div>
-        </section>
       </div>
     </section>
   </main>
@@ -322,8 +323,8 @@
   <!-- ======================================================================
        Shopping Cart Slide-Over Drawer
        ====================================================================== -->
-  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop"></div>
-  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop" style="display: none; visibility: hidden;"></div>
+  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" style="display: none; visibility: hidden;">
     <div class="vs-cart-header">
       <div class="vs-cart-title-wrap">
         <h3 class="vs-cart-title">Your Cart</h3>

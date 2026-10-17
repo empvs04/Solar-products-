@@ -24,6 +24,41 @@
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/src/styles/bundle.css">
+
+  <!-- Anti-FOUC Drawer & Layout Isolation -->
+  <style>
+    .vs-cart-drawer:not(.is-open),
+    .vs-mobile-drawer:not(.is-open),
+    .vs-cart-drawer-backdrop:not(.is-open),
+    .vs-nav-backdrop:not(.is-open),
+    .vs-mobile-drawer-backdrop:not(.is-open) {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+      transform: translateX(100%) !important;
+    }
+    .vs-mobile-drawer:not(.is-open) {
+      transform: translateX(-100%) !important;
+    }
+    .vs-cart-drawer.is-open,
+    .vs-mobile-drawer.is-open {
+      display: flex !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+    .vs-cart-drawer-backdrop.is-open,
+    .vs-nav-backdrop.is-open,
+    .vs-mobile-drawer-backdrop.is-open {
+      display: block !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+    }
+  </style>
   
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -61,7 +96,7 @@
     <div class="vs-container">
       <div class="vs-header-inner">
         <!-- Logo -->
-        <a href="#" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
+        <a href="/index.html" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
           <img
             src="/assets/images/brand/vidhyut-logo-official.png"
             alt="Vidhyut Saathi Logo"
@@ -78,9 +113,9 @@
         <!-- Desktop Navigation -->
         <nav class="vs-nav-desktop" aria-label="Main Navigation">
           <ul class="vs-nav-list">
-            <li><a href="#" class="vs-nav-link is-active">Home</a></li>
+            <li><a href="/index.html" class="vs-nav-link is-active">Home</a></li>
             <li><a href="/about-us.html" class="vs-nav-link">About Us</a></li>
-            <li><a href="#products" class="vs-nav-link">Products</a></li>
+            <li><a href="/products.html" class="vs-nav-link">Products</a></li>
             <li><a href="/contact-us.html" class="vs-nav-link">Contact</a></li>
           </ul>
         </nav>
@@ -123,10 +158,10 @@
   </header>
 
   <!-- Mobile Drawer Backdrop -->
-  <div class="vs-nav-backdrop" id="vsNavBackdrop"></div>
+  <div class="vs-nav-backdrop" id="vsNavBackdrop" style="display: none; visibility: hidden;"></div>
 
   <!-- Mobile Navigation Drawer -->
-  <div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+  <div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu" style="display: none; visibility: hidden;">
     <div class="vs-mobile-drawer-header">
       <div class="vs-logo-link">
         <img
@@ -153,7 +188,7 @@
 
     <ul class="vs-mobile-nav-list">
       <li>
-        <a href="#" class="vs-mobile-nav-link is-active">
+        <a href="/index.html" class="vs-mobile-nav-link is-active">
           <span>Home</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
@@ -165,7 +200,7 @@
         </a>
       </li>
       <li>
-        <a href="#products" class="vs-mobile-nav-link">
+        <a href="/products.html" class="vs-mobile-nav-link">
           <span>Products</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
@@ -412,9 +447,16 @@
                     data-product-name="Solar Lights"
                     aria-label="Add Solar Lights to Cart"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <span>Add to Cart</span>
                   </button>
+                  <a
+                    href="/buy-now.html?product=solar-lights"
+                    class="vs-product-btn-secondary"
+                    aria-label="Buy Solar Lights Now"
+                  >
+                    <span>Buy Now</span>
+                  </a>
                   <a
                     href="/collections/solar-lights"
                     class="vs-btn-see-more"
@@ -422,13 +464,6 @@
                   >
                     <span>See More</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                  </a>
-                  <a
-                    href="/buy-now.html?product=solar-lights"
-                    class="vs-product-btn-secondary"
-                    aria-label="Buy Solar Lights Now"
-                  >
-                    <span>Buy Now</span>
                   </a>
                 </div>
               </div>
@@ -471,9 +506,16 @@
                     data-product-name="LED Lamps"
                     aria-label="Add LED Lamps to Cart"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <span>Add to Cart</span>
                   </button>
+                  <a
+                    href="/buy-now.html?product=led-lamps"
+                    class="vs-product-btn-secondary"
+                    aria-label="Buy LED Lamps Now"
+                  >
+                    <span>Buy Now</span>
+                  </a>
                   <a
                     href="/collections/led-lamps"
                     class="vs-btn-see-more"
@@ -481,13 +523,6 @@
                   >
                     <span>See More</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                  </a>
-                  <a
-                    href="/buy-now.html?product=led-lamps"
-                    class="vs-product-btn-secondary"
-                    aria-label="Buy LED Lamps Now"
-                  >
-                    <span>Buy Now</span>
                   </a>
                 </div>
               </div>
@@ -530,9 +565,16 @@
                     data-product-name="LED Bulbs"
                     aria-label="Add LED Bulbs to Cart"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <span>Add to Cart</span>
                   </button>
+                  <a
+                    href="/buy-now.html?product=led-bulbs"
+                    class="vs-product-btn-secondary"
+                    aria-label="Buy LED Bulbs Now"
+                  >
+                    <span>Buy Now</span>
+                  </a>
                   <a
                     href="/collections/led-bulbs"
                     class="vs-btn-see-more"
@@ -540,13 +582,6 @@
                   >
                     <span>See More</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                  </a>
-                  <a
-                    href="/buy-now.html?product=led-bulbs"
-                    class="vs-product-btn-secondary"
-                    aria-label="Buy LED Bulbs Now"
-                  >
-                    <span>Buy Now</span>
                   </a>
                 </div>
               </div>
@@ -588,9 +623,16 @@
                     data-product-name="Clamp Meters"
                     aria-label="Add Clamp Meters to Cart"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <span>Add to Cart</span>
                   </button>
+                  <a
+                    href="/buy-now.html?product=clamp-meters"
+                    class="vs-product-btn-secondary"
+                    aria-label="Buy Clamp Meters Now"
+                  >
+                    <span>Buy Now</span>
+                  </a>
                   <a
                     href="/collections/clamp-meters"
                     class="vs-btn-see-more"
@@ -598,13 +640,6 @@
                   >
                     <span>See More</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                  </a>
-                  <a
-                    href="/buy-now.html?product=clamp-meters"
-                    class="vs-product-btn-secondary"
-                    aria-label="Buy Clamp Meters Now"
-                  >
-                    <span>Buy Now</span>
                   </a>
                 </div>
               </div>
@@ -1174,9 +1209,8 @@
             </div>
 
             <a
-              href="#about"
+              href="/about-us.html"
               class="vs-btn vs-btn-primary"
-              data-route-placeholder="About Us"
             >
               <span>About Us</span>
               <svg class="vs-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -1323,10 +1357,10 @@
             Browse our complete line of solar lighting, energy-efficient fixtures, and measurement gear, or reach out to our product advisory team.
           </p>
           <div class="vs-secondary-cta-actions">
-            <a href="#products" class="vs-btn vs-btn-primary">
+            <a href="/products.html" class="vs-btn vs-btn-primary">
               Explore Products
             </a>
-            <a href="#contact" class="vs-btn vs-btn-outline">
+            <a href="/contact-us.html" class="vs-btn vs-btn-outline">
               Contact Us
             </a>
           </div>
@@ -1369,7 +1403,7 @@
           <ul class="vs-footer-links-list">
             <li><a href="#" class="vs-footer-link">Home</a></li>
             <li><a href="/about-us.html" class="vs-footer-link">About Us</a></li>
-            <li><a href="#products" class="vs-footer-link">Products</a></li>
+            <li><a href="/products.html" class="vs-footer-link">Products</a></li>
             <li><a href="/contact-us.html" class="vs-footer-link">Contact Us</a></li>
           </ul>
         </div>
@@ -1445,8 +1479,8 @@
   <!-- ======================================================================
        Shopping Cart Slide-Over Drawer
        ====================================================================== -->
-  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop"></div>
-  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop" style="display: none; visibility: hidden;"></div>
+  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" style="display: none; visibility: hidden;">
     <div class="vs-cart-header">
       <div class="vs-cart-title-wrap">
         <h3 class="vs-cart-title">Your Cart</h3>

@@ -67,8 +67,21 @@
           </div>
         </div>
 
+        {%- liquid
+          assign base_root = routes.root_url
+          if base_root == '/'
+            assign base_root = ''
+          endif
+          if pages['about-us'].url != blank
+            assign default_about_url = pages['about-us'].url
+          elsif pages['about'].url != blank
+            assign default_about_url = pages['about'].url
+          else
+            assign default_about_url = base_root | append: '/pages/about-us'
+          endif
+        -%}
         <a
-          href="{{ section.settings.button_link | default: '#about' }}"
+          href="{{ section.settings.button_link | default: default_about_url }}"
           class="vs-btn vs-btn-primary"
         >
           <span>{{ section.settings.button_label | default: 'About Us' }}</span>

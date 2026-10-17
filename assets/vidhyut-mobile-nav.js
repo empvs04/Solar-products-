@@ -13,10 +13,20 @@
 
     var isOpen = false;
 
+    if (drawer && !drawer.classList.contains('is-open')) {
+      drawer.style.display = 'none';
+    }
+    if (backdrop && !backdrop.classList.contains('is-open')) {
+      backdrop.style.display = 'none';
+    }
+
     function open() {
       isOpen = true;
+      drawer.style.display = 'flex';
+      if (backdrop) backdrop.style.display = 'block';
+      void drawer.offsetHeight;
       drawer.classList.add('is-open');
-      backdrop.classList.add('is-open');
+      if (backdrop) backdrop.classList.add('is-open');
       toggleBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
       setTimeout(function() {
@@ -27,9 +37,15 @@
     function close() {
       isOpen = false;
       drawer.classList.remove('is-open');
-      backdrop.classList.remove('is-open');
+      if (backdrop) backdrop.classList.remove('is-open');
       toggleBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      setTimeout(function() {
+        if (!isOpen) {
+          drawer.style.display = 'none';
+          if (backdrop) backdrop.style.display = 'none';
+        }
+      }, 320);
     }
 
     toggleBtn.addEventListener('click', function() {

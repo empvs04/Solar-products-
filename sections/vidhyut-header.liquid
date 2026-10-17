@@ -47,10 +47,18 @@
 
             if section.settings.products_link != blank
               assign products_page_url = section.settings.products_link
-            elsif routes.all_products_collection_url != blank and collections['all'].products_count > 0
+            elsif pages['products'].url != blank
+              assign products_page_url = pages['products'].url
+            elsif pages['our-products'].url != blank
+              assign products_page_url = pages['our-products'].url
+            elsif pages['all-products'].url != blank
+              assign products_page_url = pages['all-products'].url
+            elsif pages['product'].url != blank
+              assign products_page_url = pages['product'].url
+            elsif routes.all_products_collection_url != blank
               assign products_page_url = routes.all_products_collection_url
             else
-              assign products_page_url = base_root | append: '/#products'
+              assign products_page_url = base_root | append: '/pages/products'
             endif
 
             if section.settings.contact_link != blank
@@ -131,11 +139,18 @@
                   </a>
                 </li>
 
-              {%- elsif link_title_downcase == 'catalog' or link_title_downcase == 'catalogue' or link_title_downcase == 'products' or link.url == '/collections/all' -%}
+              {%- elsif link_title_downcase == 'catalog' or link_title_downcase == 'catalogue' or link_title_downcase == 'products' or link.url == '/collections/all' or link.url contains '#products' -%}
+                {%- liquid
+                  if link.url contains '#products' or link.url == '/' or link.url == routes.root_url or link.url == '/collections/all'
+                    assign nav_product_href = products_page_url
+                  else
+                    assign nav_product_href = link.url | default: products_page_url
+                  endif
+                -%}
                 <li>
                   <a
-                    href="{{ link.url | default: products_page_url }}"
-                    class="vs-nav-link {% if link.active or template.name == 'collection' %}is-active{% endif %}"
+                    href="{{ nav_product_href }}"
+                    class="vs-nav-link {% if link.active or page.handle == 'products' or page.handle == 'our-products' or page.handle == 'all-products' or template.suffix == 'products' or template.name == 'collection' %}is-active{% endif %}"
                   >
                     Products
                   </a>
@@ -165,7 +180,7 @@
           {%- else -%}
             <li><a href="{{ routes.root_url }}" class="vs-nav-link {% if template.name == 'index' %}is-active{% endif %}">Home</a></li>
             <li><a href="{{ about_page_url }}" class="vs-nav-link {% if page.handle == 'about-us' or template.suffix == 'about-us' %}is-active{% endif %}">About Us</a></li>
-            <li><a href="{{ products_page_url }}" class="vs-nav-link">Products</a></li>
+            <li><a href="{{ products_page_url }}" class="vs-nav-link {% if page.handle == 'products' or page.handle == 'our-products' or page.handle == 'all-products' or template.suffix == 'products' or template.name == 'collection' %}is-active{% endif %}">Products</a></li>
             <li><a href="{{ contact_page_url }}" class="vs-nav-link {% if page.handle == 'contact' or page.handle == 'contact-us' or template.suffix == 'contact' or template.suffix == 'contact-us' or template.name == 'page' and page.handle contains 'contact' %}is-active{% endif %}">Contact</a></li>
           {%- endif -%}
         </ul>
@@ -210,10 +225,10 @@
 </header>
 
 <!-- Mobile Drawer Backdrop -->
-<div class="vs-nav-backdrop" id="vsNavBackdrop"></div>
+<div class="vs-nav-backdrop" id="vsNavBackdrop" style="display: none; visibility: hidden;"></div>
 
 <!-- Mobile Navigation Drawer -->
-<div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+<div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu" style="display: none; visibility: hidden;">
   <div class="vs-mobile-drawer-header">
     <div class="vs-logo-link">
       <img
@@ -277,11 +292,18 @@
             </a>
           </li>
 
-        {%- elsif link_title_downcase == 'catalog' or link_title_downcase == 'catalogue' or link_title_downcase == 'products' or link.url == '/collections/all' -%}
+        {%- elsif link_title_downcase == 'catalog' or link_title_downcase == 'catalogue' or link_title_downcase == 'products' or link.url == '/collections/all' or link.url contains '#products' -%}
+          {%- liquid
+            if link.url contains '#products' or link.url == '/' or link.url == routes.root_url or link.url == '/collections/all'
+              assign mob_product_href = products_page_url
+            else
+              assign mob_product_href = link.url | default: products_page_url
+            endif
+          -%}
           <li>
             <a
-              href="{{ link.url | default: products_page_url }}"
-              class="vs-mobile-nav-link {% if link.active or template.name == 'collection' %}is-active{% endif %}"
+              href="{{ mob_product_href }}"
+              class="vs-mobile-nav-link {% if link.active or page.handle == 'products' or page.handle == 'our-products' or page.handle == 'all-products' or template.suffix == 'products' or template.name == 'collection' %}is-active{% endif %}"
             >
               <span>Products</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -325,7 +347,7 @@
         </a>
       </li>
       <li>
-        <a href="{{ products_page_url }}" class="vs-mobile-nav-link">
+        <a href="{{ products_page_url }}" class="vs-mobile-nav-link {% if page.handle == 'products' or page.handle == 'our-products' or page.handle == 'all-products' or template.suffix == 'products' or template.name == 'collection' %}is-active{% endif %}">
           <span>Products</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
@@ -364,8 +386,8 @@
 </div>
 
 <!-- Global Shopping Cart Slide-Over Drawer -->
-<div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop"></div>
-<aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+<div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop" style="display: none; visibility: hidden;"></div>
+<aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" style="display: none; visibility: hidden;">
   <div class="vs-cart-header">
     <div class="vs-cart-title-wrap">
       <h3 class="vs-cart-title">Your Cart</h3>

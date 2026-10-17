@@ -71,6 +71,16 @@
             assign footer_distributor_url = base_root | append: '/pages/buy-distributorship'
           endif
 
+          if pages['products'].url != blank
+            assign footer_products_url = pages['products'].url
+          elsif pages['our-products'].url != blank
+            assign footer_products_url = pages['our-products'].url
+          elsif routes.all_products_collection_url != blank
+            assign footer_products_url = routes.all_products_collection_url
+          else
+            assign footer_products_url = base_root | append: '/pages/products'
+          endif
+
           if pages['buy-now'].url != blank
             assign footer_buy_now_url = pages['buy-now'].url
           elsif pages['buynow'].url != blank
@@ -83,7 +93,7 @@
         <ul class="vs-footer-links-list">
           <li><a href="{{ routes.root_url }}" class="vs-footer-link">Home</a></li>
           <li><a href="{{ footer_about_url }}" class="vs-footer-link">About Us</a></li>
-          <li><a href="{{ routes.root_url }}#products" class="vs-footer-link">Products</a></li>
+          <li><a href="{{ footer_products_url }}" class="vs-footer-link">Products</a></li>
           <li><a href="{{ footer_contact_url }}" class="vs-footer-link">Contact Us</a></li>
         </ul>
       </div>

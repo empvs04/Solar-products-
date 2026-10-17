@@ -2,45 +2,140 @@
  * Vidhyut Saathi - Shopify Theme Shared Cart & Drawer Script
  */
 (function() {
-  function resolveItemImage(item) {
-    if (item && item.image && typeof item.image === 'string' && item.image.trim() !== '' && item.image !== 'undefined' && item.image !== 'null') {
-      var img = item.image.trim();
-      if (img.indexOf('http://') === 0 || img.indexOf('https://') === 0 || img.indexOf('data:') === 0 || img.indexOf('/') === 0) {
-        return img;
+  function getAssetUrl(filename) {
+    if (!filename) filename = 'solar-lights.jpg';
+    if (window.VidhyutThemeAssets && window.VidhyutThemeAssets[filename]) {
+      return window.VidhyutThemeAssets[filename];
+    }
+    // Dynamic inspection of Shopify CDN prefix from any loaded asset in the DOM
+    if (window.Shopify || (window.location && window.location.hostname && window.location.hostname.indexOf('myshopify.com') > -1)) {
+      var domAsset = document.querySelector('img[src*="/cdn/shop/t/"][src*="/assets/"]');
+      if (domAsset && domAsset.src) {
+        var prefix = domAsset.src.substring(0, domAsset.src.indexOf('/assets/') + 8);
+        return prefix + filename;
       }
-      return '/assets/images/products/' + img;
+    }
+    return '/assets/images/products/' + filename;
+  }
+  window.vidhyutAssetUrl = getAssetUrl;
+
+  window.vidhyutAssetFallback = function(imgEl, filename) {
+    if (!imgEl || imgEl._hasFallenBack) return;
+    imgEl._hasFallenBack = true;
+    var target = getAssetUrl(filename || 'solar-lights.jpg');
+    if (imgEl.src !== target) {
+      imgEl.src = target;
+    }
+  };
+
+  function resolveItemImage(item) {
+    var raw = '';
+    if (item && item.image && typeof item.image === 'string' && item.image.trim() !== '' && item.image !== 'undefined' && item.image !== 'null') {
+      raw = item.image.trim();
     }
 
+    if (raw) {
+      var isLocalPath = (raw.indexOf('/assets/images/products/') === 0 || raw.indexOf('/assets/') === 0);
+      if (!isLocalPath && (raw.indexOf('http://') === 0 || raw.indexOf('https://') === 0 || raw.indexOf('//') === 0 || raw.indexOf('data:') === 0)) {
+        return raw;
+      }
+    }
+
+    // Extract filename from raw path
+    var filename = '';
+    if (raw) {
+      var clean = raw.split('?')[0].split('#')[0];
+      var lastSlash = clean.lastIndexOf('/');
+      filename = lastSlash > -1 ? clean.substring(lastSlash + 1) : clean;
+    }
+
+    // Known asset alias map
+    var aliasMap = {
+      'solar-vintage-wall-lantern.jpg': 'solar-led-lamps-3.jpg',
+      'solar-flood-lights.jpg': 'solar-led-lamps-1.jpg',
+      'wires-cables.jpg': 'led-lamps.jpg'
+    };
+    if (aliasMap[filename]) {
+      filename = aliasMap[filename];
+    }
+
+    var knownImages = [
+      'solar-lights.jpg', 'solar-lights-1.jpg',
+      'solar-led-lamps-1.jpg', 'solar-led-lamps-2.jpg', 'solar-led-lamps-3.jpg', 'solar-led-lamps-4.jpg',
+      'led-lamps.jpg',
+      'led-bulbs.jpg', 'led-bulb-1.jpg', 'led-bulb-2.jpg', 'led-bulb-3.jpg', 'led-bulb-4.jpg',
+      'clamp-meters.jpg', 'clamp-meter-1.jpg', 'clamp-meter-2.jpg', 'clamp-meter-3.jpg', 'clamp-meter-4.jpg'
+    ];
+
+    if (filename && knownImages.indexOf(filename) > -1) {
+      return getAssetUrl(filename);
+    }
+
+    // Infer from product metadata if filename was missing or unknown
     var pid = (item && item.productId ? item.productId : '').toLowerCase();
     var vid = (item && item.variantId ? item.variantId : '').toLowerCase();
     var name = (item && item.name ? item.name : '').toLowerCase();
 
-    if (pid.indexOf('led-lamps') > -1 || pid.indexOf('led-linear') > -1 || vid.indexOf('ll-') === 0 || name.indexOf('led lamp') > -1 || name.indexOf('linear') > -1 || name.indexOf('suspended') > -1) {
-      return '/assets/images/products/led-lamps.jpg';
+    // Solar items
+    if (pid.indexOf('solar-step') > -1 || vid.indexOf('step-') === 0 || name.indexOf('step') > -1 || name.indexOf('deck') > -1) {
+      return getAssetUrl('solar-lights-1.jpg');
+    }
+    if (pid.indexOf('motion') > -1 || vid.indexOf('sec-') === 0 || name.indexOf('motion') > -1 || name.indexOf('security') > -1) {
+      return getAssetUrl('solar-led-lamps-2.jpg');
     }
     if (pid.indexOf('vintage') > -1 || pid.indexOf('lantern') > -1 || vid.indexOf('sconce-') === 0 || name.indexOf('lantern') > -1 || name.indexOf('sconce') > -1) {
-      return '/assets/images/products/solar-vintage-wall-lantern.jpg';
+      return getAssetUrl('solar-led-lamps-3.jpg');
     }
-    if (pid.indexOf('portable') > -1 || pid.indexOf('work-lamp') > -1 || vid.indexOf('work-') === 0 || name.indexOf('work lamp') > -1 || name.indexOf('portable') > -1) {
-      return '/assets/images/products/solar-led-lamps-1.jpg';
+    if (pid.indexOf('work') > -1 || vid.indexOf('work-') === 0 || name.indexOf('work lamp') > -1 || name.indexOf('portable') > -1) {
+      return getAssetUrl('solar-led-lamps-1.jpg');
     }
-    if (pid.indexOf('flood') > -1 || vid.indexOf('fl-') === 0 || name.indexOf('flood') > -1) {
-      return '/assets/images/products/solar-flood-lights.jpg';
+    if (pid.indexOf('tower') > -1 || vid.indexOf('tower-') === 0 || name.indexOf('tower') > -1) {
+      return getAssetUrl('solar-led-lamps-4.jpg');
     }
-    if (pid.indexOf('bulb') > -1 || vid.indexOf('lb-') === 0 || name.indexOf('bulb') > -1) {
-      return '/assets/images/products/led-bulbs.jpg';
-    }
-    if (pid.indexOf('clamp') > -1 || vid.indexOf('cm-') === 0 || name.indexOf('clamp') > -1 || name.indexOf('meter') > -1) {
-      return '/assets/images/products/clamp-meters.jpg';
-    }
-    if (pid.indexOf('wire') > -1 || pid.indexOf('cable') > -1 || vid.indexOf('wc-') === 0 || name.indexOf('wire') > -1 || name.indexOf('cable') > -1) {
-      return '/assets/images/products/wires-cables.jpg';
+    if (pid.indexOf('wal-') > -1 || vid.indexOf('wal-') === 0 || name.indexOf('architectural wall') > -1) {
+      return getAssetUrl('solar-led-lamps-3.jpg');
     }
     if (pid.indexOf('solar') > -1 || vid.indexOf('sl-') === 0 || name.indexOf('solar') > -1) {
-      return '/assets/images/products/solar-lights.jpg';
+      return getAssetUrl('solar-lights.jpg');
     }
 
-    return '/assets/images/products/led-lamps.jpg';
+    // Bulbs
+    if (pid.indexOf('camping') > -1 || vid.indexOf('sh-') === 0 || name.indexOf('camping') > -1 || name.indexOf('filament') > -1) {
+      return getAssetUrl('led-bulb-1.jpg');
+    }
+    if (pid.indexOf('battery-clip') > -1 || vid.indexOf('dc-') === 0 || name.indexOf('12v') > -1 || name.indexOf('battery clip') > -1) {
+      return getAssetUrl('led-bulb-2.jpg');
+    }
+    if (pid.indexOf('crystal') > -1 || pid.indexOf('festoon') > -1 || vid.indexOf('fest-') === 0 || name.indexOf('festoon') > -1 || name.indexOf('bubble globe') > -1) {
+      return getAssetUrl('led-bulb-4.jpg');
+    }
+    if (pid.indexOf('bulb') > -1 || vid.indexOf('lb-') === 0 || name.indexOf('bulb') > -1) {
+      return getAssetUrl('led-bulbs.jpg');
+    }
+
+    // Clamp meters
+    if (pid.indexOf('meco') > -1 || vid.indexOf('meco-') === 0 || name.indexOf('meco') > -1) {
+      return getAssetUrl('clamp-meter-1.jpg');
+    }
+    if (pid.indexOf('themisto') > -1 || vid.indexOf('them-') === 0 || name.indexOf('themisto') > -1) {
+      return getAssetUrl('clamp-meter-2.jpg');
+    }
+    if (pid.indexOf('dt87') > -1 || vid.indexOf('dt87-') === 0 || name.indexOf('dt87') > -1) {
+      return getAssetUrl('clamp-meter-3.jpg');
+    }
+    if (pid.indexOf('sg997') > -1 || vid.indexOf('sg997-') === 0 || name.indexOf('sg997') > -1 || name.indexOf('sigma') > -1) {
+      return getAssetUrl('clamp-meter-4.jpg');
+    }
+    if (pid.indexOf('clamp') > -1 || vid.indexOf('cm-') === 0 || name.indexOf('clamp') > -1 || name.indexOf('meter') > -1) {
+      return getAssetUrl('clamp-meters.jpg');
+    }
+
+    // LED Lamps
+    if (pid.indexOf('led-lamps') > -1 || pid.indexOf('led-linear') > -1 || vid.indexOf('ll-') === 0 || name.indexOf('led lamp') > -1 || name.indexOf('linear') > -1 || name.indexOf('suspended') > -1) {
+      return getAssetUrl('led-lamps.jpg');
+    }
+
+    return getAssetUrl('solar-lights.jpg');
   }
 
   function VidhyutCart() {
@@ -248,6 +343,14 @@
     var floatBtn = document.getElementById('floatingCartBtn');
     var checkoutBtn = document.getElementById('cartCheckoutBtn');
 
+    // Force hidden state on initialization to prevent any FOUC flash
+    if (drawer && !drawer.classList.contains('is-open')) {
+      drawer.style.display = 'none';
+    }
+    if (backdrop && !backdrop.classList.contains('is-open')) {
+      backdrop.style.display = 'none';
+    }
+
     if (floatBtn) {
       floatBtn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -272,6 +375,9 @@
     var backdrop = document.getElementById('cartDrawerBackdrop');
     if (!drawer) return;
     this.renderDrawer();
+    drawer.style.display = 'flex';
+    if (backdrop) backdrop.style.display = 'block';
+    void drawer.offsetHeight;
     drawer.classList.add('is-open');
     if (backdrop) backdrop.classList.add('is-open');
     document.body.classList.add('vs-drawer-locked');
@@ -279,6 +385,7 @@
   };
 
   VidhyutCart.prototype.closeDrawer = function() {
+    var self = this;
     var drawer = document.getElementById('cartDrawer');
     var backdrop = document.getElementById('cartDrawerBackdrop');
     if (!drawer) return;
@@ -286,6 +393,13 @@
     if (backdrop) backdrop.classList.remove('is-open');
     document.body.classList.remove('vs-drawer-locked');
     this.isDrawerOpen = false;
+
+    setTimeout(function() {
+      if (!self.isDrawerOpen) {
+        drawer.style.display = 'none';
+        if (backdrop) backdrop.style.display = 'none';
+      }
+    }, 380);
   };
 
   VidhyutCart.prototype.renderDrawer = function() {
@@ -314,7 +428,7 @@
     this.cart.forEach(function(item) {
       var img = resolveItemImage(item);
       html += '<div class="vs-cart-item" data-variant-id="' + item.variantId + '">';
-      html += '<img src="' + img + '" alt="' + item.name + '" class="vs-cart-item-img" width="64" height="64" loading="lazy" onerror="this.onerror=null; this.src=\'/assets/images/products/led-lamps.jpg\';">';
+      html += '<img src="' + img + '" alt="' + item.name + '" class="vs-cart-item-img" width="64" height="64" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, \'solar-lights.jpg\');">';
       html += '<div class="vs-cart-item-info">';
       html += '<div class="vs-cart-item-top">';
       html += '<h4 class="vs-cart-item-title">' + item.name + '</h4>';
@@ -378,7 +492,7 @@
     this.cart.forEach(function(item) {
       var img = resolveItemImage(item);
       html += '<div class="vs-cart-table-row" data-variant-id="' + item.variantId + '">';
-      html += '<div class="vs-cart-cell-prod"><img src="' + img + '" alt="' + item.name + '" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="this.onerror=null; this.src=\'/assets/images/products/led-lamps.jpg\';">';
+      html += '<div class="vs-cart-cell-prod"><img src="' + img + '" alt="' + item.name + '" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, \'solar-lights.jpg\');">';
       html += '<div class="vs-cart-row-details"><h3 class="vs-cart-row-title">' + item.name + '</h3><div class="vs-cart-row-variant">' + item.variantName + '</div><button type="button" class="vs-cart-row-remove" data-remove="' + item.variantId + '"><span>Remove</span></button></div></div>';
       html += '<div class="vs-cart-cell-price">₹' + item.price.toLocaleString('en-IN') + '</div>';
       html += '<div class="vs-cart-cell-qty"><div class="vs-table-stepper"><button type="button" class="vs-stepper-btn" data-step-dec="' + item.variantId + '">&minus;</button><span class="vs-stepper-val">' + item.quantity + '</span><button type="button" class="vs-stepper-btn" data-step-inc="' + item.variantId + '">&plus;</button></div></div>';

@@ -36,26 +36,34 @@
   border-color: rgba(34, 58, 95, 0.25);
 }
 
-/* Image Wrapper with Fixed Aspect Ratio */
+/* Image Wrapper with Fixed Aspect Ratio & Flex Centering */
 .vs-product-image-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background-color: var(--color-bg-subtle);
+  background-color: var(--color-bg-subtle, #F8FAFC);
   overflow: hidden;
   border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .vs-product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   object-position: center;
-  transition: transform 0.5s ease;
+  margin: auto;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
 .vs-product-card:hover .vs-product-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 /* Product Category Badge */
@@ -138,72 +146,122 @@
   transform: translateX(4px);
 }
 
-/* Card Action Button Group */
+/* Card Action Button Group (2-Row Layout: Add to Cart + Buy Now on Row 1, See More on Row 2) */
 .vs-card-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   margin-top: auto;
-  align-items: center;
   width: 100%;
 }
 
-.vs-btn-see-more {
-  flex: 1;
+.vs-card-actions .vs-btn-card-cart {
+  order: 1;
+  grid-column: 1 / 2;
+  width: 100%;
+  height: 42px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.375rem;
-  padding: 0.6875rem 0.875rem;
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 600;
+  padding: 0.5rem 0.5rem;
+  background-color: var(--color-accent);
   color: var(--color-white);
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  border: none;
   border-radius: var(--radius-md);
-  text-decoration: none;
-  transition: all var(--transition-normal);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(232, 96, 20, 0.25);
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-sizing: border-box;
 }
 
-.vs-btn-see-more:hover {
-  background-color: var(--color-midnight);
-  border-color: var(--color-midnight);
-  color: var(--color-white);
-  box-shadow: 0 4px 12px rgba(21, 30, 43, 0.15);
-}
-
-.vs-btn-see-more svg {
+.vs-card-actions .vs-btn-card-cart svg {
   width: 15px;
   height: 15px;
-  transition: transform var(--transition-fast);
+  flex-shrink: 0;
 }
 
-.vs-btn-see-more:hover svg {
-  transform: translateX(3px);
+.vs-card-actions .vs-btn-card-cart:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(232, 96, 20, 0.3);
 }
 
-.vs-product-btn-secondary {
+.vs-card-actions .vs-product-btn-secondary {
+  order: 2;
+  grid-column: 2 / 3;
+  width: 100%;
+  height: 42px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6875rem 0.875rem;
+  padding: 0.5rem 0.5rem;
   font-family: var(--font-heading);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-primary);
   background-color: var(--color-bg-light);
   border: 1px solid rgba(34, 58, 95, 0.2);
   border-radius: var(--radius-md);
   text-decoration: none;
-  transition: all var(--transition-normal);
   white-space: nowrap;
+  transition: all var(--transition-normal);
+  box-sizing: border-box;
 }
 
-.vs-product-btn-secondary:hover {
-  background-color: #E86014;
+.vs-card-actions .vs-product-btn-secondary:hover {
+  background-color: var(--color-accent);
   color: var(--color-white);
-  border-color: #E86014;
+  border-color: var(--color-accent);
   box-shadow: 0 4px 12px rgba(232, 96, 20, 0.2);
+  transform: translateY(-1px);
+}
+
+.vs-card-actions .vs-btn-see-more {
+  order: 3;
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 38px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-normal);
+  box-sizing: border-box;
+}
+
+.vs-card-actions .vs-btn-see-more:hover {
+  background-color: var(--color-midnight);
+  border-color: var(--color-midnight);
+  color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(21, 30, 43, 0.2);
+}
+
+.vs-card-actions .vs-btn-see-more svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-fast);
+}
+
+.vs-card-actions .vs-btn-see-more:hover svg {
+  transform: translateX(3px);
 }
 
 /* Responsiveness */

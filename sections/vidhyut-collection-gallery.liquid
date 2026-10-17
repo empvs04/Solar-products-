@@ -19,7 +19,7 @@
         <nav class="vs-breadcrumbs" aria-label="Breadcrumb Navigation">
           <a href="{{ routes.root_url }}">Home</a>
           <span class="vs-breadcrumbs-sep">/</span>
-          <a href="{{ routes.root_url }}#products">Products</a>
+          <a href="{{ base_root | append: '/pages/products' }}">Products</a>
           <span class="vs-breadcrumbs-sep">/</span>
           <span class="vs-breadcrumbs-current">
             {%- case current_handle -%}
@@ -31,7 +31,7 @@
             {%- endcase -%}
           </span>
         </nav>
-        <a href="{{ routes.root_url }}#products" class="vs-back-link">
+        <a href="{{ base_root | append: '/pages/products' }}" class="vs-back-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
           <span>Back to Products</span>
         </a>
@@ -601,49 +601,6 @@
           </article>
         {%- endif -%}
       </div>
-
-      <!-- Other Categories Switcher -->
-      <section class="vs-other-categories-section">
-        <h2 class="vs-other-title">Explore Other Categories</h2>
-        <div class="vs-other-grid">
-          {%- if current_handle != 'solar-lights' -%}
-            <a href="{{ routes.collections_url | append: '/solar-lights' }}" class="vs-other-card">
-              <img src="{{ 'solar-lights.jpg' | asset_url }}" alt="Solar Lights" class="vs-other-thumb" width="60" height="60" loading="lazy">
-              <div class="vs-other-info">
-                <span class="vs-other-name">Solar Lights</span>
-                <span class="vs-other-action">View 4 Products &rarr;</span>
-              </div>
-            </a>
-          {%- endif -%}
-          {%- if current_handle != 'led-lamps' -%}
-            <a href="{{ routes.collections_url | append: '/led-lamps' }}" class="vs-other-card">
-              <img src="{{ 'led-lamps.jpg' | asset_url }}" alt="LED Lamps" class="vs-other-thumb" width="60" height="60" loading="lazy">
-              <div class="vs-other-info">
-                <span class="vs-other-name">LED Lamps</span>
-                <span class="vs-other-action">View 4 Products &rarr;</span>
-              </div>
-            </a>
-          {%- endif -%}
-          {%- if current_handle != 'led-bulbs' -%}
-            <a href="{{ routes.collections_url | append: '/led-bulbs' }}" class="vs-other-card">
-              <img src="{{ 'led-bulbs.jpg' | asset_url }}" alt="LED Bulbs" class="vs-other-thumb" width="60" height="60" loading="lazy">
-              <div class="vs-other-info">
-                <span class="vs-other-name">LED Bulbs</span>
-                <span class="vs-other-action">View 4 Products &rarr;</span>
-              </div>
-            </a>
-          {%- endif -%}
-          {%- if current_handle != 'clamp-meters' -%}
-            <a href="{{ routes.collections_url | append: '/clamp-meters' }}" class="vs-other-card">
-              <img src="{{ 'clamp-meters.jpg' | asset_url }}" alt="Clamp Meters" class="vs-other-thumb" width="60" height="60" loading="lazy">
-              <div class="vs-other-info">
-                <span class="vs-other-name">Clamp Meters</span>
-                <span class="vs-other-action">View 4 Products &rarr;</span>
-              </div>
-            </a>
-          {%- endif -%}
-        </div>
-      </section>
     </div>
   </section>
 </main>

@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical"
+      }
+    },
+    "main_products": {
+      "type": "vidhyut-products",
+      "settings": {
+        "badge": "Our Product Lineup",
+        "title": "Explore Our Products",
+        "subtitle": "Discover reliable solar lighting and electrical solutions from Vidhyut Saathi."
+      }
+    },
+    "secondary_cta": {
+      "type": "vidhyut-secondary-cta",
+      "settings": {}
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "main_products",
+    "secondary_cta",
+    "footer"
+  ]
+}

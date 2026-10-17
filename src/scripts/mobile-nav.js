@@ -6,11 +6,11 @@
 
 export class MobileNav {
   constructor() {
-    this.toggleBtn = document.getElementById('vsNavToggle');
-    this.closeBtn = document.getElementById('vsMobileCloseBtn');
-    this.drawer = document.getElementById('vsMobileDrawer');
-    this.backdrop = document.getElementById('vsNavBackdrop');
-    this.navLinks = document.querySelectorAll('.vs-mobile-nav-link, .vs-mobile-actions .vs-btn');
+    this.toggleBtn = document.getElementById('vsNavToggle') || document.getElementById('mobileMenuToggle');
+    this.closeBtn = document.getElementById('vsMobileCloseBtn') || document.getElementById('mobileDrawerClose');
+    this.drawer = document.getElementById('vsMobileDrawer') || document.getElementById('mobileNavDrawer');
+    this.backdrop = document.getElementById('vsNavBackdrop') || document.getElementById('mobileDrawerBackdrop');
+    this.navLinks = document.querySelectorAll('.vs-mobile-nav-link, .vs-drawer-link, .vs-mobile-actions .vs-btn, .vs-drawer-actions .vs-btn');
 
     this.isOpen = false;
 
@@ -20,6 +20,14 @@ export class MobileNav {
   }
 
   init() {
+    // Force hidden state on initialization to eliminate FOUC flash
+    if (this.drawer && !this.drawer.classList.contains('is-open')) {
+      this.drawer.style.display = 'none';
+    }
+    if (this.backdrop && !this.backdrop.classList.contains('is-open')) {
+      this.backdrop.style.display = 'none';
+    }
+
     // Open on hamburger click
     this.toggleBtn.addEventListener('click', () => this.toggle());
 
@@ -63,8 +71,11 @@ export class MobileNav {
 
   open() {
     this.isOpen = true;
+    this.drawer.style.display = 'flex';
+    if (this.backdrop) this.backdrop.style.display = 'block';
+    void this.drawer.offsetHeight;
     this.drawer.classList.add('is-open');
-    this.backdrop.classList.add('is-open');
+    if (this.backdrop) this.backdrop.classList.add('is-open');
     this.toggleBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
 
@@ -77,8 +88,15 @@ export class MobileNav {
   close() {
     this.isOpen = false;
     this.drawer.classList.remove('is-open');
-    this.backdrop.classList.remove('is-open');
+    if (this.backdrop) this.backdrop.classList.remove('is-open');
     this.toggleBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+
+    setTimeout(() => {
+      if (!this.isOpen) {
+        this.drawer.style.display = 'none';
+        if (this.backdrop) this.backdrop.style.display = 'none';
+      }
+    }, 320);
   }
 }
