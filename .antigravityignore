@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build Outputs (prevents duplicate search hits and heavy indexing)
+dist/
+
+# Scratch & Temporary
+scratch/
+*.log
+
+# System & OS Files
+.DS_Store
+Thumbs.db

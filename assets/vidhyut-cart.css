@@ -996,3 +996,9 @@
   background-color: #223A5F;
   color: #FFFFFF;
 }
+
+/* Hide Floating Cart Button Permanently */
+.vs-floating-cart-btn,
+#floatingCartBtn {
+  display: none !important;
+}
