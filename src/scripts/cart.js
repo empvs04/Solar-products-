@@ -5,6 +5,47 @@
  * Persists in localStorage ('vs_cart') and synchronizes across tabs & navigation.
  */
 
+export function resolveItemImage(item) {
+  if (item && item.image && typeof item.image === 'string' && item.image.trim() !== '' && item.image !== 'undefined' && item.image !== 'null') {
+    const img = item.image.trim();
+    if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:') || img.startsWith('/')) {
+      return img;
+    }
+    return `/assets/images/products/${img}`;
+  }
+
+  const pid = (item?.productId || '').toLowerCase();
+  const vid = (item?.variantId || '').toLowerCase();
+  const name = (item?.name || '').toLowerCase();
+
+  if (pid.includes('led-lamps') || pid.includes('led-linear') || vid.startsWith('ll-') || name.includes('led lamp') || name.includes('linear') || name.includes('suspended')) {
+    return '/assets/images/products/led-lamps.jpg';
+  }
+  if (pid.includes('vintage') || pid.includes('lantern') || vid.startsWith('sconce-') || name.includes('lantern') || name.includes('sconce')) {
+    return '/assets/images/products/solar-vintage-wall-lantern.jpg';
+  }
+  if (pid.includes('portable') || pid.includes('work-lamp') || vid.startsWith('work-') || name.includes('work lamp') || name.includes('portable')) {
+    return '/assets/images/products/solar-led-lamps-1.jpg';
+  }
+  if (pid.includes('flood') || vid.startsWith('fl-') || name.includes('flood')) {
+    return '/assets/images/products/solar-flood-lights.jpg';
+  }
+  if (pid.includes('bulb') || vid.startsWith('lb-') || name.includes('bulb')) {
+    return '/assets/images/products/led-bulbs.jpg';
+  }
+  if (pid.includes('clamp') || vid.startsWith('cm-') || name.includes('clamp') || name.includes('meter')) {
+    return '/assets/images/products/clamp-meters.jpg';
+  }
+  if (pid.includes('wire') || pid.includes('cable') || vid.startsWith('wc-') || name.includes('wire') || name.includes('cable')) {
+    return '/assets/images/products/wires-cables.jpg';
+  }
+  if (pid.includes('solar') || vid.startsWith('sl-') || name.includes('solar')) {
+    return '/assets/images/products/solar-lights.jpg';
+  }
+
+  return '/assets/images/products/led-lamps.jpg';
+}
+
 export class VidhyutCart {
   constructor() {
     this.storageKey = 'vs_cart';
@@ -18,7 +59,24 @@ export class VidhyutCart {
   loadCart() {
     try {
       const data = localStorage.getItem(this.storageKey);
-      return data ? JSON.parse(data) : [];
+      if (!data) return [];
+      const parsed = JSON.parse(data);
+      if (!Array.isArray(parsed)) return [];
+
+      let modified = false;
+      const sanitized = parsed.map(item => {
+        const resolved = resolveItemImage(item);
+        if (item.image !== resolved) {
+          item.image = resolved;
+          modified = true;
+        }
+        return item;
+      });
+
+      if (modified) {
+        localStorage.setItem(this.storageKey, JSON.stringify(sanitized));
+      }
+      return sanitized;
     } catch (e) {
       console.error('Failed to load cart from localStorage:', e);
       return [];
@@ -144,6 +202,9 @@ export class VidhyutCart {
     const existingIndex = this.cart.findIndex(i => i.variantId === item.variantId);
     if (existingIndex > -1) {
       this.cart[existingIndex].quantity += (item.quantity || 1);
+      if (!this.cart[existingIndex].image || this.cart[existingIndex].image === 'undefined') {
+        this.cart[existingIndex].image = resolveItemImage(item);
+      }
     } else {
       this.cart.push({
         productId: item.productId || 'product',
@@ -152,7 +213,7 @@ export class VidhyutCart {
         variantName: item.variantName || 'Standard Variant',
         price: Number(item.price) || 0,
         quantity: Math.max(1, Number(item.quantity) || 1),
-        image: item.image || '/assets/images/products/solar-lights.jpg'
+        image: resolveItemImage(item)
       });
     }
 
@@ -321,7 +382,7 @@ export class VidhyutCart {
 
     container.innerHTML = this.cart.map(item => `
       <div class="vs-cart-item" data-variant-id="${item.variantId}">
-        <img src="${item.image}" alt="${item.name}" class="vs-cart-item-img" width="64" height="64" loading="lazy">
+        <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-item-img" width="64" height="64" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/products/led-lamps.jpg';">
         <div class="vs-cart-item-info">
           <div class="vs-cart-item-top">
             <h4 class="vs-cart-item-title">${item.name}</h4>
@@ -415,7 +476,7 @@ export class VidhyutCart {
             ${this.cart.map(item => `
               <div class="vs-cart-table-row" data-variant-id="${item.variantId}">
                 <div class="vs-cart-cell-prod">
-                  <img src="${item.image}" alt="${item.name}" class="vs-cart-row-thumb" width="72" height="72" loading="lazy">
+                  <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/products/led-lamps.jpg';">
                   <div class="vs-cart-row-details">
                     <h3 class="vs-cart-row-title">${item.name}</h3>
                     <div class="vs-cart-row-variant">${item.variantName}</div>
@@ -548,13 +609,18 @@ export class VidhyutCart {
       return;
     }
 
-    // Check if running on Shopify Online Store
-    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) {
-      // Shopify Ajax Cart API flow: clear then batch add
+    // Check if running on Shopify Online Store with valid numeric variant IDs
+    const hasShopifyNumericVariants = this.cart.every(i => {
+      const numId = Number(i.shopifyVariantId);
+      return Number.isInteger(numId) && numId > 0;
+    });
+
+    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root && hasShopifyNumericVariants) {
+      this.showToast('Connecting to secure checkout...');
       fetch(`${window.Shopify.routes.root}cart/clear.js`, { method: 'POST' })
         .then(() => {
           const items = this.cart.map(i => ({
-            id: i.shopifyVariantId || i.variantId,
+            id: Number(i.shopifyVariantId),
             quantity: i.quantity
           }));
           return fetch(`${window.Shopify.routes.root}cart/add.js`, {
@@ -567,14 +633,17 @@ export class VidhyutCart {
           window.location.href = `${window.Shopify.routes.root}checkout`;
         })
         .catch(err => {
-          console.error('Shopify checkout sync error:', err);
-          window.location.href = '/checkout';
+          console.warn('Shopify checkout sync error, routing to direct sales desk:', err);
+          this.openWhatsAppCheckout();
         });
       return;
     }
 
-    // Standalone Application Checkout Flow:
-    // Builds formatted order message and connects directly to Vidhyut Saathi official sales desk
+    // Direct WhatsApp Official Order Placement (Never routes to broken /checkout or home page)
+    this.openWhatsAppCheckout();
+  }
+
+  openWhatsAppCheckout() {
     let summary = 'Vidhyut Saathi — Official Order Placement:\n\n';
     let grandTotal = 0;
     this.cart.forEach((item, index) => {
@@ -587,7 +656,13 @@ export class VidhyutCart {
 
     const encoded = encodeURIComponent(summary);
     const whatsappUrl = `https://wa.me/918199036060?text=${encoded}`;
-    window.open(whatsappUrl, '_blank');
+
+    this.showToast('Opening Vidhyut Saathi Order Placement Desk on WhatsApp...');
+
+    const win = window.open(whatsappUrl, '_blank');
+    if (!win || win.closed || typeof win.closed === 'undefined') {
+      window.location.href = whatsappUrl;
+    }
   }
 
   showToast(message) {

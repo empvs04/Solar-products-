@@ -2,6 +2,47 @@
  * Vidhyut Saathi - Shopify Theme Shared Cart & Drawer Script
  */
 (function() {
+  function resolveItemImage(item) {
+    if (item && item.image && typeof item.image === 'string' && item.image.trim() !== '' && item.image !== 'undefined' && item.image !== 'null') {
+      var img = item.image.trim();
+      if (img.indexOf('http://') === 0 || img.indexOf('https://') === 0 || img.indexOf('data:') === 0 || img.indexOf('/') === 0) {
+        return img;
+      }
+      return '/assets/images/products/' + img;
+    }
+
+    var pid = (item && item.productId ? item.productId : '').toLowerCase();
+    var vid = (item && item.variantId ? item.variantId : '').toLowerCase();
+    var name = (item && item.name ? item.name : '').toLowerCase();
+
+    if (pid.indexOf('led-lamps') > -1 || pid.indexOf('led-linear') > -1 || vid.indexOf('ll-') === 0 || name.indexOf('led lamp') > -1 || name.indexOf('linear') > -1 || name.indexOf('suspended') > -1) {
+      return '/assets/images/products/led-lamps.jpg';
+    }
+    if (pid.indexOf('vintage') > -1 || pid.indexOf('lantern') > -1 || vid.indexOf('sconce-') === 0 || name.indexOf('lantern') > -1 || name.indexOf('sconce') > -1) {
+      return '/assets/images/products/solar-vintage-wall-lantern.jpg';
+    }
+    if (pid.indexOf('portable') > -1 || pid.indexOf('work-lamp') > -1 || vid.indexOf('work-') === 0 || name.indexOf('work lamp') > -1 || name.indexOf('portable') > -1) {
+      return '/assets/images/products/solar-led-lamps-1.jpg';
+    }
+    if (pid.indexOf('flood') > -1 || vid.indexOf('fl-') === 0 || name.indexOf('flood') > -1) {
+      return '/assets/images/products/solar-flood-lights.jpg';
+    }
+    if (pid.indexOf('bulb') > -1 || vid.indexOf('lb-') === 0 || name.indexOf('bulb') > -1) {
+      return '/assets/images/products/led-bulbs.jpg';
+    }
+    if (pid.indexOf('clamp') > -1 || vid.indexOf('cm-') === 0 || name.indexOf('clamp') > -1 || name.indexOf('meter') > -1) {
+      return '/assets/images/products/clamp-meters.jpg';
+    }
+    if (pid.indexOf('wire') > -1 || pid.indexOf('cable') > -1 || vid.indexOf('wc-') === 0 || name.indexOf('wire') > -1 || name.indexOf('cable') > -1) {
+      return '/assets/images/products/wires-cables.jpg';
+    }
+    if (pid.indexOf('solar') > -1 || vid.indexOf('sl-') === 0 || name.indexOf('solar') > -1) {
+      return '/assets/images/products/solar-lights.jpg';
+    }
+
+    return '/assets/images/products/led-lamps.jpg';
+  }
+
   function VidhyutCart() {
     this.storageKey = 'vs_cart';
     this.cart = this.loadCart();
@@ -12,7 +53,24 @@
   VidhyutCart.prototype.loadCart = function() {
     try {
       var data = localStorage.getItem(this.storageKey);
-      return data ? JSON.parse(data) : [];
+      if (!data) return [];
+      var parsed = JSON.parse(data);
+      if (!Array.isArray(parsed)) return [];
+
+      var modified = false;
+      var sanitized = parsed.map(function(item) {
+        var resolved = resolveItemImage(item);
+        if (item.image !== resolved) {
+          item.image = resolved;
+          modified = true;
+        }
+        return item;
+      });
+
+      if (modified) {
+        localStorage.setItem(this.storageKey, JSON.stringify(sanitized));
+      }
+      return sanitized;
     } catch(e) {
       return [];
     }
@@ -121,7 +179,7 @@
         variantName: item.variantName,
         price: item.price,
         quantity: item.quantity || 1,
-        image: item.image
+        image: resolveItemImage(item)
       });
     }
 
@@ -254,8 +312,9 @@
     var self = this;
     var html = '';
     this.cart.forEach(function(item) {
+      var img = resolveItemImage(item);
       html += '<div class="vs-cart-item" data-variant-id="' + item.variantId + '">';
-      html += '<img src="' + item.image + '" alt="' + item.name + '" class="vs-cart-item-img" width="64" height="64" loading="lazy">';
+      html += '<img src="' + img + '" alt="' + item.name + '" class="vs-cart-item-img" width="64" height="64" loading="lazy" onerror="this.onerror=null; this.src=\'/assets/images/products/led-lamps.jpg\';">';
       html += '<div class="vs-cart-item-info">';
       html += '<div class="vs-cart-item-top">';
       html += '<h4 class="vs-cart-item-title">' + item.name + '</h4>';
@@ -317,8 +376,9 @@
     html += '<div class="vs-cart-table-rows">';
 
     this.cart.forEach(function(item) {
+      var img = resolveItemImage(item);
       html += '<div class="vs-cart-table-row" data-variant-id="' + item.variantId + '">';
-      html += '<div class="vs-cart-cell-prod"><img src="' + item.image + '" alt="' + item.name + '" class="vs-cart-row-thumb" width="72" height="72" loading="lazy">';
+      html += '<div class="vs-cart-cell-prod"><img src="' + img + '" alt="' + item.name + '" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="this.onerror=null; this.src=\'/assets/images/products/led-lamps.jpg\';">';
       html += '<div class="vs-cart-row-details"><h3 class="vs-cart-row-title">' + item.name + '</h3><div class="vs-cart-row-variant">' + item.variantName + '</div><button type="button" class="vs-cart-row-remove" data-remove="' + item.variantId + '"><span>Remove</span></button></div></div>';
       html += '<div class="vs-cart-cell-price">₹' + item.price.toLocaleString('en-IN') + '</div>';
       html += '<div class="vs-cart-cell-qty"><div class="vs-table-stepper"><button type="button" class="vs-stepper-btn" data-step-dec="' + item.variantId + '">&minus;</button><span class="vs-stepper-val">' + item.quantity + '</span><button type="button" class="vs-stepper-btn" data-step-inc="' + item.variantId + '">&plus;</button></div></div>';
@@ -383,10 +443,39 @@
 
   VidhyutCart.prototype.proceedToCheckout = function() {
     if (this.cart.length === 0) return;
-    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) {
-      window.location.href = window.Shopify.routes.root + 'checkout';
+
+    var hasShopifyNumericVariants = this.cart.every(function(i) {
+      var numId = Number(i.shopifyVariantId);
+      return Number.isInteger(numId) && numId > 0;
+    });
+
+    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root && hasShopifyNumericVariants) {
+      var self = this;
+      fetch(window.Shopify.routes.root + 'cart/clear.js', { method: 'POST' })
+        .then(function() {
+          var items = self.cart.map(function(i) {
+            return { id: Number(i.shopifyVariantId), quantity: i.quantity };
+          });
+          return fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: items })
+          });
+        })
+        .then(function() {
+          window.location.href = window.Shopify.routes.root + 'checkout';
+        })
+        .catch(function(err) {
+          console.warn('Shopify checkout sync error, falling back to direct desk:', err);
+          self.openWhatsAppCheckout();
+        });
       return;
     }
+
+    this.openWhatsAppCheckout();
+  };
+
+  VidhyutCart.prototype.openWhatsAppCheckout = function() {
     var summary = 'Vidhyut Saathi — Official Order Placement:\n\n';
     var grandTotal = 0;
     this.cart.forEach(function(item, index) {
@@ -394,8 +483,16 @@
       grandTotal += lineTotal;
       summary += (index + 1) + '. ' + item.name + ' (' + item.variantName + ') × ' + item.quantity + ' = ₹' + lineTotal.toLocaleString('en-IN') + '\n';
     });
-    summary += '\nTotal: ₹' + grandTotal.toLocaleString('en-IN') + ' (incl. GST & Free Delivery)';
-    window.open('https://wa.me/918199036060?text=' + encodeURIComponent(summary), '_blank');
+    summary += '\nTotal: ₹' + grandTotal.toLocaleString('en-IN') + ' (incl. GST & Free Delivery)\n';
+    summary += '\nPlease confirm shipping address & invoice details to dispatch.';
+
+    this.showToast('Opening Vidhyut Saathi Order Desk on WhatsApp...');
+
+    var whatsappUrl = 'https://wa.me/918199036060?text=' + encodeURIComponent(summary);
+    var win = window.open(whatsappUrl, '_blank');
+    if (!win || win.closed || typeof win.closed === 'undefined') {
+      window.location.href = whatsappUrl;
+    }
   };
 
   VidhyutCart.prototype.showToast = function(msg) {

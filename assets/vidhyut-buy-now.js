@@ -804,12 +804,25 @@
       if (totalEl) totalEl.textContent = '₹' + grandTotal.toLocaleString('en-IN');
     }
 
+    function getProductImageSrc(p) {
+      if (!p) return '/assets/images/products/led-lamps.jpg';
+      if (p.image) {
+        if (p.image.indexOf('/') === 0 || p.image.indexOf('http://') === 0 || p.image.indexOf('https://') === 0) {
+          return p.image;
+        }
+        return '/assets/images/products/' + p.image;
+      }
+      return '/assets/images/products/led-lamps.jpg';
+    }
+
     // Add to Cart Click
     var addBtn = document.getElementById('addToCartBtn');
     if (addBtn) {
       addBtn.addEventListener('click', function() {
         var p = getActiveProduct();
         if (!p || !selectedVariant) return;
+
+        var img = getProductImageSrc(p);
 
         if (window.vsCart) {
           window.vsCart.addItem({
@@ -819,7 +832,7 @@
             variantName: selectedVariant.name,
             price: selectedVariant.price,
             quantity: quantity,
-            image: (dir + p.image)
+            image: img
           });
           return;
         }
@@ -834,14 +847,16 @@
 
         if (existing > -1) {
           cart[existing].quantity += quantity;
+          if (!cart[existing].image) cart[existing].image = img;
         } else {
           cart.push({
             productId: p.id,
             variantId: selectedVariant.id,
-            name: p.name,
+            name: p.fullName || p.name,
             variantName: selectedVariant.name,
             price: selectedVariant.price,
-            quantity: quantity
+            quantity: quantity,
+            image: img
           });
         }
 
@@ -859,6 +874,8 @@
         var p = getActiveProduct();
         if (!p || !selectedVariant) return;
 
+        var img = getProductImageSrc(p);
+
         if (window.vsCart) {
           window.vsCart.addItem({
             productId: p.id,
@@ -867,31 +884,45 @@
             variantName: selectedVariant.name,
             price: selectedVariant.price,
             quantity: quantity,
-            image: (dir + p.image)
+            image: img
           });
           window.vsCart.proceedToCheckout();
           return;
         }
 
         var total = selectedVariant.price * quantity;
-        var text = 'Hello Vidhyut Saathi, I want to purchase:\n\nProduct: ' + p.fullName + '\nModel: ' + selectedVariant.name + '\nQuantity: ' + quantity + '\nTotal Amount: ₹' + total.toLocaleString('en-IN') + ' (incl. GST)\n\nPlease share delivery details.';
-        window.open('https://wa.me/918199036060?text=' + encodeURIComponent(text), '_blank');
+        var text = 'Vidhyut Saathi — Official Order Placement:\n\n1. ' + (p.fullName || p.name) + '\n   Model: ' + selectedVariant.name + '\n   Qty: ' + quantity + ' × ₹' + selectedVariant.price.toLocaleString('en-IN') + ' = ₹' + total.toLocaleString('en-IN') + '\n\nTotal: ₹' + total.toLocaleString('en-IN') + ' (incl. GST & Free Delivery)\n\nPlease confirm shipping address & invoice details to dispatch.';
+        var whatsappUrl = 'https://wa.me/918199036060?text=' + encodeURIComponent(text);
+        var win = window.open(whatsappUrl, '_blank');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          window.location.href = whatsappUrl;
+        }
       });
     }
 
     // Checkout button inside cart drawer
     if (checkoutBtn) {
       checkoutBtn.addEventListener('click', function() {
+        if (window.vsCart) {
+          window.vsCart.proceedToCheckout();
+          return;
+        }
         if (cart.length === 0) return;
-        var summary = 'Vidhyut Saathi Order Inquiry:\n\n';
+        var summary = 'Vidhyut Saathi — Official Order Placement:\n\n';
         var total = 0;
         cart.forEach(function(item, idx) {
           var itemTotal = item.price * item.quantity;
           total += itemTotal;
-          summary += (idx + 1) + '. ' + item.name + ' (' + item.variantName + ') - Qty: ' + item.quantity + ' - ₹' + itemTotal.toLocaleString('en-IN') + '\n';
+          summary += (idx + 1) + '. ' + item.name + ' (' + item.variantName + ') × ' + item.quantity + ' = ₹' + itemTotal.toLocaleString('en-IN') + '\n';
         });
-        summary += '\nTotal: ₹' + total.toLocaleString('en-IN') + ' (incl. GST)';
-        window.open('https://wa.me/918199036060?text=' + encodeURIComponent(summary), '_blank');
+        summary += '\nTotal: ₹' + total.toLocaleString('en-IN') + ' (incl. GST & Free Delivery)\n';
+        summary += '\nPlease confirm shipping address & invoice details to dispatch.';
+
+        var whatsappUrl = 'https://wa.me/918199036060?text=' + encodeURIComponent(summary);
+        var win = window.open(whatsappUrl, '_blank');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          window.location.href = whatsappUrl;
+        }
       });
     }
 
