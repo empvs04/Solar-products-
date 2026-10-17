@@ -35,31 +35,50 @@
       <!-- Column 2: Navigation Links -->
       <div class="vs-footer-col">
         <h3 class="vs-footer-col-title">Navigation</h3>
-        {%- if section.settings.contact_link != blank -%}
-          {%- assign footer_contact_url = section.settings.contact_link -%}
-        {%- else -%}
-          {%- assign footer_contact_url = routes.root_url | append: 'pages/contact-us' -%}
-        {%- endif -%}
+        {%- liquid
+          assign base_root = routes.root_url
+          if base_root == '/'
+            assign base_root = ''
+          endif
 
-        {%- if section.settings.about_link != blank -%}
-          {%- assign footer_about_url = section.settings.about_link -%}
-        {%- else -%}
-          {%- assign footer_about_url = routes.root_url | append: 'pages/about-us' -%}
-        {%- endif -%}
+          if section.settings.contact_link != blank
+            assign footer_contact_url = section.settings.contact_link
+          elsif pages['contact-us'].url != blank
+            assign footer_contact_url = pages['contact-us'].url
+          elsif pages['contact'].url != blank
+            assign footer_contact_url = pages['contact'].url
+          else
+            assign footer_contact_url = base_root | append: '/pages/contact-us'
+          endif
 
-        {%- if pages['buy-distributorship'].url != blank -%}
-          {%- assign footer_distributor_url = pages['buy-distributorship'].url -%}
-        {%- elsif pages['distributorship'].url != blank -%}
-          {%- assign footer_distributor_url = pages['distributorship'].url -%}
-        {%- else -%}
-          {%- assign footer_distributor_url = routes.root_url | append: 'pages/buy-distributorship' -%}
-        {%- endif -%}
+          if section.settings.about_link != blank
+            assign footer_about_url = section.settings.about_link
+          elsif pages['about-us'].url != blank
+            assign footer_about_url = pages['about-us'].url
+          elsif pages['about'].url != blank
+            assign footer_about_url = pages['about'].url
+          else
+            assign footer_about_url = base_root | append: '/pages/about-us'
+          endif
 
-        {%- if pages['buy-now'].url != blank -%}
-          {%- assign footer_buy_now_url = pages['buy-now'].url -%}
-        {%- else -%}
-          {%- assign footer_buy_now_url = routes.root_url | append: 'pages/buy-now' -%}
-        {%- endif -%}
+          if pages['buy-distributorship'].url != blank
+            assign footer_distributor_url = pages['buy-distributorship'].url
+          elsif pages['distributorship'].url != blank
+            assign footer_distributor_url = pages['distributorship'].url
+          elsif pages['get-franchise'].url != blank
+            assign footer_distributor_url = pages['get-franchise'].url
+          else
+            assign footer_distributor_url = base_root | append: '/pages/buy-distributorship'
+          endif
+
+          if pages['buy-now'].url != blank
+            assign footer_buy_now_url = pages['buy-now'].url
+          elsif pages['buynow'].url != blank
+            assign footer_buy_now_url = pages['buynow'].url
+          else
+            assign footer_buy_now_url = base_root | append: '/pages/buy-now'
+          endif
+        -%}
 
         <ul class="vs-footer-links-list">
           <li><a href="{{ routes.root_url }}" class="vs-footer-link">Home</a></li>

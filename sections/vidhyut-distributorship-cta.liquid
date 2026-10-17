@@ -24,14 +24,21 @@
       </div>
 
       {%- liquid
+        assign base_root = routes.root_url
+        if base_root == '/'
+          assign base_root = ''
+        endif
+
         if section.settings.primary_cta_link != blank
           assign dist_link = section.settings.primary_cta_link
         elsif pages['buy-distributorship'].url != blank
           assign dist_link = pages['buy-distributorship'].url
         elsif pages['distributorship'].url != blank
           assign dist_link = pages['distributorship'].url
+        elsif pages['get-franchise'].url != blank
+          assign dist_link = pages['get-franchise'].url
         else
-          assign dist_link = routes.root_url | append: 'pages/buy-distributorship'
+          assign dist_link = base_root | append: '/pages/buy-distributorship'
         endif
 
         if section.settings.secondary_cta_link != blank
@@ -41,7 +48,7 @@
         elsif pages['contact'].url != blank
           assign contact_link = pages['contact'].url
         else
-          assign contact_link = routes.root_url | append: 'pages/contact-us'
+          assign contact_link = base_root | append: '/pages/contact-us'
         endif
       -%}
 

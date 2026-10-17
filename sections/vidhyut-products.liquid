@@ -7,6 +7,12 @@
         {{ section.settings.subtitle | default: 'Discover reliable solar lighting and electrical solutions from Vidhyut Saathi.' }}
       </p>
     </header>
+    {%- liquid
+      assign base_root = routes.root_url
+      if base_root == '/'
+        assign base_root = ''
+      endif
+    -%}
 
     <div class="vs-products-grid">
       <!-- Card 1: Solar Lights -->
@@ -27,7 +33,7 @@
           <p class="vs-product-desc">
             All-in-one solar luminaires and street lighting with integrated PV panels, lithium storage, and dusk-to-dawn sensors for autonomous outdoor illumination.
           </p>
-          {%- capture default_solar_url -%}{{ routes.root_url | append: 'pages/buy-now?product=solar-lights' }}{%- endcapture -%}
+          {%- capture default_solar_url -%}{{ base_root | append: '/pages/buy-now?product=solar-lights' }}{%- endcapture -%}
           {%- capture default_solar_collection -%}{{ routes.collections_url | append: '/solar-lights' }}{%- endcapture -%}
           <!-- Variant & Pricing Bar -->
           <div class="vs-card-cart-controls">
@@ -84,7 +90,7 @@
           <p class="vs-product-desc">
             Modern architectural linear lamps, downlights, and suspended luminaires designed for glare-free, uniform light distribution across workspaces and living areas.
           </p>
-          {%- capture default_lamp_url -%}{{ routes.root_url | append: 'pages/buy-now?product=led-lamps' }}{%- endcapture -%}
+          {%- capture default_lamp_url -%}{{ base_root | append: '/pages/buy-now?product=led-lamps' }}{%- endcapture -%}
           {%- capture default_lamp_collection -%}{{ routes.collections_url | append: '/led-lamps' }}{%- endcapture -%}
           <!-- Variant & Pricing Bar -->
           <div class="vs-card-cart-controls">
@@ -141,7 +147,7 @@
           <p class="vs-product-desc">
             High-efficacy, long-life LED bulbs engineered with robust thermal dissipation and high lumen output to ensure durable daily performance.
           </p>
-          {%- capture default_bulb_url -%}{{ routes.root_url | append: 'pages/buy-now?product=led-bulbs' }}{%- endcapture -%}
+          {%- capture default_bulb_url -%}{{ base_root | append: '/pages/buy-now?product=led-bulbs' }}{%- endcapture -%}
           {%- capture default_bulb_collection -%}{{ routes.collections_url | append: '/led-bulbs' }}{%- endcapture -%}
           <!-- Variant & Pricing Bar -->
           <div class="vs-card-cart-controls">
@@ -198,7 +204,7 @@
           <p class="vs-product-desc">
             Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.
           </p>
-          {%- capture default_clamp_url -%}{{ routes.root_url | append: 'pages/buy-now?product=clamp-meters' }}{%- endcapture -%}
+          {%- capture default_clamp_url -%}{{ base_root | append: '/pages/buy-now?product=clamp-meters' }}{%- endcapture -%}
           {%- capture default_clamp_collection -%}{{ routes.collections_url | append: '/clamp-meters' }}{%- endcapture -%}
           <!-- Variant & Pricing Bar -->
           <div class="vs-card-cart-controls">

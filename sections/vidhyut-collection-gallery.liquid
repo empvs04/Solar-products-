@@ -1,6 +1,10 @@
 {{ 'vidhyut-collection-gallery.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
+  assign base_root = routes.root_url
+  if base_root == '/'
+    assign base_root = ''
+  endif
   assign current_handle = collection.handle | default: 'solar-lights'
   if current_handle == 'all' or current_handle == blank
     assign current_handle = 'solar-lights'
@@ -104,7 +108,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-street-light' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=solar-street-light' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -136,7 +140,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-step-deck-lights' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=solar-step-deck-lights' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -168,7 +172,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-motion-security-light' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=solar-motion-security-light' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -200,7 +204,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-vintage-wall-lantern' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=solar-vintage-wall-lantern' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -234,7 +238,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=led-linear-architectural' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=led-linear-architectural' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -266,7 +270,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=portable-solar-flood-lamp' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=portable-solar-flood-lamp' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -298,7 +302,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=rechargeable-emergency-lamp-tower' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=rechargeable-emergency-lamp-tower' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -330,7 +334,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-architectural-wall-lamp' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=solar-architectural-wall-lamp' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -364,7 +368,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=high-efficiency-led-bulb' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=high-efficiency-led-bulb' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -396,7 +400,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-hanging-filament-bulb' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=solar-hanging-filament-bulb' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -429,7 +433,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=dc-12v-battery-clip-bulb' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=dc-12v-battery-clip-bulb' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -461,7 +465,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=solar-crystal-globe-string-bulbs' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=solar-crystal-globe-string-bulbs' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -494,7 +498,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=meco-27-auto-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=meco-27-auto-clamp-meter' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -525,7 +529,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=themisto-th-m88-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=themisto-th-m88-clamp-meter' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -556,7 +560,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=dt87-pocket-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=dt87-pocket-clamp-meter' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
@@ -588,7 +592,7 @@
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                   <span>Add to Cart</span>
                 </button>
-                <a href="{{ routes.root_url | append: 'pages/buy-now?product=sigma-sg-997-clamp-meter' }}" class="vs-gallery-buynow-btn">
+                <a href="{{ base_root | append: '/pages/buy-now?product=sigma-sg-997-clamp-meter' }}" class="vs-gallery-buynow-btn">
                   <span>Buy Now</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>

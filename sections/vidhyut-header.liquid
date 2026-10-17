@@ -30,6 +30,11 @@
       <nav class="vs-nav-desktop" aria-label="Main Navigation">
         <ul class="vs-nav-list">
           {%- liquid
+            assign base_root = routes.root_url
+            if base_root == '/'
+              assign base_root = ''
+            endif
+
             if section.settings.about_link != blank
               assign about_page_url = section.settings.about_link
             elsif pages['about-us'].url != blank
@@ -37,7 +42,7 @@
             elsif pages['about'].url != blank
               assign about_page_url = pages['about'].url
             else
-              assign about_page_url = routes.root_url | append: 'pages/about-us'
+              assign about_page_url = base_root | append: '/pages/about-us'
             endif
 
             if section.settings.products_link != blank
@@ -45,7 +50,7 @@
             elsif routes.all_products_collection_url != blank and collections['all'].products_count > 0
               assign products_page_url = routes.all_products_collection_url
             else
-              assign products_page_url = routes.root_url | append: '#products'
+              assign products_page_url = base_root | append: '/#products'
             endif
 
             if section.settings.contact_link != blank
@@ -55,7 +60,7 @@
             elsif pages['contact'].url != blank
               assign contact_page_url = pages['contact'].url
             else
-              assign contact_page_url = routes.root_url | append: 'pages/contact-us'
+              assign contact_page_url = base_root | append: '/pages/contact-us'
             endif
 
             if section.settings.distributor_link != blank
@@ -64,16 +69,20 @@
               assign distributor_page_url = pages['buy-distributorship'].url
             elsif pages['distributorship'].url != blank
               assign distributor_page_url = pages['distributorship'].url
+            elsif pages['get-franchise'].url != blank
+              assign distributor_page_url = pages['get-franchise'].url
             else
-              assign distributor_page_url = routes.root_url | append: 'pages/buy-distributorship'
+              assign distributor_page_url = base_root | append: '/pages/buy-distributorship'
             endif
 
             if section.settings.buy_now_link != blank
               assign buy_now_page_url = section.settings.buy_now_link
             elsif pages['buy-now'].url != blank
               assign buy_now_page_url = pages['buy-now'].url
+            elsif pages['buynow'].url != blank
+              assign buy_now_page_url = pages['buynow'].url
             else
-              assign buy_now_page_url = routes.root_url | append: 'pages/buy-now'
+              assign buy_now_page_url = base_root | append: '/pages/buy-now'
             endif
 
             assign menu_has_about = false
@@ -176,7 +185,7 @@
         </a>
         <a
           href="{{ distributor_page_url }}"
-          class="vs-btn vs-btn-outline {% if page.handle == 'buy-distributorship' or page.handle == 'distributorship' or template.suffix == 'buy-distributorship' %}is-active{% endif %}"
+          class="vs-btn vs-btn-outline {% if page.handle == 'buy-distributorship' or page.handle == 'distributorship' or page.handle == 'get-franchise' or template.suffix == 'buy-distributorship' or template.suffix == 'distributorship' or template.suffix == 'get-franchise' %}is-active{% endif %}"
           id="headerDistributorBtn"
         >
           {{ section.settings.distributor_label | default: 'Buy Distributorship' }}
@@ -343,7 +352,7 @@
     </a>
     <a
       href="{{ distributor_page_url }}"
-      class="vs-btn vs-btn-outline {% if page.handle == 'buy-distributorship' or page.handle == 'distributorship' or template.suffix == 'buy-distributorship' %}is-active{% endif %}"
+      class="vs-btn vs-btn-outline {% if page.handle == 'buy-distributorship' or page.handle == 'distributorship' or page.handle == 'get-franchise' or template.suffix == 'buy-distributorship' or template.suffix == 'distributorship' or template.suffix == 'get-franchise' %}is-active{% endif %}"
       id="mobileDistributorBtn"
     >
       {{ section.settings.distributor_label | default: 'Buy Distributorship' }}

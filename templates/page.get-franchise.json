@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical"
+      }
+    },
+    "distributorship": {
+      "type": "vidhyut-distributorship",
+      "settings": {
+        "badge": "Partner Opportunities",
+        "heading": "Become a Vidhyut Saathi Distributor",
+        "description": "Interested in becoming a Vidhyut Saathi distributor? Fill out the form below with your contact and address details so our team can review your enquiry.",
+        "submit_button_label": "Submit Distributorship Enquiry"
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "distributorship",
+    "footer"
+  ]
+}
