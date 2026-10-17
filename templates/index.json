@@ -60,7 +60,7 @@
         "slide_3": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/20W_Solar_LED_Lamp_Camping_Adventure.png",
+            "desktop_image": "shopify://shop_images/20W_Solar_Camping_Light_Banner.png",
             "mobile_image": "shopify://shop_images/Solar_Camping_LED_Lamp_Advertisement.png",
             "alt_text": "20W Solar LED Lamp",
             "badge": "",
@@ -75,7 +75,7 @@
         "slide_4": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/Hal_onix_Solaris_LED_Floodlight_Banner.png",
+            "desktop_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer_1.png",
             "mobile_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer.png",
             "alt_text": "Halonix Solaris LED Floodlight",
             "badge": "",
