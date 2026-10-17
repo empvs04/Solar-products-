@@ -30,7 +30,7 @@
         "slide_1": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/Meco_Clamp_Meter_Launch_Banner.png",
+            "desktop_image": "shopify://shop_images/MECO_Clamp_Meter_Launch_Banner_1.png",
             "mobile_image": "shopify://shop_images/MECO_Clamp_Meter_Launch_Poster.png",
             "alt_text": "Meco Clamp Meter Banner",
             "badge": "",
@@ -106,9 +106,13 @@
         "badge": "Our Product Lineup",
         "title": "Explore Our Products",
         "subtitle": "Discover reliable solar lighting and electrical solutions from Vidhyut Saathi.",
+        "solar_collection": "",
         "solar_link": "",
+        "lamp_collection": "",
         "lamp_link": "",
+        "bulb_collection": "",
         "bulb_link": "",
+        "clamp_collection": "",
         "clamp_link": ""
       }
     },
