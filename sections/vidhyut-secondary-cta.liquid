@@ -20,6 +20,8 @@
 
         if pages['contact-us'].url != blank
           assign cta_contact_url = pages['contact-us'].url
+        elsif pages['contact'].url != blank
+          assign cta_contact_url = pages['contact'].url
         else
           assign cta_contact_url = base_root | append: '/pages/contact-us'
         endif
