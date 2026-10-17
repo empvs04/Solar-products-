@@ -45,7 +45,7 @@
         "slide_2": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/Maxwell_Digital_Timer_Socket_Advertisement.png",
+            "desktop_image": "shopify://shop_images/Maxwell_Digital_Timer_Socket_Banner.png",
             "mobile_image": "shopify://shop_images/Maxwell_230V_Energy-Saving_Timer_Socket.png",
             "alt_text": "Maxwell Digital Timer Socket",
             "badge": "",
