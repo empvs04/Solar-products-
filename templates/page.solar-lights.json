@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {}
+    },
+    "collection_gallery": {
+      "type": "vidhyut-collection-gallery",
+      "settings": {
+        "category_handle": "solar-lights"
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "collection_gallery",
+    "footer"
+  ]
+}

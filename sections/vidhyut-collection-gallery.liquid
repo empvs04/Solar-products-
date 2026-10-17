@@ -5,9 +5,9 @@
   if base_root == '/'
     assign base_root = ''
   endif
-  assign current_handle = collection.handle | default: 'solar-lights'
-  if current_handle == 'all' or current_handle == blank
-    assign current_handle = 'solar-lights'
+  assign current_handle = section.settings.category_handle | default: collection.handle
+  if current_handle == blank or current_handle == 'all'
+    assign current_handle = page.handle | default: 'solar-lights'
   endif
 -%}
 
@@ -609,6 +609,12 @@
 {
   "name": "Collection Gallery",
   "settings": [
+    {
+      "type": "text",
+      "id": "category_handle",
+      "label": "Category Handle (solar-lights, led-lamps, led-bulbs, clamp-meters)",
+      "info": "Leave blank to detect automatically from page or collection URL"
+    },
     {
       "type": "text",
       "id": "solar_title",
