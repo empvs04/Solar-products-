@@ -148,13 +148,17 @@
   padding-top: var(--space-xl);
   border-top: 1px solid var(--color-border-dark);
   font-size: 0.8125rem;
-  color: #64748B;
+  color: #ffffff;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.vs-footer-copy {
+.vs-footer-copy,
+.vs-footer-copyright {
   margin: 0;
+  color: #ffffff !important;
+  font-weight: 500;
+  opacity: 1 !important;
 }
 
 .vs-footer-bottom-links {
@@ -164,12 +168,12 @@
 }
 
 .vs-footer-bottom-link {
-  color: #64748B;
+  color: #cbd5e1;
   transition: color var(--transition-fast);
 }
 
 .vs-footer-bottom-link:hover {
-  color: #CBD5E1;
+  color: #ff5700;
 }
 
 /* Responsiveness */
@@ -209,4 +213,10 @@
     align-items: flex-start;
     gap: 0.75rem;
   }
+}
+
+.vs-footer-dot {
+  color: #64748b;
+  font-size: 0.75rem;
+  user-select: none;
 }

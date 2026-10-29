@@ -1,3 +1,26 @@
+
+<style>
+  .vs-footer-bottom {
+    color: #ffffff !important;
+  }
+  .vs-footer-copy {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+  }
+  .vs-footer-bottom-link {
+    color: #cbd5e1 !important;
+    transition: color 0.2s ease !important;
+  }
+  .vs-footer-bottom-link:hover {
+    color: #ff5700 !important;
+    text-decoration: underline !important;
+  }
+  .vs-footer-dot {
+    color: #64748b !important;
+  }
+</style>
+
 <footer class="vs-footer" id="contact">
   <div class="vs-container">
     <div class="vs-footer-grid">
@@ -154,7 +177,7 @@
 
     <!-- Footer Bottom -->
     <div class="vs-footer-bottom">
-      <p class="vs-footer-copy">
+      <p class="vs-footer-copy" style="color: #ffffff !important; font-weight: 500; font-size: 0.875rem; letter-spacing: 0.2px;">
         &copy; {{ 'now' | date: '%Y' }} {{ shop.name | default: 'Vidhyut Saathi' }}. All rights reserved.
       </p>
       <div class="vs-footer-bottom-links">
