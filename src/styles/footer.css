@@ -160,16 +160,34 @@
 .vs-footer-bottom-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.875rem 1.25rem;
 }
 
 .vs-footer-bottom-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.8125rem;
   color: #64748B;
-  transition: color var(--transition-fast);
+  cursor: pointer;
+  transition: color var(--transition-fast), text-decoration var(--transition-fast);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
 }
 
 .vs-footer-bottom-link:hover {
   color: #CBD5E1;
+  text-decoration: underline;
+}
+
+.vs-footer-dot {
+  color: #334155;
+  font-size: 0.75rem;
+  user-select: none;
 }
 
 /* Responsiveness */

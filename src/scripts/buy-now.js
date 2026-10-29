@@ -8,6 +8,7 @@ import '../styles/bundle.css';
 import { productsConfig } from '../config/products.config.js';
 import { MobileNav } from './mobile-nav.js';
 import { initSharedCart } from './cart.js';
+import { initPolicyModal } from './policy-modal.js';
 
 export class BuyNowController {
   constructor() {
@@ -21,8 +22,9 @@ export class BuyNowController {
   }
 
   init() {
-    // 1. Initialize mobile drawer
+    // 1. Initialize mobile drawer & policy pop-ups
     new MobileNav();
+    initPolicyModal();
 
     // 2. Synchronize shared cart UI and render dedicated review section
     this.cartManager.updateBadges();

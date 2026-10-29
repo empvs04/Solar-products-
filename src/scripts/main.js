@@ -10,6 +10,7 @@ import { MobileNav } from './mobile-nav.js';
 import { ContactPageController } from './contact-form.js';
 import { DistributorshipFormController } from './distributorship-form.js';
 import { initSharedCart } from './cart.js';
+import { initPolicyModal } from './policy-modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Sticky Header Elevation
@@ -48,11 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Initialize Universal Shared Shopping Cart & Drawer
   window.vsCart = initSharedCart();
 
-  // 7. Smooth Anchor Link Handler
+  // 7. Initialize Interactive Policy Pop-up Modal (Privacy, Disclaimer, Terms, Return/Refund)
+  window.vsPolicyModal = initPolicyModal();
+
+  // 8. Smooth Anchor Link Handler
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
-      if (targetId === '#' || !targetId) return;
+      if (targetId === '#' || !targetId || targetId.startsWith('#policy-')) return;
 
       const targetEl = document.querySelector(targetId);
       if (targetEl) {

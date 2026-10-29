@@ -45,6 +45,7 @@
     {{ 'vidhyut-collection-gallery.css' | asset_url | stylesheet_tag }}
     {{ 'vidhyut-cart.css' | asset_url | stylesheet_tag }}
     {{ 'vidhyut-footer.css' | asset_url | stylesheet_tag }}
+    {{ 'vidhyut-policy-modal.css' | asset_url | stylesheet_tag }}
 
     <!-- Anti-FOUC Drawer Isolation (prevents flash of drawer on page navigation) -->
     <style>
@@ -111,6 +112,7 @@
     <script src="{{ 'vidhyut-distributorship.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vidhyut-cart.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vidhyut-theme.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'vidhyut-policy-modal.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="template-{{ template.name | handle }} vidhyut-saathi-theme">
