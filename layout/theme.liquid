@@ -47,8 +47,23 @@
     {{ 'vidhyut-footer.css' | asset_url | stylesheet_tag }}
     {{ 'vidhyut-policy-modal.css' | asset_url | stylesheet_tag }}
 
-    <!-- Anti-FOUC Drawer Isolation (prevents flash of drawer on page navigation) -->
+    <!-- Anti-FOUC Drawer Isolation & Viewport Overflow Protection -->
     <style>
+      html,
+      body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overscroll-behavior-x: none !important;
+        position: relative !important;
+      }
+      #MainContent,
+      main.content-for-layout {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        position: relative !important;
+      }
       .vs-cart-drawer:not(.is-open),
       .vs-mobile-drawer:not(.is-open),
       .vs-cart-drawer-backdrop:not(.is-open),

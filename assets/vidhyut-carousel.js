@@ -45,6 +45,7 @@
     var touchStartY = 0;
     var touchEndX = 0;
     var touchEndY = 0;
+    var isSwiping = false;
 
     function updateSlides(newIndex) {
       if (newIndex < 0 || newIndex >= totalSlides) return;
@@ -177,18 +178,31 @@
         touchStartY = e.touches[0].clientY;
         touchEndX = touchStartX;
         touchEndY = touchStartY;
+        isSwiping = true;
         isPaused = true;
       }
     }
 
     function onTouchMove(e) {
-      if (e.touches && e.touches.length > 0) {
-        touchEndX = e.touches[0].clientX;
-        touchEndY = e.touches[0].clientY;
+      if (!isSwiping || !e.touches || e.touches.length === 0) return;
+      touchEndX = e.touches[0].clientX;
+      touchEndY = e.touches[0].clientY;
+
+      var deltaX = touchEndX - touchStartX;
+      var deltaY = touchEndY - touchStartY;
+
+      // Prevent mobile browser horizontal viewport displacement / horizontal panning
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (e.cancelable) {
+          e.preventDefault();
+        }
       }
     }
 
     function onTouchEnd() {
+      if (!isSwiping) return;
+      isSwiping = false;
+
       var deltaX = touchEndX - touchStartX;
       var deltaY = touchEndY - touchStartY;
 
@@ -227,7 +241,8 @@
     carouselEl.addEventListener('keydown', onKeyDown);
 
     carouselEl.addEventListener('touchstart', onTouchStart, { passive: true });
-    carouselEl.addEventListener('touchmove', onTouchMove, { passive: true });
+    carouselEl.addEventListener('touchmove', onTouchMove, { passive: false });
+    carouselEl.addEventListener('touchcancel', onTouchEnd, { passive: true });
     carouselEl.addEventListener('touchend', onTouchEnd, { passive: true });
 
     // Ensure first slide is active
@@ -273,6 +288,7 @@
         carouselEl.removeEventListener('touchstart', onTouchStart);
         carouselEl.removeEventListener('touchmove', onTouchMove);
         carouselEl.removeEventListener('touchend', onTouchEnd);
+        carouselEl.removeEventListener('touchcancel', onTouchEnd);
         carouselEl._vsCarouselInstance = null;
       }
     };

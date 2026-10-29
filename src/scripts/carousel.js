@@ -110,7 +110,8 @@ export class HeroCarousel {
 
     // Touch swipe gestures
     this.carousel.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
-    this.carousel.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
+    this.carousel.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: false });
+    this.carousel.addEventListener('touchcancel', () => this.handleTouchEnd(), { passive: true });
     this.carousel.addEventListener('touchend', () => this.handleTouchEnd(), { passive: true });
 
     // Listen for reduced motion preference changes
@@ -159,6 +160,15 @@ export class HeroCarousel {
     if (!this.isSwiping || !e.touches || e.touches.length === 0) return;
     this.touchEndX = e.touches[0].clientX;
     this.touchEndY = e.touches[0].clientY;
+
+    const deltaX = this.touchEndX - this.touchStartX;
+    const deltaY = this.touchEndY - this.touchStartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+    }
   }
 
   handleTouchEnd() {

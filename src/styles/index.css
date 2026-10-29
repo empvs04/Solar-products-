@@ -81,6 +81,10 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overscroll-behavior-x: none !important;
 }
 
 body {
@@ -89,9 +93,12 @@ body {
   line-height: 1.6;
   color: var(--color-text-main);
   background-color: var(--color-white);
-  overflow-x: hidden;
-  position: relative;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  position: relative !important;
   min-height: 100vh;
+  overscroll-behavior-x: none !important;
 }
 
 img, picture, svg, video {
