@@ -92,13 +92,13 @@
           "settings": {
             "desktop_image": "shopify://shop_images/20W_Solar_Camping_Light_Banner.png",
             "mobile_image": "shopify://shop_images/Solar_Camping_LED_Lamp_Advertisement.png",
-            "alt_text": "Vidhyut Saathi Special Solar Offer",
-            "badge": "Special Offer",
-            "heading": "Smart Solar & Energy Solutions",
-            "subheading": "Power your home and business with high-efficiency renewable energy products.",
-            "primary_cta_label": "Explore Products",
+            "alt_text": "20W Solar Camping Light Banner",
+            "badge": "",
+            "heading": "",
+            "subheading": "",
+            "primary_cta_label": "",
             "primary_cta_link": "",
-            "secondary_cta_label": "Contact Us",
+            "secondary_cta_label": "",
             "secondary_cta_link": ""
           }
         }
