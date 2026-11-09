@@ -96,6 +96,38 @@
   </script>
 </head>
 <body>
+  <!-- ======================================================================
+       Top Marquee Announcement Ticker (Continuous Right to Left)
+       ====================================================================== -->
+  <div class="vs-ticker-wrap" id="vsTopTicker" role="region" aria-label="Announcement Ticker">
+    <div class="vs-ticker-track">
+      <div class="vs-ticker-group">
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">🛡️</span><span class="vs-ticker-text">100% RESULT GUARANTEED</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">💰</span><span class="vs-ticker-text">EARN ₹5-6 LAKHS P.M.</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">🚚</span><span class="vs-ticker-text">FREE SHIPPING ALL OVER INDIA</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">⚡</span><span class="vs-ticker-text">VIDHYUT SAATHI SOLAR &amp; ELECTRICAL</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">🏆</span><span class="vs-ticker-text">ISO 9001:2015 QUALITY CERTIFIED</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+      </div>
+      <div class="vs-ticker-group" aria-hidden="true">
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">🛡️</span><span class="vs-ticker-text">100% RESULT GUARANTEED</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">💰</span><span class="vs-ticker-text">EARN ₹5-6 LAKHS P.M.</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">🚚</span><span class="vs-ticker-text">FREE SHIPPING ALL OVER INDIA</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">⚡</span><span class="vs-ticker-text">VIDHYUT SAATHI SOLAR &amp; ELECTRICAL</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item"><span class="vs-ticker-icon">🏆</span><span class="vs-ticker-text">ISO 9001:2015 QUALITY CERTIFIED</span></span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+      </div>
+    </div>
+  </div>
+
 
   <!-- ======================================================================
        Header & Navigation
@@ -114,7 +146,6 @@
           >
           <div class="vs-logo-text-wrap">
             <span class="vs-logo-brand">Vidhyut Saathi</span>
-            <span class="vs-logo-tagline">Solar & Electrical</span>
           </div>
         </a>
 
@@ -406,7 +437,285 @@
     </section>
 
     <!-- ======================================================================
-         Featured Products Section: Explore Our Products
+         Section 2: Featured Innovations Showcase
+         Cards:
+         1. Digital Clamp Meter
+         2. Vidhyut Saathi Saver Card
+         3. Multiple Clamp Meters Series
+         4. Halonix Solaris LED Light
+         ====================================================================== -->
+    <section class="vs-products-section vs-featured-showcase-section" id="featured-showcase">
+      <div class="vs-container">
+        <header class="vs-section-header">
+          <div class="vs-section-badge">Featured Innovations</div>
+          <h2 class="vs-section-title">Best Sellers &amp; Innovations</h2>
+          <p class="vs-section-subtitle">
+            Explore our precision testing instruments, smart electricity saver cards, and commercial solar floodlights.
+          </p>
+        </header>
+
+        <div class="vs-products-grid">
+          <!-- Card 1: Clamp Meter -->
+          <article class="vs-product-card" id="showcase-clamp-meter" data-product-id="meco-clamp-meter" data-product-name="Precision Digital Clamp Meter">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">Electrical Testing</span>
+              <img
+                src="/assets/images/products/clamp-meter-1.jpg"
+                alt="Vidhyut Saathi Precision Digital Clamp Meter"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">Digital Clamp Meter</h3>
+              <p class="vs-product-desc">
+                Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.
+              </p>
+              <div class="vs-card-cart-controls">
+                <div class="vs-card-variant-row">
+                  <label class="vs-card-variant-label" for="varSelect-sc-clamp">Select Model / Range:</label>
+                  <select class="vs-card-variant-select" id="varSelect-sc-clamp" data-variant-select aria-label="Select Digital Clamp Meter Range">
+                    <option value="cm-600a" data-price="1899" selected>600A AC/DC Precision Meter — ₹1,899</option>
+                    <option value="cm-400a" data-price="1499">400A Compact Digital Tester — ₹1,499</option>
+                    <option value="cm-1000a" data-price="2799">1000A Heavy Industrial Meter — ₹2,799</option>
+                  </select>
+                </div>
+                <div class="vs-card-price-row">
+                  <span class="vs-card-price">₹1,899</span>
+                  <span class="vs-card-gst-tag">Incl. GST</span>
+                </div>
+              </div>
+
+              <div class="vs-card-actions">
+                <button
+                  type="button"
+                  class="vs-btn-card-cart"
+                  data-add-to-cart
+                  data-product-id="meco-clamp-meter"
+                  data-product-name="Digital Clamp Meter"
+                  aria-label="Add Digital Clamp Meter to cart"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a
+                  href="/buy-now.html?product=clamp-meters"
+                  class="vs-product-btn-secondary"
+                  aria-label="Buy Digital Clamp Meter Now"
+                >
+                  <span>Buy Now</span>
+                </a>
+                <a
+                  href="/collections/clamp-meters.html"
+                  class="vs-btn-see-more"
+                  aria-label="See more specifications of clamp meters"
+                >
+                  <span>See More</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Vidhyut Saathi Card -->
+          <article class="vs-product-card" id="showcase-vidhyut-card" data-product-id="vidhyut-saver-card" data-product-name="Vidhyut Saathi Power Saver Card">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">Smart Energy Saver</span>
+              <img
+                src="/assets/images/products/vidhyut-power-saver-card.jpg"
+                alt="Vidhyut Saathi Smart Electricity Saver Card"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">Vidhyut Saathi Saver Card</h3>
+              <p class="vs-product-desc">
+                India's No.1 smart electricity saver card engineered with US-German nanotechnology to optimize household and commercial power bills.
+              </p>
+              <div class="vs-card-cart-controls">
+                <div class="vs-card-variant-row">
+                  <label class="vs-card-variant-label" for="varSelect-sc-card">Select Load Capacity:</label>
+                  <select class="vs-card-variant-select" id="varSelect-sc-card" data-variant-select aria-label="Select Saver Card Load Capacity">
+                    <option value="vsc-10kw" data-price="2499" selected>Smart Saver Card (Up to 10KW) — ₹2,499</option>
+                    <option value="vsc-20kw" data-price="4499">Commercial Pack (Up to 20KW) — ₹4,499</option>
+                    <option value="vsc-30kw" data-price="5999">Heavy Duty Industrial Pack — ₹5,999</option>
+                  </select>
+                </div>
+                <div class="vs-card-price-row">
+                  <span class="vs-card-price">₹2,499</span>
+                  <span class="vs-card-gst-tag">Incl. GST</span>
+                </div>
+              </div>
+
+              <div class="vs-card-actions">
+                <button
+                  type="button"
+                  class="vs-btn-card-cart"
+                  data-add-to-cart
+                  data-product-id="vidhyut-saver-card"
+                  data-product-name="Vidhyut Saathi Power Saver Card"
+                  aria-label="Add Vidhyut Saathi Saver Card to cart"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a
+                  href="/buy-now.html?product=saver-card"
+                  class="vs-product-btn-secondary"
+                  aria-label="Buy Vidhyut Saathi Saver Card Now"
+                >
+                  <span>Buy Now</span>
+                </a>
+                <a
+                  href="/products.html"
+                  class="vs-btn-see-more"
+                  aria-label="See more details about Saver Card"
+                >
+                  <span>See More</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Multiple Clamp Meters -->
+          <article class="vs-product-card" id="showcase-multiple-clamps" data-product-id="industrial-clamp-series" data-product-name="Multiple Clamp Meters Series">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">Industrial Series</span>
+              <img
+                src="/assets/images/products/clamp-meters.jpg"
+                alt="Vidhyut Saathi Multiple Clamp Meters Range"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">Multiple Clamp Meters</h3>
+              <p class="vs-product-desc">
+                Comprehensive lineup of multi-range digital clamp meters, test probes, and heavy-duty electrical testing instruments.
+              </p>
+              <div class="vs-card-cart-controls">
+                <div class="vs-card-variant-row">
+                  <label class="vs-card-variant-label" for="varSelect-sc-multiclamps">Select Kit / Combo:</label>
+                  <select class="vs-card-variant-select" id="varSelect-sc-multiclamps" data-variant-select aria-label="Select Clamp Meter Combo">
+                    <option value="cm-combo-pro" data-price="3299" selected>Industrial Multi-Meter Combo — ₹3,299</option>
+                    <option value="cm-kit-electrician" data-price="4999">Electrician Complete Toolkit — ₹4,999</option>
+                    <option value="cm-dual-range" data-price="2599">Dual-Range Testing Bundle — ₹2,599</option>
+                  </select>
+                </div>
+                <div class="vs-card-price-row">
+                  <span class="vs-card-price">₹3,299</span>
+                  <span class="vs-card-gst-tag">Incl. GST</span>
+                </div>
+              </div>
+
+              <div class="vs-card-actions">
+                <button
+                  type="button"
+                  class="vs-btn-card-cart"
+                  data-add-to-cart
+                  data-product-id="industrial-clamp-series"
+                  data-product-name="Multiple Clamp Meters Series"
+                  aria-label="Add Multiple Clamp Meters to cart"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a
+                  href="/buy-now.html?product=clamp-meters"
+                  class="vs-product-btn-secondary"
+                  aria-label="Buy Multiple Clamp Meters Now"
+                >
+                  <span>Buy Now</span>
+                </a>
+                <a
+                  href="/collections/clamp-meters.html"
+                  class="vs-btn-see-more"
+                  aria-label="See more specifications"
+                >
+                  <span>See More</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Halonix Light -->
+          <article class="vs-product-card" id="showcase-halonix-light" data-product-id="halonix-solaris-light" data-product-name="Halonix Solaris LED Light">
+            <div class="vs-product-image-wrap">
+              <span class="vs-product-badge">High-Lumen Solar</span>
+              <img
+                src="/assets/images/products/solar-lights-1.jpg"
+                alt="Halonix Solaris High-Lumen Solar LED Floodlight"
+                class="vs-product-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </div>
+            <div class="vs-product-body">
+              <h3 class="vs-product-title">Halonix Solaris LED Light</h3>
+              <p class="vs-product-desc">
+                High-lumen solar floodlights and outdoor luminaires engineered for industrial durability, zero electricity bills, and weather-resistant coverage.
+              </p>
+              <div class="vs-card-cart-controls">
+                <div class="vs-card-variant-row">
+                  <label class="vs-card-variant-label" for="varSelect-sc-halonix">Select Model / Wattage:</label>
+                  <select class="vs-card-variant-select" id="varSelect-sc-halonix" data-variant-select aria-label="Select Halonix Floodlight Wattage">
+                    <option value="hx-50w" data-price="4499" selected>Halonix Solaris 50W Floodlight — ₹4,499</option>
+                    <option value="hx-30w" data-price="2999">Halonix Solaris 30W Outdoor — ₹2,999</option>
+                    <option value="hx-100w" data-price="7999">Halonix Heavy 100W Commercial — ₹7,999</option>
+                  </select>
+                </div>
+                <div class="vs-card-price-row">
+                  <span class="vs-card-price">₹4,499</span>
+                  <span class="vs-card-gst-tag">Incl. GST</span>
+                </div>
+              </div>
+
+              <div class="vs-card-actions">
+                <button
+                  type="button"
+                  class="vs-btn-card-cart"
+                  data-add-to-cart
+                  data-product-id="halonix-solaris-light"
+                  data-product-name="Halonix Solaris LED Light"
+                  aria-label="Add Halonix Light to cart"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  <span>Add to Cart</span>
+                </button>
+                <a
+                  href="/buy-now.html?product=solar-lights"
+                  class="vs-product-btn-secondary"
+                  aria-label="Buy Halonix Solaris LED Light Now"
+                >
+                  <span>Buy Now</span>
+                </a>
+                <a
+                  href="/collections/solar-lights.html"
+                  class="vs-btn-see-more"
+                  aria-label="See more Halonix models"
+                >
+                  <span>See More</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Section 3 (Previously Section 2): Explore Our Products Lineup
          ====================================================================== -->
     <section class="vs-products-section" id="products">
       <div class="vs-container">

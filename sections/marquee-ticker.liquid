@@ -1,0 +1,259 @@
+{% comment %}
+  Vidhyut Saathi - Top Marquee Ticker Section
+  Continuous right-to-left scrolling announcement bar with vibrant solar-orange background.
+{% endcomment %}
+
+<div class="vs-ticker-wrap" id="vsTopTicker" role="region" aria-label="Announcement Ticker">
+  <div class="vs-ticker-track">
+    <!-- Duplicate track 1 -->
+    <div class="vs-ticker-group">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <span class="vs-ticker-item" {{ block.shopify_attributes }}>
+            {% if block.settings.icon != blank %}
+              <span class="vs-ticker-icon">{{ block.settings.icon }}</span>
+            {% endif %}
+            <span class="vs-ticker-text">{{ block.settings.text }}</span>
+          </span>
+          <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        {% endfor %}
+      {% else %}
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">🛡️</span>
+          <span class="vs-ticker-text">100% RESULT GUARANTEED</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">💰</span>
+          <span class="vs-ticker-text">EARN ₹5-6 LAKHS P.M.</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">🚚</span>
+          <span class="vs-ticker-text">FREE SHIPPING ALL OVER INDIA</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">⚡</span>
+          <span class="vs-ticker-text">VIDHYUT SAATHI SOLAR &amp; ELECTRICAL</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">🏆</span>
+          <span class="vs-ticker-text">ISO 9001:2015 QUALITY CERTIFIED</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+      {% endif %}
+    </div>
+
+    <!-- Duplicate track 2 (For seamless 100% loop) -->
+    <div class="vs-ticker-group" aria-hidden="true">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <span class="vs-ticker-item">
+            {% if block.settings.icon != blank %}
+              <span class="vs-ticker-icon">{{ block.settings.icon }}</span>
+            {% endif %}
+            <span class="vs-ticker-text">{{ block.settings.text }}</span>
+          </span>
+          <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        {% endfor %}
+      {% else %}
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">🛡️</span>
+          <span class="vs-ticker-text">100% RESULT GUARANTEED</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">💰</span>
+          <span class="vs-ticker-text">EARN ₹5-6 LAKHS P.M.</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">🚚</span>
+          <span class="vs-ticker-text">FREE SHIPPING ALL OVER INDIA</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">⚡</span>
+          <span class="vs-ticker-text">VIDHYUT SAATHI SOLAR &amp; ELECTRICAL</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+        <span class="vs-ticker-item">
+          <span class="vs-ticker-icon">🏆</span>
+          <span class="vs-ticker-text">ISO 9001:2015 QUALITY CERTIFIED</span>
+        </span>
+        <span class="vs-ticker-dot" aria-hidden="true">•</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .vs-ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: linear-gradient(90deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
+    color: #111827;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1050;
+    user-select: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .vs-ticker-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+    animation: vsMarqueeScroll 28s linear infinite;
+  }
+
+  .vs-ticker-wrap:hover .vs-ticker-track {
+    animation-play-state: paused;
+  }
+
+  .vs-ticker-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .vs-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 20px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: #111827;
+  }
+
+  .vs-ticker-icon {
+    font-size: 1rem;
+    line-height: 1;
+    display: inline-block;
+  }
+
+  .vs-ticker-dot {
+    color: rgba(17, 24, 39, 0.45);
+    font-size: 1.1rem;
+    margin: 0 4px;
+  }
+
+  @keyframes vsMarqueeScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .vs-ticker-wrap {
+      height: 34px;
+    }
+    .vs-ticker-item {
+      padding: 0 14px;
+      font-size: 0.76rem;
+      gap: 5px;
+    }
+    .vs-ticker-track {
+      animation-duration: 22s;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement Ticker",
+  "tag": "div",
+  "class": "section-marquee-ticker",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f97316"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111827"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 15,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Scroll Speed",
+      "default": 28
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ticker_item",
+      "name": "Ticker Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji)",
+          "default": "⚡"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Announcement Text",
+          "default": "VIDHYUT SAATHI SOLAR & ELECTRICAL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Ticker",
+      "blocks": [
+        {
+          "type": "ticker_item",
+          "settings": {
+            "icon": "🛡️",
+            "text": "100% RESULT GUARANTEED"
+          }
+        },
+        {
+          "type": "ticker_item",
+          "settings": {
+            "icon": "💰",
+            "text": "EARN ₹5-6 LAKHS P.M."
+          }
+        },
+        {
+          "type": "ticker_item",
+          "settings": {
+            "icon": "🚚",
+            "text": "FREE SHIPPING ALL OVER INDIA"
+          }
+        },
+        {
+          "type": "ticker_item",
+          "settings": {
+            "icon": "⚡",
+            "text": "VIDHYUT SAATHI SOLAR & ELECTRICAL"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

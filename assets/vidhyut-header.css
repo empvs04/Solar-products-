@@ -3,6 +3,87 @@
    Clean, Professional, Fixed/Sticky Corporate Header
    ========================================================================== */
 
+/* Announcement Marquee Ticker */
+.vs-ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
+  color: #111827;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1050;
+  user-select: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.vs-ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: vsMarqueeScroll 28s linear infinite;
+}
+
+.vs-ticker-wrap:hover .vs-ticker-track {
+  animation-play-state: paused;
+}
+
+.vs-ticker-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.vs-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 20px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.vs-ticker-icon {
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-block;
+}
+
+.vs-ticker-dot {
+  color: rgba(17, 24, 39, 0.45);
+  font-size: 1.1rem;
+  margin: 0 4px;
+}
+
+@keyframes vsMarqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .vs-ticker-wrap {
+    height: 34px;
+  }
+  .vs-ticker-item {
+    padding: 0 14px;
+    font-size: 0.76rem;
+    gap: 5px;
+  }
+  .vs-ticker-track {
+    animation-duration: 22s;
+  }
+}
+
 .vs-header {
   position: sticky;
   top: 0;
@@ -69,12 +150,9 @@
   letter-spacing: -0.01em;
 }
 
-.vs-logo-tagline {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-accent);
+.vs-logo-tagline,
+.vs-mobile-brand-sub {
+  display: none !important;
 }
 
 /* Desktop Navigation */

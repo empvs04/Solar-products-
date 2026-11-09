@@ -22,7 +22,7 @@
         {% endif %}
         <div class="vs-logo-text-wrap">
           <span class="vs-logo-brand">{{ section.settings.brand_name | default: 'Vidhyut Saathi' }}</span>
-          <span class="vs-logo-tagline">{{ section.settings.tagline | default: 'Solar & Electrical' }}</span>
+          {% if section.settings.tagline != blank %}<span class="vs-logo-tagline">{{ section.settings.tagline }}</span>{% endif %}
         </div>
       </a>
 
@@ -432,8 +432,8 @@
     {
       "type": "text",
       "id": "tagline",
-      "label": "Tagline",
-      "default": "Solar & Electrical"
+      "label": "Tagline (Optional)",
+      "default": ""
     },
     {
       "type": "link_list",
