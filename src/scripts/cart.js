@@ -76,7 +76,8 @@ export function resolveItemImage(item) {
     'solar-led-lamps-1.jpg', 'solar-led-lamps-2.jpg', 'solar-led-lamps-3.jpg', 'solar-led-lamps-4.jpg',
     'led-lamps.jpg',
     'led-bulbs.jpg', 'led-bulb-1.jpg', 'led-bulb-2.jpg', 'led-bulb-3.jpg', 'led-bulb-4.jpg',
-    'clamp-meters.jpg', 'clamp-meter-1.jpg', 'clamp-meter-2.jpg', 'clamp-meter-3.jpg', 'clamp-meter-4.jpg'
+    'clamp-meters.jpg', 'clamp-meter-1.jpg', 'clamp-meter-2.jpg', 'clamp-meter-3.jpg', 'clamp-meter-4.jpg',
+    'vidhyut-power-saver-card.jpg'
   ];
 
   if (filename && knownImages.includes(filename)) {
@@ -145,6 +146,21 @@ export function resolveItemImage(item) {
   // LED Lamps
   if (pid.includes('led-lamps') || pid.includes('led-linear') || vid.startsWith('ll-') || name.includes('led lamp') || name.includes('linear') || name.includes('suspended')) {
     return getAssetUrl('led-lamps.jpg');
+  }
+
+  // Vidhyut Saathi Power Saver Card
+  if (pid.includes('saver-card') || pid.includes('vidhyut-saver') || vid.includes('card') || vid.startsWith('vsc-') || name.includes('saver card') || name.includes('power saver')) {
+    return getAssetUrl('vidhyut-power-saver-card.jpg');
+  }
+
+  // Halonix Solar Floodlight
+  if (pid.includes('halonix') || vid.startsWith('hx-') || name.includes('halonix')) {
+    return getAssetUrl('solar-lights-1.jpg');
+  }
+
+  // Multiple Clamp Meters
+  if (pid.includes('industrial-clamp') || name.includes('multiple clamp')) {
+    return getAssetUrl('clamp-meters.jpg');
   }
 
   return getAssetUrl('solar-lights.jpg');
@@ -278,11 +294,12 @@ export class VidhyutCart {
     const card = btn.closest('.vs-product-card, .vs-gallery-card, .vs-all-prod-card, .vs-product-showcase');
     const name = card?.getAttribute('data-product-name') || btn.getAttribute('data-product-name') || 'Vidhyut Saathi Product';
     const variantSelect = card?.querySelector('[data-variant-select]');
-    const activeVariantId = variantSelect ? variantSelect.value : (variantId || btn.getAttribute('data-variant-id') || 'standard');
+    const activeVariantId = variantSelect ? variantSelect.value : (variantId || btn.getAttribute('data-variant-id') || productId || 'standard');
     const variantName = variantSelect?.options[variantSelect.selectedIndex]?.text || btn.getAttribute('data-variant-name') || 'Standard Model';
     const priceAttr = variantSelect?.options[variantSelect.selectedIndex]?.getAttribute('data-price') || btn.getAttribute('data-price');
     const price = priceAttr ? parseInt(priceAttr, 10) : 1999;
-    const image = card?.querySelector('img')?.getAttribute('src') || btn.getAttribute('data-image') || '/assets/images/products/solar-lights.jpg';
+    const activeImg = card?.querySelector('.vs-card-slide.is-active img, .vs-product-img, img');
+    const image = btn.getAttribute('data-image') || activeImg?.getAttribute('src') || '/assets/images/products/solar-lights.jpg';
 
     this.addItem({
       productId: productId || 'product',

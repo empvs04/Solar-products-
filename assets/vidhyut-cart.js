@@ -64,7 +64,8 @@
       'solar-led-lamps-1.jpg', 'solar-led-lamps-2.jpg', 'solar-led-lamps-3.jpg', 'solar-led-lamps-4.jpg',
       'led-lamps.jpg',
       'led-bulbs.jpg', 'led-bulb-1.jpg', 'led-bulb-2.jpg', 'led-bulb-3.jpg', 'led-bulb-4.jpg',
-      'clamp-meters.jpg', 'clamp-meter-1.jpg', 'clamp-meter-2.jpg', 'clamp-meter-3.jpg', 'clamp-meter-4.jpg'
+      'clamp-meters.jpg', 'clamp-meter-1.jpg', 'clamp-meter-2.jpg', 'clamp-meter-3.jpg', 'clamp-meter-4.jpg',
+      'vidhyut-power-saver-card.jpg'
     ];
 
     if (filename && knownImages.indexOf(filename) > -1) {
@@ -135,6 +136,21 @@
       return getAssetUrl('led-lamps.jpg');
     }
 
+    // Vidhyut Saathi Power Saver Card
+    if (pid.indexOf('saver-card') > -1 || pid.indexOf('vidhyut-saver') > -1 || vid.indexOf('card') > -1 || vid.indexOf('vsc-') > -1 || name.indexOf('saver card') > -1 || name.indexOf('power saver') > -1) {
+      return getAssetUrl('vidhyut-power-saver-card.jpg');
+    }
+
+    // Halonix Solar Floodlight
+    if (pid.indexOf('halonix') > -1 || vid.indexOf('hx-') > -1 || name.indexOf('halonix') > -1) {
+      return getAssetUrl('solar-lights-1.jpg');
+    }
+
+    // Multiple Clamp Meters
+    if (pid.indexOf('industrial-clamp') > -1 || name.indexOf('multiple clamp') > -1) {
+      return getAssetUrl('clamp-meters.jpg');
+    }
+
     return getAssetUrl('solar-lights.jpg');
   }
 
@@ -202,14 +218,15 @@
       if (btn.disabled) return;
 
       var card = btn.closest('.vs-product-card, .vs-gallery-card, .vs-all-prod-card, .vs-product-showcase');
-      var productId = btn.getAttribute('data-product-id') || card?.getAttribute('data-product-id') || 'product';
+      var productId = btn.getAttribute('data-product-id') || (card ? card.getAttribute('data-product-id') : null) || 'product';
       var variantSelect = card ? card.querySelector('[data-variant-select]') : null;
-      var variantId = variantSelect ? variantSelect.value : (btn.getAttribute('data-variant-id') || 'standard');
+      var variantId = variantSelect ? variantSelect.value : (btn.getAttribute('data-variant-id') || productId || 'standard');
       var variantName = variantSelect && variantSelect.options[variantSelect.selectedIndex] ? variantSelect.options[variantSelect.selectedIndex].text : (btn.getAttribute('data-variant-name') || 'Standard Model');
       var priceAttr = variantSelect && variantSelect.options[variantSelect.selectedIndex] ? variantSelect.options[variantSelect.selectedIndex].getAttribute('data-price') : btn.getAttribute('data-price');
       var price = priceAttr ? parseInt(priceAttr, 10) : 1999;
-      var name = btn.getAttribute('data-product-name') || card?.getAttribute('data-product-name') || 'Vidhyut Saathi Product';
-      var image = btn.getAttribute('data-image') || (card && card.querySelector('img') ? card.querySelector('img').src : '');
+      var name = btn.getAttribute('data-product-name') || (card ? card.getAttribute('data-product-name') : null) || 'Vidhyut Saathi Product';
+      var activeImg = card ? card.querySelector('.vs-card-slide.is-active img, .vs-product-img, img') : null;
+      var image = btn.getAttribute('data-image') || (activeImg ? activeImg.src : '');
 
       self.addItem({
         productId: productId,
