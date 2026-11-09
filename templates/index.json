@@ -86,13 +86,29 @@
             "secondary_cta_label": "",
             "secondary_cta_link": ""
           }
+        },
+        "slide_5": {
+          "type": "banner_slide",
+          "settings": {
+            "desktop_image": "",
+            "mobile_image": "",
+            "alt_text": "Vidhyut Saathi Special Solar Offer",
+            "badge": "Special Offer",
+            "heading": "Smart Solar & Energy Solutions",
+            "subheading": "Power your home and business with high-efficiency renewable energy products.",
+            "primary_cta_label": "Explore Products",
+            "primary_cta_link": "",
+            "secondary_cta_label": "Contact Us",
+            "secondary_cta_link": ""
+          }
         }
       },
       "block_order": [
         "slide_1",
         "slide_2",
         "slide_3",
-        "slide_4"
+        "slide_4",
+        "slide_5"
       ],
       "settings": {
         "accessibility_label": "Vidhyut Saathi Four Product Banners",

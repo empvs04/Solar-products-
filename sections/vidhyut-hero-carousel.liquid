@@ -21,7 +21,7 @@
     data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
   >
     <div class="vs-carousel-track">
-      {% for block in section.blocks limit: 4 %}
+      {% for block in section.blocks %}
         {%- liquid
           assign desktop_img = block.settings.desktop_image | default: block.settings.image
           assign mobile_img = block.settings.mobile_image | default: block.settings.image_mobile
@@ -177,7 +177,7 @@
 
     <!-- Pagination Dots -->
     <div class="vs-carousel-dots" role="tablist" aria-label="Carousel slide controls">
-      {% for block in section.blocks limit: 4 %}
+      {% for block in section.blocks %}
         <button
           type="button"
           class="vs-carousel-dot{% if forloop.first %} is-active{% endif %}"
@@ -197,10 +197,10 @@
 
 {% schema %}
 {
-  "name": "Hero Banners (4 Slides)",
+  "name": "Hero Banners Carousel",
   "tag": "section",
   "class": "section-vidhyut-hero",
-  "max_blocks": 4,
+  "max_blocks": 8,
   "settings": [
     {
       "type": "text",
