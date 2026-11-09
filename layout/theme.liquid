@@ -127,7 +127,7 @@
     <script src="{{ 'vidhyut-distributorship.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vidhyut-cart.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vidhyut-theme.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'vidhyut-policy-modal.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'vidhyut-policy-modal.js' | asset_url }}?v={{ 'now' | date: '%s' }}" defer="defer"></script>
   </head>
 
   <body class="template-{{ template.name | handle }} vidhyut-saathi-theme">

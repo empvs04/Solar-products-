@@ -215,92 +215,99 @@ const POLICY_DATA = {
 
   refund: {
     id: 'refund',
-    title: 'Return & Refund Policy',
-    subtitle: 'Effective: October 2026 • 7-Day Free Replacement for Damaged/Broken Products',
+    title: 'Return & 7-Day Replacement Policy',
+    subtitle: 'Effective: October 2026 • 100% Free Replacement for Damaged & Broken Products',
     badge: '7-Day Free Replacement',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>`,
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
     content: `
-      <div class="vs-policy-alert vs-policy-alert-danger">
-        <div class="vs-policy-alert-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <!-- Top Highlight Banner: 7-Day Replacement Guarantee -->
+      <div class="vs-policy-alert" style="border-left: 4px solid #16a34a; background: linear-gradient(135deg, rgba(22, 163, 74, 0.12) 0%, rgba(22, 163, 74, 0.03) 100%); border-color: rgba(22, 163, 74, 0.35); padding: 16px; border-radius: 8px; margin-bottom: 22px;">
+        <div class="vs-policy-alert-icon" style="color: #16a34a;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
         <div class="vs-policy-alert-content">
-          <span class="vs-policy-alert-title">Damaged / Broken Product Replacement (Within 7 Days)</span>
-          Due to calibrated electronics and battery integrity, <strong>Vidhyut Saathi follows a No Monetary Refund & No Change-of-Mind Return Policy.</strong> However, <strong>agar koi product delivery ke waqt damaged, physically broken (toota hua) ya defective milta hai, toh woh 7 days ke andar 100% FREE REPLACE kiya jayega.</strong> Unboxing video aur photos share karne par turant fresh replacement unit dispatch ki jayegi.
+          <span class="vs-policy-alert-title" style="color: #15803d; font-weight: 700; font-size: 1.02rem;">7-Day Free Replacement Guarantee (Damaged &amp; Broken Products)</span>
+          <p style="margin: 6px 0 0 0; color: #1e293b; font-size: 0.94rem; line-height: 1.6;">
+            Agar delivery ke waqt aapko koi bhi product <strong>damaged, toota hua (physically broken), ya defective</strong> milta hai, toh Vidhyut Saathi aapko <strong>7 DIN KE ANDAR 100% FREE REPLACEMENT</strong> provide karta hai. Claim verify hone ke turant baad bina kisi additional shipping charge ke fresh replacement product dispatch kar diya jayega.
+          </p>
         </div>
       </div>
 
+      <!-- Section 1: 7-Day Replacement Policy -->
       <div class="vs-policy-section">
         <h4 class="vs-policy-sec-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          1. Why We Do Not Offer Returns or Monetary Refunds
+          1. 7-Day Free Replacement Coverage
         </h4>
-        <p>Our products encompass calibrated electronic drivers, precision clamp meters, and high-capacity Lithium LiFePO4 battery packs. For strict technical, safety, and operational reasons:</p>
+        <p>Hum apne sabhi solar products, LED luminaires aur electrical clamp meters par customer satisfaction aur transit security ensure karte hain:</p>
         <ul class="vs-policy-list">
-          <li><strong>Battery & Electronics Integrity:</strong> Once dispatched, battery charge cycles and calibrated optical drivers cannot be safely certified for restocking or resale to other customers.</li>
-          <li><strong>Quality Assurance:</strong> Vidhyut Saathi guarantees that every product sent to a buyer is brand new, factory calibrated, and certified. We do not circulate restocked, returned, or previously unboxed equipment.</li>
-          <li><strong>Finality of Orders:</strong> All purchases through retail cart checkout or distributor booking contracts are considered final upon confirmation.</li>
+          <li><strong>Eligible Issues:</strong> Transit ke dauran toota hua glass, bent casing, physical damage, courier rough handling, ya Dead-on-Arrival (DOA) manufacturing fault.</li>
+          <li><strong>7-Day Inspection Window:</strong> Parcel receive hone ke <strong>7 days ke andar</strong> aapko support team ko damage report karna hoga.</li>
+          <li><strong>Zero Cost to Customer:</strong> Replacement unit dispatch karne ka koi bhi extra delivery ya shipping charge customer se nahi liya jayega.</li>
         </ul>
       </div>
 
+      <!-- Section 2: How to Claim Replacement -->
       <div class="vs-policy-section">
         <h4 class="vs-policy-sec-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          2. Damaged & Broken Products: 7-Day Direct Replacement Guarantee
+          2. Replacement Claim Process (3 Simple Steps)
         </h4>
-        <p>While monetary refunds are not provided, we ensure customer protection against transit mishaps through our <strong>Direct 1-to-1 Replacement Guarantee</strong>:</p>
+        <p>Damaged ya broken product ka replacement paane ke liye ye aasan steps follow karein:</p>
         <ul class="vs-policy-list">
-          <li><strong>Eligible Situations:</strong> Product received with visible physical shipping damage (e.g. cracked solar panel glass, bent casing) or confirmed Dead-on-Arrival manufacturing defect.</li>
-          <li><strong>7-Day Replacement Window:</strong> If the product received is damaged, broken, or defective, the customer must inspect the consignment and report the damage within <strong>7 days</strong> of delivery to receive a free replacement.</li>
-          <li><strong>Proof Requirement:</strong> To prevent false claims, customers must provide clear photographic evidence and an uncut parcel unboxing video showing the shipping label and the specific damage.</li>
+          <li><strong>Step 1 (Photo / Video):</strong> Damaged ya toote hue product aur outer box shipping label ki clear photos ya unboxing video record karein.</li>
+          <li><strong>Step 2 (Report in 7 Days):</strong> Apne Order Number ke sath WhatsApp (<strong>+91-8199036060</strong>) ya Email (<strong>support@vidhyutsaathi.com</strong>) par 7 din ke andar send karein.</li>
+          <li><strong>Step 3 (Free Replacement Dispatch):</strong> Hamari technical team 24 business hours ke andar claim review karke aapko fresh replacement unit courier kar degi.</li>
         </ul>
       </div>
 
+      <!-- Section 3: Replacement Resolution & Zero Cash Refund -->
       <div class="vs-policy-section">
         <h4 class="vs-policy-sec-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-          3. Replacement Resolution Workflow
+          3. Replacement vs. Cash Refund Policy
         </h4>
-        <p>Once your claim is submitted to our technical support team within 7 days of delivery:</p>
+        <p>Calibrated electrical measurement components aur certified Lithium LiFePO4 battery safety standards ke chalte:</p>
         <ul class="vs-policy-list">
-          <li><strong>Technical Review:</strong> Our engineering team reviews the photos/video within 24 business hours.</li>
-          <li><strong>Reverse Logistics / Replacement:</strong> Upon verification, we arrange for reverse pickup of the damaged unit (or supply of replacement modules/brackets/chargers) and dispatch a fresh replacement product free of shipping cost.</li>
-          <li><strong>Zero Cash Refunds:</strong> Under no scenario will a cash, bank transfer, UPI, or card refund be processed; the resolution is provided strictly through replacement or warranty service.</li>
+          <li><strong>Direct Product Replacement:</strong> Kisi bhi damaged ya defective product ke badle customer ko <strong>1-to-1 brand new replacement</strong> diya jata hai.</li>
+          <li><strong>No Monetary Cash Refunds:</strong> Change-of-mind ya order dispatch ke baad cancellation par cash/bank refund nahi hota; samasya ka 100% solution free replacement ya official warranty service ke zariye diya jata hai.</li>
+          <li><strong>Warranty Assurance:</strong> Replacement ke baad bhi aapka product standard manufacturer warranty ke tahat fully covered rehta hai.</li>
         </ul>
       </div>
 
+      <!-- Section 4: Non-Eligible Scenarios -->
       <div class="vs-policy-section">
         <h4 class="vs-policy-sec-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          4. Non-Eligible Situations (Claims Strictly Rejected)
+          4. Non-Eligible Scenarios
         </h4>
         <ul class="vs-policy-list">
-          <li>Change of mind or deciding the product is no longer needed after order dispatch.</li>
-          <li>Ordering incorrect product models, wattages, or clamp meter ranges due to customer oversight.</li>
-          <li>Damage resulting from improper customer installation, dropping the light, or mishandling.</li>
-          <li>Claims raised after the 7-day delivery inspection window has passed (such issues fall under standard manufacturer warranty repair, not replacement).</li>
+          <li>Customer dwara galat installation, short-circuit, ya delivery ke baad accidental dropping se hua damage.</li>
+          <li>Delivery ke 7 days bit jaane ke baad raise kiye gaye transit damage claims (ye issue warranty repair me cover honge, replacement me nahi).</li>
+          <li>Customer dwara bina technical defect ke sirf 'change of mind' par product wapas karna.</li>
         </ul>
       </div>
 
+      <!-- Section 5: Direct Support Contact -->
       <div class="vs-policy-section">
         <h4 class="vs-policy-sec-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          5. How to Submit a Transit Replacement Claim
+          5. Contact Support for 7-Day Replacement
         </h4>
-        <p>If your package arrives physically damaged or broken, contact our support team within 7 days:</p>
-        <div class="vs-policy-contact-box">
+        <p>Agar aapko damaged ya broken product receive hua hai, toh turant hamari dedicated replacement desk se sampark karein:</p>
+        <div class="vs-policy-contact-box" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px;">
           <div class="vs-policy-contact-text">
-            <h5>Vidhyut Saathi Replacement Desk</h5>
-            <p>Email photos & video with your Order Number and Delivery Waybill.</p>
+            <h5 style="margin: 0 0 4px 0; color: #0f172a; font-size: 1rem;">Vidhyut Saathi 7-Day Replacement Desk</h5>
+            <p style="margin: 0; color: #64748b; font-size: 0.88rem;">Apne Order ID aur parcel video ke sath humein message karein (Mon - Sat, 9:00 AM - 7:00 PM IST)</p>
           </div>
-          <div class="vs-policy-contact-actions">
-            <a href="mailto:support@vidhyutsaathi.com" class="vs-policy-contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              support@vidhyutsaathi.com
-            </a>
-            <a href="https://wa.me/918199036060" target="_blank" rel="noopener noreferrer" class="vs-policy-contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <div class="vs-policy-contact-actions" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+            <a href="https://wa.me/918199036060?text=Hello%2C%20I%20received%20a%20damaged%20product%20and%20need%20a%207-day%20replacement." target="_blank" rel="noopener noreferrer" class="vs-policy-contact-link" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #22c55e; color: #ffffff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.88rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
               WhatsApp: +91-8199036060
+            </a>
+            <a href="mailto:support@vidhyutsaathi.com?subject=7-Day%20Replacement%20Request%20-%20Damaged%20Product" class="vs-policy-contact-link" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #223a5f; color: #ffffff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.88rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              support@vidhyutsaathi.com
             </a>
           </div>
         </div>
@@ -364,8 +371,8 @@ class PolicyModalController {
               📄 Terms & Conditions
             </button>
             <button type="button" class="vs-policy-tab-btn" data-tab="refund">
-              🚫 Return & Refund
-              <span class="vs-tab-badge">No-Refund</span>
+              🔄 Return &amp; Replacement
+              <span class="vs-tab-badge" style="background: #16a34a !important; color: #ffffff !important;">7-Day Replace</span>
             </button>
           </nav>
 
