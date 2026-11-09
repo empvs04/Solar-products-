@@ -250,7 +250,7 @@ const POLICY_DATA = {
         <p>While monetary refunds are not provided, we ensure customer protection against transit mishaps through our <strong>Direct 1-to-1 Replacement Guarantee</strong>:</p>
         <ul class="vs-policy-list">
           <li><strong>Eligible Situations:</strong> Product received with visible physical shipping damage (e.g. cracked solar panel glass, bent casing) or confirmed Dead-on-Arrival manufacturing defect.</li>
-          <li><strong>Mandatory 48-Hour Inspection Window:</strong> The customer must inspect the consignment immediately upon delivery and report any transit damage within <strong>48 hours</strong> of courier receipt.</li>
+          <li><strong>7-Day Replacement Window:</strong> If the product received is damaged, broken, or defective, the customer must inspect the consignment and report the damage within <strong>7 days</strong> of delivery to receive a free replacement.</li>
           <li><strong>Proof Requirement:</strong> To prevent false claims, customers must provide clear photographic evidence and an uncut parcel unboxing video showing the shipping label and the specific damage.</li>
         </ul>
       </div>
@@ -260,7 +260,7 @@ const POLICY_DATA = {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
           3. Replacement Resolution Workflow
         </h4>
-        <p>Once your claim is submitted to our technical support team within 48 hours of delivery:</p>
+        <p>Once your claim is submitted to our technical support team within 7 days of delivery:</p>
         <ul class="vs-policy-list">
           <li><strong>Technical Review:</strong> Our engineering team reviews the photos/video within 24 business hours.</li>
           <li><strong>Reverse Logistics / Replacement:</strong> Upon verification, we arrange for reverse pickup of the damaged unit (or supply of replacement modules/brackets/chargers) and dispatch a fresh replacement product free of shipping cost.</li>
@@ -277,7 +277,7 @@ const POLICY_DATA = {
           <li>Change of mind or deciding the product is no longer needed after order dispatch.</li>
           <li>Ordering incorrect product models, wattages, or clamp meter ranges due to customer oversight.</li>
           <li>Damage resulting from improper customer installation, dropping the light, or mishandling.</li>
-          <li>Claims raised after the mandatory 48-hour delivery inspection window has passed (such issues fall strictly under standard manufacturer warranty repair, not replacement).</li>
+          <li>Claims raised after the 7-day delivery inspection window has passed (such issues fall under standard manufacturer warranty repair, not replacement).</li>
         </ul>
       </div>
 
@@ -286,7 +286,7 @@ const POLICY_DATA = {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
           5. How to Submit a Transit Replacement Claim
         </h4>
-        <p>If your package arrives physically damaged, contact our support team immediately within 48 hours:</p>
+        <p>If your package arrives physically damaged or broken, contact our support team within 7 days:</p>
         <div class="vs-policy-contact-box">
           <div class="vs-policy-contact-text">
             <h5>Vidhyut Saathi Replacement Desk</h5>
