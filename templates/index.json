@@ -45,8 +45,8 @@
         "slide_2": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/Maxwell_Digital_Timer_Socket_Banner.png",
-            "mobile_image": "shopify://shop_images/Maxwell_230V_Energy-Saving_Timer_Socket.png",
+            "desktop_image": "shopify://shop_images/Vidhyut_Saathi_Card_Neon_Advertisement.png",
+            "mobile_image": "shopify://shop_images/file_00000000ed7c820bad4d2f46924b1b25.png",
             "alt_text": "Maxwell Digital Timer Socket",
             "badge": "",
             "heading": "",
@@ -60,8 +60,8 @@
         "slide_3": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/20W_Solar_Camping_Light_Banner.png",
-            "mobile_image": "shopify://shop_images/Solar_Camping_LED_Lamp_Advertisement.png",
+            "desktop_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer_1.png",
+            "mobile_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer.png",
             "alt_text": "20W Solar LED Lamp",
             "badge": "",
             "heading": "",
@@ -75,8 +75,8 @@
         "slide_4": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer_1.png",
-            "mobile_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer.png",
+            "desktop_image": "shopify://shop_images/Maxwell_Digital_Timer_Socket_Banner.png",
+            "mobile_image": "shopify://shop_images/Maxwell_230V_Energy-Saving_Timer_Socket.png",
             "alt_text": "Halonix Solaris LED Floodlight",
             "badge": "",
             "heading": "",
@@ -90,8 +90,8 @@
         "slide_5": {
           "type": "banner_slide",
           "settings": {
-            "desktop_image": "",
-            "mobile_image": "",
+            "desktop_image": "shopify://shop_images/20W_Solar_Camping_Light_Banner.png",
+            "mobile_image": "shopify://shop_images/Solar_Camping_LED_Lamp_Advertisement.png",
             "alt_text": "Vidhyut Saathi Special Solar Offer",
             "badge": "Special Offer",
             "heading": "Smart Solar & Energy Solutions",
