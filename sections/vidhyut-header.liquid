@@ -22,7 +22,6 @@
         {% endif %}
         <div class="vs-logo-text-wrap">
           <span class="vs-logo-brand">{{ section.settings.brand_name | default: 'Vidhyut Saathi' }}</span>
-          {% if section.settings.tagline != blank %}<span class="vs-logo-tagline">{{ section.settings.tagline }}</span>{% endif %}
         </div>
       </a>
 
@@ -428,12 +427,6 @@
       "id": "brand_name",
       "label": "Brand Name",
       "default": "Vidhyut Saathi"
-    },
-    {
-      "type": "text",
-      "id": "tagline",
-      "label": "Tagline (Optional)",
-      "default": ""
     },
     {
       "type": "link_list",

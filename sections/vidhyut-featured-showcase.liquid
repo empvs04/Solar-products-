@@ -121,7 +121,7 @@
         <div class="vs-product-body">
           <h3 class="vs-product-title">{{ section.settings.card2_title | default: 'Vidhyut Saathi Saver Card' }}</h3>
           <p class="vs-product-desc">
-            {{ section.settings.card2_desc | default: 'India\'s No.1 smart electricity saver card engineered with US-German nanotechnology to optimize household and commercial power bills.' }}
+            {{ section.settings.card2_desc | default: "India's No.1 smart electricity saver card engineered with US-German nanotechnology to optimize household and commercial power bills." }}
           </p>
           {%- capture default_card_url -%}{{ base_root | append: '/pages/buy-now?product=saver-card' }}{%- endcapture -%}
           {%- capture default_card_collection -%}{{ base_root | append: '/pages/products' }}{%- endcapture -%}
@@ -482,3 +482,4 @@
   ]
 }
 {% endschema %}
+

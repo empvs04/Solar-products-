@@ -13,7 +13,6 @@
       "type": "vidhyut-header",
       "settings": {
         "brand_name": "Vidhyut Saathi",
-        "tagline": "",
         "menu": "main-menu",
         "about_link": "",
         "products_link": "",
@@ -199,8 +198,8 @@
     "marquee_ticker": {
       "type": "marquee-ticker",
       "settings": {
-        "bg_color": "#f97316",
-        "text_color": "#111827",
+        "bg_color": "#c4a159",
+        "text_color": "#ffffff",
         "speed": 28
       }
     },
