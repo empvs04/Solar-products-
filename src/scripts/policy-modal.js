@@ -215,8 +215,8 @@ const POLICY_DATA = {
   refund: {
     id: 'refund',
     title: 'Return & Refund Policy',
-    subtitle: 'Effective: October 2026 • Strict No Return & No Refund Policy',
-    badge: 'No Return / No Refund',
+    subtitle: 'Effective: October 2026 • 7-Day Free Replacement for Damaged/Broken Products',
+    badge: '7-Day Free Replacement',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>`,
     content: `
       <div class="vs-policy-alert vs-policy-alert-danger">
@@ -224,8 +224,8 @@ const POLICY_DATA = {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
         <div class="vs-policy-alert-content">
-          <span class="vs-policy-alert-title">Strict No Return & No Refund Policy</span>
-          Due to the technical and delicate nature of solar lighting units, lithium batteries, and electrical test equipment, <strong>Vidhyut Saathi follows a STRICT NO RETURN & NO REFUND Policy.</strong> Once an order is confirmed, packed, or delivered, cancellations for refund, change-of-mind returns, or monetary refunds are NOT entertained under any circumstances.
+          <span class="vs-policy-alert-title">Damaged / Broken Product Replacement (Within 7 Days)</span>
+          Due to calibrated electronics and battery integrity, <strong>Vidhyut Saathi follows a No Monetary Refund & No Change-of-Mind Return Policy.</strong> However, <strong>agar koi product delivery ke waqt damaged, physically broken (toota hua) ya defective milta hai, toh woh 7 days ke andar 100% FREE REPLACE kiya jayega.</strong> Unboxing video aur photos share karne par turant fresh replacement unit dispatch ki jayegi.
         </div>
       </div>
 
@@ -245,7 +245,7 @@ const POLICY_DATA = {
       <div class="vs-policy-section">
         <h4 class="vs-policy-sec-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          2. Transit Damage & Dead-on-Arrival (DOA) Protection
+          2. Damaged & Broken Products: 7-Day Direct Replacement Guarantee
         </h4>
         <p>While monetary refunds are not provided, we ensure customer protection against transit mishaps through our <strong>Direct 1-to-1 Replacement Guarantee</strong>:</p>
         <ul class="vs-policy-list">
