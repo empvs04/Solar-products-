@@ -72,4 +72,103 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 9. Initialize Product Card Image Slider (Card 3 Multiple Clamp Meters)
+  const initCardSliders = () => {
+    const sliders = document.querySelectorAll('[data-card-slider]');
+    sliders.forEach((slider) => {
+      if (slider.dataset.initialized) return;
+      slider.dataset.initialized = 'true';
+
+      const slides = slider.querySelectorAll('.vs-card-slide');
+      const dots = slider.querySelectorAll('.vs-card-dot');
+      const prevBtn = slider.querySelector('[data-slider-prev]');
+      const nextBtn = slider.querySelector('[data-slider-next]');
+      let currentIndex = 0;
+      let autoTimer = null;
+
+      const goToSlide = (index) => {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        currentIndex = index;
+
+        slides.forEach((slide, idx) => {
+          if (idx === currentIndex) {
+            slide.classList.add('is-active');
+          } else {
+            slide.classList.remove('is-active');
+          }
+        });
+
+        dots.forEach((dot, idx) => {
+          if (idx === currentIndex) {
+            dot.classList.add('is-active');
+          } else {
+            dot.classList.remove('is-active');
+          }
+        });
+      };
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          goToSlide(currentIndex - 1);
+          resetAuto();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          goToSlide(currentIndex + 1);
+          resetAuto();
+        });
+      }
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          goToSlide(idx);
+          resetAuto();
+        });
+      });
+
+      let touchStartX = 0;
+      slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      slider.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 35) {
+          if (diff > 0) goToSlide(currentIndex + 1);
+          else goToSlide(currentIndex - 1);
+          resetAuto();
+        }
+      }, { passive: true });
+
+      const startAuto = () => {
+        autoTimer = setInterval(() => {
+          goToSlide(currentIndex + 1);
+        }, 3800);
+      };
+      const stopAuto = () => {
+        if (autoTimer) clearInterval(autoTimer);
+      };
+      const resetAuto = () => {
+        stopAuto();
+        startAuto();
+      };
+
+      slider.addEventListener('mouseenter', stopAuto);
+      slider.addEventListener('mouseleave', startAuto);
+      startAuto();
+    });
+  };
+
+  initCardSliders();
 });
