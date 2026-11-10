@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "marquee_ticker": {
+      "type": "marquee-ticker",
+      "settings": {
+        "bg_color": "#c4a159",
+        "text_color": "#ffffff",
+        "speed": 28
+      }
+    },
     "header": {
       "type": "vidhyut-header",
       "settings": {
@@ -115,6 +123,33 @@
         "autoplay_interval": 5
       }
     },
+    "featured_showcase": {
+      "type": "vidhyut-featured-showcase",
+      "settings": {
+        "badge": "Featured Innovations",
+        "title": "Best Sellers & Innovations",
+        "subtitle": "Explore our precision testing instruments, smart electricity saver cards, and commercial solar floodlights.",
+        "card1_image": "shopify://shop_images/file_000000002dd48211a7b2cbc33bbe1de1.png",
+        "card1_badge": "Electrical Testing",
+        "card1_title": "Digital Clamp Meter",
+        "card1_desc": "Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.",
+        "card1_link": "",
+        "card2_badge": "Smart Energy Saver",
+        "card2_title": "Vidhyut Saathi Card",
+        "card2_desc": "India's No.1 smart electricity saver card engineered with US-German nanotechnology to optimize household and commercial power bills.",
+        "card2_link": "",
+        "card3_image": "shopify://shop_images/Pack_of_3_Clamp_Meters_1.png",
+        "card3_badge": "Industrial Series",
+        "card3_title": "Multiple Clamp Meters",
+        "card3_desc": "Comprehensive lineup of multi-range digital clamp meters, test probes, and heavy-duty electrical testing instruments.",
+        "card3_link": "",
+        "card4_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer_1.png",
+        "card4_badge": "High-Lumen Solar",
+        "card4_title": "Halonix Solaris LED Light",
+        "card4_desc": "High-lumen solar floodlights and outdoor luminaires engineered for industrial durability, zero electricity bills, and weather-resistant coverage.",
+        "card4_link": ""
+      }
+    },
     "products": {
       "type": "vidhyut-products",
       "settings": {
@@ -193,30 +228,6 @@
         "phone_2": "+91-9053110707",
         "about_link": "",
         "contact_link": ""
-      }
-    },
-    "marquee_ticker": {
-      "type": "marquee-ticker",
-      "settings": {
-        "bg_color": "#c4a159",
-        "text_color": "#ffffff",
-        "speed": 28
-      }
-    },
-    "featured_showcase": {
-      "type": "vidhyut-featured-showcase",
-      "settings": {
-        "badge": "Featured Innovations",
-        "title": "Best Sellers & Innovations",
-        "subtitle": "Explore our precision testing instruments, smart electricity saver cards, and commercial solar floodlights.",
-        "card1_badge": "Electrical Testing",
-        "card1_title": "Digital Clamp Meter",
-        "card2_badge": "Smart Energy Saver",
-        "card2_title": "Vidhyut Saathi Saver Card",
-        "card3_badge": "Industrial Series",
-        "card3_title": "Multiple Clamp Meters",
-        "card4_badge": "High-Lumen Solar",
-        "card4_title": "Halonix Solaris LED Light"
       }
     }
   },
