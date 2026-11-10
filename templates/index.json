@@ -20,6 +20,7 @@
     "header": {
       "type": "vidhyut-header",
       "settings": {
+        "logo": "shopify://shop_images/Vidhyut_Saathi_Logo_jpg.jpg",
         "brand_name": "Vidhyut Saathi",
         "menu": "main-menu",
         "about_link": "",
@@ -134,6 +135,7 @@
         "card1_title": "Digital Clamp Meter",
         "card1_desc": "Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams.",
         "card1_link": "",
+        "card2_image": "shopify://shop_images/VS_Card_Final_Design_Golden_1.png",
         "card2_badge": "",
         "card2_title": "Vidhyut Saathi Card",
         "card2_desc": "India's No.1 smart electricity saver card engineered with US-German nanotechnology to optimize household and commercial power bills.",
