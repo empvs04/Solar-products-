@@ -143,11 +143,12 @@
 }
 
 .vs-logo-img {
-  height: 58px;
-  width: 58px;
-  max-width: 58px;
+  height: 64px;
+  width: auto;
+  max-width: 240px;
   object-fit: contain;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -392,11 +393,12 @@
 
 .vs-mobile-drawer-header .vs-logo-img,
 .vs-drawer-logo {
-  height: 48px;
-  width: 48px;
-  max-width: 48px;
+  height: 52px;
+  width: auto;
+  max-width: 190px;
   object-fit: contain;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .vs-mobile-drawer-header .vs-logo-brand {
@@ -490,8 +492,8 @@
 
   .vs-logo-img {
     height: 48px;
-    width: 48px;
-    max-width: 48px;
+    width: auto;
+    max-width: 170px;
   }
 
   .vs-logo-brand {
