@@ -5,19 +5,19 @@
       <a href="{{ routes.root_url }}" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
         {% if section.settings.logo != blank %}
           <img
-            src="{{ section.settings.logo | image_url: width: 120 }}"
+            src="{{ section.settings.logo | image_url: width: 140 }}"
             alt="{{ shop.name | escape }}"
             class="vs-logo-img"
-            width="48"
-            height="48"
+            width="58"
+            height="58"
           >
         {% else %}
           <img
             src="{{ 'vidhyut-logo-official.png' | asset_url }}"
             alt="Vidhyut Saathi Logo"
             class="vs-logo-img"
-            width="48"
-            height="48"
+            width="58"
+            height="58"
           >
         {% endif %}
         <div class="vs-logo-text-wrap">
@@ -234,8 +234,8 @@
         src="{{ 'vidhyut-logo-official.png' | asset_url }}"
         alt="Vidhyut Saathi Logo"
         class="vs-logo-img"
-        width="40"
-        height="40"
+        width="48"
+        height="48"
       >
       <span class="vs-logo-brand">Vidhyut Saathi</span>
     </div>

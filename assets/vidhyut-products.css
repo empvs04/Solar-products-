@@ -41,7 +41,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background-color: var(--color-bg-subtle, #F8FAFC);
+  background-color: #FFFFFF !important;
   overflow: hidden;
   border-bottom: 1px solid var(--color-border);
   display: flex;
@@ -59,6 +59,8 @@
   object-position: center;
   margin: auto;
   display: block;
+  background-color: transparent !important;
+  filter: none !important;
   transition: transform 0.4s ease;
 }
 

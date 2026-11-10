@@ -27,27 +27,25 @@
     <div class="vs-products-grid">
 
       <!-- Card 1: Clamp Meter -->
-      <article class="vs-product-card" id="showcase-clamp-meter" data-product-id="meco-clamp-meter" data-product-name="Precision Digital Clamp Meter">
+      {%- liquid
+        if section.settings.card1_image != blank
+          assign card1_img_src = section.settings.card1_image | image_url: width: 600
+        else
+          assign card1_img_src = 'clamp-meter-1.jpg' | asset_url
+        endif
+        assign card1_price_val = section.settings.card1_price | default: '₹1,899'
+        assign card1_price_num = card1_price_val | remove: '₹' | remove: ',' | strip
+      -%}
+      <article class="vs-product-card" id="showcase-clamp-meter" data-product-id="meco-clamp-meter" data-product-name="{{ section.settings.card1_title | default: 'Digital Clamp Meter' | escape }}">
         <div class="vs-product-image-wrap">
-          {% if section.settings.card1_image != blank %}
-            <img
-              src="{{ section.settings.card1_image | image_url: width: 600 }}"
-              alt="{{ section.settings.card1_title | default: 'Digital Clamp Meter' | escape }}"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% else %}
-            <img
-              src="{{ 'clamp-meter-1.jpg' | asset_url }}"
-              alt="Vidhyut Saathi Precision Digital Clamp Meter"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% endif %}
+          <img
+            src="{{ card1_img_src }}"
+            alt="{{ section.settings.card1_title | default: 'Digital Clamp Meter' | escape }}"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
         </div>
         <div class="vs-product-body">
           <h3 class="vs-product-title">{{ section.settings.card1_title | default: 'Digital Clamp Meter' }}</h3>
@@ -59,7 +57,7 @@
           <!-- Pricing Bar -->
           <div class="vs-card-cart-controls">
             <div class="vs-card-price-row">
-              <span class="vs-card-price">₹1,899</span>
+              <span class="vs-card-price">{{ card1_price_val }}</span>
               <span class="vs-card-gst-tag">Incl. GST</span>
             </div>
           </div>
@@ -71,9 +69,9 @@
               data-add-to-cart
               data-product-id="meco-clamp-meter"
               data-variant-id="meco-clamp-meter"
-              data-product-name="Digital Clamp Meter"
-              data-image="{{ 'clamp-meter-1.jpg' | asset_url }}"
-              data-price="1899"
+              data-product-name="{{ section.settings.card1_title | default: 'Digital Clamp Meter' | escape }}"
+              data-image="{{ card1_img_src }}"
+              data-price="{{ card1_price_num }}"
               aria-label="Add Digital Clamp Meter to cart"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -90,27 +88,25 @@
       </article>
 
       <!-- Card 2: Vidhyut Saathi Card -->
-      <article class="vs-product-card" id="showcase-vidhyut-card" data-product-id="vidhyut-saver-card" data-product-name="Vidhyut Saathi Power Saver Card">
+      {%- liquid
+        if section.settings.card2_image != blank
+          assign card2_img_src = section.settings.card2_image | image_url: width: 600
+        else
+          assign card2_img_src = 'vidhyut-power-saver-card.jpg' | asset_url
+        endif
+        assign card2_price_val = section.settings.card2_price | default: '₹2,499'
+        assign card2_price_num = card2_price_val | remove: '₹' | remove: ',' | strip
+      -%}
+      <article class="vs-product-card" id="showcase-vidhyut-card" data-product-id="vidhyut-saver-card" data-product-name="{{ section.settings.card2_title | default: 'Vidhyut Saathi Saver Card' | escape }}">
         <div class="vs-product-image-wrap">
-          {% if section.settings.card2_image != blank %}
-            <img
-              src="{{ section.settings.card2_image | image_url: width: 600 }}"
-              alt="{{ section.settings.card2_title | default: 'Vidhyut Saathi Power Saver Card' | escape }}"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% else %}
-            <img
-              src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}"
-              alt="Vidhyut Saathi Smart Electricity Saver Card"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% endif %}
+          <img
+            src="{{ card2_img_src }}"
+            alt="{{ section.settings.card2_title | default: 'Vidhyut Saathi Power Saver Card' | escape }}"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
         </div>
         <div class="vs-product-body">
           <h3 class="vs-product-title">{{ section.settings.card2_title | default: 'Vidhyut Saathi Saver Card' }}</h3>
@@ -122,7 +118,7 @@
           <!-- Pricing Bar -->
           <div class="vs-card-cart-controls">
             <div class="vs-card-price-row">
-              <span class="vs-card-price">₹2,499</span>
+              <span class="vs-card-price">{{ card2_price_val }}</span>
               <span class="vs-card-gst-tag">Incl. GST</span>
             </div>
           </div>
@@ -134,9 +130,9 @@
               data-add-to-cart
               data-product-id="vidhyut-saver-card"
               data-variant-id="vidhyut-saver-card"
-              data-product-name="Vidhyut Saathi Power Saver Card"
-              data-image="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}"
-              data-price="2499"
+              data-product-name="{{ section.settings.card2_title | default: 'Vidhyut Saathi Saver Card' | escape }}"
+              data-image="{{ card2_img_src }}"
+              data-price="{{ card2_price_num }}"
               aria-label="Add Vidhyut Saathi Saver Card to cart"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -153,27 +149,25 @@
       </article>
 
       <!-- Card 3: Multiple Clamp Meters -->
-      <article class="vs-product-card" id="showcase-multiple-clamps" data-product-id="industrial-clamp-series" data-product-name="Multiple Clamp Meters Series">
+      {%- liquid
+        if section.settings.card3_image != blank
+          assign card3_img_src = section.settings.card3_image | image_url: width: 600
+        else
+          assign card3_img_src = 'clamp-meters.jpg' | asset_url
+        endif
+        assign card3_price_val = section.settings.card3_price | default: '₹3,299'
+        assign card3_price_num = card3_price_val | remove: '₹' | remove: ',' | strip
+      -%}
+      <article class="vs-product-card" id="showcase-multiple-clamps" data-product-id="industrial-clamp-series" data-product-name="{{ section.settings.card3_title | default: 'Multiple Clamp Meters' | escape }}">
         <div class="vs-product-image-wrap">
-          {% if section.settings.card3_image != blank %}
-            <img
-              src="{{ section.settings.card3_image | image_url: width: 600 }}"
-              alt="{{ section.settings.card3_title | default: 'Multiple Clamp Meters' | escape }}"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% else %}
-            <img
-              src="{{ 'clamp-meters.jpg' | asset_url }}"
-              alt="Vidhyut Saathi Multiple Clamp Meters Range"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% endif %}
+          <img
+            src="{{ card3_img_src }}"
+            alt="{{ section.settings.card3_title | default: 'Multiple Clamp Meters' | escape }}"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
         </div>
 
         <div class="vs-product-body">
@@ -186,7 +180,7 @@
           <!-- Pricing Bar -->
           <div class="vs-card-cart-controls">
             <div class="vs-card-price-row">
-              <span class="vs-card-price">₹3,299</span>
+              <span class="vs-card-price">{{ card3_price_val }}</span>
               <span class="vs-card-gst-tag">Incl. GST</span>
             </div>
           </div>
@@ -198,9 +192,9 @@
               data-add-to-cart
               data-product-id="industrial-clamp-series"
               data-variant-id="industrial-clamp-series"
-              data-product-name="Multiple Clamp Meters Series"
-              data-image="{{ 'clamp-meters.jpg' | asset_url }}"
-              data-price="3299"
+              data-product-name="{{ section.settings.card3_title | default: 'Multiple Clamp Meters Series' | escape }}"
+              data-image="{{ card3_img_src }}"
+              data-price="{{ card3_price_num }}"
               aria-label="Add Clamp Meter Series to cart"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -217,27 +211,25 @@
       </article>
 
       <!-- Card 4: Halonix Light -->
-      <article class="vs-product-card" id="showcase-halonix-light" data-product-id="halonix-solaris-light" data-product-name="Halonix Solaris LED Light">
+      {%- liquid
+        if section.settings.card4_image != blank
+          assign card4_img_src = section.settings.card4_image | image_url: width: 600
+        else
+          assign card4_img_src = 'solar-lights-1.jpg' | asset_url
+        endif
+        assign card4_price_val = section.settings.card4_price | default: '₹4,499'
+        assign card4_price_num = card4_price_val | remove: '₹' | remove: ',' | strip
+      -%}
+      <article class="vs-product-card" id="showcase-halonix-light" data-product-id="halonix-solaris-light" data-product-name="{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' | escape }}">
         <div class="vs-product-image-wrap">
-          {% if section.settings.card4_image != blank %}
-            <img
-              src="{{ section.settings.card4_image | image_url: width: 600 }}"
-              alt="{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' | escape }}"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% else %}
-            <img
-              src="{{ 'solar-lights-1.jpg' | asset_url }}"
-              alt="Halonix Solaris High-Lumen Solar LED Floodlight"
-              class="vs-product-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% endif %}
+          <img
+            src="{{ card4_img_src }}"
+            alt="{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' | escape }}"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+          >
         </div>
         <div class="vs-product-body">
           <h3 class="vs-product-title">{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' }}</h3>
@@ -249,7 +241,7 @@
           <!-- Pricing Bar -->
           <div class="vs-card-cart-controls">
             <div class="vs-card-price-row">
-              <span class="vs-card-price">₹4,499</span>
+              <span class="vs-card-price">{{ card4_price_val }}</span>
               <span class="vs-card-gst-tag">Incl. GST</span>
             </div>
           </div>
@@ -261,9 +253,9 @@
               data-add-to-cart
               data-product-id="halonix-solaris-light"
               data-variant-id="halonix-solaris-light"
-              data-product-name="Halonix Solaris LED Light"
-              data-image="{{ 'solar-lights-1.jpg' | asset_url }}"
-              data-price="4499"
+              data-product-name="{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' | escape }}"
+              data-image="{{ card4_img_src }}"
+              data-price="{{ card4_price_num }}"
               aria-label="Add Halonix Light to cart"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -558,6 +550,12 @@
       "default": "Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams."
     },
     {
+      "type": "text",
+      "id": "card1_price",
+      "label": "Card 1 Price",
+      "default": "₹1,899"
+    },
+    {
       "type": "url",
       "id": "card1_link",
       "label": "Card 1 Buy Now Link"
@@ -573,12 +571,6 @@
     },
     {
       "type": "text",
-      "id": "card2_badge",
-      "label": "Card 2 Badge",
-      "default": "Smart Energy Saver"
-    },
-    {
-      "type": "text",
       "id": "card2_title",
       "label": "Card 2 Title",
       "default": "Vidhyut Saathi Saver Card"
@@ -588,6 +580,12 @@
       "id": "card2_desc",
       "label": "Card 2 Description",
       "default": "India's No.1 smart electricity saver card engineered with US-German nanotechnology to optimize household and commercial power bills."
+    },
+    {
+      "type": "text",
+      "id": "card2_price",
+      "label": "Card 2 Price",
+      "default": "₹2,499"
     },
     {
       "type": "url",
@@ -605,12 +603,6 @@
     },
     {
       "type": "text",
-      "id": "card3_badge",
-      "label": "Card 3 Badge",
-      "default": "Industrial Series"
-    },
-    {
-      "type": "text",
       "id": "card3_title",
       "label": "Card 3 Title",
       "default": "Multiple Clamp Meters"
@@ -620,6 +612,12 @@
       "id": "card3_desc",
       "label": "Card 3 Description",
       "default": "Comprehensive lineup of multi-range digital clamp meters, test probes, and heavy-duty electrical testing instruments."
+    },
+    {
+      "type": "text",
+      "id": "card3_price",
+      "label": "Card 3 Price",
+      "default": "₹3,299"
     },
     {
       "type": "url",
@@ -637,12 +635,6 @@
     },
     {
       "type": "text",
-      "id": "card4_badge",
-      "label": "Card 4 Badge",
-      "default": "High-Lumen Solar"
-    },
-    {
-      "type": "text",
       "id": "card4_title",
       "label": "Card 4 Title",
       "default": "Halonix Solaris LED Light"
@@ -652,6 +644,12 @@
       "id": "card4_desc",
       "label": "Card 4 Description",
       "default": "High-lumen solar floodlights and outdoor luminaires engineered for industrial durability, zero electricity bills, and weather-resistant coverage."
+    },
+    {
+      "type": "text",
+      "id": "card4_price",
+      "label": "Card 4 Price",
+      "default": "₹4,499"
     },
     {
       "type": "url",

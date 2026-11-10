@@ -35,8 +35,7 @@
     }
 
     if (raw) {
-      var isLocalPath = (raw.indexOf('/assets/images/products/') === 0 || raw.indexOf('/assets/') === 0);
-      if (!isLocalPath && (raw.indexOf('http://') === 0 || raw.indexOf('https://') === 0 || raw.indexOf('//') === 0 || raw.indexOf('data:') === 0)) {
+      if (raw.indexOf('http://') === 0 || raw.indexOf('https://') === 0 || raw.indexOf('//') === 0 || raw.indexOf('data:') === 0 || raw.indexOf('blob:') === 0) {
         return raw;
       }
     }
@@ -223,10 +222,12 @@
       var variantId = variantSelect ? variantSelect.value : (btn.getAttribute('data-variant-id') || productId || 'standard');
       var variantName = variantSelect && variantSelect.options[variantSelect.selectedIndex] ? variantSelect.options[variantSelect.selectedIndex].text : (btn.getAttribute('data-variant-name') || 'Standard Model');
       var priceAttr = variantSelect && variantSelect.options[variantSelect.selectedIndex] ? variantSelect.options[variantSelect.selectedIndex].getAttribute('data-price') : btn.getAttribute('data-price');
-      var price = priceAttr ? parseInt(priceAttr, 10) : 1999;
+      var cleanPriceAttr = priceAttr ? priceAttr.toString().replace(/[^0-9]/g, '') : '';
+      var price = cleanPriceAttr ? parseInt(cleanPriceAttr, 10) : 1999;
       var name = btn.getAttribute('data-product-name') || (card ? card.getAttribute('data-product-name') : null) || 'Vidhyut Saathi Product';
-      var activeImg = card ? card.querySelector('.vs-card-slide.is-active img, .vs-product-img, img') : null;
-      var image = btn.getAttribute('data-image') || (activeImg ? activeImg.src : '');
+      var activeImg = card ? card.querySelector('.vs-product-image-wrap img, .vs-product-img, .vs-gallery-img, .vs-card-slide.is-active img, img') : null;
+      var cardImgSrc = activeImg ? (activeImg.currentSrc || activeImg.src) : '';
+      var image = cardImgSrc || btn.getAttribute('data-image') || '';
 
       self.addItem({
         productId: productId,

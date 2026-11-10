@@ -226,7 +226,7 @@
   height: 68px;
   object-fit: contain;
   border-radius: var(--radius-sm);
-  background-color: #F8FAFC;
+  background-color: #FFFFFF !important;
   padding: 4px;
   border: 1px solid var(--color-border, #E2E8F0);
   flex-shrink: 0;

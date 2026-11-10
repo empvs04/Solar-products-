@@ -47,8 +47,7 @@ export function resolveItemImage(item) {
   }
 
   if (raw) {
-    const isLocalPath = (raw.startsWith('/assets/images/products/') || raw.startsWith('/assets/'));
-    if (!isLocalPath && (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('//') || raw.startsWith('data:'))) {
+    if (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('//') || raw.startsWith('data:') || raw.startsWith('blob:')) {
       return raw;
     }
   }
@@ -297,9 +296,11 @@ export class VidhyutCart {
     const activeVariantId = variantSelect ? variantSelect.value : (variantId || btn.getAttribute('data-variant-id') || productId || 'standard');
     const variantName = variantSelect?.options[variantSelect.selectedIndex]?.text || btn.getAttribute('data-variant-name') || 'Standard Model';
     const priceAttr = variantSelect?.options[variantSelect.selectedIndex]?.getAttribute('data-price') || btn.getAttribute('data-price');
-    const price = priceAttr ? parseInt(priceAttr, 10) : 1999;
-    const activeImg = card?.querySelector('.vs-card-slide.is-active img, .vs-product-img, img');
-    const image = btn.getAttribute('data-image') || activeImg?.getAttribute('src') || '/assets/images/products/solar-lights.jpg';
+    const cleanPriceAttr = priceAttr ? priceAttr.toString().replace(/[^0-9]/g, '') : '';
+    const price = cleanPriceAttr ? parseInt(cleanPriceAttr, 10) : 1999;
+    const activeImg = card?.querySelector('.vs-product-image-wrap img, .vs-product-img, .vs-gallery-img, .vs-card-slide.is-active img, img');
+    const cardImgSrc = activeImg ? (activeImg.currentSrc || activeImg.src || activeImg.getAttribute('src')) : '';
+    const image = cardImgSrc || btn.getAttribute('data-image') || '/assets/images/products/solar-lights.jpg';
 
     this.addItem({
       productId: productId || 'product',
