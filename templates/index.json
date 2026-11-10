@@ -155,9 +155,9 @@
     "products": {
       "type": "vidhyut-products",
       "settings": {
-        "badge": "Our Product Lineup",
-        "title": "Explore Our Products",
-        "subtitle": "Discover reliable solar lighting and electrical solutions from Vidhyut Saathi.",
+        "badge": "",
+        "title": "",
+        "subtitle": "",
         "solar_collection": "",
         "solar_link": "",
         "lamp_collection": "",

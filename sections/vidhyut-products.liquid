@@ -1,12 +1,20 @@
 <section class="vs-products-section" id="products">
   <div class="vs-container">
-    <header class="vs-section-header">
-      <div class="vs-section-badge">{{ section.settings.badge | default: 'Our Product Lineup' }}</div>
-      <h2 class="vs-section-title">{{ section.settings.title | default: 'Explore Our Products' }}</h2>
-      <p class="vs-section-subtitle">
-        {{ section.settings.subtitle | default: 'Discover reliable solar lighting and electrical solutions from Vidhyut Saathi.' }}
-      </p>
-    </header>
+    {% if section.settings.badge != blank or section.settings.title != blank or section.settings.subtitle != blank %}
+      <header class="vs-section-header">
+        {% if section.settings.badge != blank %}
+          <div class="vs-section-badge">{{ section.settings.badge }}</div>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h2 class="vs-section-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="vs-section-subtitle">
+            {{ section.settings.subtitle }}
+          </p>
+        {% endif %}
+      </header>
+    {% endif %}
     {%- liquid
       assign base_root = routes.root_url
       if base_root == '/'
