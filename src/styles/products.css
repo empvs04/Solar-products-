@@ -85,6 +85,11 @@
   z-index: 2;
 }
 
+.vs-featured-showcase-section .vs-product-badge,
+#featured-showcase .vs-product-badge {
+  display: none !important;
+}
+
 /* Card Content Body */
 .vs-product-body {
   display: flex;

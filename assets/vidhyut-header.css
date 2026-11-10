@@ -137,15 +137,14 @@
 .vs-logo-link {
   display: inline-flex;
   align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
   flex-shrink: 0;
-  line-height: 0;
 }
 
 .vs-logo-img {
-  height: 54px;
-  width: auto;
-  max-width: 135px;
+  height: 48px;
+  width: 48px;
   object-fit: contain;
   display: block;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
@@ -156,8 +155,22 @@
   transform: scale(1.02);
 }
 
-.vs-logo-text-wrap,
-.vs-logo-brand,
+.vs-logo-text-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vs-logo-brand {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  display: inline-block !important;
+}
+
 .vs-logo-tagline,
 .vs-mobile-brand-sub {
   display: none !important;
@@ -372,21 +385,24 @@
 .vs-mobile-drawer-header .vs-logo-link {
   display: inline-flex;
   align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
-  line-height: 0;
 }
 
 .vs-mobile-drawer-header .vs-logo-img,
 .vs-drawer-logo {
-  height: 42px;
-  width: auto;
-  max-width: 110px;
+  height: 40px;
+  width: 40px;
   object-fit: contain;
   display: block;
 }
 
 .vs-mobile-drawer-header .vs-logo-brand {
-  display: none !important;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  display: inline-block !important;
 }
 
 .vs-mobile-close-btn {
@@ -471,12 +487,13 @@
   }
 
   .vs-logo-img {
-    height: 42px;
-    max-width: 105px;
+    height: 40px;
+    width: 40px;
   }
 
   .vs-logo-brand {
-    display: none !important;
+    font-size: 1.125rem;
+    display: inline-block !important;
   }
 }
 
