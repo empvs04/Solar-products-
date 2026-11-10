@@ -21,8 +21,6 @@
       "type": "vidhyut-header",
       "settings": {
         "logo": "shopify://shop_images/Vidhyut_Saathi_Logo_jpg.jpg",
-        "logo_height": 64,
-        "logo_max_width": 240,
         "brand_name": "Vidhyut Saathi",
         "menu": "main-menu",
         "about_link": "",
@@ -150,7 +148,7 @@
         "card3_link": "",
         "card4_image": "shopify://shop_images/WhatsApp_Image_2026-10-16_at_10.39.35_AM.jpg",
         "card4_title": "Halonix Solaris LED Light",
-        "card4_desc": "HALONIX SOLARIX 10W LED Floodlight delivers bright white illumination with energy-efficient solar lighting technology. Featuring IP66 protection, durable design and 2-year brand warranty.Designed for reliable outdoor lighting, making it ideal for gardens, pathways, balconies and other outdoor spaces.",
+        "card4_desc": "HALONIX SOLARIX 10W LED Floodlight delivers bright white illumination with energy-efficient solar lighting technology. Featuring IP66 protection, durable design and 2-year brand warranty.",
         "card4_price": "₹350",
         "card4_link": ""
       }
