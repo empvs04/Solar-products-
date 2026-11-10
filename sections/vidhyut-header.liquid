@@ -5,22 +5,22 @@
       <a href="{{ routes.root_url }}" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
         {% if section.settings.logo != blank %}
           <img
-            src="{{ section.settings.logo | image_url: width: 120 }}"
+            src="{{ section.settings.logo | image_url: width: 280 }}"
             alt="{{ shop.name | escape }}"
             class="vs-logo-img"
-            width="48"
-            height="48"
+            width="104"
+            height="55"
           >
         {% else %}
           <img
             src="{{ 'vidhyut-logo-official.png' | asset_url }}"
             alt="Vidhyut Saathi Logo"
             class="vs-logo-img"
-            width="48"
-            height="48"
+            width="104"
+            height="55"
           >
         {% endif %}
-        <div class="vs-logo-text-wrap">
+        <div class="vs-logo-text-wrap visually-hidden">
           <span class="vs-logo-brand">{{ section.settings.brand_name | default: 'Vidhyut Saathi' }}</span>
         </div>
       </a>
@@ -234,10 +234,10 @@
         src="{{ 'vidhyut-logo-official.png' | asset_url }}"
         alt="Vidhyut Saathi Logo"
         class="vs-logo-img"
-        width="40"
-        height="40"
+        width="80"
+        height="42"
       >
-      <span class="vs-logo-brand">Vidhyut Saathi</span>
+      <span class="vs-logo-brand visually-hidden">Vidhyut Saathi</span>
     </div>
     <button
       type="button"
