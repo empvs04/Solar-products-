@@ -181,13 +181,42 @@
         &copy; copyright 2022-2026. All Rights Reserved Vidhyut Saathi Energy Savings Private Limited
       </p>
       <div class="vs-footer-bottom-links">
-        <a href="{{ section.settings.privacy_policy_url | default: '/pages/privacy-policy' }}" class="vs-footer-bottom-link">Privacy Policy</a>
+        {% assign privacy_url_val = '/pages/privacy-policy' %}
+        {% if pages['privacy-policy'].url != blank %}
+          {% assign privacy_url_val = pages['privacy-policy'].url %}
+        {% elsif pages['privacy'].url != blank %}
+          {% assign privacy_url_val = pages['privacy'].url %}
+        {% endif %}
+        <a href="{{ section.settings.privacy_policy_url | default: privacy_url_val }}" class="vs-footer-bottom-link">Privacy Policy</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
-        <a href="{{ section.settings.disclaimer_url | default: '/pages/disclaimer' }}" class="vs-footer-bottom-link">Disclaimer</a>
+
+        {% assign disclaimer_url_val = '/pages/disclaimer' %}
+        {% if pages['disclaimer'].url != blank %}
+          {% assign disclaimer_url_val = pages['disclaimer'].url %}
+        {% endif %}
+        <a href="{{ section.settings.disclaimer_url | default: disclaimer_url_val }}" class="vs-footer-bottom-link">Disclaimer</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
-        <a href="{{ section.settings.terms_url | default: '/pages/terms-conditions' }}" class="vs-footer-bottom-link">Terms &amp; Conditions</a>
+
+        {% assign terms_url_val = '/pages/terms-conditions' %}
+        {% if pages['terms-conditions'].url != blank %}
+          {% assign terms_url_val = pages['terms-conditions'].url %}
+        {% elsif pages['terms-and-conditions'].url != blank %}
+          {% assign terms_url_val = pages['terms-and-conditions'].url %}
+        {% elsif pages['terms'].url != blank %}
+          {% assign terms_url_val = pages['terms'].url %}
+        {% endif %}
+        <a href="{{ section.settings.terms_url | default: terms_url_val }}" class="vs-footer-bottom-link">Terms &amp; Conditions</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
-        <a href="{{ section.settings.refund_url | default: '/pages/refund-policy' }}" class="vs-footer-bottom-link">Return &amp; Refund Policy</a>
+
+        {% assign return_refund_url = '/pages/return' %}
+        {% if pages['return'].url != blank %}
+          {% assign return_refund_url = pages['return'].url %}
+        {% elsif pages['refund-policy'].url != blank %}
+          {% assign return_refund_url = pages['refund-policy'].url %}
+        {% elsif pages['return-refund'].url != blank %}
+          {% assign return_refund_url = pages['return-refund'].url %}
+        {% endif %}
+        <a href="{{ section.settings.refund_url | default: return_refund_url }}" class="vs-footer-bottom-link">Return &amp; Refund Policy</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
         <a href="{{ footer_contact_url }}" class="vs-footer-bottom-link">Support</a>
       </div>
