@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy – Vidhyut Saathi</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Read the official Vidhyut Saathi Privacy Policy. Learn how we collect, handle, store, and protect customer, distributor, and visitor personal information.">
+  <meta name="author" content="Vidhyut Saathi">
+  <meta name="theme-color" content="#223A5F">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Privacy Policy – Vidhyut Saathi">
+  <meta property="og:description" content="Read the official Vidhyut Saathi Privacy Policy. Learn how we collect, handle, store, and protect customer, distributor, and visitor personal information.">
+  <meta property="og:image" content="/assets/images/brand/vidhyut-logo-official.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/brand/vidhyut-logo-official.png">
+  <link rel="apple-touch-icon" href="/assets/images/brand/vidhyut-logo-official.png">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/bundle.css">
+
+  <!-- Anti-FOUC Drawer & Layout Isolation -->
+  <style>
+    .vs-cart-drawer:not(.is-open),
+    .vs-mobile-drawer:not(.is-open),
+    .vs-cart-drawer-backdrop:not(.is-open),
+    .vs-nav-backdrop:not(.is-open),
+    .vs-mobile-drawer-backdrop:not(.is-open) {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+      transform: translateX(100%) !important;
+    }
+    .vs-mobile-drawer:not(.is-open) {
+      transform: translateX(-100%) !important;
+    }
+    .vs-cart-drawer.is-open,
+    .vs-mobile-drawer.is-open {
+      display: flex !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+    .vs-cart-drawer-backdrop.is-open,
+    .vs-nav-backdrop.is-open,
+    .vs-mobile-drawer-backdrop.is-open {
+      display: block !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       Header & Navigation
+       ====================================================================== -->
+  <header class="vs-header" id="mainHeader">
+    <div class="vs-container">
+      <div class="vs-header-inner">
+        <!-- Logo -->
+        <a href="/index.html" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
+          <img
+            src="/assets/images/brand/vidhyut-logo-official.png"
+            alt="Vidhyut Saathi Logo"
+            class="vs-logo-img"
+            width="48"
+            height="48"
+          >
+          <div class="vs-logo-text-wrap">
+            <span class="vs-logo-brand">Vidhyut Saathi</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="vs-nav-desktop" aria-label="Main Navigation">
+          <ul class="vs-nav-list">
+            <li><a href="/index.html" class="vs-nav-link">Home</a></li>
+            <li><a href="/about-us.html" class="vs-nav-link">About Us</a></li>
+            <li><a href="/products.html" class="vs-nav-link">Products</a></li>
+            <li><a href="/contact-us.html" class="vs-nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Desktop CTA Action Buttons -->
+        <div class="vs-header-actions">
+          <a
+            href="/buy-now.html"
+            class="vs-btn vs-btn-accent"
+            id="headerBuyNowBtn"
+          >
+            Buy Now
+          </a>
+          <a
+            href="/buy-distributorship.html"
+            class="vs-btn vs-btn-outline"
+            id="headerDistributorBtn"
+          >
+            Buy Distributorship
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button
+          type="button"
+          class="vs-nav-toggle"
+          id="vsNavToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="vsMobileDrawer"
+        >
+          <span class="vs-hamburger-bar"></span>
+          <span class="vs-hamburger-bar"></span>
+          <span class="vs-hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="vs-nav-backdrop" id="vsNavBackdrop" style="display: none; visibility: hidden;"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu" style="display: none; visibility: hidden;">
+    <div class="vs-mobile-drawer-header">
+      <div class="vs-logo-link">
+        <img
+          src="/assets/images/brand/vidhyut-logo-official.png"
+          alt="Vidhyut Saathi Logo"
+          class="vs-logo-img"
+          width="40"
+          height="40"
+        >
+        <span class="vs-logo-brand">Vidhyut Saathi</span>
+      </div>
+      <button
+        type="button"
+        class="vs-mobile-close-btn"
+        id="vsMobileCloseBtn"
+        aria-label="Close menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="vs-mobile-nav-list">
+      <li>
+        <a href="/index.html" class="vs-mobile-nav-link">
+          <span>Home</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="/about-us.html" class="vs-mobile-nav-link">
+          <span>About Us</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="/products.html" class="vs-mobile-nav-link">
+          <span>Products</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="/contact-us.html" class="vs-mobile-nav-link">
+          <span>Contact</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+    </ul>
+
+    <div class="vs-mobile-actions">
+      <a
+        href="/buy-now.html"
+        class="vs-btn vs-btn-accent"
+        id="mobileBuyNowBtn"
+      >
+        Buy Now
+      </a>
+      <a
+        href="/buy-distributorship.html"
+        class="vs-btn vs-btn-outline"
+        id="mobileDistributorBtn"
+      >
+        Buy Distributorship
+      </a>
+      <div class="vs-mobile-contact-snippet">
+        Direct Inquiries: <a href="tel:+918199036060">+91-8199036060</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- Page Banner & Breadcrumb -->
+    <header class="vs-page-banner">
+      <div class="vs-container">
+        <nav class="vs-breadcrumb" aria-label="Breadcrumb">
+          <a href="/index.html">Home</a>
+          <span class="vs-breadcrumb-sep">/</span>
+          <span class="vs-breadcrumb-sep">Legal</span>
+          <span class="vs-breadcrumb-sep">/</span>
+          <span aria-current="page">Privacy Policy</span>
+        </nav>
+        <h1 class="vs-page-title">Privacy Policy</h1>
+        <p class="vs-page-intro-sub">Transparent data handling and privacy protection for visitors, customers, and partners.</p>
+      </div>
+    </header>
+
+    <!-- Content Section -->
+    <section class="vs-policy-page-section">
+      <div class="vs-container">
+        <article class="vs-policy-card">
+          <div class="vs-policy-meta-bar">
+  <p><strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+  <p><strong>Brand:</strong> Vidhyut Saathi</p>
+  <p><strong>Effective Date:</strong> 10 November 2026</p>
+  <p><strong>Last Updated:</strong> 10 November 2026</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">1. Introduction</h4>
+  <p>Welcome to Vidhyut Saathi ("we", "our", "us"). We respect your privacy and are committed to protecting the personal information of visitors, customers, dealers, distributors and business partners who use our website.</p>
+  <p>This Privacy Policy explains how we collect, use, store, process and protect your personal information when you visit our website, purchase products, submit enquiries or communicate with us.</p>
+  <p>By accessing or using our website, you acknowledge that you have read this Privacy Policy.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">2. Information We Collect</h4>
+  <p>We may collect the following categories of information:</p>
+  
+  <h5 class="vs-policy-subheading">A. Personal Information</h5>
+  <ul class="vs-policy-simple-list">
+    <li>Full name.</li>
+    <li>Mobile number.</li>
+    <li>Email address.</li>
+    <li>Billing address.</li>
+    <li>Shipping and delivery address.</li>
+    <li>City, state and PIN code.</li>
+  </ul>
+
+  <h5 class="vs-policy-subheading">B. Order and Transaction Information</h5>
+  <ul class="vs-policy-simple-list">
+    <li>Products purchased.</li>
+    <li>Order details and order history.</li>
+    <li>Payment status and transaction references.</li>
+    <li>Cash on Delivery information.</li>
+    <li>Refund and replacement details.</li>
+  </ul>
+  <p>We do not intend to store complete debit card, credit card, UPI PIN or banking passwords on our servers. Payments may be processed through third-party payment service providers.</p>
+
+  <h5 class="vs-policy-subheading">C. Business Enquiry Information</h5>
+  <p>If you apply for a dealership, distributorship or channel partnership, we may collect:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Business or company name.</li>
+    <li>Business address.</li>
+    <li>Contact person's name.</li>
+    <li>Mobile number and email address.</li>
+    <li>Business experience and relevant commercial information.</li>
+  </ul>
+
+  <h5 class="vs-policy-subheading">D. Technical Information</h5>
+  <p>When you visit our website, certain information may automatically be collected, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>IP address.</li>
+    <li>Browser and device information.</li>
+    <li>Operating system.</li>
+    <li>Website usage information.</li>
+    <li>Pages visited and time spent on the website.</li>
+    <li>Cookies and similar tracking technologies.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">3. How We Use Your Information</h4>
+  <p>We may use collected information for the following purposes:</p>
+  <ol class="vs-policy-simple-ol">
+    <li>Processing and fulfilling customer orders.</li>
+    <li>Arranging product shipping and delivery.</li>
+    <li>Sending order confirmations and updates.</li>
+    <li>Providing customer support.</li>
+    <li>Processing refunds, replacements and returns.</li>
+    <li>Responding to dealership and distributorship enquiries.</li>
+    <li>Improving our products, services and website.</li>
+    <li>Preventing fraud and unauthorised transactions.</li>
+    <li>Maintaining business, tax and accounting records.</li>
+    <li>Sending promotional communications where permitted and, where required, with your consent.</li>
+    <li>Complying with applicable legal and regulatory requirements.</li>
+  </ol>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">4. Sharing of Personal Information</h4>
+  <p>We do not sell your personal information to third parties.</p>
+  <p>However, we may share relevant information with trusted service providers when necessary, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Courier and logistics companies for product delivery.</li>
+    <li>Payment gateways and financial service providers for payment processing.</li>
+    <li>Website hosting and technology providers.</li>
+    <li>Customer support and communication service providers.</li>
+    <li>Accounting, auditing and professional advisers.</li>
+    <li>Government authorities, courts or law enforcement agencies when legally required.</li>
+  </ul>
+  <p>Such sharing will be limited to information reasonably necessary for the relevant purpose.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">5. Cookies and Tracking Technologies</h4>
+  <p>Our website may use cookies and similar technologies to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Remember shopping cart items.</li>
+    <li>Improve website functionality.</li>
+    <li>Understand website traffic.</li>
+    <li>Improve user experience.</li>
+    <li>Support website security.</li>
+  </ul>
+  <p>You may manage or disable cookies through your browser settings. Certain website features may not function properly if cookies are disabled.</p>
+  <p>Where legally required, we will obtain consent before using non-essential cookies.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">6. Data Security</h4>
+  <p>We take reasonable technical and organisational measures to protect personal information against unauthorised access, alteration, disclosure, misuse or destruction.</p>
+  <p>However, no method of electronic transmission or internet storage can be guaranteed to be completely secure.</p>
+  <p>We cannot guarantee absolute security of information transmitted over the internet.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">7. Data Retention</h4>
+  <p>We retain personal information only for as long as reasonably necessary for the purposes described in this policy, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Processing orders and providing services.</li>
+    <li>Maintaining financial and tax records.</li>
+    <li>Handling customer complaints and warranty claims.</li>
+    <li>Preventing fraud.</li>
+    <li>Meeting applicable legal obligations.</li>
+  </ul>
+  <p>When information is no longer required, we will take reasonable steps to delete or anonymise it, subject to applicable retention requirements.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">8. Your Privacy Rights</h4>
+  <p>Subject to applicable laws and their effective dates, you may have rights to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Request information about personal data processed by us.</li>
+    <li>Request correction of inaccurate personal information.</li>
+    <li>Request deletion of personal information where legally permissible.</li>
+    <li>Withdraw consent where processing is based on consent.</li>
+    <li>Raise a grievance regarding the processing of your personal information.</li>
+    <li>Nominate another person to exercise applicable rights in circumstances permitted by law.</li>
+  </ul>
+  <p>To exercise these rights, contact us using the details below.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">9. Third-Party Websites</h4>
+  <p>Our website may contain links to third-party websites, payment platforms or external services.</p>
+  <p>We are not responsible for the privacy practices, content or security of external websites. We recommend reviewing their respective privacy policies before providing personal information.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">10. Children's Privacy</h4>
+  <p>Our website is intended for use by individuals who are legally capable of entering into transactions.</p>
+  <p>We do not knowingly collect personal information from children in violation of applicable laws. Where parental or guardian consent is legally required, appropriate safeguards will be followed.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">11. Changes to This Privacy Policy</h4>
+  <p>We reserve the right to update this Privacy Policy periodically to reflect changes in our business practices, technology or applicable laws.</p>
+  <p>Any updated version will be published on this page with a revised Last Updated date.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">12. Contact Information</h4>
+  <p>For questions, requests or concerns regarding this Privacy Policy, please contact:</p>
+  <p><strong>Vidhyut Saathi</strong><br>
+  Address: SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India.<br>
+  Email: info@vidhyutsaathi.com<br>
+  Phone: +91-8199036060 / +91-9053110707<br>
+  Grievance Officer: [Miss. Jyoti Bajaj]<br>
+  Grievance Email: [teamvidhyutsaathi@gmail.com]</p>
+  <p>We aim to acknowledge consumer grievances within 72 hours and resolve them within the period prescribed by applicable law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">13. Governing Law</h4>
+  <p>This Privacy Policy shall be governed by the applicable laws of India, including applicable data protection and consumer protection legislation.</p>
+</div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       Corporate Footer
+       ====================================================================== -->
+  <footer class="vs-footer" id="contact">
+    <div class="vs-container">
+      <div class="vs-footer-grid">
+
+        <!-- Column 1: Brand -->
+        <div class="vs-footer-brand-col">
+          <a href="/index.html" class="vs-footer-logo-link" aria-label="Vidhyut Saathi Home">
+            <img
+              src="/assets/images/brand/vidhyut-logo-official.png"
+              alt="Vidhyut Saathi Official Logo"
+              class="vs-footer-logo-img"
+              width="42"
+              height="42"
+            >
+            <div>
+              <div class="vs-footer-brand-name">Vidhyut Saathi</div>
+              <div class="vs-footer-brand-tagline">Solar & Electrical</div>
+            </div>
+          </a>
+          <p class="vs-footer-brand-desc">
+            Vidhyut Saathi is an Indian electrical and solar products brand committed to dependable solar lighting, energy-efficient luminaires, and precision measurement equipment.
+          </p>
+        </div>
+
+        <!-- Column 2: Navigation Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Navigation</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="/index.html" class="vs-footer-link">Home</a></li>
+            <li><a href="/about-us.html" class="vs-footer-link">About Us</a></li>
+            <li><a href="/products.html" class="vs-footer-link">Products</a></li>
+            <li><a href="/contact-us.html" class="vs-footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Product Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Products</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="/index.html#products-solar-lights" class="vs-footer-link">Solar Lights</a></li>
+            <li><a href="/index.html#products-led-lamps" class="vs-footer-link">LED Lamps</a></li>
+            <li><a href="/index.html#products-led-bulbs" class="vs-footer-link">LED Bulbs</a></li>
+            <li><a href="/index.html#products-clamp-meters" class="vs-footer-link">Clamp Meters</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Business Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Business</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="/buy-now.html" class="vs-footer-link">Buy Now</a></li>
+            <li><a href="/buy-distributorship.html" class="vs-footer-link">Buy Distributorship</a></li>
+            <li><a href="/contact-us.html" class="vs-footer-link">Partner Inquiries</a></li>
+            <li><a href="/about-us.html" class="vs-footer-link">Company Overview</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact Information -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Contact Us</h3>
+          <div class="vs-footer-contact-list">
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India</span>
+            </div>
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@vidhyutsaathi.com">info@vidhyutsaathi.com</a>
+            </div>
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <div>
+                <a href="tel:+918199036060">+91-8199036060</a><br>
+                <a href="tel:+919053110707">+91-9053110707</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom with Direct Page Links -->
+      <div class="vs-footer-bottom">
+        <p class="vs-footer-copy" style="color: #ffffff !important; font-weight: 500;">
+          &copy; copyright 2022-2026. All Rights Reserved Vidhyut Saathi Energy Savings Private Limited
+        </p>
+        <div class="vs-footer-bottom-links">
+          <a href="/privacy-policy.html" class="vs-footer-bottom-link">Privacy Policy</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/disclaimer.html" class="vs-footer-bottom-link">Disclaimer</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/terms-conditions.html" class="vs-footer-bottom-link">Terms &amp; Conditions</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/refund-policy.html" class="vs-footer-bottom-link">Return &amp; Refund Policy</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/contact-us.html" class="vs-footer-bottom-link">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shopping Cart Slide-Over Drawer -->
+  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop" style="display: none; visibility: hidden;"></div>
+  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" style="display: none; visibility: hidden;">
+    <div class="vs-cart-header">
+      <div class="vs-cart-title-wrap">
+        <h3 class="vs-cart-title">Your Cart</h3>
+        <span class="vs-cart-badge-count" id="cartBadgeCount">0</span>
+      </div>
+      <button type="button" class="vs-cart-close" id="cartDrawerClose" aria-label="Close cart drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="vs-cart-items-wrap" id="cartItemsWrap">
+      <!-- Items dynamically populated via VidhyutCart -->
+    </div>
+
+    <div class="vs-cart-footer">
+      <div class="vs-cart-total-row">
+        <span class="vs-cart-total-label">Subtotal (incl. GST):</span>
+        <span class="vs-cart-total-val" id="cartTotalVal">₹0</span>
+      </div>
+      <button type="button" class="vs-cart-checkout-btn" id="cartCheckoutBtn">
+        <span>Proceed to Checkout</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Application Script Bundle -->
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

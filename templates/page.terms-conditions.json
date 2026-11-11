@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical"
+      }
+    },
+    "main_policy": {
+      "type": "vidhyut-policy-page",
+      "settings": {
+        "page_title": "Terms & Conditions",
+        "page_subtitle": "Commercial, usage, and operational terms governing Vidhyut Saathi products and services.",
+        "policy_type": "terms"
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "main_policy",
+    "footer"
+  ]
+}

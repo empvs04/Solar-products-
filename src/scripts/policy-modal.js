@@ -1,321 +1,743 @@
 /**
  * Vidhyut Saathi - Interactive Policy Modal Controller
- * Handles pop-up display for Privacy Policy, Disclaimer, Terms & Conditions,
- * and Return & Refund Policy (Strict No-Refund).
+ * Clean, simple, non-colored legal & policy display.
  */
 
 const POLICY_DATA = {
   privacy: {
     id: 'privacy',
     title: 'Privacy Policy',
-    subtitle: 'Effective: October 2026 • Vidhyut Saathi Data Protection',
-    badge: 'Privacy & Security',
+    subtitle: 'Effective Date: 10 November 2026 • Vidhyut Saathi',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`,
-    content: `
-      <div class="vs-policy-alert vs-policy-alert-info">
-        <div class="vs-policy-alert-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-        </div>
-        <div class="vs-policy-alert-content">
-          <span class="vs-policy-alert-title">Commitment to Your Privacy</span>
-          Vidhyut Saathi is committed to protecting your personal information. We do not sell, rent, or trade your contact or business data with third-party advertisers.
-        </div>
-      </div>
+    content: `<div class="vs-policy-meta-bar">
+  <p><strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+  <p><strong>Brand:</strong> Vidhyut Saathi</p>
+  <p><strong>Effective Date:</strong> 10 November 2026</p>
+  <p><strong>Last Updated:</strong> 10 November 2026</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-          1. Information We Collect
-        </h4>
-        <p>When you purchase products, apply for distributorship, or contact our technical team, we collect necessary operational details:</p>
-        <ul class="vs-policy-list">
-          <li><strong>Contact Details:</strong> Full name, verified mobile/WhatsApp number, delivery address, pin code, and email address for order dispatches and GST invoicing.</li>
-          <li><strong>Business & GST Information:</strong> Business legal name, GSTIN number, and trade details when booking B2B bulk distributorship packages.</li>
-          <li><strong>Order & Transaction Records:</strong> Purchase history, payment verification codes, and warranty registration details. Payment card numbers or bank credentials are processed directly by RBI-certified, encrypted gateways; we do not store raw card numbers.</li>
-          <li><strong>Session Cookies:</strong> Non-intrusive local storage cookies used strictly for cart persistence and seamless browsing navigation.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">1. Introduction</h4>
+  <p>Welcome to Vidhyut Saathi ("we", "our", "us"). We respect your privacy and are committed to protecting the personal information of visitors, customers, dealers, distributors and business partners who use our website.</p>
+  <p>This Privacy Policy explains how we collect, use, store, process and protect your personal information when you visit our website, purchase products, submit enquiries or communicate with us.</p>
+  <p>By accessing or using our website, you acknowledge that you have read this Privacy Policy.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          2. How We Use Your Information
-        </h4>
-        <p>The information gathered is utilized strictly for commercial and logistical execution:</p>
-        <ul class="vs-policy-list">
-          <li>To pack, insure, and dispatch your solar lights, LED luminaires, and clamp meters via reliable surface or express couriers.</li>
-          <li>To generate GST-compliant tax invoices for your business input tax credit.</li>
-          <li>To issue tracking updates, delivery notifications, and respond to technical installation queries.</li>
-          <li>To manage warranty records and authenticate transit replacement claims.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">2. Information We Collect</h4>
+  <p>We may collect the following categories of information:</p>
+  
+  <h5 class="vs-policy-subheading">A. Personal Information</h5>
+  <ul class="vs-policy-simple-list">
+    <li>Full name.</li>
+    <li>Mobile number.</li>
+    <li>Email address.</li>
+    <li>Billing address.</li>
+    <li>Shipping and delivery address.</li>
+    <li>City, state and PIN code.</li>
+  </ul>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          3. Data Security & Storage
-        </h4>
-        <p>We deploy modern encryption standards (SSL/TLS 256-bit) across our platform. Customer contact details are shared strictly on a need-to-know basis with dispatch delivery personnel and courier partners solely for physical parcel delivery.</p>
-      </div>
+  <h5 class="vs-policy-subheading">B. Order and Transaction Information</h5>
+  <ul class="vs-policy-simple-list">
+    <li>Products purchased.</li>
+    <li>Order details and order history.</li>
+    <li>Payment status and transaction references.</li>
+    <li>Cash on Delivery information.</li>
+    <li>Refund and replacement details.</li>
+  </ul>
+  <p>We do not intend to store complete debit card, credit card, UPI PIN or banking passwords on our servers. Payments may be processed through third-party payment service providers.</p>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          4. Contacting Our Privacy Officer
-        </h4>
-        <p>For inquiries regarding stored billing records or to update your contact preferences, please reach out directly:</p>
-        <div class="vs-policy-contact-box">
-          <div class="vs-policy-contact-text">
-            <h5>Vidhyut Saathi Privacy Desk</h5>
-            <p>SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India</p>
-          </div>
-          <div class="vs-policy-contact-actions">
-            <a href="mailto:info@vidhyutsaathi.com" class="vs-policy-contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              info@vidhyutsaathi.com
-            </a>
-            <a href="tel:+918199036060" class="vs-policy-contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              +91-8199036060
-            </a>
-          </div>
-        </div>
-      </div>
-    `
+  <h5 class="vs-policy-subheading">C. Business Enquiry Information</h5>
+  <p>If you apply for a dealership, distributorship or channel partnership, we may collect:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Business or company name.</li>
+    <li>Business address.</li>
+    <li>Contact person's name.</li>
+    <li>Mobile number and email address.</li>
+    <li>Business experience and relevant commercial information.</li>
+  </ul>
+
+  <h5 class="vs-policy-subheading">D. Technical Information</h5>
+  <p>When you visit our website, certain information may automatically be collected, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>IP address.</li>
+    <li>Browser and device information.</li>
+    <li>Operating system.</li>
+    <li>Website usage information.</li>
+    <li>Pages visited and time spent on the website.</li>
+    <li>Cookies and similar tracking technologies.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">3. How We Use Your Information</h4>
+  <p>We may use collected information for the following purposes:</p>
+  <ol class="vs-policy-simple-ol">
+    <li>Processing and fulfilling customer orders.</li>
+    <li>Arranging product shipping and delivery.</li>
+    <li>Sending order confirmations and updates.</li>
+    <li>Providing customer support.</li>
+    <li>Processing refunds, replacements and returns.</li>
+    <li>Responding to dealership and distributorship enquiries.</li>
+    <li>Improving our products, services and website.</li>
+    <li>Preventing fraud and unauthorised transactions.</li>
+    <li>Maintaining business, tax and accounting records.</li>
+    <li>Sending promotional communications where permitted and, where required, with your consent.</li>
+    <li>Complying with applicable legal and regulatory requirements.</li>
+  </ol>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">4. Sharing of Personal Information</h4>
+  <p>We do not sell your personal information to third parties.</p>
+  <p>However, we may share relevant information with trusted service providers when necessary, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Courier and logistics companies for product delivery.</li>
+    <li>Payment gateways and financial service providers for payment processing.</li>
+    <li>Website hosting and technology providers.</li>
+    <li>Customer support and communication service providers.</li>
+    <li>Accounting, auditing and professional advisers.</li>
+    <li>Government authorities, courts or law enforcement agencies when legally required.</li>
+  </ul>
+  <p>Such sharing will be limited to information reasonably necessary for the relevant purpose.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">5. Cookies and Tracking Technologies</h4>
+  <p>Our website may use cookies and similar technologies to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Remember shopping cart items.</li>
+    <li>Improve website functionality.</li>
+    <li>Understand website traffic.</li>
+    <li>Improve user experience.</li>
+    <li>Support website security.</li>
+  </ul>
+  <p>You may manage or disable cookies through your browser settings. Certain website features may not function properly if cookies are disabled.</p>
+  <p>Where legally required, we will obtain consent before using non-essential cookies.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">6. Data Security</h4>
+  <p>We take reasonable technical and organisational measures to protect personal information against unauthorised access, alteration, disclosure, misuse or destruction.</p>
+  <p>However, no method of electronic transmission or internet storage can be guaranteed to be completely secure.</p>
+  <p>We cannot guarantee absolute security of information transmitted over the internet.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">7. Data Retention</h4>
+  <p>We retain personal information only for as long as reasonably necessary for the purposes described in this policy, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Processing orders and providing services.</li>
+    <li>Maintaining financial and tax records.</li>
+    <li>Handling customer complaints and warranty claims.</li>
+    <li>Preventing fraud.</li>
+    <li>Meeting applicable legal obligations.</li>
+  </ul>
+  <p>When information is no longer required, we will take reasonable steps to delete or anonymise it, subject to applicable retention requirements.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">8. Your Privacy Rights</h4>
+  <p>Subject to applicable laws and their effective dates, you may have rights to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Request information about personal data processed by us.</li>
+    <li>Request correction of inaccurate personal information.</li>
+    <li>Request deletion of personal information where legally permissible.</li>
+    <li>Withdraw consent where processing is based on consent.</li>
+    <li>Raise a grievance regarding the processing of your personal information.</li>
+    <li>Nominate another person to exercise applicable rights in circumstances permitted by law.</li>
+  </ul>
+  <p>To exercise these rights, contact us using the details below.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">9. Third-Party Websites</h4>
+  <p>Our website may contain links to third-party websites, payment platforms or external services.</p>
+  <p>We are not responsible for the privacy practices, content or security of external websites. We recommend reviewing their respective privacy policies before providing personal information.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">10. Children's Privacy</h4>
+  <p>Our website is intended for use by individuals who are legally capable of entering into transactions.</p>
+  <p>We do not knowingly collect personal information from children in violation of applicable laws. Where parental or guardian consent is legally required, appropriate safeguards will be followed.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">11. Changes to This Privacy Policy</h4>
+  <p>We reserve the right to update this Privacy Policy periodically to reflect changes in our business practices, technology or applicable laws.</p>
+  <p>Any updated version will be published on this page with a revised Last Updated date.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">12. Contact Information</h4>
+  <p>For questions, requests or concerns regarding this Privacy Policy, please contact:</p>
+  <p><strong>Vidhyut Saathi</strong><br>
+  Address: SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India.<br>
+  Email: info@vidhyutsaathi.com<br>
+  Phone: +91-8199036060 / +91-9053110707<br>
+  Grievance Officer: [Miss. Jyoti Bajaj]<br>
+  Grievance Email: [teamvidhyutsaathi@gmail.com]</p>
+  <p>We aim to acknowledge consumer grievances within 72 hours and resolve them within the period prescribed by applicable law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">13. Governing Law</h4>
+  <p>This Privacy Policy shall be governed by the applicable laws of India, including applicable data protection and consumer protection legislation.</p>
+</div>`
   },
 
   disclaimer: {
     id: 'disclaimer',
     title: 'Disclaimer',
-    subtitle: 'Effective: October 2026 • Technical Parameters & Safety Notice',
-    badge: 'Operational Guidelines',
+    subtitle: 'Effective Date: 10 November 2026 • Vidhyut Saathi',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>`,
-    content: `
-      <div class="vs-policy-alert vs-policy-alert-warning">
-        <div class="vs-policy-alert-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-        </div>
-        <div class="vs-policy-alert-content">
-          <span class="vs-policy-alert-title">Solar & Electrical Operating Factors</span>
-          Solar lighting autonomy and battery discharge timings depend on environmental solar irradiance, mounting orientation, and weather factors. All high-voltage installations must be conducted by certified electricians.
-        </div>
-      </div>
+    content: `<div class="vs-policy-meta-bar">
+  <p><strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+  <p><strong>Brand:</strong> Vidhyut Saathi</p>
+  <p><strong>Effective Date:</strong> 10 November 2026</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          1. Solar Lighting Performance & Weather Dependency
-        </h4>
-        <p>Vidhyut Saathi solar lights (All-in-One street lights, solar flood lights) are powered by integrated monocrystalline panels and Lithium LiFePO4 batteries. Rated performance is calculated under standard test conditions (1000 W/m² irradiance):</p>
-        <ul class="vs-policy-list">
-          <li><strong>Sunlight Intensity & Duration:</strong> Backup duration (10–14 hours) requires 6 to 8 hours of direct, unobstructed sunlight during the daytime.</li>
-          <li><strong>Seasonal & Weather Variations:</strong> During continuous monsoon rain, heavy cloud cover, dense winter smog, or snow, solar panels generate lower charging current. Shortened illumination hours during such meteorological conditions do not constitute a product defect.</li>
-          <li><strong>Mounting Angle & Obstructions:</strong> Solar lights installed under tree branches, building shadows, or billboards will experience diminished battery recharge. Regular cleaning of dust accumulation from solar glass surfaces is required for optimal efficiency.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">1. General Information</h4>
+  <p>The information provided on <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a> is published for general informational, educational and commercial purposes.</p>
+  <p>Vidhyut Saathi is an Indian solar and electrical products brand offering products such as solar lighting systems, LED lamps, LED bulbs, digital clamp meters, electrical testing equipment and energy saver cards.</p>
+  <p>While we make reasonable efforts to maintain accurate and updated website information, we do not guarantee that all information will always be complete, current or free from errors.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-          2. Electrical Safety & Professional Installation
-        </h4>
-        <p>AC electrical equipment (commercial LED lamps, high-bay fittings, LED bulbs) must be installed following the National Electrical Code (NEC) of India. Vidhyut Saathi is not responsible for damages, component burning, or electrical shock caused by:</p>
-        <ul class="vs-policy-list">
-          <li>Severe phase-to-phase overvoltage spikes or lightning strikes without adequate surge protective devices (SPD).</li>
-          <li>Improper neutral connections, inadequate earth grounding, or loose wiring terminals.</li>
-          <li>Submersion of fixtures in water beyond their certified ingress protection rating (IP65/IP66).</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">2. Product Information and Specifications</h4>
+  <p>Product descriptions, photographs, specifications, features and technical information are provided to help customers make informed purchasing decisions.</p>
+  <p>Actual products may have minor differences in appearance, packaging, colour or specifications due to manufacturing updates, product variants or supplier changes.</p>
+  <p>Customers should review the relevant product specifications and instructions before purchasing or using any product.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-          3. Testing Instruments & Measurement Tools
-        </h4>
-        <p>Clamp meters and digital testing multimeters should only be used within their stated voltage/current limits (e.g., CAT III 600V). Operators must verify lead integrity and insulation prior to live electrical line testing. Vidhyut Saathi accepts no liability for misuse or equipment damage resulting from over-range testing.</p>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">3. Electrical Safety Disclaimer</h4>
+  <p>Electrical and solar products must be used in accordance with the manufacturer's instructions and specified operating conditions.</p>
+  <p>Improper installation, incorrect wiring, overloading, misuse or unauthorised modification may result in:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Electric shock.</li>
+    <li>Fire hazards.</li>
+    <li>Equipment damage.</li>
+    <li>Personal injury.</li>
+    <li>Property damage.</li>
+  </ul>
+  <p>Customers should use qualified electricians or trained professionals for installations and electrical work wherever required.</p>
+  <p>Digital clamp meters and other electrical testing instruments should only be operated by persons with appropriate knowledge and training.</p>
+  <p>Vidhyut Saathi shall not be responsible for damage or injury resulting from improper installation, misuse, negligence or failure to follow applicable safety instructions, to the extent permitted by law.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          4. Continuous Engineering & Product Iteration
-        </h4>
-        <p>Vidhyut Saathi continually upgrades LED chips, optical lenses, charge controllers, and heat sinks. Product photographs, shell aesthetics, and dimensions shown on the website represent standard production units and may undergo minor cosmetic or engineering refinements without notice.</p>
-      </div>
-    `
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">4. Solar Performance Disclaimer</h4>
+  <p>Solar lighting performance depends on several factors, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Sunlight availability.</li>
+    <li>Solar panel positioning.</li>
+    <li>Weather conditions.</li>
+    <li>Battery capacity and condition.</li>
+    <li>Installation location.</li>
+    <li>Operating hours.</li>
+    <li>Environmental conditions.</li>
+  </ul>
+  <p>Actual lighting duration, charging performance and output may therefore vary.</p>
+  <p>Any performance figures or specifications mentioned on the website should be read in accordance with the relevant product documentation and testing conditions.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">5. Energy Saver Card Disclaimer</h4>
+  <p>Any energy-saving product or card displayed on our website should be evaluated according to its published specifications and supporting technical documentation.</p>
+  <p>Electricity consumption and electricity bills savings depend on multiple factors, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Connected electrical loads.</li>
+    <li>Usage patterns.</li>
+    <li>Appliance efficiency.</li>
+    <li>Voltage conditions.</li>
+    <li>Metering and billing arrangements.</li>
+    <li>Applicable electricity tariffs.</li>
+  </ul>
+  <p>Customers should not assume that purchasing any product will automatically result in a particular percentage of electricity savings.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">6. Third-Party Brands and Products</h4>
+  <p>Certain products or accessories displayed on the website may be manufactured by third-party manufacturers or brands.</p>
+  <p>References to third-party names, trademarks or products are for identification and product-description purposes.</p>
+  <p>Such references do not necessarily imply sponsorship, endorsement or ownership by Vidhyut Saathi.</p>
+  <p>Applicable manufacturer warranties and product documentation may govern certain third-party products.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">7. External Links</h4>
+  <p>Our website may contain links to third-party websites, services or resources.</p>
+  <p>These links are provided for convenience and informational purposes.</p>
+  <p>We do not control or guarantee the accuracy, availability, privacy practices or security of external websites.</p>
+  <p>Accessing external websites is at the user's discretion.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">9. Website Availability and Technical Errors</h4>
+  <p>We make reasonable efforts to ensure that the website remains accessible and functional.</p>
+  <p>However, temporary interruptions, technical errors, incorrect listings or website maintenance may occur.</p>
+  <p>We reserve the right to correct errors, update product information and improve website functionality.</p>
+  <p>Where an error affects a confirmed order, we will address it in accordance with applicable law and our Terms and Conditions.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">10. Limitation of Responsibility</h4>
+  <p>To the maximum extent permitted by applicable law, Vidhyut Saathi shall not be liable for indirect or consequential losses arising from:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Improper product installation.</li>
+    <li>Misuse of electrical equipment.</li>
+    <li>Failure to follow manufacturer instructions.</li>
+    <li>Unauthorised product modification.</li>
+    <li>External technical failures.</li>
+    <li>Temporary website interruptions.</li>
+    <li>Circumstances beyond our reasonable control.</li>
+  </ul>
+  <p>Nothing in this Disclaimer excludes statutory consumer rights, product liability obligations or any liability that cannot legally be excluded under Indian law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">11. Testimonials and Customer Experiences</h4>
+  <p>Customer reviews, testimonials and experiences displayed on the website represent individual experiences.</p>
+  <p>Results may vary depending on product type, operating conditions, installation and usage.</p>
+  <p>Testimonials should not be interpreted as a guarantee that every customer will achieve identical results.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">12. Changes to This Disclaimer</h4>
+  <p>We may revise this Disclaimer periodically to reflect changes in our products, business operations or applicable laws.</p>
+  <p>The latest version will be published on this website.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">13. Contact Information</h4>
+  <p>For questions or concerns regarding this Disclaimer, please contact:</p>
+  <p><strong>Vidhyut Saathi</strong><br>
+  <strong>Address:</strong> SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India.<br>
+  <strong>Email:</strong> business.vidhyutsaathi@gmail.com<br>
+  <strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">14. Governing Law</h4>
+  <p>This Disclaimer shall be governed by and interpreted in accordance with the applicable laws of India.</p>
+</div>`
   },
 
   terms: {
     id: 'terms',
     title: 'Terms & Conditions',
-    subtitle: 'Effective: October 2026 • Commercial Sales & Warranty Agreement',
-    badge: 'Legal Terms',
+    subtitle: 'Effective Date: 10 November 2026 • Vidhyut Saathi',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
-    content: `
-      <div class="vs-policy-alert vs-policy-alert-info">
-        <div class="vs-policy-alert-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-        </div>
-        <div class="vs-policy-alert-content">
-          <span class="vs-policy-alert-title">Commercial Agreement</span>
-          By purchasing from Vidhyut Saathi online or through regional authorized distribution channels, you agree to comply with and be bound by the following Terms & Conditions.
-        </div>
-      </div>
+    content: `<div class="vs-policy-meta-bar">
+  <p><strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+  <p><strong>Brand:</strong> Vidhyut Saathi</p>
+  <p><strong>Effective Date:</strong> 10 November 2026</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-          1. Pricing, Invoicing & GST Compliance
-        </h4>
-        <p>All prices quoted on the website are in Indian Rupees (INR) and are inclusive of standard GST unless specifically stated as ex-factory wholesale quotations for verified distributors.</p>
-        <ul class="vs-policy-list">
-          <li>A valid GST tax invoice is issued with each shipment mentioning accurate HSN codes (e.g. 9405 for solar lighting fixtures, 9030 for clamp meters).</li>
-          <li>For registered B2B entities, input tax credit details are transmitted through GSTR-1 as per government filing schedules.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">1. Introduction</h4>
+  <p>Welcome to Vidhyut Saathi.</p>
+  <p>These Terms and Conditions govern your access to and use of https://vidhyutsaathi.in/, including browsing, purchasing products, submitting enquiries and accessing other services offered through the website.</p>
+  <p>The website is operated under the Vidhyut Saathi brand.</p>
+  <p>By accessing or using this website, you agree to comply with these Terms and Conditions. If you do not agree, please discontinue use of the website.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-          2. Order Confirmation & Dispatch
-        </h4>
-        <p>Orders are processed following payment confirmation. Dispatches are routed through our central logistics facility in Rohtak, Haryana, using recognized Indian logistics carriers. Transit times are estimated between 3 to 7 working days depending on destination pin code.</p>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">2. Business Information</h4>
+  <p><strong>Brand Name:</strong> Vidhyut Saathi<br>
+  <strong>Business Address:</strong> SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India.<br>
+  <strong>Email:</strong> business.vidhyutsaathi@gmail.com<br>
+  <strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+  <p>The full legal name of the entity operating this website will be displayed in the appropriate business and legal disclosures.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          3. Standard Manufacturer Warranty
-        </h4>
-        <p>Vidhyut Saathi products are backed by standard limited warranties against manufacturing defects in internal electronic drivers, solar charge controllers, and LED clusters:</p>
-        <ul class="vs-policy-list">
-          <li><strong>Coverage:</strong> Repair or component replacement for manufacturing defects occurring under regular operational parameters.</li>
-          <li><strong>Warranty Voids:</strong> Warranty does NOT cover physical breakage, dropped units, cracked solar panels, burnt motherboards due to direct lightning strikes or ungrounded high voltage surges, ingress of water caused by opened cable glands, or unauthorized third-party repairs.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">3. Products and Services</h4>
+  <p>Vidhyut Saathi offers products and solutions in categories including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Solar lights and solar lighting equipment.</li>
+    <li>LED lamps and lighting products.</li>
+    <li>LED bulbs.</li>
+    <li>Digital clamp meters and electrical testing equipment.</li>
+    <li>Energy saver cards.</li>
+    <li>Other solar and electrical products introduced from time to time.</li>
+  </ul>
+  <p>We make reasonable efforts to ensure that product descriptions, photographs, specifications and prices are accurate.</p>
+  <p>However, minor variations in product appearance, packaging or presentation may occur.</p>
+  <p>Customers should review product specifications, technical compatibility and installation requirements before purchasing.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-          4. Intellectual Property
-        </h4>
-        <p>All brand logos, technical datasheets, product photographs, diagrams, and written content are the exclusive intellectual property of Vidhyut Saathi. Reproduction without written consent is strictly prohibited.</p>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">4. Product Pricing and Taxes</h4>
+  <p>All product prices displayed on the website are in Indian Rupees (INR).</p>
+  <p>Prices displayed on product pages generally include applicable GST where specified.</p>
+  <p>Shipping charges, if applicable, will be displayed during checkout.</p>
+  <p>Promotional offers and discounts are subject to their stated conditions.</p>
+  <p>Prices and product availability may change without prior notice.</p>
+  <p>Any change in price will not retrospectively affect an already confirmed order, except where a genuine error or other lawful reason requires appropriate action.</p>
+</div>
 
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"></path></svg>
-          5. Governing Law & Legal Jurisdiction
-        </h4>
-        <p>These terms are governed by and construed in accordance with the laws of India. Any legal dispute, arbitration, or proceedings shall be subject to the exclusive jurisdiction of the competent courts in <strong>Rohtak, Haryana, India</strong>.</p>
-      </div>
-    `
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">5. Orders and Acceptance</h4>
+  <p>Placing an order through our website constitutes an offer to purchase the selected products.</p>
+  <p>An order confirmation or acknowledgement does not necessarily mean that the order has been finally accepted or dispatched.</p>
+  <p>We reserve the right to review orders in circumstances involving:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Product unavailability.</li>
+    <li>Incorrect pricing or listing errors.</li>
+    <li>Suspected fraudulent transactions.</li>
+    <li>Incomplete or inaccurate customer information.</li>
+    <li>Delivery restrictions.</li>
+    <li>Other legitimate operational or legal reasons.</li>
+  </ul>
+  <p>If an order is cancelled after payment has been received, the applicable refund will be processed in accordance with our Refund & Returns Policy and applicable law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">6. Payment Methods</h4>
+  <p>We may offer the following payment methods:</p>
+  <ul class="vs-policy-simple-list">
+    <li>UPI.</li>
+    <li>Debit cards.</li>
+    <li>Credit cards.</li>
+    <li>Net banking.</li>
+    <li>Other available online payment methods.</li>
+    <li>Cash on Delivery (COD), where available.</li>
+  </ul>
+  <p>All payments are subject to the terms and security procedures of the relevant payment service providers.</p>
+  <p>Customers must ensure that payment information provided during checkout is accurate.</p>
+  <p>We do not request customers to disclose their UPI PIN, OTP or banking passwords to our employees.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">7. Shipping and Delivery</h4>
+  <p>We aim to process and dispatch orders within the estimated timelines communicated on the website or during checkout.</p>
+  <p>Delivery timelines are estimates and may vary due to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Customer location.</li>
+    <li>Courier availability.</li>
+    <li>Weather conditions.</li>
+    <li>Public holidays.</li>
+    <li>Transportation disruptions.</li>
+    <li>Other circumstances beyond our reasonable control.</li>
+  </ul>
+  <p>Free shipping may be available on eligible prepaid orders above ₹1,500, subject to the conditions displayed on the website.</p>
+  <p>Customers are responsible for providing a complete and accurate delivery address and contact number.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">8. Returns, Refunds and Cancellations</h4>
+  <p>All returns, replacements, refunds and cancellations are governed by our separate Refund, Return & Replacement Policy.</p>
+  <p>Customers should review that policy before placing an order.</p>
+  <p>Nothing in these Terms and Conditions limits any mandatory rights available to consumers under applicable Indian law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">9. Product Warranty and Support</h4>
+  <p>Products may carry a warranty depending on the product type, manufacturer and applicable warranty documentation.</p>
+  <p>Customers should refer to the product listing, warranty card or accompanying documents for specific warranty details.</p>
+  <p>Warranty coverage may not include damage caused by:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Incorrect installation.</li>
+    <li>Improper usage.</li>
+    <li>Unauthorised repair or modification.</li>
+    <li>Negligence or accidental damage.</li>
+    <li>External electrical or environmental conditions beyond the product's rated specifications.</li>
+  </ul>
+  <p>Statutory consumer rights remain unaffected.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">10. User Responsibilities</h4>
+  <p>By using this website, you agree:</p>
+  <ol class="vs-policy-simple-ol">
+    <li>To provide accurate and complete information.</li>
+    <li>Not to use the website for unlawful purposes.</li>
+    <li>Not to attempt unauthorised access to the website or its systems.</li>
+    <li>Not to interfere with website functionality or security.</li>
+    <li>Not to submit fraudulent orders or false enquiries.</li>
+    <li>Not to upload malicious code or harmful content.</li>
+    <li>To respect the intellectual property rights of Vidhyut Saathi and third parties.</li>
+  </ol>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">11. Dealer and Distributor Enquiries</h4>
+  <p>Vidhyut Saathi may provide business opportunities for dealers, distributors and retailers.</p>
+  <p>Submitting a distributorship enquiry does not automatically establish a dealership, distributorship, franchise or agency relationship.</p>
+  <p>Any commercial relationship will be subject to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Separate written approval.</li>
+    <li>Applicable commercial terms.</li>
+    <li>A separate agreement, where required.</li>
+    <li>Territory and distribution conditions.</li>
+    <li>Payment and supply arrangements.</li>
+  </ul>
+  <p>No distributor or dealer is authorised to make unauthorised commitments or guarantees on behalf of Vidhyut Saathi.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">12. Intellectual Property</h4>
+  <p>All website content, including:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Brand names and logos.</li>
+    <li>Product descriptions.</li>
+    <li>Photographs and graphics.</li>
+    <li>Website design and layout.</li>
+    <li>Written content.</li>
+    <li>Marketing materials.</li>
+  </ul>
+  <p>is protected by applicable intellectual property laws or used with appropriate permission.</p>
+  <p>No person may copy, reproduce, distribute, modify or commercially exploit website content without prior written permission from the relevant rights holder.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">13. Third-Party Services</h4>
+  <p>Our website may integrate with third-party services such as:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Payment gateways.</li>
+    <li>Courier and logistics providers.</li>
+    <li>Website hosting providers.</li>
+    <li>Analytics and communication services.</li>
+  </ul>
+  <p>We are not responsible for the independent policies or practices of third-party providers, although we will take reasonable steps to work with reliable service providers.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">14. Limitation of Liability</h4>
+  <p>To the extent permitted by applicable law, Vidhyut Saathi shall not be responsible for indirect or consequential losses arising from the use of the website, temporary website interruptions or circumstances beyond its reasonable control.</p>
+  <p>Nothing in these Terms and Conditions excludes or restricts liability that cannot legally be excluded, including mandatory consumer rights, statutory remedies or liability for defective products where applicable.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">15. Website Availability</h4>
+  <p>We aim to maintain uninterrupted website access. However, temporary interruptions may occur due to maintenance, technical issues, server problems or other operational circumstances.</p>
+  <p>We reserve the right to modify, suspend or discontinue any website feature, subject to applicable legal obligations.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">16. Privacy</h4>
+  <p>Your use of this website is also governed by our Privacy Policy, which explains how personal information is collected and processed.</p>
+  <p>By using the website, you acknowledge that you have had an opportunity to review the Privacy Policy.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">17. Changes to These Terms</h4>
+  <p>We may update these Terms and Conditions periodically.</p>
+  <p>The updated version will be published on the website along with its revised effective or updated date.</p>
+  <p>Changes will not retrospectively remove rights already accrued to customers.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">18. Governing Law and Jurisdiction</h4>
+  <p>These Terms and Conditions shall be governed by the laws of India.</p>
+  <p>Subject to applicable consumer protection laws and the jurisdiction of competent consumer commissions, courts having appropriate jurisdiction in Rohtak, Haryana, may hear disputes arising from these Terms and Conditions.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">19. Grievance Redressal</h4>
+  <p>For complaints, queries or disputes, please contact:</p>
+  <p><strong>Vidhyut Saathi</strong><br>
+  Email: business.vidhyutsaathi@gmail.com<br>
+  Address: SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India.<br>
+  Grievance Officer: [Miss. Jyoti Bajaj]<br>
+  Grievance Email: [teamvidhyutsaathi@gmail.com]</p>
+  <p>We aim to acknowledge complaints within 72 hours and resolve them within one month from receipt, as required under applicable e-commerce regulations.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">20. Contact</h4>
+  <p>For assistance regarding these Terms and Conditions, please contact us through the email address or telephone numbers mentioned above.</p>
+</div>`
   },
 
   refund: {
     id: 'refund',
-    title: 'Return & 7-Day Replacement Policy',
-    subtitle: 'Effective: October 2026 • 100% Free Replacement for Damaged & Broken Products',
-    badge: '7-Day Free Replacement',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
-    content: `
-      <!-- Top Highlight Banner: 7-Day Replacement Guarantee -->
-      <div class="vs-policy-alert" style="border-left: 4px solid #16a34a; background: linear-gradient(135deg, rgba(22, 163, 74, 0.12) 0%, rgba(22, 163, 74, 0.03) 100%); border-color: rgba(22, 163, 74, 0.35); padding: 16px; border-radius: 8px; margin-bottom: 22px;">
-        <div class="vs-policy-alert-icon" style="color: #16a34a;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-        </div>
-        <div class="vs-policy-alert-content">
-          <span class="vs-policy-alert-title" style="color: #15803d; font-weight: 700; font-size: 1.02rem;">7-Day Free Replacement Guarantee (Damaged &amp; Broken Products)</span>
-          <p style="margin: 6px 0 0 0; color: #1e293b; font-size: 0.94rem; line-height: 1.6;">
-            Agar delivery ke waqt aapko koi bhi product <strong>damaged, toota hua (physically broken), ya defective</strong> milta hai, toh Vidhyut Saathi aapko <strong>7 DIN KE ANDAR 100% FREE REPLACEMENT</strong> provide karta hai. Claim verify hone ke turant baad bina kisi additional shipping charge ke fresh replacement product dispatch kar diya jayega.
-          </p>
-        </div>
-      </div>
+    title: 'Refund, Return & Replacement Policy',
+    subtitle: 'Effective Date: 10 November 2026 • Vidhyut Saathi',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>`,
+    content: `<div class="vs-policy-meta-bar">
+  <p><strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+  <p><strong>Brand:</strong> Vidhyut Saathi</p>
+  <p><strong>Effective Date:</strong> 10 November 2026</p>
+</div>
 
-      <!-- Section 1: 7-Day Replacement Policy -->
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          1. 7-Day Free Replacement Coverage
-        </h4>
-        <p>Hum apne sabhi solar products, LED luminaires aur electrical clamp meters par customer satisfaction aur transit security ensure karte hain:</p>
-        <ul class="vs-policy-list">
-          <li><strong>Eligible Issues:</strong> Transit ke dauran toota hua glass, bent casing, physical damage, courier rough handling, ya Dead-on-Arrival (DOA) manufacturing fault.</li>
-          <li><strong>7-Day Inspection Window:</strong> Parcel receive hone ke <strong>7 days ke andar</strong> aapko support team ko damage report karna hoga.</li>
-          <li><strong>Zero Cost to Customer:</strong> Replacement unit dispatch karne ka koi bhi extra delivery ya shipping charge customer se nahi liya jayega.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">1. Introduction</h4>
+  <p>At Vidhyut Saathi, customer satisfaction is important to us. We aim to supply quality solar lighting, LED products, electrical testing instruments, energy saving products and other electrical solutions.</p>
+  <p>This policy explains the conditions under which customers may request a return, replacement or refund for products purchased through our website.</p>
+</div>
 
-      <!-- Section 2: How to Claim Replacement -->
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          2. Replacement Claim Process (3 Simple Steps)
-        </h4>
-        <p>Damaged ya broken product ka replacement paane ke liye ye aasan steps follow karein:</p>
-        <ul class="vs-policy-list">
-          <li><strong>Step 1 (Photo / Video):</strong> Damaged ya toote hue product aur outer box shipping label ki clear photos ya unboxing video record karein.</li>
-          <li><strong>Step 2 (Report in 7 Days):</strong> Apne Order Number ke sath WhatsApp (<strong>+91-8199036060</strong>) ya Email (<strong>support@vidhyutsaathi.com</strong>) par 7 din ke andar send karein.</li>
-          <li><strong>Step 3 (Free Replacement Dispatch):</strong> Hamari technical team 24 business hours ke andar claim review karke aapko fresh replacement unit courier kar degi.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">2. Return Eligibility</h4>
+  <p>Customers may request a return or replacement in the following situations:</p>
+  <ol class="vs-policy-simple-ol">
+    <li>The product received is damaged during transportation.</li>
+    <li>The product received is defective or non-functional.</li>
+    <li>The wrong product, model or variant has been delivered.</li>
+    <li>The product is materially different from its description on our website.</li>
+    <li>The product is incomplete or missing essential accessories that were included in the order.</li>
+    <li>Any other circumstance in which a return, replacement or refund is required under applicable consumer protection laws.</li>
+  </ol>
+  <h5 class="vs-policy-subheading">Return Request Period</h5>
+  <p>Customers should raise a return or replacement request within 7 days of delivery.</p>
+  <p>For visible transit damage, customers are encouraged to notify us within 48 hours of delivery and provide photographs or an unboxing video, if available.</p>
+  <p>Failure to provide an unboxing video will not automatically invalidate an otherwise legitimate complaint.</p>
+  <p>Nothing in this policy limits any consumer rights available under applicable law.</p>
+</div>
 
-      <!-- Section 3: Replacement Resolution & Zero Cash Refund -->
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-          3. Replacement vs. Cash Refund Policy
-        </h4>
-        <p>Calibrated electrical measurement components aur certified Lithium LiFePO4 battery safety standards ke chalte:</p>
-        <ul class="vs-policy-list">
-          <li><strong>Direct Product Replacement:</strong> Kisi bhi damaged ya defective product ke badle customer ko <strong>1-to-1 brand new replacement</strong> diya jata hai.</li>
-          <li><strong>No Monetary Cash Refunds:</strong> Change-of-mind ya order dispatch ke baad cancellation par cash/bank refund nahi hota; samasya ka 100% solution free replacement ya official warranty service ke zariye diya jata hai.</li>
-          <li><strong>Warranty Assurance:</strong> Replacement ke baad bhi aapka product standard manufacturer warranty ke tahat fully covered rehta hai.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">3. Conditions for Returns</h4>
+  <p>Where a return is requested, the following conditions generally apply:</p>
+  <ul class="vs-policy-simple-list">
+    <li>The product should be returned with its original packaging, wherever reasonably possible.</li>
+    <li>All accessories, manuals and components supplied with the product should be included.</li>
+    <li>The product should not have been intentionally damaged, modified or misused.</li>
+    <li>The product should be accompanied by the order number or proof of purchase.</li>
+    <li>Products showing signs of installation, use or handling will be assessed based on the nature of the complaint.</li>
+    <li>A product will not be rejected merely because its original packaging has been opened when inspection or reasonable examination was necessary to identify a defect.</li>
+  </ul>
+</div>
 
-      <!-- Section 4: Non-Eligible Scenarios -->
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          4. Non-Eligible Scenarios
-        </h4>
-        <ul class="vs-policy-list">
-          <li>Customer dwara galat installation, short-circuit, ya delivery ke baad accidental dropping se hua damage.</li>
-          <li>Delivery ke 7 days bit jaane ke baad raise kiye gaye transit damage claims (ye issue warranty repair me cover honge, replacement me nahi).</li>
-          <li>Customer dwara bina technical defect ke sirf 'change of mind' par product wapas karna.</li>
-        </ul>
-      </div>
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">4. Non-Returnable Situations</h4>
+  <p>Subject to applicable consumer rights, the following situations may not qualify for a change-of-mind return:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Products damaged due to improper installation or handling by the customer.</li>
+    <li>Products damaged due to unauthorised modification or repair.</li>
+    <li>Products damaged due to misuse, negligence or accidental damage after delivery.</li>
+    <li>Products returned without essential components or accessories due to customer loss.</li>
+    <li>Products with normal wear and tear after use.</li>
+    <li>Products returned solely because the customer changed their mind, where no return right is provided by the applicable product-specific return terms.</li>
+  </ul>
+  <p>These exclusions do not apply to products that are defective, damaged on arrival, incorrectly supplied, materially misdescribed or otherwise eligible for a remedy under applicable law.</p>
+</div>
 
-      <!-- Section 5: Direct Support Contact -->
-      <div class="vs-policy-section">
-        <h4 class="vs-policy-sec-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          5. Contact Support for 7-Day Replacement
-        </h4>
-        <p>Agar aapko damaged ya broken product receive hua hai, toh turant hamari dedicated replacement desk se sampark karein:</p>
-        <div class="vs-policy-contact-box" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px;">
-          <div class="vs-policy-contact-text">
-            <h5 style="margin: 0 0 4px 0; color: #0f172a; font-size: 1rem;">Vidhyut Saathi 7-Day Replacement Desk</h5>
-            <p style="margin: 0; color: #64748b; font-size: 0.88rem;">Apne Order ID aur parcel video ke sath humein message karein (Mon - Sat, 9:00 AM - 7:00 PM IST)</p>
-          </div>
-          <div class="vs-policy-contact-actions" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
-            <a href="https://wa.me/918199036060?text=Hello%2C%20I%20received%20a%20damaged%20product%20and%20need%20a%207-day%20replacement." target="_blank" rel="noopener noreferrer" class="vs-policy-contact-link" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #22c55e; color: #ffffff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.88rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-              WhatsApp: +91-8199036060
-            </a>
-            <a href="mailto:support@vidhyutsaathi.com?subject=7-Day%20Replacement%20Request%20-%20Damaged%20Product" class="vs-policy-contact-link" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #223a5f; color: #ffffff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.88rem;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              support@vidhyutsaathi.com
-            </a>
-          </div>
-        </div>
-      </div>
-    `
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">5. How to Request a Return or Replacement</h4>
+  <p>To request a return, replacement or refund:</p>
+  <p><strong>Step 1:</strong> Contact our customer support team.<br>
+  Email: business.vidhyutsaathi@gmail.com</p>
+  <p><strong>Step 2:</strong> Provide the following information:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Customer name.</li>
+    <li>Order number.</li>
+    <li>Product name.</li>
+    <li>Date of delivery.</li>
+    <li>Reason for the return or replacement.</li>
+    <li>Relevant photographs or videos, if available.</li>
+  </ul>
+  <p><strong>Step 3:</strong> Our team will review the request and provide return instructions.</p>
+  <p><strong>Step 4:</strong> If approved, the product may be collected through our logistics partner or the customer may be instructed to return it through an agreed shipping method.</p>
+  <p>Please do not send products to our office without first receiving return instructions.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">6. Damaged or Defective Products</h4>
+  <p>If a product arrives damaged, defective or non-functional, please contact us as soon as possible.</p>
+  <p>Our team may request photographs, videos or reasonable technical information to assess the complaint.</p>
+  <p>Depending on the circumstances and applicable law, we may provide:</p>
+  <ul class="vs-policy-simple-list">
+    <li>A replacement product.</li>
+    <li>Repair or service support.</li>
+    <li>A refund.</li>
+    <li>Another legally appropriate remedy agreed with the customer.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">7. Refund Policy</h4>
+  <p>Refunds may be issued in the following circumstances:</p>
+  <ul class="vs-policy-simple-list">
+    <li>A return is approved.</li>
+    <li>A replacement cannot reasonably be provided.</li>
+    <li>An order is cancelled before dispatch and the payment has already been received.</li>
+    <li>An order cannot be fulfilled by us.</li>
+    <li>A refund is otherwise required under applicable law.</li>
+  </ul>
+  <h5 class="vs-policy-subheading">Refund Processing</h5>
+  <p>Once a refund is approved:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Prepaid orders: Refunds will generally be processed to the original payment method.</li>
+    <li>UPI and online payments: Refunds will be initiated through the relevant payment provider.</li>
+    <li>Cash on Delivery orders: Customers may be asked to provide verified bank account or UPI details for the refund.</li>
+  </ul>
+  <p>Refunds will generally be initiated within 7–10 business days after approval and completion of any required return verification.</p>
+  <p>Actual crediting time may depend on the payment provider or bank.</p>
+  <p>Any longer processing period required by applicable law will not be relied upon to delay a legally due refund.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">8. Replacement Policy</h4>
+  <p>Where a replacement is approved:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Replacement will be subject to product availability.</li>
+    <li>We will aim to dispatch the replacement within a reasonable period after approval.</li>
+    <li>If the same product is unavailable, we will discuss an appropriate alternative or refund with the customer.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">9. Cancellation Policy</h4>
+  <p>Customers may request cancellation before an order is dispatched.</p>
+  <p>Once an order has been dispatched, cancellation may not be possible through the normal cancellation process. The customer may instead request a return where eligible.</p>
+  <p>We will not impose cancellation charges contrary to applicable law.</p>
+  <p>If we cancel an order due to stock unavailability, pricing errors or operational reasons, any amount received for that order will be refunded.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">10. Return Shipping Charges</h4>
+  <p>Where the return or replacement is due to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>A defective product.</li>
+    <li>Transit damage.</li>
+    <li>Incorrect product delivery.</li>
+    <li>An error attributable to Vidhyut Saathi.</li>
+  </ul>
+  <p>Reasonable return shipping costs will be borne by Vidhyut Saathi.</p>
+  <p>For other eligible returns, return shipping arrangements and costs will be communicated to the customer before the return is initiated.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">11. Warranty</h4>
+  <p>Certain products may carry a manufacturer or seller warranty.</p>
+  <p>Warranty duration, coverage and exclusions will be determined by the applicable product listing, warranty card or accompanying documentation.</p>
+  <p>Customers should retain their invoice and warranty documentation for future claims.</p>
+  <p>Warranty coverage does not replace statutory consumer rights.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">12. Important Information</h4>
+  <ul class="vs-policy-simple-list">
+    <li>Please check your delivery address and contact information before placing an order.</li>
+    <li>Product specifications and availability may vary by model or variant.</li>
+    <li>Refund approval will be based on the circumstances and applicable policy.</li>
+    <li>No provision in this policy is intended to waive or restrict mandatory consumer rights.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">13. Contact Us</h4>
+  <p>For returns, refunds, replacements and order-related complaints:</p>
+  <p><strong>Vidhyut Saathi</strong><br>
+  Address: SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India.<br>
+  Email: info@vidhyutsaathi.com<br>
+  Grievance Officer: [Miss. Jyoti Bajaj]<br>
+  Grievance Email: [teamvidhyutsaathi@gmail.com]</p>
+  <p>We aim to acknowledge complaints within 72 hours and resolve them within one month, subject to applicable law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">14. Policy Updates</h4>
+  <p>Vidhyut Saathi reserves the right to update this policy from time to time. Updated terms will be published on this website.</p>
+  <p>This policy is governed by the laws of India.</p>
+</div>`
   }
 };
 
-export class PolicyModalController {
+class PolicyModalController {
   constructor() {
     this.modalEl = null;
     this.currentPolicy = 'privacy';
@@ -358,20 +780,19 @@ export class PolicyModalController {
             </button>
           </div>
 
-          <!-- Tabs Navigation -->
+          <!-- Simple Clean Tabs Navigation (No Color Badges) -->
           <nav class="vs-policy-tabs-nav" aria-label="Policy Navigation">
             <button type="button" class="vs-policy-tab-btn is-active" data-tab="privacy">
-              🔒 Privacy Policy
+              Privacy Policy
             </button>
             <button type="button" class="vs-policy-tab-btn" data-tab="disclaimer">
-              ⚠️ Disclaimer
+              Disclaimer
             </button>
             <button type="button" class="vs-policy-tab-btn" data-tab="terms">
-              📄 Terms & Conditions
+              Terms &amp; Conditions
             </button>
             <button type="button" class="vs-policy-tab-btn" data-tab="refund">
-              🔄 Return &amp; Replacement
-              <span class="vs-tab-badge" style="background: #16a34a !important; color: #ffffff !important;">7-Day Replace</span>
+              Refund, Return &amp; Replacement
             </button>
           </nav>
 
@@ -435,20 +856,20 @@ export class PolicyModalController {
   }
 
   bindTriggers() {
-    // Select elements that want to open a policy
-    // Patterns:
-    // [data-policy="privacy"], [data-policy="disclaimer"], [data-policy="terms"], [data-policy="refund"]
-    // a[href="#policy-privacy"], a[href="#policy-disclaimer"], etc.
     const selector = `
-      [data-policy],
-      [data-open-policy],
-      .vs-policy-btn,
-      a[href^="#policy-"]
+      [data-open-policy-modal],
+      .vs-policy-modal-trigger
     `;
 
     document.addEventListener('click', (e) => {
       const trigger = e.target.closest(selector);
       if (!trigger) return;
+
+      const href = trigger.getAttribute('href') || '';
+      // If it's a link to a full page, allow standard page navigation
+      if (href && (href.endsWith('.html') || href.startsWith('/pages/') || href.startsWith('/policies/'))) {
+        return;
+      }
 
       e.preventDefault();
       this.lastFocusedEl = trigger;
@@ -464,7 +885,7 @@ export class PolicyModalController {
 
       // Map alias names if needed
       if (policyKey === 'terms-of-service' || policyKey === 'terms-and-conditions') policyKey = 'terms';
-      if (policyKey === 'return-policy' || policyKey === 'refund-policy') policyKey = 'refund';
+      if (policyKey === 'return-policy' || policyKey === 'refund-policy' || policyKey === 'return-refund') policyKey = 'refund';
       if (policyKey === 'privacy-policy') policyKey = 'privacy';
 
       if (policyKey && POLICY_DATA[policyKey]) {

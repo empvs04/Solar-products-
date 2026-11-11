@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Return, Refund & Replacement Policy – Vidhyut Saathi</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Official Refund, Return and Replacement Policy of Vidhyut Saathi. Learn about our 7-day request window, replacement guidelines, and refund process.">
+  <meta name="author" content="Vidhyut Saathi">
+  <meta name="theme-color" content="#223A5F">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Return, Refund & Replacement Policy – Vidhyut Saathi">
+  <meta property="og:description" content="Official Refund, Return and Replacement Policy of Vidhyut Saathi. Learn about our 7-day request window, replacement guidelines, and refund process.">
+  <meta property="og:image" content="/assets/images/brand/vidhyut-logo-official.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/brand/vidhyut-logo-official.png">
+  <link rel="apple-touch-icon" href="/assets/images/brand/vidhyut-logo-official.png">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/bundle.css">
+
+  <!-- Anti-FOUC Drawer & Layout Isolation -->
+  <style>
+    .vs-cart-drawer:not(.is-open),
+    .vs-mobile-drawer:not(.is-open),
+    .vs-cart-drawer-backdrop:not(.is-open),
+    .vs-nav-backdrop:not(.is-open),
+    .vs-mobile-drawer-backdrop:not(.is-open) {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+      transform: translateX(100%) !important;
+    }
+    .vs-mobile-drawer:not(.is-open) {
+      transform: translateX(-100%) !important;
+    }
+    .vs-cart-drawer.is-open,
+    .vs-mobile-drawer.is-open {
+      display: flex !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+    .vs-cart-drawer-backdrop.is-open,
+    .vs-nav-backdrop.is-open,
+    .vs-mobile-drawer-backdrop.is-open {
+      display: block !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       Header & Navigation
+       ====================================================================== -->
+  <header class="vs-header" id="mainHeader">
+    <div class="vs-container">
+      <div class="vs-header-inner">
+        <!-- Logo -->
+        <a href="/index.html" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
+          <img
+            src="/assets/images/brand/vidhyut-logo-official.png"
+            alt="Vidhyut Saathi Logo"
+            class="vs-logo-img"
+            width="48"
+            height="48"
+          >
+          <div class="vs-logo-text-wrap">
+            <span class="vs-logo-brand">Vidhyut Saathi</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="vs-nav-desktop" aria-label="Main Navigation">
+          <ul class="vs-nav-list">
+            <li><a href="/index.html" class="vs-nav-link">Home</a></li>
+            <li><a href="/about-us.html" class="vs-nav-link">About Us</a></li>
+            <li><a href="/products.html" class="vs-nav-link">Products</a></li>
+            <li><a href="/contact-us.html" class="vs-nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Desktop CTA Action Buttons -->
+        <div class="vs-header-actions">
+          <a
+            href="/buy-now.html"
+            class="vs-btn vs-btn-accent"
+            id="headerBuyNowBtn"
+          >
+            Buy Now
+          </a>
+          <a
+            href="/buy-distributorship.html"
+            class="vs-btn vs-btn-outline"
+            id="headerDistributorBtn"
+          >
+            Buy Distributorship
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button
+          type="button"
+          class="vs-nav-toggle"
+          id="vsNavToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="vsMobileDrawer"
+        >
+          <span class="vs-hamburger-bar"></span>
+          <span class="vs-hamburger-bar"></span>
+          <span class="vs-hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="vs-nav-backdrop" id="vsNavBackdrop" style="display: none; visibility: hidden;"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu" style="display: none; visibility: hidden;">
+    <div class="vs-mobile-drawer-header">
+      <div class="vs-logo-link">
+        <img
+          src="/assets/images/brand/vidhyut-logo-official.png"
+          alt="Vidhyut Saathi Logo"
+          class="vs-logo-img"
+          width="40"
+          height="40"
+        >
+        <span class="vs-logo-brand">Vidhyut Saathi</span>
+      </div>
+      <button
+        type="button"
+        class="vs-mobile-close-btn"
+        id="vsMobileCloseBtn"
+        aria-label="Close menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="vs-mobile-nav-list">
+      <li>
+        <a href="/index.html" class="vs-mobile-nav-link">
+          <span>Home</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="/about-us.html" class="vs-mobile-nav-link">
+          <span>About Us</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="/products.html" class="vs-mobile-nav-link">
+          <span>Products</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+      <li>
+        <a href="/contact-us.html" class="vs-mobile-nav-link">
+          <span>Contact</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </li>
+    </ul>
+
+    <div class="vs-mobile-actions">
+      <a
+        href="/buy-now.html"
+        class="vs-btn vs-btn-accent"
+        id="mobileBuyNowBtn"
+      >
+        Buy Now
+      </a>
+      <a
+        href="/buy-distributorship.html"
+        class="vs-btn vs-btn-outline"
+        id="mobileDistributorBtn"
+      >
+        Buy Distributorship
+      </a>
+      <div class="vs-mobile-contact-snippet">
+        Direct Inquiries: <a href="tel:+918199036060">+91-8199036060</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- Page Banner & Breadcrumb -->
+    <header class="vs-page-banner">
+      <div class="vs-container">
+        <nav class="vs-breadcrumb" aria-label="Breadcrumb">
+          <a href="/index.html">Home</a>
+          <span class="vs-breadcrumb-sep">/</span>
+          <span class="vs-breadcrumb-sep">Legal</span>
+          <span class="vs-breadcrumb-sep">/</span>
+          <span aria-current="page">Return & Refund Policy</span>
+        </nav>
+        <h1 class="vs-page-title">Return, Refund & Replacement Policy</h1>
+        <p class="vs-page-intro-sub">Clear policies and transparent guidance on returns, replacements, and refunds.</p>
+      </div>
+    </header>
+
+    <!-- Content Section -->
+    <section class="vs-policy-page-section">
+      <div class="vs-container">
+        <article class="vs-policy-card">
+          <div class="vs-policy-meta-bar">
+  <p><strong>Website:</strong> <a href="https://vidhyutsaathi.in/" target="_blank" rel="noopener noreferrer">https://vidhyutsaathi.in/</a></p>
+  <p><strong>Brand:</strong> Vidhyut Saathi</p>
+  <p><strong>Effective Date:</strong> 10 November 2026</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">1. Introduction</h4>
+  <p>At Vidhyut Saathi, customer satisfaction is important to us. We aim to supply quality solar lighting, LED products, electrical testing instruments, energy saving products and other electrical solutions.</p>
+  <p>This policy explains the conditions under which customers may request a return, replacement or refund for products purchased through our website.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">2. Return Eligibility</h4>
+  <p>Customers may request a return or replacement in the following situations:</p>
+  <ol class="vs-policy-simple-ol">
+    <li>The product received is damaged during transportation.</li>
+    <li>The product received is defective or non-functional.</li>
+    <li>The wrong product, model or variant has been delivered.</li>
+    <li>The product is materially different from its description on our website.</li>
+    <li>The product is incomplete or missing essential accessories that were included in the order.</li>
+    <li>Any other circumstance in which a return, replacement or refund is required under applicable consumer protection laws.</li>
+  </ol>
+  <h5 class="vs-policy-subheading">Return Request Period</h5>
+  <p>Customers should raise a return or replacement request within 7 days of delivery.</p>
+  <p>For visible transit damage, customers are encouraged to notify us within 48 hours of delivery and provide photographs or an unboxing video, if available.</p>
+  <p>Failure to provide an unboxing video will not automatically invalidate an otherwise legitimate complaint.</p>
+  <p>Nothing in this policy limits any consumer rights available under applicable law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">3. Conditions for Returns</h4>
+  <p>Where a return is requested, the following conditions generally apply:</p>
+  <ul class="vs-policy-simple-list">
+    <li>The product should be returned with its original packaging, wherever reasonably possible.</li>
+    <li>All accessories, manuals and components supplied with the product should be included.</li>
+    <li>The product should not have been intentionally damaged, modified or misused.</li>
+    <li>The product should be accompanied by the order number or proof of purchase.</li>
+    <li>Products showing signs of installation, use or handling will be assessed based on the nature of the complaint.</li>
+    <li>A product will not be rejected merely because its original packaging has been opened when inspection or reasonable examination was necessary to identify a defect.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">4. Non-Returnable Situations</h4>
+  <p>Subject to applicable consumer rights, the following situations may not qualify for a change-of-mind return:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Products damaged due to improper installation or handling by the customer.</li>
+    <li>Products damaged due to unauthorised modification or repair.</li>
+    <li>Products damaged due to misuse, negligence or accidental damage after delivery.</li>
+    <li>Products returned without essential components or accessories due to customer loss.</li>
+    <li>Products with normal wear and tear after use.</li>
+    <li>Products returned solely because the customer changed their mind, where no return right is provided by the applicable product-specific return terms.</li>
+  </ul>
+  <p>These exclusions do not apply to products that are defective, damaged on arrival, incorrectly supplied, materially misdescribed or otherwise eligible for a remedy under applicable law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">5. How to Request a Return or Replacement</h4>
+  <p>To request a return, replacement or refund:</p>
+  <p><strong>Step 1:</strong> Contact our customer support team.<br>
+  Email: business.vidhyutsaathi@gmail.com</p>
+  <p><strong>Step 2:</strong> Provide the following information:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Customer name.</li>
+    <li>Order number.</li>
+    <li>Product name.</li>
+    <li>Date of delivery.</li>
+    <li>Reason for the return or replacement.</li>
+    <li>Relevant photographs or videos, if available.</li>
+  </ul>
+  <p><strong>Step 3:</strong> Our team will review the request and provide return instructions.</p>
+  <p><strong>Step 4:</strong> If approved, the product may be collected through our logistics partner or the customer may be instructed to return it through an agreed shipping method.</p>
+  <p>Please do not send products to our office without first receiving return instructions.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">6. Damaged or Defective Products</h4>
+  <p>If a product arrives damaged, defective or non-functional, please contact us as soon as possible.</p>
+  <p>Our team may request photographs, videos or reasonable technical information to assess the complaint.</p>
+  <p>Depending on the circumstances and applicable law, we may provide:</p>
+  <ul class="vs-policy-simple-list">
+    <li>A replacement product.</li>
+    <li>Repair or service support.</li>
+    <li>A refund.</li>
+    <li>Another legally appropriate remedy agreed with the customer.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">7. Refund Policy</h4>
+  <p>Refunds may be issued in the following circumstances:</p>
+  <ul class="vs-policy-simple-list">
+    <li>A return is approved.</li>
+    <li>A replacement cannot reasonably be provided.</li>
+    <li>An order is cancelled before dispatch and the payment has already been received.</li>
+    <li>An order cannot be fulfilled by us.</li>
+    <li>A refund is otherwise required under applicable law.</li>
+  </ul>
+  <h5 class="vs-policy-subheading">Refund Processing</h5>
+  <p>Once a refund is approved:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Prepaid orders: Refunds will generally be processed to the original payment method.</li>
+    <li>UPI and online payments: Refunds will be initiated through the relevant payment provider.</li>
+    <li>Cash on Delivery orders: Customers may be asked to provide verified bank account or UPI details for the refund.</li>
+  </ul>
+  <p>Refunds will generally be initiated within 7–10 business days after approval and completion of any required return verification.</p>
+  <p>Actual crediting time may depend on the payment provider or bank.</p>
+  <p>Any longer processing period required by applicable law will not be relied upon to delay a legally due refund.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">8. Replacement Policy</h4>
+  <p>Where a replacement is approved:</p>
+  <ul class="vs-policy-simple-list">
+    <li>Replacement will be subject to product availability.</li>
+    <li>We will aim to dispatch the replacement within a reasonable period after approval.</li>
+    <li>If the same product is unavailable, we will discuss an appropriate alternative or refund with the customer.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">9. Cancellation Policy</h4>
+  <p>Customers may request cancellation before an order is dispatched.</p>
+  <p>Once an order has been dispatched, cancellation may not be possible through the normal cancellation process. The customer may instead request a return where eligible.</p>
+  <p>We will not impose cancellation charges contrary to applicable law.</p>
+  <p>If we cancel an order due to stock unavailability, pricing errors or operational reasons, any amount received for that order will be refunded.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">10. Return Shipping Charges</h4>
+  <p>Where the return or replacement is due to:</p>
+  <ul class="vs-policy-simple-list">
+    <li>A defective product.</li>
+    <li>Transit damage.</li>
+    <li>Incorrect product delivery.</li>
+    <li>An error attributable to Vidhyut Saathi.</li>
+  </ul>
+  <p>Reasonable return shipping costs will be borne by Vidhyut Saathi.</p>
+  <p>For other eligible returns, return shipping arrangements and costs will be communicated to the customer before the return is initiated.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">11. Warranty</h4>
+  <p>Certain products may carry a manufacturer or seller warranty.</p>
+  <p>Warranty duration, coverage and exclusions will be determined by the applicable product listing, warranty card or accompanying documentation.</p>
+  <p>Customers should retain their invoice and warranty documentation for future claims.</p>
+  <p>Warranty coverage does not replace statutory consumer rights.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">12. Important Information</h4>
+  <ul class="vs-policy-simple-list">
+    <li>Please check your delivery address and contact information before placing an order.</li>
+    <li>Product specifications and availability may vary by model or variant.</li>
+    <li>Refund approval will be based on the circumstances and applicable policy.</li>
+    <li>No provision in this policy is intended to waive or restrict mandatory consumer rights.</li>
+  </ul>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">13. Contact Us</h4>
+  <p>For returns, refunds, replacements and order-related complaints:</p>
+  <p><strong>Vidhyut Saathi</strong><br>
+  Address: SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India.<br>
+  Email: info@vidhyutsaathi.com<br>
+  Grievance Officer: [Miss. Jyoti Bajaj]<br>
+  Grievance Email: [teamvidhyutsaathi@gmail.com]</p>
+  <p>We aim to acknowledge complaints within 72 hours and resolve them within one month, subject to applicable law.</p>
+</div>
+
+<div class="vs-policy-section">
+  <h4 class="vs-policy-heading">14. Policy Updates</h4>
+  <p>Vidhyut Saathi reserves the right to update this policy from time to time. Updated terms will be published on this website.</p>
+  <p>This policy is governed by the laws of India.</p>
+</div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       Corporate Footer
+       ====================================================================== -->
+  <footer class="vs-footer" id="contact">
+    <div class="vs-container">
+      <div class="vs-footer-grid">
+
+        <!-- Column 1: Brand -->
+        <div class="vs-footer-brand-col">
+          <a href="/index.html" class="vs-footer-logo-link" aria-label="Vidhyut Saathi Home">
+            <img
+              src="/assets/images/brand/vidhyut-logo-official.png"
+              alt="Vidhyut Saathi Official Logo"
+              class="vs-footer-logo-img"
+              width="42"
+              height="42"
+            >
+            <div>
+              <div class="vs-footer-brand-name">Vidhyut Saathi</div>
+              <div class="vs-footer-brand-tagline">Solar & Electrical</div>
+            </div>
+          </a>
+          <p class="vs-footer-brand-desc">
+            Vidhyut Saathi is an Indian electrical and solar products brand committed to dependable solar lighting, energy-efficient luminaires, and precision measurement equipment.
+          </p>
+        </div>
+
+        <!-- Column 2: Navigation Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Navigation</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="/index.html" class="vs-footer-link">Home</a></li>
+            <li><a href="/about-us.html" class="vs-footer-link">About Us</a></li>
+            <li><a href="/products.html" class="vs-footer-link">Products</a></li>
+            <li><a href="/contact-us.html" class="vs-footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Product Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Products</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="/index.html#products-solar-lights" class="vs-footer-link">Solar Lights</a></li>
+            <li><a href="/index.html#products-led-lamps" class="vs-footer-link">LED Lamps</a></li>
+            <li><a href="/index.html#products-led-bulbs" class="vs-footer-link">LED Bulbs</a></li>
+            <li><a href="/index.html#products-clamp-meters" class="vs-footer-link">Clamp Meters</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Business Links -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Business</h3>
+          <ul class="vs-footer-links-list">
+            <li><a href="/buy-now.html" class="vs-footer-link">Buy Now</a></li>
+            <li><a href="/buy-distributorship.html" class="vs-footer-link">Buy Distributorship</a></li>
+            <li><a href="/contact-us.html" class="vs-footer-link">Partner Inquiries</a></li>
+            <li><a href="/about-us.html" class="vs-footer-link">Company Overview</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact Information -->
+        <div class="vs-footer-col">
+          <h3 class="vs-footer-col-title">Contact Us</h3>
+          <div class="vs-footer-contact-list">
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road, Rohtak - 124001, Haryana, India</span>
+            </div>
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@vidhyutsaathi.com">info@vidhyutsaathi.com</a>
+            </div>
+            <div class="vs-footer-contact-item">
+              <svg class="vs-footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <div>
+                <a href="tel:+918199036060">+91-8199036060</a><br>
+                <a href="tel:+919053110707">+91-9053110707</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom with Direct Page Links -->
+      <div class="vs-footer-bottom">
+        <p class="vs-footer-copy" style="color: #ffffff !important; font-weight: 500;">
+          &copy; copyright 2022-2026. All Rights Reserved Vidhyut Saathi Energy Savings Private Limited
+        </p>
+        <div class="vs-footer-bottom-links">
+          <a href="/privacy-policy.html" class="vs-footer-bottom-link">Privacy Policy</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/disclaimer.html" class="vs-footer-bottom-link">Disclaimer</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/terms-conditions.html" class="vs-footer-bottom-link">Terms &amp; Conditions</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/refund-policy.html" class="vs-footer-bottom-link">Return &amp; Refund Policy</a>
+          <span class="vs-footer-dot" aria-hidden="true">•</span>
+          <a href="/contact-us.html" class="vs-footer-bottom-link">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shopping Cart Slide-Over Drawer -->
+  <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop" style="display: none; visibility: hidden;"></div>
+  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" style="display: none; visibility: hidden;">
+    <div class="vs-cart-header">
+      <div class="vs-cart-title-wrap">
+        <h3 class="vs-cart-title">Your Cart</h3>
+        <span class="vs-cart-badge-count" id="cartBadgeCount">0</span>
+      </div>
+      <button type="button" class="vs-cart-close" id="cartDrawerClose" aria-label="Close cart drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="vs-cart-items-wrap" id="cartItemsWrap">
+      <!-- Items dynamically populated via VidhyutCart -->
+    </div>
+
+    <div class="vs-cart-footer">
+      <div class="vs-cart-total-row">
+        <span class="vs-cart-total-label">Subtotal (incl. GST):</span>
+        <span class="vs-cart-total-val" id="cartTotalVal">₹0</span>
+      </div>
+      <button type="button" class="vs-cart-checkout-btn" id="cartCheckoutBtn">
+        <span>Proceed to Checkout</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Application Script Bundle -->
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

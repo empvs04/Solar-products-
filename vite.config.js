@@ -16,11 +16,9 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           const cleanUrl = req.url.split('?')[0];
-          if (cleanUrl.startsWith('/collections/')) {
-            const potentialFile = path.resolve(__dirname, '.' + cleanUrl + '.html');
-            if (fs.existsSync(potentialFile)) {
-              req.url = cleanUrl + '.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
-            }
+          const potentialFile = path.resolve(__dirname, '.' + cleanUrl + '.html');
+          if (fs.existsSync(potentialFile)) {
+            req.url = cleanUrl + '.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
           }
           next();
         });
@@ -40,6 +38,10 @@ export default defineConfig({
         buyNow: './buy-now.html',
         buyDistributorship: './buy-distributorship.html',
         distributorship: './distributorship.html',
+        privacyPolicy: './privacy-policy.html',
+        refundPolicy: './refund-policy.html',
+        termsConditions: './terms-conditions.html',
+        disclaimer: './disclaimer.html',
         solarLights: './collections/solar-lights.html',
         ledLamps: './collections/led-lamps.html',
         ledBulbs: './collections/led-bulbs.html',

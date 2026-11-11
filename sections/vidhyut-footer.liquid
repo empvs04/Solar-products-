@@ -181,13 +181,13 @@
         &copy; copyright 2022-2026. All Rights Reserved Vidhyut Saathi Energy Savings Private Limited
       </p>
       <div class="vs-footer-bottom-links">
-        <a href="#policy-privacy" class="vs-footer-bottom-link vs-policy-btn" data-policy="privacy">Privacy Policy</a>
+        <a href="{{ section.settings.privacy_policy_url | default: '/pages/privacy-policy' }}" class="vs-footer-bottom-link">Privacy Policy</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
-        <a href="#policy-disclaimer" class="vs-footer-bottom-link vs-policy-btn" data-policy="disclaimer">Disclaimer</a>
+        <a href="{{ section.settings.disclaimer_url | default: '/pages/disclaimer' }}" class="vs-footer-bottom-link">Disclaimer</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
-        <a href="#policy-terms" class="vs-footer-bottom-link vs-policy-btn" data-policy="terms">Terms & Conditions</a>
+        <a href="{{ section.settings.terms_url | default: '/pages/terms-conditions' }}" class="vs-footer-bottom-link">Terms &amp; Conditions</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
-        <a href="#policy-refund" class="vs-footer-bottom-link vs-policy-btn" data-policy="refund">Return & Refund Policy</a>
+        <a href="{{ section.settings.refund_url | default: '/pages/refund-policy' }}" class="vs-footer-bottom-link">Return &amp; Refund Policy</a>
         <span class="vs-footer-dot" aria-hidden="true">•</span>
         <a href="{{ footer_contact_url }}" class="vs-footer-bottom-link">Support</a>
       </div>

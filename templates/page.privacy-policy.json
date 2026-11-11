@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "header": {
+      "type": "vidhyut-header",
+      "settings": {
+        "brand_name": "Vidhyut Saathi",
+        "tagline": "Solar & Electrical"
+      }
+    },
+    "main_policy": {
+      "type": "vidhyut-policy-page",
+      "settings": {
+        "page_title": "Privacy Policy",
+        "page_subtitle": "Transparent data handling and privacy protection for visitors, customers, and partners.",
+        "policy_type": "privacy"
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "main_policy",
+    "footer"
+  ]
+}
