@@ -95,8 +95,8 @@
                   class="vs-slide-img"
                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
                   {% if forloop.first %}fetchpriority="high"{% endif %}
-                  width="1920"
-                  height="1080"
+                  width="1600"
+                  height="661"
                 >
               {%- else -%}
                 {{ 'lifestyle-2' | placeholder_svg_tag: 'vs-slide-img vs-placeholder' }}
@@ -233,7 +233,7 @@
         {
           "type": "image_picker",
           "id": "desktop_image",
-          "label": "Desktop Banner Image (16:9 ratio recommended)"
+          "label": "Desktop Banner Image (1600px x 661px recommended)"
         },
         {
           "type": "image_picker",

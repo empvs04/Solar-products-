@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1600 / 661;
   height: auto;
   min-height: unset;
   max-height: unset;
@@ -23,7 +23,7 @@
   width: 100%;
   max-width: 100%;
   height: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1600 / 661;
   min-height: unset;
   max-height: unset;
   overflow: hidden;
