@@ -15,7 +15,7 @@
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- else -%}
-      <link rel="icon" type="image/png" href="{{ 'vidhyut-logo-official.png' | asset_url }}">
+      <link rel="icon" type="image/png" href="{{ 'vidhyut-logo-brand-hd.png' | asset_url }}">
     {%- endif -%}
 
     <title>
@@ -117,7 +117,8 @@
         'clamp-meter-3.jpg': {{ 'clamp-meter-3.jpg' | asset_url | json }},
         'clamp-meter-4.jpg': {{ 'clamp-meter-4.jpg' | asset_url | json }},
         'vidhyut-power-saver-card.jpg': {{ 'vidhyut-power-saver-card.jpg' | asset_url | json }},
-        'vidhyut-logo-official.png': {{ 'vidhyut-logo-official.png' | asset_url | json }}
+        'vidhyut-logo-official.png': {{ 'vidhyut-logo-brand-hd.png' | asset_url | json }},
+        'vidhyut-logo-brand-hd.png': {{ 'vidhyut-logo-brand-hd.png' | asset_url | json }}
       };
     </script>
 

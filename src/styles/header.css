@@ -143,9 +143,9 @@
 }
 
 .vs-logo-img {
-  height: 68px;
+  height: 78px;
   width: auto;
-  max-width: 280px;
+  max-width: 320px;
   object-fit: contain;
   display: block;
   image-rendering: -webkit-optimize-contrast;
@@ -157,22 +157,8 @@
   transform: scale(1.03);
 }
 
-.vs-logo-text-wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.vs-logo-brand {
-  font-family: var(--font-heading);
-  font-size: 1.55rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  display: inline-block !important;
-}
-
+.vs-logo-brand,
+.vs-logo-text-wrap,
 .vs-logo-tagline,
 .vs-mobile-brand-sub {
   display: none !important;
@@ -487,33 +473,24 @@
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 76px;
+    --header-height: 80px;
   }
 
   .vs-logo-img {
-    height: 58px;
-    max-width: 220px;
-  }
-
-  .vs-logo-brand {
-    font-size: 1.35rem;
+    height: 66px;
+    max-width: 240px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --header-height: 72px;
+    --header-height: 74px;
   }
 
   .vs-logo-img {
-    height: 52px;
+    height: 58px;
     width: auto;
-    max-width: 190px;
-  }
-
-  .vs-logo-brand {
-    font-size: 1.25rem;
-    display: inline-block !important;
+    max-width: 200px;
   }
 }
 

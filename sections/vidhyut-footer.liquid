@@ -28,21 +28,21 @@
       <!-- Column 1: Brand -->
       <div class="vs-footer-brand-col">
         <a href="{{ routes.root_url }}" class="vs-footer-logo-link" aria-label="Vidhyut Saathi Home">
-          {% if section.settings.logo != blank %}
+          {% if section.settings.logo != blank and section.settings.logo contains '20221102_123113' == false %}
             <img
-              src="{{ section.settings.logo | image_url: width: 120 }}"
+              src="{{ section.settings.logo | image_url: width: 160 }}"
               alt="{{ shop.name | escape }}"
               class="vs-footer-logo-img"
-              width="42"
-              height="42"
+              width="56"
+              height="56"
             >
           {% else %}
             <img
-              src="{{ 'vidhyut-logo-official.png' | asset_url }}"
+              src="{{ 'vidhyut-logo-brand-hd.png' | asset_url }}"
               alt="Vidhyut Saathi Official Logo"
               class="vs-footer-logo-img"
-              width="42"
-              height="42"
+              width="56"
+              height="56"
             >
           {% endif %}
           <div>

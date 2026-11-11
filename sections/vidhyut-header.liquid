@@ -1,49 +1,43 @@
 {%- style -%}
   :root {
-    --header-height: 88px;
+    --header-height: 92px;
   }
   #mainHeader {
-    height: 88px !important;
+    height: 92px !important;
   }
   #mainHeader .vs-logo-img {
-    height: {{ section.settings.logo_height | default: 68 }}px !important;
+    height: {{ section.settings.logo_height | default: 78 }}px !important;
     width: auto !important;
-    max-width: {{ section.settings.logo_max_width | default: 280 }}px !important;
+    max-width: {{ section.settings.logo_max_width | default: 320 }}px !important;
     object-fit: contain;
     image-rendering: -webkit-optimize-contrast;
   }
-  #mainHeader .vs-logo-brand {
-    font-size: 1.55rem !important;
-    font-weight: 800 !important;
+  #mainHeader .vs-logo-brand,
+  #mainHeader .vs-logo-text-wrap {
+    display: none !important;
   }
   @media (max-width: 768px) {
     :root {
-      --header-height: 76px;
+      --header-height: 80px;
     }
     #mainHeader {
-      height: 76px !important;
+      height: 80px !important;
     }
     #mainHeader .vs-logo-img {
-      height: 58px !important;
-      max-width: 220px !important;
-    }
-    #mainHeader .vs-logo-brand {
-      font-size: 1.35rem !important;
+      height: 66px !important;
+      max-width: 240px !important;
     }
   }
   @media (max-width: 480px) {
     :root {
-      --header-height: 72px;
+      --header-height: 74px;
     }
     #mainHeader {
-      height: 72px !important;
+      height: 74px !important;
     }
     #mainHeader .vs-logo-img {
-      height: 52px !important;
-      max-width: 190px !important;
-    }
-    #mainHeader .vs-logo-brand {
-      font-size: 1.25rem !important;
+      height: 58px !important;
+      max-width: 200px !important;
     }
   }
 {%- endstyle -%}
@@ -53,30 +47,33 @@
     <div class="vs-header-inner">
       <!-- Logo -->
       <a href="{{ routes.root_url }}" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
-        {% if section.settings.logo != blank %}
+        {%- liquid
+          assign is_legacy_blurry_logo = false
+          if section.settings.logo != blank and section.settings.logo contains '20221102_123113'
+            assign is_legacy_blurry_logo = true
+          endif
+        -%}
+        {% if section.settings.logo != blank and is_legacy_blurry_logo == false and section.settings.use_theme_asset_logo == false %}
           <img
-            src="{{ section.settings.logo | image_url: width: 600 }}"
+            src="{{ section.settings.logo | image_url: width: 800 }}"
             alt="{{ shop.name | escape }}"
             class="vs-logo-img"
-            width="200"
-            height="64"
+            width="156"
+            height="78"
             loading="eager"
             fetchpriority="high"
           >
         {% else %}
           <img
-            src="{{ 'vidhyut-logo-official.png' | asset_url }}"
+            src="{{ 'vidhyut-logo-brand-hd.png' | asset_url }}"
             alt="Vidhyut Saathi Logo"
             class="vs-logo-img"
-            width="64"
-            height="64"
+            width="156"
+            height="78"
             loading="eager"
             fetchpriority="high"
           >
         {% endif %}
-        <div class="vs-logo-text-wrap">
-          <span class="vs-logo-brand">{{ section.settings.brand_name | default: 'Vidhyut Saathi' }}</span>
-        </div>
       </a>
 
       <!-- Desktop Navigation -->
@@ -284,26 +281,25 @@
 <div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu" style="display: none; visibility: hidden;">
   <div class="vs-mobile-drawer-header">
     <div class="vs-logo-link">
-      {% if section.settings.logo != blank %}
+      {% if section.settings.logo != blank and is_legacy_blurry_logo == false and section.settings.use_theme_asset_logo == false %}
         <img
           src="{{ section.settings.logo | image_url: width: 400 }}"
           alt="{{ shop.name | escape }}"
           class="vs-logo-img"
-          width="160"
-          height="52"
+          width="116"
+          height="58"
           loading="lazy"
         >
       {% else %}
         <img
-          src="{{ 'vidhyut-logo-official.png' | asset_url }}"
+          src="{{ 'vidhyut-logo-brand-hd.png' | asset_url }}"
           alt="Vidhyut Saathi Logo"
           class="vs-logo-img"
-          width="52"
-          height="52"
+          width="116"
+          height="58"
           loading="lazy"
         >
       {% endif %}
-      <span class="vs-logo-brand">{{ section.settings.brand_name | default: 'Vidhyut Saathi' }}</span>
     </div>
     <button
       type="button"
@@ -484,6 +480,13 @@
   "name": "Header & Navigation",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "use_theme_asset_logo",
+      "label": "Use Official High-Resolution Theme Logo",
+      "default": true,
+      "info": "When checked, uses the crisp tightly-cropped official Vidhyut Saathi emblem."
+    },
+    {
       "type": "image_picker",
       "id": "logo",
       "label": "Custom Brand Logo"
@@ -492,21 +495,21 @@
       "type": "range",
       "id": "logo_height",
       "min": 40,
-      "max": 80,
+      "max": 100,
       "step": 2,
       "unit": "px",
       "label": "Logo Height (Desktop)",
-      "default": 68
+      "default": 78
     },
     {
       "type": "range",
       "id": "logo_max_width",
       "min": 100,
-      "max": 320,
+      "max": 360,
       "step": 10,
       "unit": "px",
       "label": "Logo Max Width (Desktop)",
-      "default": 280
+      "default": 300
     },
     {
       "type": "text",

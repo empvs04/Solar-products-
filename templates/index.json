@@ -20,7 +20,8 @@
     "header": {
       "type": "vidhyut-header",
       "settings": {
-        "logo": "shopify://shop_images/20221102_123113.png",
+        "use_theme_asset_logo": true,
+        "logo": "",
         "logo_height": 80,
         "logo_max_width": 320,
         "brand_name": "Vidhyut Saathi",
