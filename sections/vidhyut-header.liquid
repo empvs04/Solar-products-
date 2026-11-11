@@ -1,21 +1,49 @@
 {%- style -%}
+  :root {
+    --header-height: 88px;
+  }
+  #mainHeader {
+    height: 88px !important;
+  }
   #mainHeader .vs-logo-img {
-    height: {{ section.settings.logo_height | default: 64 }}px !important;
+    height: {{ section.settings.logo_height | default: 68 }}px !important;
     width: auto !important;
-    max-width: {{ section.settings.logo_max_width | default: 240 }}px !important;
+    max-width: {{ section.settings.logo_max_width | default: 280 }}px !important;
     object-fit: contain;
     image-rendering: -webkit-optimize-contrast;
   }
+  #mainHeader .vs-logo-brand {
+    font-size: 1.55rem !important;
+    font-weight: 800 !important;
+  }
   @media (max-width: 768px) {
+    :root {
+      --header-height: 76px;
+    }
+    #mainHeader {
+      height: 76px !important;
+    }
+    #mainHeader .vs-logo-img {
+      height: 58px !important;
+      max-width: 220px !important;
+    }
+    #mainHeader .vs-logo-brand {
+      font-size: 1.35rem !important;
+    }
+  }
+  @media (max-width: 480px) {
+    :root {
+      --header-height: 72px;
+    }
+    #mainHeader {
+      height: 72px !important;
+    }
     #mainHeader .vs-logo-img {
       height: 52px !important;
       max-width: 190px !important;
     }
-  }
-  @media (max-width: 480px) {
-    #mainHeader .vs-logo-img {
-      height: 48px !important;
-      max-width: 160px !important;
+    #mainHeader .vs-logo-brand {
+      font-size: 1.25rem !important;
     }
   }
 {%- endstyle -%}
@@ -464,11 +492,11 @@
       "type": "range",
       "id": "logo_height",
       "min": 40,
-      "max": 76,
+      "max": 80,
       "step": 2,
       "unit": "px",
       "label": "Logo Height (Desktop)",
-      "default": 64
+      "default": 68
     },
     {
       "type": "range",
@@ -478,7 +506,7 @@
       "step": 10,
       "unit": "px",
       "label": "Logo Max Width (Desktop)",
-      "default": 240
+      "default": 280
     },
     {
       "type": "text",
