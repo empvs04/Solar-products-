@@ -9,6 +9,26 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Seamless connection between Section 2 (Showcase) and Section 3 (Products Lineup) */
+.vs-featured-showcase-section,
+#featured-showcase {
+  border-bottom: none !important;
+  padding-bottom: 0.875rem !important;
+}
+
+#products.vs-products-section,
+#products {
+  border-top: none !important;
+  padding-top: 0.875rem !important;
+}
+
+#products .vs-section-header:empty,
+#products .vs-section-header:not(:has(*)) {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .vs-products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -282,17 +302,61 @@
   transform: translateX(3px);
 }
 
+/* Product Card Price Row */
+.vs-card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.vs-card-price {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-midnight);
+  letter-spacing: -0.01em;
+}
+
+.vs-card-gst-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 /* Responsiveness */
 @media (max-width: 1140px) {
   .vs-products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
+
+  .vs-featured-showcase-section,
+  #featured-showcase {
+    padding-bottom: 0.75rem !important;
+  }
+
+  #products.vs-products-section,
+  #products {
+    padding-top: 0.75rem !important;
+  }
 }
 
 @media (max-width: 640px) {
   .vs-products-section {
     padding: var(--space-2xl) 0;
+  }
+
+  .vs-featured-showcase-section,
+  #featured-showcase {
+    padding-bottom: 0.625rem !important;
+  }
+
+  #products.vs-products-section,
+  #products {
+    padding-top: 0.625rem !important;
   }
 
   .vs-products-grid {

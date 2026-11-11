@@ -141,3 +141,4 @@
 
   document.addEventListener('shopify:section:load', initLuxurySliders);
 })();
+
