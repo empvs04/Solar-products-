@@ -11,6 +11,7 @@ import { ContactPageController } from './contact-form.js';
 import { DistributorshipFormController } from './distributorship-form.js';
 import { initSharedCart } from './cart.js';
 import { initPolicyModal } from './policy-modal.js';
+import { initLuxuryBannerSliders } from './banner-slider.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Sticky Header Elevation
@@ -171,4 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   initCardSliders();
+
+  // 10. Initialize Luxury Showcase Banner Slider
+  initLuxuryBannerSliders();
 });

@@ -221,6 +221,87 @@
         "secondary_cta_link": ""
       }
     },
+    "banner_slider": {
+      "type": "vidhyut-banner-slider",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/MECO_Clamp_Meter_Launch_Banner_1.png",
+            "product_image": "shopify://shop_images/Pack_of_3_Red_Clamp_Meters.png",
+            "full_banner_mode": false,
+            "badge_1_icon": "⚡ 🔥",
+            "badge_1_text": "PREMIUM MECO SERIES",
+            "badge_2_icon": "⚡ 🔬",
+            "badge_2_text": "US-German Nanotechnology",
+            "heading_1": "Precision Testing.",
+            "heading_2": "Engineered For Life.",
+            "feature_1_title": "NCV Sensor",
+            "feature_1_desc": "Voltage Safety",
+            "feature_2_title": "Auto Range",
+            "feature_2_desc": "600A AC/DC",
+            "feature_3_title": "Data Hold",
+            "feature_3_desc": "Backlit Screen",
+            "button_label": "Shop Clamp Meters",
+            "button_link": ""
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Vidhyut_Saathi_Card_Neon_Advertisement.png",
+            "product_image": "shopify://shop_images/VS_Card_Final_Design_Golden_1.png",
+            "full_banner_mode": false,
+            "badge_1_icon": "⚡ 💎",
+            "badge_1_text": "INDIA'S NO. 1 SAVER",
+            "badge_2_icon": "⚡ 🛡️",
+            "badge_2_text": "20,000+ Negative Ions",
+            "heading_1": "Smart Power Saver.",
+            "heading_2": "Cut Electricity Bills.",
+            "feature_1_title": "TERAHERTZ",
+            "feature_1_desc": "Quantum Chip",
+            "feature_2_title": "Power Factor",
+            "feature_2_desc": "Wave Optimizer",
+            "feature_3_title": "Up to 10KW",
+            "feature_3_desc": "Home & Business",
+            "button_label": "Get Saver Card",
+            "button_link": ""
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer_1.png",
+            "product_image": "shopify://shop_images/HaloniX_Solaris_LED_Floodlight_Offer.png",
+            "full_banner_mode": false,
+            "badge_1_icon": "⚡ ☀️",
+            "badge_1_text": "SOLAR FLOODLIGHT",
+            "badge_2_icon": "⚡ 🌧️",
+            "badge_2_text": "IP66 Weather-Proof",
+            "heading_1": "Halonix Solaris.",
+            "heading_2": "Built For Outdoors.",
+            "feature_1_title": "High Lumen",
+            "feature_1_desc": "Daylight LED",
+            "feature_2_title": "Auto Sensor",
+            "feature_2_desc": "Dusk to Dawn",
+            "feature_3_title": "Weather-Proof",
+            "feature_3_desc": "Die-Cast Housing",
+            "button_label": "Shop Solar Lights",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "settings": {
+        "accessibility_label": "Vidhyut Saathi Showcase Banner Slider",
+        "autoplay": true,
+        "autoplay_interval": 5
+      }
+    },
     "footer": {
       "type": "vidhyut-footer",
       "settings": {
@@ -246,6 +327,7 @@
     "why_choose",
     "distributorship",
     "secondary_cta",
+    "banner_slider",
     "footer"
   ]
 }

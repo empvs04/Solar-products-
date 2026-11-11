@@ -1,0 +1,407 @@
+{% comment %}
+  Vidhyut Saathi - Luxury Showcase Banner Slider
+  File: sections/vidhyut-banner-slider.liquid
+  Features a high-end rounded card carousel with dual badges, 2-line heading,
+  3 spec icons, stylish pill CTA with yellow circular arrow, and glowing halo pedestal.
+  Allows administrators to upload banners or custom slides directly via Shopify Theme Editor.
+{% endcomment %}
+
+{{ 'vidhyut-banner-slider.css' | asset_url | stylesheet_tag }}
+
+<section
+  id="VidhyutBannerSlider-{{ section.id }}"
+  class="vs-luxury-slider-section"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="{{ section.settings.accessibility_label | default: 'Vidhyut Saathi Showcase Banner Slider' }}"
+>
+  <div class="vs-luxury-slider-container">
+    <div
+      class="vs-luxury-slider-card"
+      id="vsLuxurySlider-{{ section.id }}"
+      data-autoplay="{{ section.settings.autoplay }}"
+      data-interval="{{ section.settings.autoplay_interval | times: 1000 }}"
+    >
+      <div class="vs-luxury-track-wrapper">
+        <div class="vs-luxury-track">
+          {% for block in section.blocks %}
+            {%- liquid
+              assign desktop_img = block.settings.desktop_image
+              assign mobile_img = block.settings.mobile_image
+              assign product_img = block.settings.product_image
+              assign is_full_banner = block.settings.full_banner_mode
+            -%}
+            <div
+              class="vs-luxury-slide"
+              id="Slide-{{ section.id }}-{{ forloop.index }}"
+              data-block-id="{{ block.id }}"
+              data-slide-index="{{ forloop.index0 }}"
+              role="tabpanel"
+              aria-roledescription="slide"
+              aria-label="{{ forloop.index }} of {{ section.blocks.size }}"
+              {{ block.shopify_attributes }}
+            >
+              {% if is_full_banner and desktop_img != blank %}
+                <div class="vs-luxury-full-banner">
+                  <picture>
+                    {% if mobile_img != blank %}
+                      <source media="(max-width: 768px)" srcset="{{ mobile_img | image_url: width: 800 }}">
+                    {% endif %}
+                    <img
+                      src="{{ desktop_img | image_url: width: 2000 }}"
+                      alt="{{ block.settings.heading_1 | default: 'Vidhyut Saathi Banner' | escape }}"
+                      loading="lazy"
+                    >
+                  </picture>
+                </div>
+              {% else %}
+                <div class="vs-luxury-slide-grid">
+                  <!-- Left Content Column -->
+                  <div class="vs-luxury-content">
+                    {% if block.settings.badge_1_text != blank or block.settings.badge_2_text != blank %}
+                      <div class="vs-luxury-badges">
+                        {% if block.settings.badge_1_text != blank %}
+                          <span class="vs-luxury-badge vs-luxury-badge-primary">
+                            {% if block.settings.badge_1_icon != blank %}
+                              <span class="vs-luxury-badge-icon">{{ block.settings.badge_1_icon }}</span>
+                            {% endif %}
+                            <span class="vs-luxury-badge-text">{{ block.settings.badge_1_text }}</span>
+                          </span>
+                        {% endif %}
+
+                        {% if block.settings.badge_2_text != blank %}
+                          <span class="vs-luxury-badge vs-luxury-badge-secondary">
+                            {% if block.settings.badge_2_icon != blank %}
+                              <span class="vs-luxury-badge-icon">{{ block.settings.badge_2_icon }}</span>
+                            {% endif %}
+                            <span class="vs-luxury-badge-text">{{ block.settings.badge_2_text }}</span>
+                          </span>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.heading_1 != blank or block.settings.heading_2 != blank %}
+                      <h2 class="vs-luxury-title">
+                        {% if block.settings.heading_1 != blank %}
+                          <span class="vs-luxury-title-dark">{{ block.settings.heading_1 }}</span>
+                        {% endif %}
+                        {% if block.settings.heading_2 != blank %}
+                          <span class="vs-luxury-title-gold">{{ block.settings.heading_2 }}</span>
+                        {% endif %}
+                      </h2>
+                    {% endif %}
+
+                    <!-- 3-Icon Features -->
+                    <div class="vs-luxury-features">
+                      {% if block.settings.feature_1_title != blank %}
+                        <div class="vs-luxury-feature-item">
+                          <div class="vs-luxury-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                          </div>
+                          <div class="vs-luxury-feature-text">
+                            <strong>{{ block.settings.feature_1_title }}</strong>
+                            <span>{{ block.settings.feature_1_desc }}</span>
+                          </div>
+                        </div>
+                      {% endif %}
+
+                      {% if block.settings.feature_2_title != blank %}
+                        <div class="vs-luxury-feature-item">
+                          <div class="vs-luxury-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                          </div>
+                          <div class="vs-luxury-feature-text">
+                            <strong>{{ block.settings.feature_2_title }}</strong>
+                            <span>{{ block.settings.feature_2_desc }}</span>
+                          </div>
+                        </div>
+                      {% endif %}
+
+                      {% if block.settings.feature_3_title != blank %}
+                        <div class="vs-luxury-feature-item">
+                          <div class="vs-luxury-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                          </div>
+                          <div class="vs-luxury-feature-text">
+                            <strong>{{ block.settings.feature_3_title }}</strong>
+                            <span>{{ block.settings.feature_3_desc }}</span>
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+
+                    {% if block.settings.button_label != blank %}
+                      <div class="vs-luxury-action">
+                        <a href="{{ block.settings.button_link | default: '/products' }}" class="vs-luxury-btn">
+                          <span>{{ block.settings.button_label }}</span>
+                          <span class="vs-luxury-btn-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                          </span>
+                        </a>
+                      </div>
+                    {% endif %}
+                  </div>
+
+                  <!-- Right Media Column with Glowing Halo & Pedestal -->
+                  <div class="vs-luxury-media">
+                    <div class="vs-luxury-halo"></div>
+                    <div class="vs-luxury-pedestal"></div>
+                    {% if product_img != blank %}
+                      <img
+                        src="{{ product_img | image_url: width: 900 }}"
+                        alt="{{ block.settings.heading_1 | default: 'Vidhyut Saathi Innovation' | escape }}"
+                        class="vs-luxury-product-img"
+                        loading="lazy"
+                      >
+                    {% elsif desktop_img != blank %}
+                      <img
+                        src="{{ desktop_img | image_url: width: 900 }}"
+                        alt="{{ block.settings.heading_1 | default: 'Vidhyut Saathi Innovation' | escape }}"
+                        class="vs-luxury-product-img"
+                        loading="lazy"
+                      >
+                    {% else %}
+                      {% case forloop.index %}
+                        {% when 1 %}
+                          <img
+                            src="{{ 'Pack_of_3_Red_Clamp_Meters.png' | asset_url }}"
+                            alt="MECO Clamp Meter Showcase"
+                            class="vs-luxury-product-img"
+                            loading="lazy"
+                          >
+                        {% when 2 %}
+                          <img
+                            src="{{ 'VS_Card_Final_Design_Golden_1.png' | asset_url }}"
+                            alt="Vidhyut Saathi Smart Saver Card"
+                            class="vs-luxury-product-img"
+                            loading="lazy"
+                          >
+                        {% when 3 %}
+                          <img
+                            src="{{ 'HaloniX_Solaris_LED_Floodlight_Offer_1.png' | asset_url }}"
+                            alt="Halonix Solaris LED Light"
+                            class="vs-luxury-product-img"
+                            loading="lazy"
+                          >
+                      {% endcase %}
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button
+        type="button"
+        class="vs-luxury-arrow vs-luxury-arrow-prev"
+        aria-label="Previous slide"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="vs-luxury-arrow vs-luxury-arrow-next"
+        aria-label="Next slide"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Bottom Pagination Dots -->
+      <div class="vs-luxury-dots" role="tablist" aria-label="Slider dots navigation">
+        {% for block in section.blocks %}
+          <button
+            type="button"
+            class="vs-luxury-dot{% if forloop.first %} is-active{% endif %}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-label="Slide {{ forloop.index }}"
+          ></button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'vidhyut-banner-slider.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Luxury Banner Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "accessibility_label",
+      "label": "Accessibility Label",
+      "default": "Vidhyut Saathi Showcase Banner Slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "label": "Autoplay Interval (seconds)",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop Banner / Slide Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Banner Image (Optional)"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Cutout Image (Optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "full_banner_mode",
+          "label": "Full Banner Mode (Fill box with uploaded image)",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Pill Badges"
+        },
+        {
+          "type": "text",
+          "id": "badge_1_icon",
+          "label": "Badge 1 Icon / Emoji",
+          "default": "⚡ 🔥"
+        },
+        {
+          "type": "text",
+          "id": "badge_1_text",
+          "label": "Badge 1 Text",
+          "default": "HANDCRAFTED LUXURY"
+        },
+        {
+          "type": "text",
+          "id": "badge_2_icon",
+          "label": "Badge 2 Icon / Emoji",
+          "default": "⚡ 🎒"
+        },
+        {
+          "type": "text",
+          "id": "badge_2_text",
+          "label": "Badge 2 Text",
+          "default": "100% Full-Grain Leather"
+        },
+        {
+          "type": "header",
+          "content": "Main Heading"
+        },
+        {
+          "type": "text",
+          "id": "heading_1",
+          "label": "Heading Line 1 (Dark)",
+          "default": "Timeless Carry."
+        },
+        {
+          "type": "text",
+          "id": "heading_2",
+          "label": "Heading Line 2 (Golden Accent)",
+          "default": "Built For Life."
+        },
+        {
+          "type": "header",
+          "content": "Feature Badges (3 Icons)"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_title",
+          "label": "Feature 1 Title",
+          "default": "Full-Grain"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_desc",
+          "label": "Feature 1 Subtitle",
+          "default": "Vintage Leather"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_title",
+          "label": "Feature 2 Title",
+          "default": "Laptop Sleeve"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_desc",
+          "label": "Feature 2 Subtitle",
+          "default": "Padded Support"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_title",
+          "label": "Feature 3 Title",
+          "default": "Weather-Proof"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_desc",
+          "label": "Feature 3 Subtitle",
+          "default": "Hardware"
+        },
+        {
+          "type": "header",
+          "content": "Call to Action Button"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Shop Leather Bags"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Banner Slider",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
