@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Header",
   "type": "header",
@@ -13,7 +22,7 @@
     "header": {
       "type": "vidhyut-header",
       "settings": {
-        "logo": "shopify://shop_images/20221102_123113.png",
+        "logo": "shopify://shop_images/Vidhyut_Saathi_Logo_jpg_7a29b355-7565-4780-8b43-05a5a3f4441b.jpg",
         "logo_height": 80,
         "logo_max_width": 320,
         "brand_name": "Vidhyut Saathi",
