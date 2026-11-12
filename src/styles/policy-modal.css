@@ -397,30 +397,204 @@ body.vs-policy-modal-open {
 
 
 /* ==========================================================================
-   Standalone Policy Page Layout
+   Standalone Policy Page Layout - Clean Unboxed Editorial Style
    ========================================================================== */
+.vs-policy-page-header {
+  background-color: #ffffff;
+  padding: 2.5rem 0 0.75rem;
+  border-bottom: none;
+}
+
+.vs-policy-page-header .vs-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin-bottom: 0.65rem;
+}
+
+.vs-policy-page-header .vs-breadcrumb a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.vs-policy-page-header .vs-breadcrumb a:hover {
+  color: #0f172a;
+  text-decoration: underline;
+}
+
+.vs-policy-page-header .vs-breadcrumb-sep {
+  color: #94a3b8;
+}
+
+.vs-policy-page-header .vs-page-title {
+  color: #111827;
+  font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.45rem;
+}
+
+.vs-policy-page-header .vs-page-intro-sub {
+  font-size: 0.95rem;
+  color: #64748b;
+  max-width: 100%;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .vs-policy-page-section {
-  padding: 3.5rem 0 5.5rem;
-  background-color: #f8fafc;
+  padding: 1rem 0 4.5rem;
+  background-color: #ffffff;
   min-height: 60vh;
 }
 
-.vs-policy-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  padding: 2.75rem 3.25rem;
-  max-width: 900px;
-  margin: 0 auto;
+.vs-policy-page-section .vs-policy-card {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+.vs-policy-page-section .vs-policy-meta-bar {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.75rem;
+}
+
+.vs-policy-page-section .vs-policy-meta-bar p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.vs-policy-page-section .vs-policy-meta-bar p a {
+  color: #0284c7;
+  text-decoration: none;
+}
+
+.vs-policy-page-section .vs-policy-meta-bar p a:hover {
+  text-decoration: underline;
+}
+
+.vs-policy-page-section .vs-policy-section {
+  margin-bottom: 2.25rem;
+}
+
+.vs-policy-page-section .vs-policy-heading,
+.vs-policy-page-section .vs-policy-custom-content h2,
+.vs-policy-page-section .vs-policy-custom-content h3,
+.vs-policy-page-section .vs-policy-custom-content h4 {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #111827;
+  margin: 2.25rem 0 0.85rem;
+  padding-bottom: 0;
+  border-bottom: none;
+  line-height: 1.45;
+}
+
+.vs-policy-page-section .vs-policy-section:first-child .vs-policy-heading,
+.vs-policy-page-section .vs-policy-meta-bar + .vs-policy-section .vs-policy-heading {
+  margin-top: 0.5rem;
+}
+
+.vs-policy-page-section .vs-policy-subheading,
+.vs-policy-page-section .vs-policy-custom-content h5,
+.vs-policy-page-section .vs-policy-custom-content h6 {
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #111827;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin: 1.4rem 0 0.65rem;
+  line-height: 1.5;
+}
+
+.vs-policy-page-section p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #334155;
+  margin: 0 0 0.95rem;
+}
+
+.vs-policy-page-section .vs-policy-simple-list,
+.vs-policy-page-section .vs-policy-custom-content ul {
+  list-style-type: square;
+  margin: 0.65rem 0 1.25rem 1.75rem;
+  padding: 0;
+  color: #334155;
+}
+
+.vs-policy-page-section .vs-policy-simple-ol,
+.vs-policy-page-section .vs-policy-custom-content ol {
+  list-style-type: decimal;
+  margin: 0.65rem 0 1.25rem 1.75rem;
+  padding: 0;
+  color: #334155;
+}
+
+.vs-policy-page-section .vs-policy-simple-list li,
+.vs-policy-page-section .vs-policy-simple-ol li,
+.vs-policy-page-section .vs-policy-custom-content li {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  color: #334155;
+}
+
+.vs-policy-page-section .vs-policy-custom-content > div,
+.vs-policy-page-section .vs-policy-custom-content > article {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.vs-policy-page-section a {
+  color: #0284c7;
+  text-decoration: none;
+}
+
+.vs-policy-page-section a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  .vs-policy-page-section {
-    padding: 2rem 0 3.5rem;
+  .vs-policy-page-header {
+    padding: 1.75rem 0 0.5rem;
   }
-  .vs-policy-card {
-    padding: 1.5rem 1.25rem;
-    border-radius: 8px;
+  .vs-policy-page-section {
+    padding: 0.75rem 0 3.25rem;
+  }
+  .vs-policy-page-section .vs-policy-meta-bar {
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .vs-policy-page-section .vs-policy-simple-list,
+  .vs-policy-page-section .vs-policy-simple-ol,
+  .vs-policy-page-section .vs-policy-custom-content ul,
+  .vs-policy-page-section .vs-policy-custom-content ol {
+    margin-left: 1.35rem;
   }
 }
