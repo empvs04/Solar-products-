@@ -1,9 +1,5 @@
 {
   "sections": {
-    "header": {
-      "type": "vidhyut-header",
-      "settings": {}
-    },
     "collection_gallery": {
       "type": "vidhyut-collection-gallery",
       "settings": {}
@@ -14,7 +10,6 @@
     }
   },
   "order": [
-    "header",
     "collection_gallery",
     "footer"
   ]

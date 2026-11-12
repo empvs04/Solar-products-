@@ -9,31 +9,6 @@
  */
 {
   "sections": {
-    "marquee_ticker": {
-      "type": "marquee-ticker",
-      "settings": {
-        "bg_color": "#c4a159",
-        "text_color": "#ffffff",
-        "speed": 28
-      }
-    },
-    "header": {
-      "type": "vidhyut-header",
-      "settings": {
-        "logo": "shopify://shop_images/20221102_123113.png",
-        "logo_height": 80,
-        "logo_max_width": 320,
-        "brand_name": "Vidhyut Saathi",
-        "menu": "main-menu",
-        "about_link": "",
-        "products_link": "",
-        "contact_link": "",
-        "buy_now_label": "Buy Now",
-        "buy_now_link": "",
-        "distributor_label": "Buy Distributorship",
-        "distributor_link": ""
-      }
-    },
     "hero_carousel": {
       "type": "vidhyut-hero-carousel",
       "blocks": {
@@ -318,8 +293,6 @@
     }
   },
   "order": [
-    "marquee_ticker",
-    "header",
     "hero_carousel",
     "featured_showcase",
     "products",

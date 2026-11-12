@@ -1,10 +1,6 @@
 {
   "name": "404 Not Found",
   "sections": {
-    "header": {
-      "type": "vidhyut-header",
-      "settings": {}
-    },
     "cta": {
       "type": "vidhyut-secondary-cta",
       "settings": {
@@ -18,7 +14,6 @@
     }
   },
   "order": [
-    "header",
     "cta",
     "footer"
   ]

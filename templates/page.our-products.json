@@ -9,13 +9,6 @@
  */
 {
   "sections": {
-    "header": {
-      "type": "vidhyut-header",
-      "settings": {
-        "brand_name": "Vidhyut Saathi",
-        "tagline": "Solar & Electrical"
-      }
-    },
     "main_products": {
       "type": "vidhyut-products",
       "settings": {
@@ -34,7 +27,6 @@
     }
   },
   "order": [
-    "header",
     "main_products",
     "secondary_cta",
     "footer"

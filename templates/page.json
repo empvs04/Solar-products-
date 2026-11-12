@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "header": {
-      "type": "vidhyut-header",
-      "settings": {}
-    },
     "main_products": {
       "type": "vidhyut-products",
       "settings": {}
@@ -23,7 +19,6 @@
     }
   },
   "order": [
-    "header",
     "main_products",
     "footer"
   ]

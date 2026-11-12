@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "header": {
-      "type": "vidhyut-header",
-      "settings": {}
-    },
     "main_buynow": {
       "type": "vidhyut-buy-now",
       "settings": {
@@ -30,7 +26,6 @@
     }
   },
   "order": [
-    "header",
     "main_buynow",
     "products_showcase",
     "footer"

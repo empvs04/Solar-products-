@@ -9,12 +9,6 @@
  */
 {
   "sections": {
-    "header": {
-      "type": "vidhyut-header",
-      "settings": {
-        "brand_name": "Vidhyut Saathi"
-      }
-    },
     "main_policy": {
       "type": "vidhyut-policy-page",
       "settings": {
@@ -29,7 +23,6 @@
     }
   },
   "order": [
-    "header",
     "main_policy",
     "footer"
   ]
