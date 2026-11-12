@@ -28,7 +28,7 @@
       <!-- Column 1: Brand -->
       <div class="vs-footer-brand-col">
         <a href="{{ routes.root_url }}" class="vs-footer-logo-link" aria-label="Vidhyut Saathi Home">
-          {% if section.settings.logo != blank and section.settings.logo contains '20221102_123113' == false %}
+          {% if section.settings.logo != blank %}
             <img
               src="{{ section.settings.logo | image_url: width: 160 }}"
               alt="{{ shop.name | escape }}"

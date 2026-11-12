@@ -6,7 +6,7 @@
     height: 92px !important;
   }
   #mainHeader .vs-logo-img {
-    height: {{ section.settings.logo_height | default: 78 }}px !important;
+    height: {{ section.settings.logo_height | default: 80 }}px !important;
     width: auto !important;
     max-width: {{ section.settings.logo_max_width | default: 320 }}px !important;
     object-fit: contain;
@@ -47,29 +47,24 @@
     <div class="vs-header-inner">
       <!-- Logo -->
       <a href="{{ routes.root_url }}" class="vs-logo-link" aria-label="Vidhyut Saathi Home">
-        {%- liquid
-          assign is_legacy_blurry_logo = false
-          if section.settings.logo != blank and section.settings.logo contains '20221102_123113'
-            assign is_legacy_blurry_logo = true
-          endif
-        -%}
-        {% if section.settings.logo != blank and is_legacy_blurry_logo == false and section.settings.use_theme_asset_logo == false %}
+        {% if section.settings.logo != blank %}
           <img
-            src="{{ section.settings.logo | image_url: width: 800 }}"
-            alt="{{ shop.name | escape }}"
+            src="{{ section.settings.logo | image_url: width: 1200 }}"
+            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
             class="vs-logo-img"
-            width="156"
-            height="78"
+            width="{{ section.settings.logo.width | default: 160 }}"
+            height="{{ section.settings.logo.height | default: 80 }}"
             loading="eager"
             fetchpriority="high"
+            data-vs-auto-trim="true"
           >
         {% else %}
           <img
             src="{{ 'vidhyut-logo-brand-hd.png' | asset_url }}"
             alt="Vidhyut Saathi Logo"
             class="vs-logo-img"
-            width="156"
-            height="78"
+            width="160"
+            height="80"
             loading="eager"
             fetchpriority="high"
           >
@@ -281,14 +276,15 @@
 <div class="vs-mobile-drawer" id="vsMobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation Menu" style="display: none; visibility: hidden;">
   <div class="vs-mobile-drawer-header">
     <div class="vs-logo-link">
-      {% if section.settings.logo != blank and is_legacy_blurry_logo == false and section.settings.use_theme_asset_logo == false %}
+      {% if section.settings.logo != blank %}
         <img
-          src="{{ section.settings.logo | image_url: width: 400 }}"
-          alt="{{ shop.name | escape }}"
+          src="{{ section.settings.logo | image_url: width: 800 }}"
+          alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
           class="vs-logo-img"
-          width="116"
-          height="58"
+          width="{{ section.settings.logo.width | default: 116 }}"
+          height="{{ section.settings.logo.height | default: 58 }}"
           loading="lazy"
+          data-vs-auto-trim="true"
         >
       {% else %}
         <img
@@ -475,17 +471,140 @@
   </div>
 </aside>
 
+<script>
+(function() {
+  function trimLogoPadding(img) {
+    if (!img || !img.getAttribute('data-vs-auto-trim')) return;
+    var src = img.currentSrc || img.getAttribute('src') || '';
+    if (!src || src.indexOf('data:') === 0 || /\.svg(\?|$)/i.test(src)) return;
+    if (img.dataset.vsTrimmedSrc === src) return;
+
+    function runTrim(sourceImg) {
+      var w = sourceImg.naturalWidth;
+      var h = sourceImg.naturalHeight;
+      if (!w || !h || w > 3000 || h > 3000) return;
+
+      var canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      var ctx = canvas.getContext('2d', { willReadFrequently: true });
+      if (!ctx) return;
+
+      ctx.drawImage(sourceImg, 0, 0, w, h);
+      var data = ctx.getImageData(0, 0, w, h).data;
+
+      function cornerAt(x, y) {
+        var idx = (y * w + x) * 4;
+        return [data[idx], data[idx + 1], data[idx + 2], data[idx + 3]];
+      }
+      var c0 = cornerAt(0, 0);
+      var c1 = cornerAt(w - 1, 0);
+      var c2 = cornerAt(0, h - 1);
+      var c3 = cornerAt(w - 1, h - 1);
+
+      var transparentBg = c0[3] <= 10 && c1[3] <= 10 && c2[3] <= 10 && c3[3] <= 10;
+      var whiteBg =
+        !transparentBg &&
+        c0[3] >= 245 && c0[0] >= 250 && c0[1] >= 250 && c0[2] >= 250 &&
+        c1[3] >= 245 && c1[0] >= 250 && c1[1] >= 250 && c1[2] >= 250 &&
+        c2[3] >= 245 && c2[0] >= 250 && c2[1] >= 250 && c2[2] >= 250 &&
+        c3[3] >= 245 && c3[0] >= 250 && c3[1] >= 250 && c3[2] >= 250;
+
+      if (!transparentBg && !whiteBg) {
+        img.dataset.vsTrimmedSrc = src;
+        return;
+      }
+
+      function isBg(idx) {
+        if (data[idx + 3] <= 10) return true;
+        if (whiteBg && data[idx] >= 248 && data[idx + 1] >= 248 && data[idx + 2] >= 248) return true;
+        return false;
+      }
+
+      var minX = w, minY = h, maxX = -1, maxY = -1;
+      for (var y = 0; y < h; y++) {
+        var rowOffset = y * w;
+        for (var x = 0; x < w; x++) {
+          var idx = (rowOffset + x) * 4;
+          if (!isBg(idx)) {
+            if (x < minX) minX = x;
+            if (x > maxX) maxX = x;
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+        }
+      }
+
+      if (maxX < minX || maxY < minY) return;
+      var trimW = maxX - minX + 1;
+      var trimH = maxY - minY + 1;
+      if (trimW < 20 || trimH < 20) return;
+
+      if (trimW >= w * 0.90 && trimH >= h * 0.90) {
+        img.dataset.vsTrimmedSrc = src;
+        return;
+      }
+
+      var outCanvas = document.createElement('canvas');
+      outCanvas.width = trimW;
+      outCanvas.height = trimH;
+      var outCtx = outCanvas.getContext('2d');
+      if (!outCtx) return;
+      outCtx.drawImage(sourceImg, minX, minY, trimW, trimH, 0, 0, trimW, trimH);
+
+      img.dataset.vsTrimmedSrc = src;
+      img.width = trimW;
+      img.height = trimH;
+      img.src = outCanvas.toDataURL('image/png');
+    }
+
+    try {
+      var parsed = new URL(src, window.location.href);
+      if (parsed.origin === window.location.origin) {
+        if (img.complete && img.naturalWidth > 0) {
+          runTrim(img);
+        }
+      } else {
+        var probe = new Image();
+        probe.crossOrigin = 'anonymous';
+        probe.onload = function() {
+          try { runTrim(probe); } catch (err) {}
+        };
+        probe.src = src + (src.indexOf('?') > -1 ? '&' : '?') + '_vsc=1';
+      }
+    } catch (e) {}
+  }
+
+  function initHeaderLogos() {
+    var imgs = document.querySelectorAll('#mainHeader .vs-logo-img[data-vs-auto-trim="true"], #vsMobileDrawer .vs-logo-img[data-vs-auto-trim="true"]');
+    for (var i = 0; i < imgs.length; i++) {
+      (function(el) {
+        if (!el.dataset.vsTrimBound) {
+          el.dataset.vsTrimBound = '1';
+          el.addEventListener('load', function() {
+            trimLogoPadding(el);
+          });
+        }
+        if (el.complete && el.naturalWidth > 0) {
+          trimLogoPadding(el);
+        }
+      })(imgs[i]);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderLogos);
+  } else {
+    initHeaderLogos();
+  }
+  document.addEventListener('shopify:section:load', initHeaderLogos);
+})();
+</script>
+
 {% schema %}
 {
   "name": "Header & Navigation",
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "use_theme_asset_logo",
-      "label": "Use Official High-Resolution Theme Logo",
-      "default": true,
-      "info": "When checked, uses the crisp tightly-cropped official Vidhyut Saathi emblem."
-    },
     {
       "type": "image_picker",
       "id": "logo",
@@ -499,7 +618,7 @@
       "step": 2,
       "unit": "px",
       "label": "Logo Height (Desktop)",
-      "default": 78
+      "default": 80
     },
     {
       "type": "range",
@@ -509,7 +628,7 @@
       "step": 10,
       "unit": "px",
       "label": "Logo Max Width (Desktop)",
-      "default": 300
+      "default": 320
     },
     {
       "type": "text",
