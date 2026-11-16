@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "vidhyut-payment-coming-soon",
+      "settings": {
+        "badge": "Direct Payment Gateway Integration",
+        "heading": "Payment Gateway is Coming Soon",
+        "subheading": "We are currently integrating an official, 100% secure online payment gateway (UPI, Credit/Debit Cards, Net Banking & EMI) to bring you a seamless digital checkout experience. Direct online payments will be live shortly.",
+        "contact_phone": "+91-8199036060"
+      }
+    },
+    "footer": {
+      "type": "vidhyut-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "footer"
+  ]
+}
