@@ -19,10 +19,14 @@
     {%- endif -%}
 
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {% if request.path contains 'payment-coming-soon' %}
+        Payment Gateway Coming Soon &ndash; {{ shop.name }}
+      {% else %}
+        {{ page_title }}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {% endif %}
     </title>
 
     {% if page_description %}
@@ -130,13 +134,29 @@
     <script src="{{ 'vidhyut-cart.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vidhyut-theme.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vidhyut-policy-modal.js' | asset_url }}?v={{ 'now' | date: '%s' }}" defer="defer"></script>
+
+    <script>
+      // Clean up legacy .html URL if accessed directly
+      if (window.location.pathname.indexOf('payment-coming-soon.html') !== -1) {
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', '/pages/payment-coming-soon' + window.location.search);
+        }
+      }
+    </script>
   </head>
 
   <body class="template-{{ template.name | handle }} vidhyut-saathi-theme">
     {% sections 'header-group' %}
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+    {% if request.path contains 'payment-coming-soon' and template.suffix != 'payment-coming-soon' %}
+      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+        {% section 'vidhyut-payment-coming-soon' %}
+        {% section 'vidhyut-footer' %}
+      </main>
+    {% else %}
+      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+    {% endif %}
   </body>
 </html>

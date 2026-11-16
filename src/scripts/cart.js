@@ -752,7 +752,8 @@ export class VidhyutCart {
     }
 
     // Direct to Payment Gateway Coming Soon Page
-    window.location.href = '/payment-coming-soon.html';
+    const targetUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/') + 'pages/payment-coming-soon';
+    window.location.href = targetUrl;
   }
 
   openWhatsAppCheckout() {

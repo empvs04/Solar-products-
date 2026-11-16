@@ -895,7 +895,8 @@
           return;
         }
 
-        window.location.href = '/payment-coming-soon.html';
+        var targetUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/') + 'pages/payment-coming-soon';
+        window.location.href = targetUrl;
       });
     }
 
@@ -907,7 +908,8 @@
           return;
         }
         if (cart.length === 0) return;
-        window.location.href = '/payment-coming-soon.html';
+        var targetUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/') + 'pages/payment-coming-soon';
+        window.location.href = targetUrl;
       });
     }
 
