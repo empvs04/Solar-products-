@@ -1,4 +1,4 @@
-<section class="vs-secondary-cta-section">
+<section class="vs-secondary-cta-section{% if template.name == '404' %} vs-404-fallback-cta{% endif %}">
   <div class="vs-container">
     <div class="vs-secondary-cta-inner">
       <h2 class="vs-secondary-cta-title">{{ section.settings.heading | default: 'Looking for the Right Solar or Electrical Products?' }}</h2>

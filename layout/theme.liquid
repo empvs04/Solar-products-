@@ -136,27 +136,32 @@
     <script src="{{ 'vidhyut-policy-modal.js' | asset_url }}?v={{ 'now' | date: '%s' }}" defer="defer"></script>
 
     <script>
-      // Clean up legacy .html URL if accessed directly
-      if (window.location.pathname.indexOf('payment-coming-soon.html') !== -1) {
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState(null, '', '/pages/payment-coming-soon' + window.location.search);
+      (function() {
+        if (window.location.pathname.indexOf('payment-coming-soon') !== -1) {
+          document.documentElement.classList.add('is-payment-coming-soon');
+          document.title = 'Payment Gateway Coming Soon \u2013 ' + (window.Shopify && window.Shopify.shop || 'Vidhyut Saathi');
+          if (window.location.pathname.indexOf('.html') !== -1 && window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', '/pages/payment-coming-soon' + window.location.search);
+          }
         }
-      }
+      })();
     </script>
+    <style>
+      /* 404 Intelligent Routing: Hide normal 404 CTA when payment-coming-soon is requested; hide payment section on normal 404 */
+      html.is-payment-coming-soon .vs-404-fallback-cta {
+        display: none !important;
+      }
+      html:not(.is-payment-coming-soon) .vs-payment-soon-404 {
+        display: none !important;
+      }
+    </style>
   </head>
 
   <body class="template-{{ template.name | handle }} vidhyut-saathi-theme">
     {% sections 'header-group' %}
 
-    {% if request.path contains 'payment-coming-soon' and template.suffix != 'payment-coming-soon' %}
-      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-        {% section 'vidhyut-payment-coming-soon' %}
-        {% section 'vidhyut-footer' %}
-      </main>
-    {% else %}
-      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-        {{ content_for_layout }}
-      </main>
-    {% endif %}
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
   </body>
 </html>
