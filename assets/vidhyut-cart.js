@@ -529,7 +529,7 @@
     html += '<div class="vs-summary-row"><span>Standard Delivery</span><span class="vs-summary-badge-free">FREE</span></div>';
     html += '<div class="vs-summary-divider"></div>';
     html += '<div class="vs-summary-row vs-summary-total"><span>Estimated Total</span><span class="vs-summary-grand-total">₹' + subtotal.toLocaleString('en-IN') + '</span></div></div>';
-    html += '<button type="button" class="vs-btn vs-btn-accent vs-btn-block vs-btn-checkout-primary" id="pageCheckoutBtn">Proceed to Checkout &rarr;</button>';
+    html += '<button type="button" class="vs-btn vs-btn-accent vs-btn-block vs-btn-checkout-primary" id="pageCheckoutBtn">Proceed to Payment &rarr;</button>';
     html += '<div class="vs-summary-security"><span>Authentic Brand Warranty &bull; GST Invoice Provided</span></div>';
     html += '</div></div></div>';
 
@@ -574,37 +574,13 @@
   };
 
   VidhyutCart.prototype.proceedToCheckout = function() {
-    if (this.cart.length === 0) return;
-
-    var hasShopifyNumericVariants = this.cart.every(function(i) {
-      var numId = Number(i.shopifyVariantId);
-      return Number.isInteger(numId) && numId > 0;
-    });
-
-    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root && hasShopifyNumericVariants) {
-      var self = this;
-      fetch(window.Shopify.routes.root + 'cart/clear.js', { method: 'POST' })
-        .then(function() {
-          var items = self.cart.map(function(i) {
-            return { id: Number(i.shopifyVariantId), quantity: i.quantity };
-          });
-          return fetch(window.Shopify.routes.root + 'cart/add.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items: items })
-          });
-        })
-        .then(function() {
-          window.location.href = window.Shopify.routes.root + 'checkout';
-        })
-        .catch(function(err) {
-          console.warn('Shopify checkout sync error, falling back to direct desk:', err);
-          self.openWhatsAppCheckout();
-        });
+    if (this.cart.length === 0) {
+      this.showToast('Your cart is empty. Please add products first.');
       return;
     }
 
-    this.openWhatsAppCheckout();
+    // Direct to Payment Gateway Coming Soon Page
+    window.location.href = '/payment-coming-soon.html';
   };
 
   VidhyutCart.prototype.openWhatsAppCheckout = function() {

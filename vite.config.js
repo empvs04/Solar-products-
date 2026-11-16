@@ -36,6 +36,7 @@ export default defineConfig({
         contact: './contact-us.html',
         products: './products.html',
         buyNow: './buy-now.html',
+        paymentComingSoon: './payment-coming-soon.html',
         buyDistributorship: './buy-distributorship.html',
         distributorship: './distributorship.html',
         privacyPolicy: './privacy-policy.html',

@@ -685,7 +685,7 @@ export class VidhyutCart {
             </div>
 
             <button type="button" class="vs-btn vs-btn-accent vs-btn-block vs-btn-checkout-primary" id="pageCheckoutBtn">
-              <span>Proceed to Checkout</span>
+              <span>Proceed to Payment</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
 
@@ -751,38 +751,8 @@ export class VidhyutCart {
       return;
     }
 
-    // Check if running on Shopify Online Store with valid numeric variant IDs
-    const hasShopifyNumericVariants = this.cart.every(i => {
-      const numId = Number(i.shopifyVariantId);
-      return Number.isInteger(numId) && numId > 0;
-    });
-
-    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root && hasShopifyNumericVariants) {
-      this.showToast('Connecting to secure checkout...');
-      fetch(`${window.Shopify.routes.root}cart/clear.js`, { method: 'POST' })
-        .then(() => {
-          const items = this.cart.map(i => ({
-            id: Number(i.shopifyVariantId),
-            quantity: i.quantity
-          }));
-          return fetch(`${window.Shopify.routes.root}cart/add.js`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items })
-          });
-        })
-        .then(() => {
-          window.location.href = `${window.Shopify.routes.root}checkout`;
-        })
-        .catch(err => {
-          console.warn('Shopify checkout sync error, routing to direct sales desk:', err);
-          this.openWhatsAppCheckout();
-        });
-      return;
-    }
-
-    // Direct WhatsApp Official Order Placement (Never routes to broken /checkout or home page)
-    this.openWhatsAppCheckout();
+    // Direct to Payment Gateway Coming Soon Page
+    window.location.href = '/payment-coming-soon.html';
   }
 
   openWhatsAppCheckout() {

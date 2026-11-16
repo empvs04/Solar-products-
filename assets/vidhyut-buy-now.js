@@ -895,13 +895,7 @@
           return;
         }
 
-        var total = selectedVariant.price * quantity;
-        var text = 'Vidhyut Saathi — Official Order Placement:\n\n1. ' + (p.fullName || p.name) + '\n   Model: ' + selectedVariant.name + '\n   Qty: ' + quantity + ' × ₹' + selectedVariant.price.toLocaleString('en-IN') + ' = ₹' + total.toLocaleString('en-IN') + '\n\nTotal: ₹' + total.toLocaleString('en-IN') + ' (incl. GST & Free Delivery)\n\nPlease confirm shipping address & invoice details to dispatch.';
-        var whatsappUrl = 'https://wa.me/918199036060?text=' + encodeURIComponent(text);
-        var win = window.open(whatsappUrl, '_blank');
-        if (!win || win.closed || typeof win.closed === 'undefined') {
-          window.location.href = whatsappUrl;
-        }
+        window.location.href = '/payment-coming-soon.html';
       });
     }
 
@@ -913,21 +907,7 @@
           return;
         }
         if (cart.length === 0) return;
-        var summary = 'Vidhyut Saathi — Official Order Placement:\n\n';
-        var total = 0;
-        cart.forEach(function(item, idx) {
-          var itemTotal = item.price * item.quantity;
-          total += itemTotal;
-          summary += (idx + 1) + '. ' + item.name + ' (' + item.variantName + ') × ' + item.quantity + ' = ₹' + itemTotal.toLocaleString('en-IN') + '\n';
-        });
-        summary += '\nTotal: ₹' + total.toLocaleString('en-IN') + ' (incl. GST & Free Delivery)\n';
-        summary += '\nPlease confirm shipping address & invoice details to dispatch.';
-
-        var whatsappUrl = 'https://wa.me/918199036060?text=' + encodeURIComponent(summary);
-        var win = window.open(whatsappUrl, '_blank');
-        if (!win || win.closed || typeof win.closed === 'undefined') {
-          window.location.href = whatsappUrl;
-        }
+        window.location.href = '/payment-coming-soon.html';
       });
     }
 
