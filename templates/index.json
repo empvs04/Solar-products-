@@ -280,6 +280,7 @@
     "footer": {
       "type": "vidhyut-footer",
       "settings": {
+        "logo": "shopify://shop_images/Vidhyut_Saathi_Logo_jpg_7a29b355-7565-4780-8b43-05a5a3f4441b.jpg",
         "brand_name": "Vidhyut Saathi",
         "tagline": "Solar & Electrical",
         "description": "Vidhyut Saathi is an Indian electrical and solar products brand committed to dependable solar lighting, energy-efficient luminaires, and precision measurement equipment.",
