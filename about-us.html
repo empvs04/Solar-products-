@@ -698,17 +698,10 @@
           </button>
           <div class="vs-cart-coupon-content" id="cartCouponContent" style="display: none;">
             <div class="vs-coupon-input-row">
-              <input type="text" id="couponCodeInput" placeholder="Enter coupon code (e.g. VIDHYUT10)" class="vs-coupon-input">
+              <input type="text" id="couponCodeInput" placeholder="Enter coupon code (e.g. FREESHIP)" class="vs-coupon-input">
               <button type="button" id="applyCouponBtn" class="vs-coupon-apply-btn">Apply</button>
             </div>
             <div class="vs-coupon-list">
-              <div class="vs-coupon-item">
-                <div>
-                  <span class="vs-coupon-code-badge">VIDHYUT10</span>
-                  <span class="vs-coupon-desc">10% Off on orders above ₹1,999</span>
-                </div>
-                <button type="button" class="vs-coupon-use-btn" data-apply-coupon="VIDHYUT10">Apply</button>
-              </div>
               <div class="vs-coupon-item">
                 <div>
                   <span class="vs-coupon-code-badge">FREESHIP</span>
@@ -752,10 +745,10 @@
               <span>Bag Savings</span>
               <span id="summaryDiscountVal">-₹0</span>
             </div>
-            <div class="vs-summary-row">
-              <span>Estimated GST (18%)</span>
-              <span class="vs-text-green">Included</span>
-            </div>
+            <div class="vs-summary-row" id="summaryCouponRow">
+            <span>Coupon Discount</span>
+            <span id="summaryCouponVal" class="vs-text-muted">No coupon applied</span>
+          </div>
             <div class="vs-summary-row">
               <span>Delivery Fee</span>
               <span class="vs-text-green">FREE</span>

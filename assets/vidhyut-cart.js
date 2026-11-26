@@ -404,21 +404,15 @@
 
   VidhyutCart.prototype.applyCoupon = function(code) {
     var cleanCode = (code || '').toUpperCase().trim();
-    var subtotal = this.getSubtotal();
+    if (!cleanCode) return;
 
-    if (cleanCode === 'VIDHYUT10') {
-      if (subtotal >= 1999) {
-        this.couponDiscount = Math.round(subtotal * 0.10);
-        this.couponCode = cleanCode;
-        this.showToast('Coupon VIDHYUT10 applied! You saved ₹' + this.couponDiscount.toLocaleString('en-IN'));
-        this.renderDrawer();
-      } else {
-        this.showToast('Coupon VIDHYUT10 is valid on orders of ₹1,999 or more.');
-      }
-    } else if (cleanCode === 'FREESHIP') {
-      this.showToast('FREESHIP is already active! Standard delivery is 100% Free.');
+    if (cleanCode === 'FREESHIP') {
+      this.couponCode = 'FREESHIP';
+      this.couponDiscount = 0;
+      this.showToast('Coupon FREESHIP applied! Free Delivery active.');
+      this.renderDrawer();
     } else {
-      this.showToast('Coupon ' + cleanCode + ' is invalid or expired.');
+      this.showToast('Coupon "' + cleanCode + '" is invalid or expired.');
     }
   };
 
@@ -616,6 +610,22 @@
 
     var summaryDiscountEl = document.getElementById('summaryDiscountVal');
     if (summaryDiscountEl) summaryDiscountEl.textContent = '-₹' + (totalSavings + (this.couponDiscount || 0)).toLocaleString('en-IN');
+
+    var summaryCouponEl = document.getElementById('summaryCouponVal');
+    if (summaryCouponEl) {
+      if (this.couponCode) {
+        if (this.couponDiscount > 0) {
+          summaryCouponEl.textContent = '-₹' + this.couponDiscount.toLocaleString('en-IN') + ' (' + this.couponCode + ')';
+          summaryCouponEl.className = 'vs-text-green';
+        } else {
+          summaryCouponEl.textContent = this.couponCode + ' Applied ✓';
+          summaryCouponEl.className = 'vs-text-green';
+        }
+      } else {
+        summaryCouponEl.textContent = 'No coupon applied';
+        summaryCouponEl.className = 'vs-text-muted';
+      }
+    }
 
     container.querySelectorAll('[data-step-dec]').forEach(function(btn) {
       btn.addEventListener('click', function() {
