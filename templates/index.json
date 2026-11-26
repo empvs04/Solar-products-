@@ -128,13 +128,7 @@
         "card4_title": "New Product Title",
         "card4_desc": "Configure your new product title, description, image and pricing directly in the Shopify theme editor.",
         "card4_price": "₹0",
-        "card4_link": "",
-        "card5_image": "shopify://shop_images/Our_Price_300_-_Banner.png",
-        "card5_badge": "",
-        "card5_title": "Halonix Solaris LED Light",
-        "card5_desc": "HALONIX SOLARIX 10W LED Floodlight delivers bright white illumination with energy-efficient solar lighting technology. Featuring IP66 protection, durable design and 2-year brand warranty.",
-        "card5_price": "₹300",
-        "card5_link": ""
+        "card4_link": ""
       }
     },
     "products": {
