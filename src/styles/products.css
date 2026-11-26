@@ -36,6 +36,11 @@
   align-items: stretch;
 }
 
+.vs-featured-showcase-section .vs-products-grid {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
 /* Product Card */
 .vs-product-card {
   display: flex;
@@ -331,6 +336,11 @@
   .vs-products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+
+  .vs-featured-showcase-section .vs-products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
   }
 
   .vs-featured-showcase-section,

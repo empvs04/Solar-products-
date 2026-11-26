@@ -210,34 +210,37 @@
         </div>
       </article>
 
-      <!-- Card 4: Halonix Light -->
+      <!-- Card 4: New Product -->
       {%- liquid
         if section.settings.card4_image != blank
           assign card4_img_src = section.settings.card4_image | image_url: width: 600
         else
-          assign card4_img_src = 'solar-lights-1.jpg' | asset_url
+          assign card4_img_src = 'solar-lights.jpg' | asset_url
         endif
-        assign card4_price_val = section.settings.card4_price | default: '₹4,499'
+        assign card4_price_val = section.settings.card4_price | default: '₹0'
         assign card4_price_num = card4_price_val | remove: '₹' | remove: ',' | strip
       -%}
-      <article class="vs-product-card" id="showcase-halonix-light" data-product-id="halonix-solaris-light" data-product-name="{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' | escape }}">
+      <article class="vs-product-card" id="showcase-new-product" data-product-id="new-product" data-product-name="{{ section.settings.card4_title | default: 'New Product' | escape }}">
         <div class="vs-product-image-wrap">
+          {% if section.settings.card4_badge != blank %}
+            <span class="vs-product-badge">{{ section.settings.card4_badge | escape }}</span>
+          {% endif %}
           <img
             src="{{ card4_img_src }}"
-            alt="{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' | escape }}"
+            alt="{{ section.settings.card4_title | default: 'New Product' | escape }}"
             class="vs-product-img"
             loading="lazy"
             width="600"
             height="600"
+            onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');"
           >
         </div>
         <div class="vs-product-body">
-          <h3 class="vs-product-title">{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' }}</h3>
+          <h3 class="vs-product-title">{{ section.settings.card4_title | default: 'New Product' }}</h3>
           <p class="vs-product-desc">
-            {{ section.settings.card4_desc | default: 'High-lumen solar floodlights and outdoor luminaires engineered for industrial durability, zero electricity bills, and weather-resistant coverage.' }}
+            {{ section.settings.card4_desc | default: 'Configure your new product title, description, image and pricing directly in the Shopify theme editor.' }}
           </p>
-          {%- capture default_halonix_url -%}{{ base_root | append: '/pages/buy-now?product=solar-lights' }}{%- endcapture -%}
-          {%- capture default_halonix_collection -%}{{ base_root | append: '/pages/solar-lights' }}{%- endcapture -%}
+          {%- capture default_new_url -%}{{ base_root | append: '/pages/buy-now' }}{%- endcapture -%}
           <!-- Pricing Bar -->
           <div class="vs-card-cart-controls">
             <div class="vs-card-price-row">
@@ -251,18 +254,82 @@
               type="button"
               class="vs-btn-card-cart"
               data-add-to-cart
-              data-product-id="halonix-solaris-light"
-              data-variant-id="halonix-solaris-light"
-              data-product-name="{{ section.settings.card4_title | default: 'Halonix Solaris LED Light' | escape }}"
+              data-product-id="new-product"
+              data-variant-id="new-product"
+              data-product-name="{{ section.settings.card4_title | default: 'New Product' | escape }}"
               data-image="{{ card4_img_src }}"
               data-price="{{ card4_price_num }}"
+              aria-label="Add New Product to cart"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              <span>Add to Cart</span>
+            </button>
+            <a
+              href="{{ section.settings.card4_link | default: default_new_url }}"
+              class="vs-product-btn-secondary"
+            >
+              <span>Buy Now</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5: Halonix Light -->
+      {%- liquid
+        if section.settings.card5_image != blank
+          assign card5_img_src = section.settings.card5_image | image_url: width: 600
+        else
+          assign card5_img_src = 'solar-lights-1.jpg' | asset_url
+        endif
+        assign card5_price_val = section.settings.card5_price | default: '₹300'
+        assign card5_price_num = card5_price_val | remove: '₹' | remove: ',' | strip
+      -%}
+      <article class="vs-product-card" id="showcase-halonix-light" data-product-id="halonix-solaris-light" data-product-name="{{ section.settings.card5_title | default: 'Halonix Solaris LED Light' | escape }}">
+        <div class="vs-product-image-wrap">
+          {% if section.settings.card5_badge != blank %}
+            <span class="vs-product-badge">{{ section.settings.card5_badge | escape }}</span>
+          {% endif %}
+          <img
+            src="{{ card5_img_src }}"
+            alt="{{ section.settings.card5_title | default: 'Halonix Solaris LED Light' | escape }}"
+            class="vs-product-img"
+            loading="lazy"
+            width="600"
+            height="600"
+            onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');"
+          >
+        </div>
+        <div class="vs-product-body">
+          <h3 class="vs-product-title">{{ section.settings.card5_title | default: 'Halonix Solaris LED Light' }}</h3>
+          <p class="vs-product-desc">
+            {{ section.settings.card5_desc | default: 'High-lumen solar floodlights and outdoor luminaires engineered for industrial durability, zero electricity bills, and weather-resistant coverage.' }}
+          </p>
+          {%- capture default_halonix_url -%}{{ base_root | append: '/pages/buy-now?product=solar-lights' }}{%- endcapture -%}
+          <!-- Pricing Bar -->
+          <div class="vs-card-cart-controls">
+            <div class="vs-card-price-row">
+              <span class="vs-card-price">{{ card5_price_val }}</span>
+              <span class="vs-card-gst-tag">Incl. GST</span>
+            </div>
+          </div>
+
+          <div class="vs-card-actions">
+            <button
+              type="button"
+              class="vs-btn-card-cart"
+              data-add-to-cart
+              data-product-id="halonix-solaris-light"
+              data-variant-id="halonix-solaris-light"
+              data-product-name="{{ section.settings.card5_title | default: 'Halonix Solaris LED Light' | escape }}"
+              data-image="{{ card5_img_src }}"
+              data-price="{{ card5_price_num }}"
               aria-label="Add Halonix Light to cart"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
               <span>Add to Cart</span>
             </button>
             <a
-              href="{{ section.settings.card4_link | default: default_halonix_url }}"
+              href="{{ section.settings.card5_link | default: default_halonix_url }}"
               class="vs-product-btn-secondary"
             >
               <span>Buy Now</span>
@@ -626,7 +693,7 @@
     },
     {
       "type": "header",
-      "content": "Card 4: Halonix Light"
+      "content": "Card 4: New Product"
     },
     {
       "type": "image_picker",
@@ -635,26 +702,69 @@
     },
     {
       "type": "text",
+      "id": "card4_badge",
+      "label": "Card 4 Badge",
+      "default": "New Arrival"
+    },
+    {
+      "type": "text",
       "id": "card4_title",
       "label": "Card 4 Title",
-      "default": "Halonix Solaris LED Light"
+      "default": "New Product"
     },
     {
       "type": "textarea",
       "id": "card4_desc",
       "label": "Card 4 Description",
-      "default": "High-lumen solar floodlights and outdoor luminaires engineered for industrial durability, zero electricity bills, and weather-resistant coverage."
+      "default": "Configure your new product title, description, image and pricing directly in the Shopify theme editor."
     },
     {
       "type": "text",
       "id": "card4_price",
       "label": "Card 4 Price",
-      "default": "₹4,499"
+      "default": "₹0"
     },
     {
       "type": "url",
       "id": "card4_link",
       "label": "Card 4 Buy Now Link"
+    },
+    {
+      "type": "header",
+      "content": "Card 5: Halonix Solaris LED Light"
+    },
+    {
+      "type": "image_picker",
+      "id": "card5_image",
+      "label": "Card 5 Image"
+    },
+    {
+      "type": "text",
+      "id": "card5_badge",
+      "label": "Card 5 Badge"
+    },
+    {
+      "type": "text",
+      "id": "card5_title",
+      "label": "Card 5 Title",
+      "default": "Halonix Solaris LED Light"
+    },
+    {
+      "type": "textarea",
+      "id": "card5_desc",
+      "label": "Card 5 Description",
+      "default": "HALONIX SOLARIX 10W LED Floodlight delivers bright white illumination with energy-efficient solar lighting technology. Featuring IP66 protection, durable design and 2-year brand warranty."
+    },
+    {
+      "type": "text",
+      "id": "card5_price",
+      "label": "Card 5 Price",
+      "default": "₹300"
+    },
+    {
+      "type": "url",
+      "id": "card5_link",
+      "label": "Card 5 Buy Now Link"
     }
   ],
   "presets": [
