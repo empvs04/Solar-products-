@@ -218,11 +218,52 @@
     return null;
   }
 
+  function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  var QUICK_ADD_UPSELLS = [
+    {
+      productId: 'new-product',
+      variantId: 'new-product',
+      name: 'BK-100 Solar Motion Wall Lamp',
+      variantName: '600LM Solar + USB',
+      price: 300,
+      originalPrice: 599,
+      image: 'https://vidhyutsaathi.in/cdn/shop/files/led_light.avif?v=1795679123&width=600'
+    },
+    {
+      productId: 'dc-12v-battery-clip-bulb',
+      variantId: 'dc-7w',
+      name: '12V DC Emergency Bulb + Clips',
+      variantName: '7W 12V DC Bulb',
+      price: 349,
+      originalPrice: 480,
+      image: 'led-bulb-2.jpg'
+    },
+    {
+      productId: 'dt87-pocket-clamp-meter',
+      variantId: 'dt87-std',
+      name: 'DT-87 Pocket Clamp Meter',
+      variantName: 'Handheld Tester + Leads',
+      price: 999,
+      originalPrice: 1350,
+      image: 'clamp-meter-3.jpg'
+    }
+  ];
+
   function VidhyutCart() {
     this.storageKey = 'vs_cart';
     this.cart = this.loadCart();
     this.isDrawerOpen = false;
     this.isCheckingOut = false;
+    try {
+      this.orderGstin = localStorage.getItem('vs_order_gstin') || '';
+      this.orderNote = localStorage.getItem('vs_order_note') || '';
+    } catch (e) {
+      this.orderGstin = '';
+      this.orderNote = '';
+    }
     this.init();
   }
 
@@ -350,6 +391,9 @@
 
     if (existing > -1) {
       this.cart[existing].quantity += (item.quantity || 1);
+      if (item.originalPrice && !this.cart[existing].originalPrice) {
+        this.cart[existing].originalPrice = item.originalPrice;
+      }
     } else {
       this.cart.push({
         productId: item.productId,
@@ -357,6 +401,7 @@
         name: item.name,
         variantName: item.variantName,
         price: item.price,
+        originalPrice: item.originalPrice || null,
         quantity: item.quantity || 1,
         image: resolveItemImage(item)
       });
@@ -477,6 +522,7 @@
       this.couponDiscount = 0;
       this.showToast('Coupon FREESHIP applied! Free Delivery active.');
       this.renderDrawer();
+      this.renderCartPage();
     } else {
       this.showToast('Coupon "' + cleanCode + '" is invalid or expired.');
     }
@@ -484,6 +530,11 @@
 
   VidhyutCart.prototype.initDrawerUI = function() {
     var self = this;
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && self.isDrawerOpen) {
+        self.closeDrawer();
+      }
+    });
     var drawer = document.getElementById('cartDrawer');
     var backdrop = document.getElementById('cartDrawerBackdrop');
     var closeBtn = document.getElementById('cartDrawerClose');
@@ -600,6 +651,7 @@
     var drawerBadge = document.getElementById('cartBadgeCount');
     var checkoutBtn = document.getElementById('cartCheckoutBtn');
     var urgencyBar = document.getElementById('cartUrgencyBar');
+    var shippingBar = document.getElementById('cartShippingBar');
     var extraWidgets = document.getElementById('cartExtraWidgets');
     var footerEl = document.getElementById('cartDrawerFooter') || (drawer ? drawer.querySelector('.vs-cart-footer') : null);
     if (!container) return;
@@ -613,15 +665,17 @@
 
     if (this.cart.length === 0) {
       if (urgencyBar) urgencyBar.style.display = 'none';
+      if (shippingBar) shippingBar.style.display = 'none';
       if (extraWidgets) extraWidgets.style.display = 'none';
       if (footerEl) footerEl.style.display = 'none';
 
-      container.innerHTML = '<div class="vs-cart-empty"><div class="vs-cart-empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div><h4 class="vs-cart-empty-title">Your Cart is Empty</h4><p class="vs-cart-empty-text">Browse our solar and electrical product lines and add items to your cart.</p><a href="/index.html#products" class="vs-btn vs-btn-accent vs-btn-sm">Explore Products</a></div>';
+      container.innerHTML = '<div class="vs-cart-empty"><div class="vs-cart-empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div><h4 class="vs-cart-empty-title">Your Cart is Empty</h4><p class="vs-cart-empty-text">Browse our solar and electrical product lines and add items to your cart.</p><a href="/#products" class="vs-btn vs-btn-accent vs-btn-sm">Explore Products</a></div>';
       if (checkoutBtn) checkoutBtn.disabled = true;
       return;
     }
 
     if (urgencyBar) urgencyBar.style.display = 'flex';
+    if (shippingBar) shippingBar.style.display = 'block';
     if (extraWidgets) extraWidgets.style.display = 'flex';
     if (footerEl) footerEl.style.display = 'flex';
     if (checkoutBtn) checkoutBtn.disabled = false;
@@ -726,40 +780,88 @@
     var self = this;
 
     if (this.cart.length === 0) {
-      pageContainer.innerHTML = '<div class="vs-cart-page-empty"><div class="vs-empty-state-card"><div class="vs-empty-cart-icon"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div><h2 class="vs-empty-title">Your Cart is Empty</h2><p class="vs-empty-desc">You haven\'t added any items to your shopping cart yet. Browse our solar lighting and electrical product range to get started.</p><div class="vs-empty-actions"><a href="/#products" class="vs-btn vs-btn-accent">Explore Products</a></div></div></div>';
+      pageContainer.innerHTML = '<div class="vs-cart-page-empty"><div class="vs-empty-state-card"><div class="vs-empty-cart-icon"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div><h2 class="vs-empty-title">Your Cart is Empty</h2><p class="vs-empty-desc">You haven\'t added any items to your shopping cart yet. Browse our solar lighting, smart saver card, and clamp meter lineup below.</p><div class="vs-empty-actions"><a href="#productShowcase" class="vs-btn vs-btn-accent">Configure a Product</a></div></div></div>';
       return;
     }
 
-    var html = '<div class="vs-cart-review-layout">';
-    html += '<div class="vs-cart-items-column">';
-    html += '<div class="vs-cart-items-header"><span class="vs-cart-col-prod">Product</span><span class="vs-cart-col-price">Unit Price</span><span class="vs-cart-col-qty">Quantity</span><span class="vs-cart-col-total">Total</span></div>';
-    html += '<div class="vs-cart-table-rows">';
-
+    var totalMrp = 0;
+    var rowsHtml = '';
     this.cart.forEach(function(item) {
+      var pricing = getItemPricing(item);
+      totalMrp += pricing.mrp * item.quantity;
       var img = resolveItemImage(item);
-      html += '<div class="vs-cart-table-row" data-variant-id="' + item.variantId + '">';
-      html += '<div class="vs-cart-cell-prod"><img src="' + img + '" alt="' + item.name + '" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, \'solar-lights.jpg\');">';
-      html += '<div class="vs-cart-row-details"><h3 class="vs-cart-row-title">' + item.name + '</h3><div class="vs-cart-row-variant">' + item.variantName + '</div><button type="button" class="vs-cart-row-remove" data-remove="' + item.variantId + '"><span>Remove</span></button></div></div>';
-      html += '<div class="vs-cart-cell-price">₹' + item.price.toLocaleString('en-IN') + '</div>';
-      html += '<div class="vs-cart-cell-qty"><div class="vs-table-stepper"><button type="button" class="vs-stepper-btn" data-step-dec="' + item.variantId + '">&minus;</button><span class="vs-stepper-val">' + item.quantity + '</span><button type="button" class="vs-stepper-btn" data-step-inc="' + item.variantId + '">&plus;</button></div></div>';
-      html += '<div class="vs-cart-cell-total">₹' + (item.price * item.quantity).toLocaleString('en-IN') + '</div>';
-      html += '</div>';
+      var lineSave = pricing.discount * item.quantity;
+
+      rowsHtml += '<div class="vs-cart-table-row" data-variant-id="' + escapeHtml(item.variantId) + '">';
+      rowsHtml += '<div class="vs-cart-cell-prod"><img src="' + escapeHtml(img) + '" alt="' + escapeHtml(item.name) + '" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, \'solar-lights.jpg\');">';
+      rowsHtml += '<div class="vs-cart-row-details"><h3 class="vs-cart-row-title">' + escapeHtml(item.name) + '</h3><div class="vs-cart-row-variant">' + escapeHtml(item.variantName) + '</div><div class="vs-cart-row-warranty">✓ 1-Year Brand Warranty &bull; GST Included</div><button type="button" class="vs-cart-row-remove" data-remove="' + escapeHtml(item.variantId) + '"><span>Remove</span></button></div></div>';
+      rowsHtml += '<div class="vs-cart-cell-price"><div class="vs-cart-row-pricing"><span>₹' + pricing.price.toLocaleString('en-IN') + '</span><span class="vs-cart-row-mrp">₹' + pricing.mrp.toLocaleString('en-IN') + '</span><span class="vs-cart-row-save">Save ₹' + lineSave.toLocaleString('en-IN') + '</span></div></div>';
+      rowsHtml += '<div class="vs-cart-cell-qty"><div class="vs-table-stepper"><button type="button" class="vs-stepper-btn" data-step-dec="' + escapeHtml(item.variantId) + '" aria-label="Decrease">&minus;</button><span class="vs-stepper-val">' + item.quantity + '</span><button type="button" class="vs-stepper-btn" data-step-inc="' + escapeHtml(item.variantId) + '" aria-label="Increase">&plus;</button></div></div>';
+      rowsHtml += '<div class="vs-cart-cell-total">₹' + (pricing.price * item.quantity).toLocaleString('en-IN') + '</div>';
+      rowsHtml += '</div>';
     });
 
+    var totalSavings = Math.max(0, totalMrp - subtotal) + (this.couponDiscount || 0);
+    var finalPayable = Math.max(0, subtotal - (this.couponDiscount || 0));
+    var paymentBadgesUrl = getAssetUrl('payment-trust-badges.png');
+
+    var html = '<div class="vs-cart-savings-banner">';
+    html += '<span>✓ <strong>Free Pan-India Express Delivery Unlocked</strong> &bull; Priority dispatch from Rohtak</span>';
+    html += '<span>Total Savings: <strong>₹' + totalSavings.toLocaleString('en-IN') + '</strong></span>';
     html += '</div>';
-    html += '<div class="vs-cart-table-footer"><a href="/#products" class="vs-continue-shopping-link">&larr; Continue Shopping</a><button type="button" class="vs-clear-cart-link" id="clearCartBtn">Clear Cart</button></div>';
+
+    html += '<div class="vs-cart-review-layout">';
+    html += '<div class="vs-cart-items-col-wrap">';
+    html += '<div class="vs-cart-items-column">';
+    html += '<div class="vs-cart-items-header"><span class="vs-cart-col-prod">Product</span><span class="vs-cart-col-price">Unit Price</span><span class="vs-cart-col-qty">Quantity</span><span class="vs-cart-col-total">Total</span></div>';
+    html += '<div class="vs-cart-table-rows">' + rowsHtml + '</div>';
+
+    html += '<div class="vs-cart-b2b-box">';
+    html += '<div class="vs-cart-b2b-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span>B2B GST Invoice &amp; Delivery Instructions (Optional)</span></div>';
+    html += '<div class="vs-cart-b2b-grid">';
+    html += '<input type="text" id="pageCartGstin" class="vs-cart-b2b-input" maxlength="15" placeholder="15-Digit GSTIN (for Business Tax Credit)" value="' + escapeHtml(this.gstin || this.orderGstin) + '">';
+    html += '<input type="text" id="pageCartNote" class="vs-cart-b2b-input" maxlength="200" placeholder="Company Name or Delivery Instructions" value="' + escapeHtml(this.orderNote) + '">';
+    html += '</div></div>';
+
+    html += '<div class="vs-cart-table-footer"><a href="#productShowcase" class="vs-continue-shopping-link">&larr; Add More Products</a><button type="button" class="vs-clear-cart-link" id="clearCartBtn">Clear Cart</button></div>';
+    html += '</div>';
+
+    // Quick-Add Accessories Panel
+    html += '<div class="vs-cart-upsell-panel">';
+    html += '<div class="vs-cart-upsell-heading">Frequently Added Accessories &amp; Tools</div>';
+    html += '<div class="vs-cart-upsell-grid">';
+    QUICK_ADD_UPSELLS.forEach(function(up, idx) {
+      var upImg = up.image.indexOf('http') === 0 ? up.image : getAssetUrl(up.image);
+      html += '<div class="vs-cart-upsell-card">';
+      html += '<img src="' + escapeHtml(upImg) + '" alt="' + escapeHtml(up.name) + '" class="vs-cart-upsell-img" loading="lazy">';
+      html += '<div class="vs-cart-upsell-info"><div class="vs-cart-upsell-name">' + escapeHtml(up.name) + '</div><div class="vs-cart-upsell-price">₹' + up.price.toLocaleString('en-IN') + '</div></div>';
+      html += '<button type="button" class="vs-cart-upsell-btn" data-upsell-idx="' + idx + '">+ Add</button>';
+      html += '</div>';
+    });
+    html += '</div></div>';
     html += '</div>';
 
     html += '<div class="vs-cart-summary-column"><div class="vs-order-summary-card">';
     html += '<h3 class="vs-summary-heading">Order Summary</h3>';
-    html += '<div class="vs-summary-rows"><div class="vs-summary-row"><span>Items in Cart (' + count + ')</span><span>₹' + subtotal.toLocaleString('en-IN') + '</span></div>';
-    html += '<div class="vs-summary-row"><span>GST Tax</span><span class="vs-summary-badge-free">Included (18%)</span></div>';
-    html += '<div class="vs-summary-row"><span>Standard Delivery</span><span class="vs-summary-badge-free">FREE</span></div>';
+    html += '<div class="vs-cart-page-coupon-row">';
+    html += '<input type="text" id="pageCouponInput" class="vs-coupon-input" placeholder="Promo code (e.g. FREESHIP)" value="' + escapeHtml(this.couponCode || '') + '">';
+    html += '<button type="button" id="pageApplyCouponBtn" class="vs-coupon-apply-btn">Apply</button>';
+    html += '</div>';
+    html += '<div class="vs-summary-rows">';
+    html += '<div class="vs-summary-row"><span>Bag Total (MRP)</span><span>₹' + totalMrp.toLocaleString('en-IN') + '</span></div>';
+    html += '<div class="vs-summary-row vs-text-discount"><span>Total Savings (' + count + ' items)</span><span>-₹' + totalSavings.toLocaleString('en-IN') + '</span></div>';
+    html += '<div class="vs-summary-row"><span>GST (18%)</span><span class="vs-summary-badge-free">Included</span></div>';
+    html += '<div class="vs-summary-row"><span>Express Delivery</span><span class="vs-summary-badge-free">FREE</span></div>';
     html += '<div class="vs-summary-divider"></div>';
-    html += '<div class="vs-summary-row vs-summary-total"><span>Estimated Total</span><span class="vs-summary-grand-total">₹' + subtotal.toLocaleString('en-IN') + '</span></div></div>';
-    html += '<button type="button" class="vs-btn vs-btn-accent vs-btn-block vs-btn-checkout-primary" id="pageCheckoutBtn">Proceed to Payment &rarr;</button>';
-    html += '<div class="vs-summary-security"><span>Authentic Brand Warranty &bull; GST Invoice Provided</span></div>';
-    html += '</div></div></div>';
+    html += '<div class="vs-summary-row vs-summary-total"><span>Total Payable</span><span class="vs-summary-grand-total">₹' + finalPayable.toLocaleString('en-IN') + '</span></div>';
+    html += '</div>';
+    html += '<button type="button" class="vs-btn vs-btn-accent vs-btn-block vs-btn-checkout-primary" id="pageCheckoutBtn">';
+    html += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
+    html += '<span>Proceed to Checkout (PhonePe / UPI)</span></button>';
+    html += '<div class="vs-summary-payment-box">';
+    html += '<div class="vs-summary-security" style="margin-top:0;">100% Secure Payment &bull; 7-Day Replacement &bull; Brand Warranty</div>';
+    html += '<img src="' + escapeHtml(paymentBadgesUrl) + '" alt="PhonePe, GPay, Paytm, Visa, RuPay, Mastercard" class="vs-summary-payment-img" loading="lazy">';
+    html += '</div></div></div></div>';
 
     pageContainer.innerHTML = html;
 
@@ -785,6 +887,50 @@
         self.removeItem(id);
       });
     });
+
+    pageContainer.querySelectorAll('[data-upsell-idx]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = parseInt(btn.getAttribute('data-upsell-idx'), 10);
+        var up = QUICK_ADD_UPSELLS[idx];
+        if (up) {
+          self.addItem({
+            productId: up.productId,
+            variantId: up.variantId,
+            name: up.name,
+            variantName: up.variantName,
+            price: up.price,
+            originalPrice: up.originalPrice,
+            quantity: 1,
+            image: up.image
+          });
+        }
+      });
+    });
+
+    var gstinInput = pageContainer.querySelector('#pageCartGstin');
+    if (gstinInput) {
+      gstinInput.addEventListener('input', function(e) {
+        self.orderGstin = (e.target.value || '').toUpperCase().trim();
+        try { localStorage.setItem('vs_order_gstin', self.orderGstin); } catch (err) {}
+      });
+    }
+
+    var noteInput = pageContainer.querySelector('#pageCartNote');
+    if (noteInput) {
+      noteInput.addEventListener('input', function(e) {
+        self.orderNote = (e.target.value || '').trim();
+        try { localStorage.setItem('vs_order_note', self.orderNote); } catch (err) {}
+      });
+    }
+
+    var pageCouponBtn = pageContainer.querySelector('#pageApplyCouponBtn');
+    var pageCouponInput = pageContainer.querySelector('#pageCouponInput');
+    if (pageCouponBtn && pageCouponInput) {
+      pageCouponBtn.addEventListener('click', function() {
+        var code = pageCouponInput.value.trim();
+        if (code) self.applyCoupon(code);
+      });
+    }
 
     var clearBtn = pageContainer.querySelector('#clearCartBtn');
     if (clearBtn) {
@@ -847,6 +993,25 @@
         })
         .then(function(res) {
           if (!res.ok) throw new Error('Shopify cart/add.js failed: ' + res.status);
+          if (self.orderGstin || self.orderNote) {
+            var noteParts = [];
+            if (self.orderGstin) noteParts.push('GSTIN: ' + self.orderGstin);
+            if (self.orderNote) noteParts.push(self.orderNote);
+            return fetch(root + 'cart/update.js', {
+              method: 'POST',
+              credentials: 'same-origin',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                note: noteParts.join(' | '),
+                attributes: {
+                  GSTIN: self.orderGstin || '',
+                  OrderNote: self.orderNote || ''
+                }
+              })
+            }).catch(function() {});
+          }
+        })
+        .then(function() {
           window.location.href = root + 'checkout';
         })
         .catch(function(err) {

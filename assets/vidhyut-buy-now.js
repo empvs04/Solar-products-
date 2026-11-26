@@ -3,10 +3,105 @@
  */
 (function() {
   var productsData = [
+    // --- Featured Best Sellers ---
+    {
+      id: "vidhyut-saver-card",
+      categoryId: "best-sellers",
+      name: "Vidhyut Saathi Smart Saver Card",
+      fullName: "Vidhyut Saathi Smart Electric Saver Card (TERAHERTZ Nano Tech)",
+      category: "Best Sellers",
+      badge: "India's No. 1 Saver",
+      rating: "4.9 (240+ Verified)",
+      description: "Smart electricity saver card featuring US-German Nano Technology with TERAHERTZ chip & 20,000+ Negative Ions to optimize power factor.",
+      fullDescription: "Vidhyut Saathi Smart Electric Saver Card features advanced US-German Nano Technology with TERAHERTZ Chip and 20,000+ Negative Ions. Designed to help optimize electrical performance, stabilize current waves, improve power factor, and reduce electricity leakage across residential and commercial distribution boards up to 10KW.",
+      image: "https://vidhyutsaathi.in/cdn/shop/files/VS_Card_Final_Design_Golden_1.png?v=1794309031&width=900",
+      basePrice: 3498,
+      availability: "In Stock - Express Dispatch",
+      variants: [
+        { id: "vidhyut-saver-card", name: "Standard Smart Saver Card (Single Unit)", wattage: "Up to 10KW Load", price: 3498, originalPrice: 4999, recommended: "Homes, Shops & Offices", isPopular: true }
+      ],
+      specs: [
+        { label: "Core Technology", value: "US-German Nano Tech + TERAHERTZ Chip" },
+        { label: "Negative Ions", value: "20,000+ High-Density Ion Matrix" },
+        { label: "Supported Load", value: "Single & Three-Phase up to 10KW" },
+        { label: "Installation", value: "Zero Wiring — Mounts at Main MCB Box" }
+      ]
+    },
+    {
+      id: "meco-clamp-meter",
+      categoryId: "best-sellers",
+      name: "MECO 27 AUTO BL CLAMP METER",
+      fullName: "MECO 27 AUTO BL Digital Clamp Meter (US-German Nano Tech)",
+      category: "Best Sellers",
+      badge: "Pro Electrical Testing",
+      rating: "4.9 (185+ Verified)",
+      description: "Precision auto-ranging digital clamp meter with NCV safety, data hold, and wide jaw opening for AC leakage current measurement.",
+      fullDescription: "MECO 27 AUTO BL Clamp Meter featuring precision calibration for accurate AC leakage current measurement with high reliability. Equipped with non-contact voltage (NCV) safety alert, auto range, data hold, backlit LCD, and wide jaw opening for multiple conductors.",
+      image: "https://vidhyutsaathi.in/cdn/shop/files/Glossy_Red_Clamp_Meter_Product_Poster.png?v=1794310207&width=900",
+      basePrice: 1899,
+      availability: "In Stock - Dispatch within 24h",
+      variants: [
+        { id: "meco-clamp-meter", name: "MECO 27 AUTO BL Single Unit + Leads", wattage: "Auto Range + NCV", price: 1899, originalPrice: 2599, recommended: "Electricians & Solar Engineers", isPopular: true }
+      ],
+      specs: [
+        { label: "Current Measurement", value: "AC Leakage & Load Current Auto-Range" },
+        { label: "Safety Sensor", value: "Built-in Non-Contact Voltage (NCV)" },
+        { label: "Display", value: "Backlit LCD with Data Hold" },
+        { label: "Included", value: "Test Leads, Carry Pouch & User Manual" }
+      ]
+    },
+    {
+      id: "industrial-clamp-series",
+      categoryId: "best-sellers",
+      name: "MECO 27 AUTO BL CLAMP (Pack of 3)",
+      fullName: "MECO 27 AUTO BL Clamp Meter — Commercial Value Pack of 3",
+      category: "Best Sellers",
+      badge: "Fleet & Team Bundle",
+      rating: "4.9 (94+ Verified)",
+      description: "Value bundle of 3 MECO Clamp Meters for installation teams, electrical contractors, and field service technicians.",
+      fullDescription: "Equip your entire electrical or solar installation team with 3 genuine MECO 27 AUTO BL Clamp Meters featuring auto-ranging AC measurement, NCV safety alert, and heavy-duty test leads at a bulk bundle discount.",
+      image: "https://vidhyutsaathi.in/cdn/shop/files/Pack_of_3_Red_Clamp_Meters.png?v=1794309908&width=900",
+      basePrice: 4500,
+      availability: "In Stock - Bulk Pack Ready",
+      variants: [
+        { id: "industrial-clamp-series", name: "Pack of 3 Clamp Meters (Team Bundle)", wattage: "3 x Complete Kits", price: 4500, originalPrice: 6999, recommended: "Contractors & Service Teams", isPopular: true }
+      ],
+      specs: [
+        { label: "Bundle Contents", value: "3 x MECO 27 AUTO BL Clamp Meters" },
+        { label: "Savings", value: "₹2,499 Bundle Discount vs Single Units" },
+        { label: "Safety Rating", value: "CAT III 600V + NCV Alert" },
+        { label: "Invoice", value: "Full 18% GST B2B Tax Invoice" }
+      ]
+    },
+    {
+      id: "new-product",
+      categoryId: "best-sellers",
+      name: "BK-100 Solar Interaction Wall Lamp",
+      fullName: "BK-100 Solar Interaction Wall Lamp (100 LED 600LM IP66)",
+      category: "Best Sellers",
+      badge: "New Arrival",
+      rating: "4.8 (160+ Verified)",
+      description: "100-LED 600LM solar motion-sensor wall lamp with 120° detection, IP66 waterproofing, 1200mAh battery, and dual solar/USB charging.",
+      fullDescription: "BK-100 Solar Interaction Wall Lamp packs 100 high-brightness SMD LEDs (600 Lumens) with a 120-degree PIR motion sensor (3–5m detection range), IP66 waterproof housing, 1200mAh rechargeable lithium battery, and dual solar + USB charging.",
+      image: "https://vidhyutsaathi.in/cdn/shop/files/led_light.avif?v=1795679123&width=900",
+      basePrice: 300,
+      availability: "In Stock - Dispatch within 24h",
+      variants: [
+        { id: "new-product", name: "BK-100 Solar Motion Wall Lamp (100 LED)", wattage: "600LM Solar + USB", price: 300, originalPrice: 599, recommended: "Entrances, Balconies & Stairways", isPopular: true }
+      ],
+      specs: [
+        { label: "LED Output", value: "100 LEDs — 600 Lumens Brightness" },
+        { label: "Motion Sensor", value: "120° Wide Angle (3–5m Range)" },
+        { label: "Battery & Charge", value: "1200mAh Li-Ion (Solar + USB)" },
+        { label: "Protection", value: "IP66 All-Weather Waterproof" }
+      ]
+    },
+
     // --- Solar Lights Category ---
     {
       id: "solar-lights",
       categoryId: "solar-lights",
+      isCategoryAlias: true,
       name: "Solar Lights",
       fullName: "Solar Street Lights — All-in-One Outdoor Luminaire",
       category: "Solar Solutions",
@@ -126,6 +221,7 @@
     {
       id: "led-lamps",
       categoryId: "led-lamps",
+      isCategoryAlias: true,
       name: "LED Lamps",
       fullName: "Smart Architectural LED Lamps & Suspended Luminaires",
       category: "Commercial & Indoor",
@@ -245,6 +341,7 @@
     {
       id: "led-bulbs",
       categoryId: "led-bulbs",
+      isCategoryAlias: true,
       name: "LED Bulbs",
       fullName: "High-Efficiency LED Bulbs (Multipack Value Editions)",
       category: "Energy Saving",
@@ -494,6 +591,7 @@
     // Read URL param ?product=
     var params = new URLSearchParams(window.location.search);
     var pParam = params.get('product');
+    if (pParam === 'saver-card') pParam = 'vidhyut-saver-card';
     for (var i = 0; i < productsData.length; i++) {
       if (productsData[i].id === pParam) {
         activeProductId = pParam;
@@ -501,11 +599,29 @@
       }
     }
 
+    var activeRecFilter = 'all';
+    var activeRecSearch = '';
+
     function getActiveProduct() {
       for (var i = 0; i < productsData.length; i++) {
         if (productsData[i].id === activeProductId) return productsData[i];
       }
       return productsData[0];
+    }
+
+    function resolveImageSrc(imgVal) {
+      if (!imgVal) return window.vidhyutAssetUrl ? window.vidhyutAssetUrl('solar-lights.jpg') : '/assets/images/products/solar-lights.jpg';
+      if (imgVal.indexOf('http://') === 0 || imgVal.indexOf('https://') === 0 || imgVal.indexOf('//') === 0) {
+        return imgVal;
+      }
+      if (window.vidhyutAssetUrl) {
+        return window.vidhyutAssetUrl(imgVal);
+      }
+      var mainImg = document.getElementById('mainProductImg');
+      if (mainImg && mainImg.src && mainImg.src.indexOf('/') > -1) {
+        return mainImg.src.substring(0, mainImg.src.lastIndexOf('/') + 1) + imgVal;
+      }
+      return '/assets/images/products/' + imgVal;
     }
 
     function renderProduct(scroll) {
@@ -518,12 +634,14 @@
         }
       }
       quantity = 1;
+      var qInput = document.getElementById('qtyInput');
+      if (qInput) qInput.value = 1;
 
       // Update tabs
       var tabs = document.querySelectorAll('.vs-category-tab');
       tabs.forEach(function(tab) {
         var tabId = tab.getAttribute('data-product-id');
-        if (tabId === product.id || tabId === product.categoryId) {
+        if (tabId === product.id || tabId === product.categoryId || (product.categoryId === 'best-sellers' && tabId === 'vidhyut-saver-card')) {
           tab.classList.add('is-active');
         } else {
           tab.classList.remove('is-active');
@@ -533,14 +651,10 @@
       // Update Media
       var mainImg = document.getElementById('mainProductImg');
       var mediaBadge = document.getElementById('mediaCategoryBadge');
+      var imgCard = document.getElementById('mainImgCard');
+      if (imgCard) imgCard.classList.remove('is-zoomed');
       if (mainImg) {
-        if (window.vidhyutAssetUrl) {
-          mainImg.src = window.vidhyutAssetUrl(product.image);
-        } else {
-          var currentSrc = mainImg.src;
-          var dir = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
-          mainImg.src = dir + product.image;
-        }
+        mainImg.src = resolveImageSrc(product.image);
         mainImg.alt = product.fullName;
       }
       if (mediaBadge) mediaBadge.textContent = product.badge || product.category;
@@ -550,11 +664,16 @@
       var nameEl = document.getElementById('productName');
       var descEl = document.getElementById('productDesc');
       var stockEl = document.getElementById('productStockBadge');
+      var ratingEl = document.getElementById('productRatingPill');
 
       if (metaCat) metaCat.textContent = product.category;
       if (nameEl) nameEl.textContent = product.fullName;
       if (descEl) descEl.textContent = product.fullDescription;
       if (stockEl) stockEl.textContent = product.availability;
+      if (ratingEl) {
+        var span = ratingEl.querySelector('span');
+        if (span) span.textContent = product.rating || '4.9 (128+ Verified)';
+      }
 
       // Render Variants
       renderVariantsList(product);
@@ -634,6 +753,7 @@
       var cur = document.getElementById('priceCurrent');
       var orig = document.getElementById('priceOriginal');
       var disc = document.getElementById('priceDiscount');
+      var saveChip = document.getElementById('priceSavingsChip');
       var sub = document.getElementById('subtotalVal');
 
       var unit = selectedVariant.price;
@@ -646,6 +766,12 @@
         var pct = Math.round(((origVal - unit) / origVal) * 100);
         disc.textContent = pct + '% OFF';
       }
+      if (saveChip && origVal && origVal > unit) {
+        saveChip.textContent = 'Save ₹' + ((origVal - unit) * quantity).toLocaleString('en-IN');
+        saveChip.style.display = 'inline-flex';
+      } else if (saveChip) {
+        saveChip.style.display = 'none';
+      }
       if (sub) sub.textContent = '₹' + subtotal.toLocaleString('en-IN');
     }
 
@@ -654,31 +780,48 @@
       if (!grid) return;
       grid.innerHTML = '';
 
-      var mainImg = document.getElementById('mainProductImg');
-      var dir = '';
-      if (mainImg) {
-        var currentSrc = mainImg.src;
-        dir = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
+      var filtered = productsData.filter(function(p) {
+        if (p.isCategoryAlias || p.id === currentId) return false;
+        if (activeRecFilter !== 'all' && p.categoryId !== activeRecFilter) return false;
+        if (activeRecSearch) {
+          var hay = (p.name + ' ' + p.fullName + ' ' + p.category + ' ' + p.description).toLowerCase();
+          if (hay.indexOf(activeRecSearch) === -1) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="vs-rec-empty">No matching products found. Try clearing your search or choosing another category.</div>';
+        return;
       }
 
-      productsData.forEach(function(p) {
-        if (p.id === currentId) return;
+      filtered.forEach(function(p) {
+        var recImg = resolveImageSrc(p.image);
+        var defaultVariant = p.variants[0];
+        for (var v = 0; v < p.variants.length; v++) {
+          if (p.variants[v].isPopular) { defaultVariant = p.variants[v]; break; }
+        }
 
-        var recImg = window.vidhyutAssetUrl ? window.vidhyutAssetUrl(p.image) : (dir + p.image);
         var card = document.createElement('div');
         card.className = 'vs-rec-card';
         card.innerHTML = [
           '<div class="vs-rec-img-wrap">',
-            '<img src="' + recImg + '" alt="' + p.name + '" class="vs-rec-img" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, \'' + (p.image || 'solar-lights.jpg') + '\');">',
+            '<img src="' + recImg + '" alt="' + p.name + '" class="vs-rec-img" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, \'solar-lights.jpg\');">',
             '<span class="vs-rec-badge-pill">' + (p.badge || p.category) + '</span>',
           '</div>',
           '<div class="vs-rec-body">',
             '<div class="vs-rec-name">' + p.name + '</div>',
             '<div class="vs-rec-price-hint">Starting from <strong>₹' + p.basePrice.toLocaleString('en-IN') + '</strong></div>',
-            '<button type="button" class="vs-rec-btn" data-switch-to="' + p.id + '">',
-              '<span>Buy Now</span>',
-              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>',
-            '</button>',
+            '<div class="vs-rec-actions">',
+              '<button type="button" class="vs-rec-quick-add" data-quick-add="' + p.id + '">',
+                '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>',
+                '<span>Add</span>',
+              '</button>',
+              '<button type="button" class="vs-rec-btn" data-switch-to="' + p.id + '">',
+                '<span>Configure</span>',
+                '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>',
+              '</button>',
+            '</div>',
           '</div>'
         ].join('');
 
@@ -690,7 +833,80 @@
           renderProduct(true);
         });
 
+        card.querySelector('.vs-rec-quick-add').addEventListener('click', function(e) {
+          e.preventDefault();
+          if (window.vsCart && defaultVariant) {
+            window.vsCart.addItem({
+              productId: p.id,
+              variantId: defaultVariant.id,
+              name: p.fullName || p.name,
+              variantName: defaultVariant.name,
+              price: defaultVariant.price,
+              originalPrice: defaultVariant.originalPrice,
+              quantity: 1,
+              image: recImg
+            });
+          }
+        });
+
         grid.appendChild(card);
+      });
+    }
+
+    // Image Zoom Toggle
+    var imgCard = document.getElementById('mainImgCard');
+    var zoomBtn = document.getElementById('imgZoomToggle');
+    function toggleZoom(e) {
+      if (e) e.stopPropagation();
+      if (!imgCard) return;
+      imgCard.classList.toggle('is-zoomed');
+      if (zoomBtn) {
+        var span = zoomBtn.querySelector('span');
+        if (span) span.textContent = imgCard.classList.contains('is-zoomed') ? 'Reset' : 'Zoom';
+      }
+    }
+    if (zoomBtn) zoomBtn.addEventListener('click', toggleZoom);
+    if (imgCard) imgCard.addEventListener('click', toggleZoom);
+
+    // Interactive Product Detail Tabs
+    var detailTabs = document.querySelectorAll('[data-detail-tab]');
+    var detailPanels = {
+      specs: document.getElementById('detailPanelSpecs'),
+      warranty: document.getElementById('detailPanelWarranty'),
+      shipping: document.getElementById('detailPanelShipping')
+    };
+    detailTabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var key = tab.getAttribute('data-detail-tab');
+        detailTabs.forEach(function(t) {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        Object.keys(detailPanels).forEach(function(k) {
+          if (detailPanels[k]) {
+            detailPanels[k].style.display = (k === key) ? 'block' : 'none';
+          }
+        });
+      });
+    });
+
+    // Catalogue Filter Pills & Live Search
+    document.querySelectorAll('[data-rec-filter]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        activeRecFilter = btn.getAttribute('data-rec-filter') || 'all';
+        document.querySelectorAll('[data-rec-filter]').forEach(function(b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        renderRecs(activeProductId);
+      });
+    });
+
+    var recSearch = document.getElementById('recSearchInput');
+    if (recSearch) {
+      recSearch.addEventListener('input', function(e) {
+        activeRecSearch = (e.target.value || '').trim().toLowerCase();
+        renderRecs(activeProductId);
       });
     }
 
@@ -809,15 +1025,8 @@
     }
 
     function getProductImageSrc(p) {
-      if (!p) return window.vidhyutAssetUrl ? window.vidhyutAssetUrl('solar-lights.jpg') : '/assets/images/products/solar-lights.jpg';
-      var filename = p.image || 'solar-lights.jpg';
-      if (filename.indexOf('/') > -1) {
-        filename = filename.substring(filename.lastIndexOf('/') + 1);
-      }
-      if (window.vidhyutAssetUrl) {
-        return window.vidhyutAssetUrl(filename);
-      }
-      return '/assets/images/products/' + filename;
+      if (!p) return resolveImageSrc('solar-lights.jpg');
+      return resolveImageSrc(p.image || 'solar-lights.jpg');
     }
 
     // Add to Cart Click
@@ -836,6 +1045,7 @@
             name: p.fullName || p.name,
             variantName: selectedVariant.name,
             price: selectedVariant.price,
+            originalPrice: selectedVariant.originalPrice,
             quantity: quantity,
             image: img
           });

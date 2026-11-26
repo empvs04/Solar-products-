@@ -4,11 +4,11 @@
    ========================================================================== */
 
 .vs-footer {
-  background-color: var(--color-midnight-dark);
+  background: radial-gradient(circle at 15% 0%, rgba(30, 58, 95, 0.28) 0%, transparent 45%), var(--color-midnight-dark);
   color: #94A3B8;
   padding-top: var(--space-4xl);
   padding-bottom: var(--space-xl);
-  border-top: 1px solid var(--color-border-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .vs-footer-grid {
