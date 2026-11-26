@@ -165,6 +165,55 @@ export function resolveItemImage(item) {
   return getAssetUrl('solar-lights.jpg');
 }
 
+export function getItemPricing(item) {
+  const price = Number(item.price) || 0;
+  let mrp = Number(item.originalPrice || item.mrp);
+  if (!mrp || mrp <= price) {
+    if (price >= 3000) {
+      mrp = Math.round((price * 1.35) / 100) * 100 - 1;
+    } else if (price >= 1500) {
+      mrp = Math.round((price * 1.45) / 100) * 100 - 1;
+    } else if (price >= 800) {
+      mrp = Math.round((price * 1.5) / 50) * 50 - 1;
+    } else {
+      mrp = Math.round((price * 1.6) / 50) * 50 - 1;
+    }
+  }
+  const discount = mrp - price;
+  const discountPercent = Math.max(5, Math.round((discount / mrp) * 100));
+  return { price, mrp, discount, discountPercent };
+}
+
+export function startCartCountdown() {
+  function tick() {
+    const timerEls = document.querySelectorAll('.vs-cart-timer, #cartTimer');
+    if (!timerEls.length) return;
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(23, 59, 59, 999);
+    let diffMs = midnight.getTime() - now.getTime();
+    if (diffMs <= 0) diffMs = 12 * 3600 * 1000 + 8 * 60 * 1000 + 44 * 1000;
+
+    const hours = Math.floor(diffMs / (1000 * 60 * 60));
+    const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+    const hStr = hours < 10 ? '0' + hours : hours;
+    const mStr = mins < 10 ? '0' + mins : mins;
+    const sStr = secs < 10 ? '0' + secs : secs;
+    const timeStr = `${hStr}h : ${mStr}m : ${sStr}s`;
+
+    timerEls.forEach(el => {
+      el.textContent = timeStr;
+    });
+  }
+  tick();
+  if (typeof window !== 'undefined' && !window._vsCartTimerSet) {
+    window._vsCartTimerSet = true;
+    setInterval(tick, 1000);
+  }
+}
+
 export class VidhyutCart {
   constructor() {
     this.storageKey = 'vs_cart';
@@ -442,6 +491,54 @@ export class VidhyutCart {
       checkoutBtn.addEventListener('click', () => this.proceedToCheckout());
     }
 
+    // Initialize coupon accordion
+    const couponToggle = document.getElementById('cartCouponToggle');
+    const couponContent = document.getElementById('cartCouponContent');
+    if (couponToggle && couponContent) {
+      couponToggle.addEventListener('click', () => {
+        const isOpen = couponContent.style.display !== 'none';
+        couponContent.style.display = isOpen ? 'none' : 'block';
+        couponToggle.setAttribute('aria-expanded', !isOpen);
+        const chevron = couponToggle.querySelector('.vs-chevron-icon');
+        if (chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    }
+
+    // Coupon apply click handlers
+    document.querySelectorAll('[data-apply-coupon]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.getAttribute('data-apply-coupon');
+        this.applyCoupon(code);
+      });
+    });
+
+    const applyManualBtn = document.getElementById('applyCouponBtn');
+    const couponInput = document.getElementById('couponCodeInput');
+    if (applyManualBtn && couponInput) {
+      applyManualBtn.addEventListener('click', () => {
+        const code = couponInput.value.trim();
+        if (code) {
+          this.applyCoupon(code);
+        }
+      });
+    }
+
+    // Initialize order summary accordion
+    const summaryToggle = document.getElementById('summaryToggle');
+    const summaryDetails = document.getElementById('summaryDetails');
+    if (summaryToggle && summaryDetails) {
+      summaryToggle.addEventListener('click', () => {
+        const isOpen = summaryDetails.style.display !== 'none';
+        summaryDetails.style.display = isOpen ? 'none' : 'block';
+        summaryToggle.setAttribute('aria-expanded', !isOpen);
+        const chevron = summaryToggle.querySelector('.vs-summary-chevron');
+        if (chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    }
+
+    // Start real-time sale urgency timer
+    startCartCountdown();
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isDrawerOpen) {
         this.closeDrawer();
@@ -449,6 +546,26 @@ export class VidhyutCart {
     });
 
     this.renderDrawer();
+  }
+
+  applyCoupon(code) {
+    const cleanCode = (code || '').toUpperCase().trim();
+    const subtotal = this.getSubtotal();
+
+    if (cleanCode === 'VIDHYUT10') {
+      if (subtotal >= 1999) {
+        this.couponDiscount = Math.round(subtotal * 0.10);
+        this.couponCode = cleanCode;
+        this.showToast(`Coupon VIDHYUT10 applied! You saved ₹${this.couponDiscount.toLocaleString('en-IN')}`);
+        this.renderDrawer();
+      } else {
+        this.showToast('Coupon VIDHYUT10 is valid on orders of ₹1,999 or more.');
+      }
+    } else if (cleanCode === 'FREESHIP') {
+      this.showToast('FREESHIP is already active! Standard delivery is 100% Free.');
+    } else {
+      this.showToast(`Coupon ${cleanCode} is invalid or expired.`);
+    }
   }
 
   openDrawer() {
@@ -487,19 +604,28 @@ export class VidhyutCart {
   }
 
   renderDrawer() {
+    const drawer = document.getElementById('cartDrawer');
     const container = document.getElementById('cartItemsWrap');
     const totalEl = document.getElementById('cartTotalVal');
     const drawerBadge = document.getElementById('cartBadgeCount');
     const checkoutBtn = document.getElementById('cartCheckoutBtn');
+    const urgencyBar = document.getElementById('cartUrgencyBar');
+    const extraWidgets = document.getElementById('cartExtraWidgets');
+    const footerEl = document.getElementById('cartDrawerFooter') || drawer?.querySelector('.vs-cart-footer');
     if (!container) return;
 
     const count = this.getItemCount();
     const subtotal = this.getSubtotal();
 
-    if (drawerBadge) drawerBadge.textContent = count.toString();
-    if (totalEl) totalEl.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+    if (drawerBadge) {
+      drawerBadge.textContent = count > 0 ? `(${count})` : '(0)';
+    }
 
     if (this.cart.length === 0) {
+      if (urgencyBar) urgencyBar.style.display = 'none';
+      if (extraWidgets) extraWidgets.style.display = 'none';
+      if (footerEl) footerEl.style.display = 'none';
+
       container.innerHTML = `
         <div class="vs-cart-empty">
           <div class="vs-cart-empty-icon">
@@ -520,30 +646,68 @@ export class VidhyutCart {
       return;
     }
 
+    if (urgencyBar) urgencyBar.style.display = 'flex';
+    if (extraWidgets) extraWidgets.style.display = 'flex';
+    if (footerEl) footerEl.style.display = 'flex';
     if (checkoutBtn) checkoutBtn.disabled = false;
 
-    container.innerHTML = this.cart.map(item => `
-      <div class="vs-cart-item" data-variant-id="${item.variantId}">
-        <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-item-img" width="64" height="64" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');">
-        <div class="vs-cart-item-info">
-          <div class="vs-cart-item-top">
+    let totalMrp = 0;
+    container.innerHTML = this.cart.map(item => {
+      const pricing = getItemPricing(item);
+      const lineMrp = pricing.mrp * item.quantity;
+      totalMrp += lineMrp;
+      const img = resolveItemImage(item);
+      const variantName = item.variantName || 'Standard Variant';
+
+      return `
+        <div class="vs-cart-item" data-variant-id="${item.variantId}">
+          <img src="${img}" alt="${item.name}" class="vs-cart-item-img" width="78" height="78" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');">
+          <div class="vs-cart-item-info">
             <h4 class="vs-cart-item-title">${item.name}</h4>
-            <button type="button" class="vs-cart-item-remove" data-remove="${item.variantId}" aria-label="Remove item">
-              &times;
-            </button>
-          </div>
-          <div class="vs-cart-item-variant">${item.variantName}</div>
-          <div class="vs-cart-item-bottom">
-            <div class="vs-cart-item-stepper">
-              <button type="button" class="vs-cart-step-btn" data-step-dec="${item.variantId}" aria-label="Decrease">&minus;</button>
-              <span class="vs-cart-step-val">${item.quantity}</span>
-              <button type="button" class="vs-cart-step-btn" data-step-inc="${item.variantId}" aria-label="Increase">&plus;</button>
+            
+            <div class="vs-cart-item-price-row">
+              <span class="vs-cart-item-price">₹${pricing.price.toLocaleString('en-IN')}</span>
+              <span class="vs-cart-item-mrp">₹${pricing.mrp.toLocaleString('en-IN')}</span>
+              <span class="vs-cart-item-discount">₹${pricing.discount.toLocaleString('en-IN')} OFF</span>
             </div>
-            <div class="vs-cart-item-price">₹${(item.price * item.quantity).toLocaleString('en-IN')}</div>
+
+            <div class="vs-cart-item-desc-lines">
+              <div class="vs-cart-desc-line"><span class="vs-desc-label">Model:</span> <span class="vs-desc-val">${variantName}</span></div>
+              <div class="vs-cart-desc-line"><span class="vs-desc-label">Warranty:</span> <span class="vs-desc-val">1 Year Official Brand Warranty</span></div>
+            </div>
+
+            <div class="vs-cart-item-bottom">
+              <div class="vs-cart-item-stepper">
+                <button type="button" class="vs-cart-step-btn" data-step-dec="${item.variantId}" aria-label="Decrease quantity">&minus;</button>
+                <span class="vs-cart-step-val">${item.quantity}</span>
+                <button type="button" class="vs-cart-step-btn" data-step-inc="${item.variantId}" aria-label="Increase quantity">&plus;</button>
+              </div>
+              <button type="button" class="vs-cart-item-remove" data-remove="${item.variantId}" aria-label="Remove item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  <line x1="10" y1="11" x2="10" y2="17"></line>
+                  <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
+
+    const totalSavings = totalMrp - subtotal;
+    const finalPayable = Math.max(0, subtotal - (this.couponDiscount || 0));
+
+    if (totalEl) {
+      totalEl.textContent = `Rs. ${finalPayable.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    const summaryMrpEl = document.getElementById('summaryMrpVal');
+    if (summaryMrpEl) summaryMrpEl.textContent = `₹${totalMrp.toLocaleString('en-IN')}`;
+
+    const summaryDiscountEl = document.getElementById('summaryDiscountVal');
+    if (summaryDiscountEl) summaryDiscountEl.textContent = `-₹${(totalSavings + (this.couponDiscount || 0)).toLocaleString('en-IN')}`;
 
     // Attach row events
     container.querySelectorAll('[data-step-dec]').forEach(btn => {

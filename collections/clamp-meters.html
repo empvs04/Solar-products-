@@ -336,29 +336,125 @@
        Shopping Cart Slide-Over Drawer
        ====================================================================== -->
   <div class="vs-cart-drawer-backdrop" id="cartDrawerBackdrop" style="display: none; visibility: hidden;"></div>
-  <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" style="display: none; visibility: hidden;">
+    <aside class="vs-cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer" style="display: none; visibility: hidden;">
     <div class="vs-cart-header">
       <div class="vs-cart-title-wrap">
-        <h3 class="vs-cart-title">Your Cart</h3>
-        <span class="vs-cart-badge-count" id="cartBadgeCount">0</span>
+        <h3 class="vs-cart-title">Shopping Cart <span class="vs-cart-title-count" id="cartBadgeCount">(0)</span></h3>
       </div>
       <button type="button" class="vs-cart-close" id="cartDrawerClose" aria-label="Close cart drawer">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
     </div>
 
-    <div class="vs-cart-items-wrap" id="cartItemsWrap">
-      <!-- Items dynamically populated via VidhyutCart -->
+    <!-- Sale Urgency Bar -->
+    <div class="vs-cart-urgency-bar" id="cartUrgencyBar">
+      <span class="vs-cart-urgency-icon">⚡</span>
+      <span class="vs-cart-urgency-text">Sale ends in : <strong class="vs-cart-timer" id="cartTimer">12h : 08m : 44s</strong></span>
     </div>
 
-    <div class="vs-cart-footer">
-      <div class="vs-cart-total-row">
-        <span class="vs-cart-total-label">Subtotal (incl. GST):</span>
-        <span class="vs-cart-total-val" id="cartTotalVal">₹0</span>
+    <!-- Scrollable Drawer Body -->
+    <div class="vs-cart-body" id="cartDrawerBody">
+      <div class="vs-cart-items-wrap" id="cartItemsWrap">
+        <!-- Populated dynamically via vidhyut-cart.js -->
       </div>
-      <button type="button" class="vs-cart-checkout-btn" id="cartCheckoutBtn">
-        <span>Proceed to Payment</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+
+      <!-- Extra Widgets -->
+      <div class="vs-cart-extra-widgets" id="cartExtraWidgets">
+        <!-- 7-Days Free Return & Exchange Available -->
+        <div class="vs-cart-trust-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M3 21v-5h5"></path></svg>
+          <span>7-Days Free Return &amp; Exchange Available</span>
+        </div>
+
+        <!-- Offers Available Accordion -->
+        <div class="vs-cart-coupon-box" id="cartCouponBox">
+          <button type="button" class="vs-cart-coupon-header" id="cartCouponToggle" aria-expanded="false">
+            <div class="vs-cart-coupon-left">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              <span>Offers Available</span>
+            </div>
+            <div class="vs-cart-coupon-right">
+              <span>View all coupons</span>
+              <svg class="vs-chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </button>
+          <div class="vs-cart-coupon-content" id="cartCouponContent" style="display: none;">
+            <div class="vs-coupon-input-row">
+              <input type="text" id="couponCodeInput" placeholder="Enter coupon code (e.g. VIDHYUT10)" class="vs-coupon-input">
+              <button type="button" id="applyCouponBtn" class="vs-coupon-apply-btn">Apply</button>
+            </div>
+            <div class="vs-coupon-list">
+              <div class="vs-coupon-item">
+                <div>
+                  <span class="vs-coupon-code-badge">VIDHYUT10</span>
+                  <span class="vs-coupon-desc">10% Off on orders above ₹1,999</span>
+                </div>
+                <button type="button" class="vs-coupon-use-btn" data-apply-coupon="VIDHYUT10">Apply</button>
+              </div>
+              <div class="vs-coupon-item">
+                <div>
+                  <span class="vs-coupon-code-badge">FREESHIP</span>
+                  <span class="vs-coupon-desc">Free Fast Delivery Pan-India</span>
+                </div>
+                <span class="vs-coupon-active-badge">Auto Applied ✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 100% Secure Transaction Box -->
+        <div class="vs-cart-secure-box">
+          <div class="vs-cart-secure-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>100% secure transaction</span>
+          </div>
+          <div class="vs-cart-payment-badges">
+            <span class="vs-pay-pill">GPay</span>
+            <span class="vs-pay-pill">Paytm</span>
+            <span class="vs-pay-pill">PhonePe</span>
+            <span class="vs-pay-pill">UPI</span>
+            <span class="vs-pay-pill">VISA</span>
+            <span class="vs-pay-pill">RuPay</span>
+            <span class="vs-pay-pill">Mastercard</span>
+          </div>
+        </div>
+
+        <!-- Order Summary Accordion -->
+        <div class="vs-cart-summary-accordion" id="cartSummaryAccordion">
+          <button type="button" class="vs-summary-toggle" id="summaryToggle" aria-expanded="false">
+            <strong>Order Summary</strong>
+            <svg class="vs-summary-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="vs-summary-details" id="summaryDetails" style="display: none;">
+            <div class="vs-summary-row">
+              <span>Bag Total (MRP)</span>
+              <span id="summaryMrpVal">₹0</span>
+            </div>
+            <div class="vs-summary-row vs-text-discount">
+              <span>Bag Savings</span>
+              <span id="summaryDiscountVal">-₹0</span>
+            </div>
+            <div class="vs-summary-row">
+              <span>Estimated GST (18%)</span>
+              <span class="vs-text-green">Included</span>
+            </div>
+            <div class="vs-summary-row">
+              <span>Delivery Fee</span>
+              <span class="vs-text-green">FREE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fixed / Sticky Footer Bar -->
+    <div class="vs-cart-footer" id="cartDrawerFooter">
+      <div class="vs-cart-footer-left">
+        <span class="vs-cart-footer-price" id="cartTotalVal">Rs. 0.00</span>
+        <span class="vs-cart-footer-label">Total payable</span>
+      </div>
+      <button type="button" class="vs-cart-proceed-btn" id="cartCheckoutBtn">
+        <span>PROCEED TO BUY</span>
       </button>
     </div>
   </aside>
