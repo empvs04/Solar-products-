@@ -5,6 +5,70 @@
  * Persists in localStorage ('vs_cart') and synchronizes across tabs & navigation.
  */
 
+const SHOPIFY_VARIANT_MAP = {
+  'meco-clamp-meter': '51169682128966',
+  'vidhyut-saver-card': '51169684095046',
+  'saver-card': '51169684095046',
+  'industrial-clamp-series': '51169685831750',
+  'new-product': '51169687470150',
+  'sl-15w': '51169689043014',
+  'sl-30w': '51169689108550',
+  'sl-60w': '51169689141318',
+  'step-4p': '51169691336774',
+  'step-4pk': '51169691336774',
+  'step-8p': '51169691369542',
+  'step-8pk': '51169691369542',
+  'sec-1x': '51169693073478',
+  'mot-std': '51169693073478',
+  'mot-remote': '51169693106246',
+  'sec-2x': '51169693139014',
+  'sconce-1x': '51169695531078',
+  'vnt-1x': '51169695531078',
+  'sconce-2x': '51169695563846',
+  'vnt-2x': '51169695563846',
+  'll-20w': '51169697333318',
+  'll-36w': '51169697366086',
+  'll-48w': '51169697398854',
+  'work-50w': '51169699364934',
+  'work-100w': '51169699397702',
+  'tower-std': '51169701232710',
+  'tower-pro': '51169701265478',
+  'wal-1x': '51169703264326',
+  'wal-2x': '51169703297094',
+  'lb-9w-4p': '51169705132102',
+  'lb-12w-4p': '51169705164870',
+  'lb-18w-2p': '51169705197638',
+  'sh-1b': '51169707556934',
+  'sh-2b': '51169707589702',
+  'dc-7w': '51169709260870',
+  'dc-12w': '51169709293638',
+  'dc-3pk': '51169709326406',
+  'fest-5m': '51169710309446',
+  'fest-10m': '51169710342214',
+  'cm-400a': '51169710800966',
+  'cm-600a': '51169710833734',
+  'cm-1000a': '51169710866502',
+  'meco-std': '51169711358022',
+  'meco-cal': '51169711390790',
+  'them-kit': '51169711849542',
+  'dt87-std': '51169712799814',
+  'sg997-pro': '51169714110534',
+  'sg997-dlx': '51169714143302'
+};
+
+function resolveShopifyVariantId(item) {
+  if (!item) return null;
+  const candidates = [item.shopifyVariantId, item.variantId, item.productId];
+  for (const c of candidates) {
+    if (!c) continue;
+    const mapped = SHOPIFY_VARIANT_MAP[String(c)];
+    if (mapped) return Number(mapped);
+    const num = Number(c);
+    if (Number.isInteger(num) && num > 0) return num;
+  }
+  return null;
+}
+
 export function getAssetUrl(filename) {
   if (!filename) filename = 'solar-lights.jpg';
   if (typeof window !== 'undefined' && window.VidhyutThemeAssets && window.VidhyutThemeAssets[filename]) {
@@ -925,9 +989,47 @@ export class VidhyutCart {
       return;
     }
 
-    // Direct to Payment Gateway Coming Soon Page
-    const targetUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/') + 'pages/payment-coming-soon';
-    window.location.href = targetUrl;
+    if (this.isCheckingOut) return;
+
+    const aggregated = new Map();
+    for (const item of this.cart) {
+      const vid = resolveShopifyVariantId(item);
+      if (vid) {
+        const qty = Math.max(1, parseInt(item.quantity, 10) || 1);
+        aggregated.set(vid, (aggregated.get(vid) || 0) + qty);
+      }
+    }
+
+    const shopifyItems = Array.from(aggregated.entries()).map(([id, quantity]) => ({ id, quantity }));
+    const rootRaw = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+    const root = rootRaw.endsWith('/') ? rootRaw : `${rootRaw}/`;
+
+    if (shopifyItems.length > 0) {
+      this.isCheckingOut = true;
+      setTimeout(() => { this.isCheckingOut = false; }, 6000);
+      this.showToast('Connecting to secure checkout...');
+
+      const permalink = `${root}cart/${shopifyItems.map(i => `${i.id}:${i.quantity}`).join(',')}`;
+
+      fetch(`${root}cart/clear.js`, { method: 'POST', credentials: 'same-origin' })
+        .then(() => fetch(`${root}cart/add.js`, {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: shopifyItems })
+        }))
+        .then(res => {
+          if (!res.ok) throw new Error(`Shopify cart/add.js failed: ${res.status}`);
+          window.location.href = `${root}checkout`;
+        })
+        .catch(err => {
+          console.warn('Shopify cart sync error, using cart permalink checkout:', err);
+          window.location.href = permalink;
+        });
+      return;
+    }
+
+    this.openWhatsAppCheckout();
   }
 
   openWhatsAppCheckout() {

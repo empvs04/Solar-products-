@@ -895,8 +895,9 @@
           return;
         }
 
-        var targetUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/') + 'pages/payment-coming-soon';
-        window.location.href = targetUrl;
+        var fallbackRoot = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/');
+        if (fallbackRoot.charAt(fallbackRoot.length - 1) !== '/') fallbackRoot += '/';
+        window.location.href = fallbackRoot + 'checkout';
       });
     }
 
@@ -908,8 +909,9 @@
           return;
         }
         if (cart.length === 0) return;
-        var targetUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/') + 'pages/payment-coming-soon';
-        window.location.href = targetUrl;
+        var fallbackRoot = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root ? window.Shopify.routes.root : '/');
+        if (fallbackRoot.charAt(fallbackRoot.length - 1) !== '/') fallbackRoot += '/';
+        window.location.href = fallbackRoot + 'checkout';
       });
     }
 
