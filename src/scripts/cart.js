@@ -278,12 +278,58 @@ export function startCartCountdown() {
   }
 }
 
+function escapeHtml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+const QUICK_ADD_UPSELLS = [
+  {
+    productId: 'new-product',
+    variantId: 'new-product',
+    name: 'BK-100 Solar Motion Wall Lamp',
+    variantName: '600LM Solar + USB',
+    price: 300,
+    originalPrice: 599,
+    image: 'https://vidhyutsaathi.in/cdn/shop/files/led_light.avif?v=1795679123&width=600'
+  },
+  {
+    productId: 'dc-12v-battery-clip-bulb',
+    variantId: 'dc-7w',
+    name: '12V DC Emergency Bulb + Clips',
+    variantName: '7W 12V DC Bulb',
+    price: 349,
+    originalPrice: 480,
+    image: 'led-bulb-2.jpg'
+  },
+  {
+    productId: 'dt87-pocket-clamp-meter',
+    variantId: 'dt87-std',
+    name: 'DT-87 Pocket Clamp Meter',
+    variantName: 'Handheld Tester + Leads',
+    price: 999,
+    originalPrice: 1350,
+    image: 'clamp-meter-3.jpg'
+  }
+];
+
 export class VidhyutCart {
   constructor() {
     this.storageKey = 'vs_cart';
     this.cart = this.loadCart();
     this.isDrawerOpen = false;
+    this.isCheckingOut = false;
     this.processingVariant = null;
+    try {
+      this.orderGstin = localStorage.getItem('vs_order_gstin') || '';
+      this.orderNote = localStorage.getItem('vs_order_note') || '';
+    } catch (e) {
+      this.orderGstin = '';
+      this.orderNote = '';
+    }
 
     this.init();
   }
@@ -437,6 +483,9 @@ export class VidhyutCart {
     const existingIndex = this.cart.findIndex(i => i.variantId === item.variantId);
     if (existingIndex > -1) {
       this.cart[existingIndex].quantity += (item.quantity || 1);
+      if (item.originalPrice && !this.cart[existingIndex].originalPrice) {
+        this.cart[existingIndex].originalPrice = item.originalPrice;
+      }
       if (!this.cart[existingIndex].image || this.cart[existingIndex].image === 'undefined') {
         this.cart[existingIndex].image = resolveItemImage(item);
       }
@@ -447,6 +496,7 @@ export class VidhyutCart {
         name: item.name || 'Vidhyut Saathi Product',
         variantName: item.variantName || 'Standard Variant',
         price: Number(item.price) || 0,
+        originalPrice: item.originalPrice || null,
         quantity: Math.max(1, Number(item.quantity) || 1),
         image: resolveItemImage(item)
       });
@@ -621,6 +671,7 @@ export class VidhyutCart {
       this.couponDiscount = 0;
       this.showToast('Coupon FREESHIP applied! Free Delivery active.');
       this.renderDrawer();
+      this.renderCartPage();
     } else {
       this.showToast(`Coupon "${cleanCode}" is invalid or expired.`);
     }
@@ -668,6 +719,7 @@ export class VidhyutCart {
     const drawerBadge = document.getElementById('cartBadgeCount');
     const checkoutBtn = document.getElementById('cartCheckoutBtn');
     const urgencyBar = document.getElementById('cartUrgencyBar');
+    const shippingBar = document.getElementById('cartShippingBar');
     const extraWidgets = document.getElementById('cartExtraWidgets');
     const footerEl = document.getElementById('cartDrawerFooter') || drawer?.querySelector('.vs-cart-footer');
     if (!container) return;
@@ -681,6 +733,7 @@ export class VidhyutCart {
 
     if (this.cart.length === 0) {
       if (urgencyBar) urgencyBar.style.display = 'none';
+      if (shippingBar) shippingBar.style.display = 'none';
       if (extraWidgets) extraWidgets.style.display = 'none';
       if (footerEl) footerEl.style.display = 'none';
 
@@ -705,6 +758,7 @@ export class VidhyutCart {
     }
 
     if (urgencyBar) urgencyBar.style.display = 'flex';
+    if (shippingBar) shippingBar.style.display = 'block';
     if (extraWidgets) extraWidgets.style.display = 'flex';
     if (footerEl) footerEl.style.display = 'flex';
     if (checkoutBtn) checkoutBtn.disabled = false;
@@ -828,11 +882,11 @@ export class VidhyutCart {
             </div>
             <h2 class="vs-empty-title">Your Cart is Empty</h2>
             <p class="vs-empty-desc">
-              You haven't added any items to your shopping cart yet. Browse our solar lighting and electrical product range below to get started.
+              You haven't added any items to your shopping cart yet. Browse our solar lighting, smart saver card, and clamp meter lineup below.
             </p>
             <div class="vs-empty-actions">
-              <a href="${getProductsPageUrl()}" class="vs-btn vs-btn-accent">
-                Explore Products
+              <a href="#productShowcase" class="vs-btn vs-btn-accent">
+                Configure a Product
               </a>
             </div>
           </div>
@@ -841,102 +895,132 @@ export class VidhyutCart {
       return;
     }
 
-    pageContainer.innerHTML = `
-      <div class="vs-cart-review-layout">
-        <!-- Left: Line Items List -->
-        <div class="vs-cart-items-column">
-          <div class="vs-cart-items-header">
-            <span class="vs-cart-col-prod">Product</span>
-            <span class="vs-cart-col-price">Unit Price</span>
-            <span class="vs-cart-col-qty">Quantity</span>
-            <span class="vs-cart-col-total">Total</span>
+    let totalMrp = 0;
+    const rowsHtml = this.cart.map(item => {
+      const pricing = getItemPricing(item);
+      totalMrp += pricing.mrp * item.quantity;
+      const img = resolveItemImage(item);
+      const lineSave = pricing.discount * item.quantity;
+
+      return `
+        <div class="vs-cart-table-row" data-variant-id="${escapeHtml(item.variantId)}">
+          <div class="vs-cart-cell-prod">
+            <img src="${escapeHtml(img)}" alt="${escapeHtml(item.name)}" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');">
+            <div class="vs-cart-row-details">
+              <h3 class="vs-cart-row-title">${escapeHtml(item.name)}</h3>
+              <div class="vs-cart-row-variant">${escapeHtml(item.variantName)}</div>
+              <div class="vs-cart-row-warranty">✓ 1-Year Brand Warranty &bull; GST Included</div>
+              <button type="button" class="vs-cart-row-remove" data-remove="${escapeHtml(item.variantId)}">
+                <span>Remove</span>
+              </button>
+            </div>
           </div>
-
-          <div class="vs-cart-table-rows">
-            ${this.cart.map(item => `
-              <div class="vs-cart-table-row" data-variant-id="${item.variantId}">
-                <div class="vs-cart-cell-prod">
-                  <img src="${resolveItemImage(item)}" alt="${item.name}" class="vs-cart-row-thumb" width="72" height="72" loading="lazy" onerror="window.vidhyutAssetFallback && window.vidhyutAssetFallback(this, 'solar-lights.jpg');">
-                  <div class="vs-cart-row-details">
-                    <h3 class="vs-cart-row-title">${item.name}</h3>
-                    <div class="vs-cart-row-variant">${item.variantName}</div>
-                    <button type="button" class="vs-cart-row-remove" data-remove="${item.variantId}">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                      <span>Remove</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="vs-cart-cell-price">
-                  ₹${item.price.toLocaleString('en-IN')}
-                </div>
-
-                <div class="vs-cart-cell-qty">
-                  <div class="vs-table-stepper">
-                    <button type="button" class="vs-stepper-btn" data-step-dec="${item.variantId}" aria-label="Decrease quantity">&minus;</button>
-                    <input type="number" class="vs-stepper-input" value="${item.quantity}" min="1" max="99" data-input-qty="${item.variantId}">
-                    <button type="button" class="vs-stepper-btn" data-step-inc="${item.variantId}" aria-label="Increase quantity">&plus;</button>
-                  </div>
-                </div>
-
-                <div class="vs-cart-cell-total">
-                  ₹${(item.price * item.quantity).toLocaleString('en-IN')}
-                </div>
-              </div>
-            `).join('')}
+          <div class="vs-cart-cell-price">
+            <div class="vs-cart-row-pricing">
+              <span>₹${pricing.price.toLocaleString('en-IN')}</span>
+              <span class="vs-cart-row-mrp">₹${pricing.mrp.toLocaleString('en-IN')}</span>
+              <span class="vs-cart-row-save">Save ₹${lineSave.toLocaleString('en-IN')}</span>
+            </div>
           </div>
-
-          <div class="vs-cart-table-footer">
-            <a href="${getProductsPageUrl()}" class="vs-continue-shopping-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              <span>Continue Shopping</span>
-            </a>
-            <button type="button" class="vs-clear-cart-link" id="clearCartBtn">
-              Clear All Items
-            </button>
+          <div class="vs-cart-cell-qty">
+            <div class="vs-table-stepper">
+              <button type="button" class="vs-stepper-btn" data-step-dec="${escapeHtml(item.variantId)}" aria-label="Decrease">&minus;</button>
+              <span class="vs-stepper-val">${item.quantity}</span>
+              <button type="button" class="vs-stepper-btn" data-step-inc="${escapeHtml(item.variantId)}" aria-label="Increase">&plus;</button>
+            </div>
           </div>
+          <div class="vs-cart-cell-total">₹${(pricing.price * item.quantity).toLocaleString('en-IN')}</div>
         </div>
+      `;
+    }).join('');
 
-        <!-- Right: Order Summary Sidebar -->
-        <div class="vs-cart-summary-column">
-          <div class="vs-order-summary-card">
-            <h3 class="vs-summary-heading">Order Summary</h3>
+    const totalSavings = Math.max(0, totalMrp - subtotal) + (this.couponDiscount || 0);
+    const finalPayable = Math.max(0, subtotal - (this.couponDiscount || 0));
+    const paymentBadgesUrl = '/assets/images/payment-trust-badges.png';
 
-            <div class="vs-summary-rows">
-              <div class="vs-summary-row">
-                <span>Items in Cart (${count})</span>
-                <span>₹${subtotal.toLocaleString('en-IN')}</span>
+    const upsellsHtml = QUICK_ADD_UPSELLS.map((up, idx) => {
+      const upImg = up.image.startsWith('http') ? up.image : getAssetUrl(up.image);
+      return `
+        <div class="vs-cart-upsell-card">
+          <img src="${escapeHtml(upImg)}" alt="${escapeHtml(up.name)}" class="vs-cart-upsell-img" loading="lazy">
+          <div class="vs-cart-upsell-info">
+            <div class="vs-cart-upsell-name">${escapeHtml(up.name)}</div>
+            <div class="vs-cart-upsell-price">₹${up.price.toLocaleString('en-IN')}</div>
+          </div>
+          <button type="button" class="vs-cart-upsell-btn" data-upsell-idx="${idx}">+ Add</button>
+        </div>
+      `;
+    }).join('');
+
+    pageContainer.innerHTML = `
+      <div class="vs-cart-savings-banner">
+        <span>✓ <strong>Free Pan-India Express Delivery Unlocked</strong> &bull; Priority dispatch from Rohtak</span>
+        <span>Total Savings: <strong>₹${totalSavings.toLocaleString('en-IN')}</strong></span>
+      </div>
+
+      <div class="vs-cart-review-layout">
+        <div class="vs-cart-items-col-wrap">
+          <div class="vs-cart-items-column">
+            <div class="vs-cart-items-header">
+              <span class="vs-cart-col-prod">Product</span>
+              <span class="vs-cart-col-price">Unit Price</span>
+              <span class="vs-cart-col-qty">Quantity</span>
+              <span class="vs-cart-col-total">Total</span>
+            </div>
+
+            <div class="vs-cart-table-rows">${rowsHtml}</div>
+
+            <div class="vs-cart-b2b-box">
+              <div class="vs-cart-b2b-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <span>B2B GST Invoice &amp; Delivery Instructions (Optional)</span>
               </div>
-              <div class="vs-summary-row">
-                <span>GST Tax (Included)</span>
-                <span class="vs-summary-badge-free">Included (18%)</span>
-              </div>
-              <div class="vs-summary-row">
-                <span>Standard Delivery</span>
-                <span class="vs-summary-badge-free">FREE</span>
-              </div>
-              <div class="vs-summary-divider"></div>
-              <div class="vs-summary-row vs-summary-total">
-                <span>Estimated Total</span>
-                <span class="vs-summary-grand-total">₹${subtotal.toLocaleString('en-IN')}</span>
+              <div class="vs-cart-b2b-grid">
+                <input type="text" id="pageCartGstin" class="vs-cart-b2b-input" maxlength="15" placeholder="15-Digit GSTIN (for Business Tax Credit)" value="${escapeHtml(this.gstin || this.orderGstin)}">
+                <input type="text" id="pageCartNote" class="vs-cart-b2b-input" maxlength="200" placeholder="Company Name or Delivery Instructions" value="${escapeHtml(this.orderNote)}">
               </div>
             </div>
 
-            <button type="button" class="vs-btn vs-btn-accent vs-btn-block vs-btn-checkout-primary" id="pageCheckoutBtn">
-              <span>Proceed to Payment</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
+            <div class="vs-cart-table-footer">
+              <a href="#productShowcase" class="vs-continue-shopping-link">&larr; Add More Products</a>
+              <button type="button" class="vs-clear-cart-link" id="clearCartBtn">Clear Cart</button>
+            </div>
+          </div>
 
-            <div class="vs-summary-security">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              <span>Authentic Brand Warranty &bull; GST Invoice Provided</span>
+          <div class="vs-cart-upsell-panel">
+            <div class="vs-cart-upsell-heading">Frequently Added Accessories &amp; Tools</div>
+            <div class="vs-cart-upsell-grid">${upsellsHtml}</div>
+          </div>
+        </div>
+
+        <div class="vs-cart-summary-column">
+          <div class="vs-order-summary-card">
+            <h3 class="vs-summary-heading">Order Summary</h3>
+            <div class="vs-cart-page-coupon-row">
+              <input type="text" id="pageCouponInput" class="vs-coupon-input" placeholder="Promo code (e.g. FREESHIP)" value="${escapeHtml(this.couponCode || '')}">
+              <button type="button" id="pageApplyCouponBtn" class="vs-coupon-apply-btn">Apply</button>
+            </div>
+            <div class="vs-summary-rows">
+              <div class="vs-summary-row"><span>Bag Total (MRP)</span><span>₹${totalMrp.toLocaleString('en-IN')}</span></div>
+              <div class="vs-summary-row vs-text-discount"><span>Total Savings (${count} items)</span><span>-₹${totalSavings.toLocaleString('en-IN')}</span></div>
+              <div class="vs-summary-row"><span>Coupon Discount</span><span class="${this.couponCode ? 'vs-text-green' : 'vs-text-muted'}">${this.couponCode ? `${escapeHtml(this.couponCode)} Applied ✓` : 'No coupon applied'}</span></div>
+              <div class="vs-summary-row"><span>Express Delivery</span><span class="vs-summary-badge-free">FREE</span></div>
+              <div class="vs-summary-divider"></div>
+              <div class="vs-summary-row vs-summary-total"><span>Total Payable</span><span class="vs-summary-grand-total">₹${finalPayable.toLocaleString('en-IN')}</span></div>
+            </div>
+            <button type="button" class="vs-btn vs-btn-accent vs-btn-block vs-btn-checkout-primary" id="pageCheckoutBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Proceed to Checkout (PhonePe / UPI)</span>
+            </button>
+            <div class="vs-summary-payment-box">
+              <div class="vs-summary-security" style="margin-top:0;">100% Secure Payment &bull; 7-Day Replacement &bull; Brand Warranty</div>
+              <img src="${escapeHtml(paymentBadgesUrl)}" alt="PhonePe, GPay, Paytm, Visa, RuPay, Mastercard" class="vs-summary-payment-img" loading="lazy">
             </div>
           </div>
         </div>
       </div>
     `;
 
-    // Attach row events on dedicated page
     pageContainer.querySelectorAll('[data-step-dec]').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-step-dec');
@@ -953,20 +1037,56 @@ export class VidhyutCart {
       });
     });
 
-    pageContainer.querySelectorAll('[data-input-qty]').forEach(input => {
-      input.addEventListener('change', (e) => {
-        const id = input.getAttribute('data-input-qty');
-        const val = parseInt(e.target.value, 10);
-        this.updateQuantity(id, isNaN(val) ? 1 : val);
-      });
-    });
-
     pageContainer.querySelectorAll('[data-remove]').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-remove');
         this.removeItem(id);
       });
     });
+
+    pageContainer.querySelectorAll('[data-upsell-idx]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-upsell-idx'), 10);
+        const up = QUICK_ADD_UPSELLS[idx];
+        if (up) {
+          this.addItem({
+            productId: up.productId,
+            variantId: up.variantId,
+            name: up.name,
+            variantName: up.variantName,
+            price: up.price,
+            originalPrice: up.originalPrice,
+            quantity: 1,
+            image: up.image
+          });
+        }
+      });
+    });
+
+    const gstinInput = pageContainer.querySelector('#pageCartGstin');
+    if (gstinInput) {
+      gstinInput.addEventListener('input', (e) => {
+        this.orderGstin = (e.target.value || '').toUpperCase().trim();
+        try { localStorage.setItem('vs_order_gstin', this.orderGstin); } catch (err) {}
+      });
+    }
+
+    const noteInput = pageContainer.querySelector('#pageCartNote');
+    if (noteInput) {
+      noteInput.addEventListener('input', (e) => {
+        this.orderNote = (e.target.value || '').trim();
+        try { localStorage.setItem('vs_order_note', this.orderNote); } catch (err) {}
+      });
+    }
+
+    const pageCouponBtn = pageContainer.querySelector('#pageApplyCouponBtn');
+    const pageCouponInput = pageContainer.querySelector('#pageCouponInput');
+    if (pageCouponBtn && pageCouponInput) {
+      pageCouponBtn.addEventListener('click', () => {
+        const code = pageCouponInput.value.trim();
+        if (code) this.applyCoupon(code);
+      });
+    }
 
     const clearBtn = pageContainer.querySelector('#clearCartBtn');
     if (clearBtn) {
@@ -1020,6 +1140,25 @@ export class VidhyutCart {
         }))
         .then(res => {
           if (!res.ok) throw new Error(`Shopify cart/add.js failed: ${res.status}`);
+          if (this.orderGstin || this.orderNote) {
+            const noteParts = [];
+            if (this.orderGstin) noteParts.push(`GSTIN: ${this.orderGstin}`);
+            if (this.orderNote) noteParts.push(this.orderNote);
+            return fetch(`${root}cart/update.js`, {
+              method: 'POST',
+              credentials: 'same-origin',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                note: noteParts.join(' | '),
+                attributes: {
+                  GSTIN: this.orderGstin || '',
+                  OrderNote: this.orderNote || ''
+                }
+              })
+            }).catch(() => {});
+          }
+        })
+        .then(() => {
           window.location.href = `${root}checkout`;
         })
         .catch(err => {

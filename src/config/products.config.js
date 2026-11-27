@@ -19,6 +19,114 @@ export const brandConfig = {
  * 4 Product Categories with 4 genuine products each
  */
 export const categoryGalleries = {
+  "best-sellers": {
+    id: "best-sellers",
+    name: "Best Sellers",
+    badge: "Flagship Innovations",
+    heading: "Vidhyut Saathi Best Sellers",
+    intro: "Smart electricity saver cards, precision MECO digital clamp meters, and all-weather solar security lamps.",
+    route: "/products",
+    shopifyCollection: "/collections/all",
+    heroImage: "/assets/images/products/clamp-meter-1.jpg",
+    products: [
+      {
+        id: "vidhyut-saver-card",
+        name: "Vidhyut Saathi Smart Saver Card",
+        fullName: "Vidhyut Saathi Smart Electric Saver Card (TERAHERTZ Nano Tech)",
+        category: "Best Sellers",
+        categoryId: "best-sellers",
+        badge: "India's No. 1 Saver",
+        rating: "4.9 (240+ Verified)",
+        description: "Smart electricity saver card featuring US-German Nano Technology with TERAHERTZ chip & 20,000+ Negative Ions to optimize power factor.",
+        fullDescription: "Vidhyut Saathi Smart Electric Saver Card features advanced US-German Nano Technology with TERAHERTZ Chip and 20,000+ Negative Ions. Designed to help optimize electrical performance, stabilize current waves, improve power factor, and reduce electricity leakage across residential and commercial distribution boards up to 10KW.",
+        image: "https://vidhyutsaathi.in/cdn/shop/files/VS_Card_Final_Design_Golden_1.png?v=1794309031&width=900",
+        shopifyAsset: "vidhyut-power-saver-card.jpg",
+        basePrice: 3498,
+        availability: "In Stock - Express Dispatch",
+        variants: [
+          { id: "vidhyut-saver-card", name: "Standard Smart Saver Card (Single Unit)", wattage: "Up to 10KW Load", price: 3498, originalPrice: 4999, recommended: "Homes, Shops & Offices", isPopular: true }
+        ],
+        specs: [
+          { label: "Core Technology", value: "US-German Nano Tech + TERAHERTZ Chip" },
+          { label: "Negative Ions", value: "20,000+ High-Density Ion Matrix" },
+          { label: "Supported Load", value: "Single & Three-Phase up to 10KW" },
+          { label: "Installation", value: "Zero Wiring — Mounts at Main MCB Box" }
+        ]
+      },
+      {
+        id: "meco-clamp-meter",
+        name: "MECO 27 AUTO BL CLAMP METER",
+        fullName: "MECO 27 AUTO BL Digital Clamp Meter (US-German Nano Tech)",
+        category: "Best Sellers",
+        categoryId: "best-sellers",
+        badge: "Pro Electrical Testing",
+        rating: "4.9 (185+ Verified)",
+        description: "Precision auto-ranging digital clamp meter with NCV safety, data hold, and wide jaw opening for AC leakage current measurement.",
+        fullDescription: "MECO 27 AUTO BL Clamp Meter featuring precision calibration for accurate AC leakage current measurement with high reliability. Equipped with non-contact voltage (NCV) safety alert, auto range, data hold, backlit LCD, and wide jaw opening for multiple conductors.",
+        image: "https://vidhyutsaathi.in/cdn/shop/files/Glossy_Red_Clamp_Meter_Product_Poster.png?v=1794310207&width=900",
+        shopifyAsset: "clamp-meter-1.jpg",
+        basePrice: 1899,
+        availability: "In Stock - Dispatch within 24h",
+        variants: [
+          { id: "meco-clamp-meter", name: "MECO 27 AUTO BL Single Unit + Leads", wattage: "Auto Range + NCV", price: 1899, originalPrice: 2599, recommended: "Electricians & Solar Engineers", isPopular: true }
+        ],
+        specs: [
+          { label: "Current Measurement", value: "AC Leakage & Load Current Auto-Range" },
+          { label: "Safety Sensor", value: "Built-in Non-Contact Voltage (NCV)" },
+          { label: "Display", value: "Backlit LCD with Data Hold" },
+          { label: "Included", value: "Test Leads, Carry Pouch & User Manual" }
+        ]
+      },
+      {
+        id: "industrial-clamp-series",
+        name: "MECO 27 AUTO BL CLAMP (Pack of 3)",
+        fullName: "MECO 27 AUTO BL Clamp Meter — Commercial Value Pack of 3",
+        category: "Best Sellers",
+        categoryId: "best-sellers",
+        badge: "Fleet & Team Bundle",
+        rating: "4.9 (94+ Verified)",
+        description: "Value bundle of 3 MECO Clamp Meters for installation teams, electrical contractors, and field service technicians.",
+        fullDescription: "Equip your entire electrical or solar installation team with 3 genuine MECO 27 AUTO BL Clamp Meters featuring auto-ranging AC measurement, NCV safety alert, and heavy-duty test leads at a bulk bundle discount.",
+        image: "https://vidhyutsaathi.in/cdn/shop/files/Pack_of_3_Red_Clamp_Meters.png?v=1794309908&width=900",
+        shopifyAsset: "clamp-meters.jpg",
+        basePrice: 4500,
+        availability: "In Stock - Bulk Pack Ready",
+        variants: [
+          { id: "industrial-clamp-series", name: "Pack of 3 Clamp Meters (Team Bundle)", wattage: "3 x Complete Kits", price: 4500, originalPrice: 6999, recommended: "Contractors & Service Teams", isPopular: true }
+        ],
+        specs: [
+          { label: "Bundle Contents", value: "3 x MECO 27 AUTO BL Clamp Meters" },
+          { label: "Savings", value: "₹2,499 Bundle Discount vs Single Units" },
+          { label: "Safety Rating", value: "CAT III 600V + NCV Alert" },
+          { label: "Invoice", value: "Full 18% GST B2B Tax Invoice" }
+        ]
+      },
+      {
+        id: "new-product",
+        name: "BK-100 Solar Interaction Wall Lamp",
+        fullName: "BK-100 Solar Interaction Wall Lamp (100 LED 600LM IP66)",
+        category: "Best Sellers",
+        categoryId: "best-sellers",
+        badge: "New Arrival",
+        rating: "4.8 (160+ Verified)",
+        description: "100-LED 600LM solar motion-sensor wall lamp with 120° detection, IP66 waterproofing, 1200mAh battery, and dual solar/USB charging.",
+        fullDescription: "BK-100 Solar Interaction Wall Lamp packs 100 high-brightness SMD LEDs (600 Lumens) with a 120-degree PIR motion sensor (3–5m detection range), IP66 waterproof housing, 1200mAh rechargeable lithium battery, and dual solar + USB charging.",
+        image: "https://vidhyutsaathi.in/cdn/shop/files/led_light.avif?v=1795679123&width=900",
+        shopifyAsset: "solar-lights.jpg",
+        basePrice: 300,
+        availability: "In Stock - Dispatch within 24h",
+        variants: [
+          { id: "new-product", name: "BK-100 Solar Motion Wall Lamp (100 LED)", wattage: "600LM Solar + USB", price: 300, originalPrice: 599, recommended: "Entrances, Balconies & Stairways", isPopular: true }
+        ],
+        specs: [
+          { label: "LED Output", value: "100 LEDs — 600 Lumens Brightness" },
+          { label: "Motion Sensor", value: "120° Wide Angle (3–5m Range)" },
+          { label: "Battery & Charge", value: "1200mAh Li-Ion (Solar + USB)" },
+          { label: "Protection", value: "IP66 All-Weather Waterproof" }
+        ]
+      }
+    ]
+  },
   "solar-lights": {
     id: "solar-lights",
     name: "Solar Lights",
@@ -452,6 +560,7 @@ export const productsConfig = [
   {
     ...categoryGalleries["solar-lights"].products[0],
     id: "solar-lights",
+    isCategoryAlias: true,
     name: "Solar Lights",
     fullName: "Solar Street Lights — All-in-One Outdoor Luminaire",
     description: "All-in-one solar luminaires and street lighting with integrated PV panels, lithium storage, and dusk-to-dawn sensors for autonomous outdoor illumination."
@@ -460,6 +569,7 @@ export const productsConfig = [
   {
     ...categoryGalleries["led-lamps"].products[0],
     id: "led-lamps",
+    isCategoryAlias: true,
     name: "LED Lamps",
     fullName: "Smart Architectural LED Lamps & Suspended Luminaires",
     description: "Modern architectural linear lamps, downlights, and suspended luminaires designed for glare-free, uniform light distribution across workspaces and living areas."
@@ -468,6 +578,7 @@ export const productsConfig = [
   {
     ...categoryGalleries["led-bulbs"].products[0],
     id: "led-bulbs",
+    isCategoryAlias: true,
     name: "LED Bulbs",
     fullName: "High-Efficiency LED Bulbs (Multipack Value Editions)",
     description: "High-efficacy, long-life LED bulbs engineered with robust thermal dissipation and high lumen output to ensure durable daily performance."
@@ -476,11 +587,13 @@ export const productsConfig = [
   {
     ...categoryGalleries["clamp-meters"].products[0],
     id: "clamp-meters",
+    isCategoryAlias: true,
     name: "Clamp Meters",
     fullName: "Precision Digital Clamp Meter & Electrical Multimeter",
     description: "Rugged digital clamp meters offering accurate AC/DC current, voltage, and continuity testing for professional electricians and maintenance teams."
   },
   // All specific products
+  ...categoryGalleries["best-sellers"].products,
   ...categoryGalleries["solar-lights"].products,
   ...categoryGalleries["led-lamps"].products,
   ...categoryGalleries["led-bulbs"].products,

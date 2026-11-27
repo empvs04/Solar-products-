@@ -8,15 +8,15 @@
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #c4a159;
-  color: #ffffff;
+  background: linear-gradient(90deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+  color: #F8FAFC;
   height: 38px;
   display: flex;
   align-items: center;
   position: relative;
   z-index: 1050;
   user-select: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .vs-ticker-track {
@@ -42,18 +42,19 @@
   align-items: center;
   gap: 8px;
   padding: 0 22px;
-  font-size: 0.8125rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #F8FAFC;
 }
 
 .vs-ticker-svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
-  fill: currentColor;
+  fill: #F59E0B;
+  color: #F59E0B;
   display: inline-block;
   vertical-align: middle;
 }
@@ -106,16 +107,18 @@
   height: var(--header-height);
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border);
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   z-index: 1000;
-  transition: box-shadow var(--transition-normal), background-color var(--transition-normal);
+  transition: box-shadow var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
 }
 
 .vs-header.is-scrolled {
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  background-color: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.1);
+  border-bottom-color: rgba(15, 23, 42, 0.12);
 }
 
 .vs-header .vs-container {

@@ -175,4 +175,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 10. Initialize Luxury Showcase Banner Slider
   initLuxuryBannerSliders();
+
+  // 11. Enterprise Scroll Reveal for sections & cards (respects reduced motion)
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll('.vs-why-card, .vs-about-image-card, .vs-about-content, .vs-distributor-box, .vs-secondary-cta-inner');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+
+    revealTargets.forEach((el, idx) => {
+      if (el.getBoundingClientRect().top > window.innerHeight * 0.95) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition = `opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) ${(idx % 4) * 60}ms, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) ${(idx % 4) * 60}ms`;
+        observer.observe(el);
+      }
+    });
+  }
 });
